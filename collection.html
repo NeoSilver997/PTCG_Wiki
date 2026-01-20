@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="zh-HK">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>我的收藏 | PTCG CardDB</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Noto Sans TC', sans-serif;
+        }
+        .card-hover {
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .card-hover:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+        }
+    </style>
+</head>
+<body class="bg-gray-50 min-w-[1280px]">
+    <!-- Navigation -->
+    <nav class="bg-white shadow-md sticky top-0 z-50">
+        <div class="max-w-[1920px] mx-auto px-6">
+            <div class="flex items-center justify-between h-16">
+                <div class="flex items-center space-x-8">
+                    <div class="flex items-center">
+                        <span class="text-2xl font-bold text-blue-600">⚡ PTCG</span>
+                        <span class="ml-2 text-gray-600">卡牌資料庫</span>
+                    </div>
+                    <div class="hidden md:flex space-x-6">
+                        <a href="index.html" class="text-gray-700 hover:text-blue-600 px-3 py-2">首頁</a>
+                        <a href="index.html" class="text-gray-700 hover:text-blue-600 px-3 py-2">卡片</a>
+                        <a href="collection.html" class="text-blue-600 font-medium border-b-2 border-blue-600 px-3 py-2">收藏</a>
+                        <a href="#" class="text-gray-700 hover:text-blue-600 px-3 py-2">套牌</a>
+                        <a href="#" class="text-gray-700 hover:text-blue-600 px-3 py-2">比賽</a>
+                        <a href="#" class="text-gray-700 hover:text-blue-600 px-3 py-2">價格</a>
+                    </div>
+                </div>
+                <div class="flex items-center space-x-4">
+                    <div class="relative">
+                        <select class="border border-gray-300 rounded-md px-3 py-1.5 text-sm bg-white">
+                            <option value="zh-HK">繁體中文</option>
+                            <option value="en" disabled>English</option>
+                        </select>
+                    </div>
+                    <div class="flex items-center space-x-2">
+                        <div class="w-8 h-8 bg-blue-600 rounded-full flex items-center justify-center text-white font-bold">
+                            張
+                        </div>
+                        <span class="text-sm font-medium">張三</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <div class="max-w-[1920px] mx-auto px-6 py-8">
+        <div class="mb-8">
+            <h1 class="text-3xl font-bold text-gray-800 mb-2">我的收藏</h1>
+            <p class="text-gray-600">管理你的寶可夢卡牌收藏</p>
+        </div>
+
+        <!-- Stats Cards -->
+        <div class="grid grid-cols-4 gap-6 mb-8">
+            <div class="bg-white rounded-lg shadow-md p-6">
+                <div class="flex items-center justify-between">
+                    <div>
+                        <div class="text-sm text-gray-500 mb-1">總卡片數</div>
+                        <div class="text-3xl font-bold text-blue-600">245</div>
+                    </div>
+                    <div class="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center">
+                        <span class="text-2xl">📇</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bg-white rounded-lg shadow-md p-6">
+                <div class="flex items-center justify-between">
+                    <div>
+                        <div class="text-sm text-gray-500 mb-1">收藏完成度</div>
+                        <div class="text-3xl font-bold text-green-600">67%</div>
+                    </div>
+                    <div class="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center">
+                        <span class="text-2xl">✅</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bg-white rounded-lg shadow-md p-6">
+                <div class="flex items-center justify-between">
+                    <div>
+                        <div class="text-sm text-gray-500 mb-1">總價值</div>
+                        <div class="text-3xl font-bold text-purple-600">HK$ 12,450</div>
+                    </div>
+                    <div class="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center">
+                        <span class="text-2xl">💰</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bg-white rounded-lg shadow-md p-6">
+                <div class="flex items-center justify-between">
+                    <div>
+                        <div class="text-sm text-gray-500 mb-1">稀有卡片</div>
+                        <div class="text-3xl font-bold text-amber-600">18</div>
+                    </div>
+                    <div class="w-12 h-12 bg-amber-100 rounded-lg flex items-center justify-center">
+                        <span class="text-2xl">⭐</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Filter and Sort -->
+        <div class="bg-white rounded-lg shadow-md p-6 mb-6">
+            <div class="flex items-center justify-between">
+                <div class="flex items-center space-x-4">
+                    <div>
+                        <label class="text-sm text-gray-600 mr-2">排序方式:</label>
+                        <select class="border border-gray-300 rounded-md px-3 py-2 text-sm">
+                            <option>最近新增</option>
+                            <option>卡片名稱</option>
+                            <option>價值 (高到低)</option>
+                            <option>價值 (低到高)</option>
+                            <option>稀有度</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="text-sm text-gray-600 mr-2">擴充包:</label>
+                        <select class="border border-gray-300 rounded-md px-3 py-2 text-sm">
+                            <option>全部</option>
+                            <option>SV08 超電突破</option>
+                            <option>SV07 星晶風暴</option>
+                            <option>SV06 變幻假面</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="flex items-center space-x-2">
+                    <button class="bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700">
+                        匯出收藏
+                    </button>
+                    <button class="bg-white border border-gray-300 text-gray-700 px-4 py-2 rounded-md hover:bg-gray-50">
+                        統計報告
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Collection Grid -->
+        <div class="grid grid-cols-6 gap-4">
+            <!-- Owned Card 1 -->
+            <div class="bg-white rounded-lg shadow-md overflow-hidden card-hover cursor-pointer relative">
+                <div class="absolute top-2 right-2 z-10">
+                    <div class="bg-blue-600 text-white rounded-full w-8 h-8 flex items-center justify-center text-sm font-bold">
+                        3
+                    </div>
+                </div>
+                <a href="card-detail.html">
+                    <div class="aspect-[245/342] bg-gradient-to-br from-yellow-100 to-yellow-200 flex items-center justify-center">
+                        <span class="text-6xl">⚡</span>
+                    </div>
+                    <div class="p-3">
+                        <h3 class="font-bold text-sm mb-1 truncate">皮卡丘 ex</h3>
+                        <p class="text-xs text-gray-500 mb-2">SV08 014/108</p>
+                        <div class="flex items-center justify-between">
+                            <span class="px-2 py-0.5 bg-yellow-100 text-yellow-700 rounded text-xs font-medium">電</span>
+                            <span class="text-xs font-bold text-blue-600">RR</span>
+                        </div>
+                        <div class="mt-2 text-xs text-gray-600">價值: HK$ 240</div>
+                    </div>
+                </a>
+            </div>
+
+            <!-- Owned Card 2 -->
+            <div class="bg-white rounded-lg shadow-md overflow-hidden card-hover cursor-pointer relative">
+                <div class="absolute top-2 right-2 z-10">
+                    <div class="bg-blue-600 text-white rounded-full w-8 h-8 flex items-center justify-center text-sm font-bold">
+                        1
+                    </div>
+                </div>
+                <a href="card-detail.html">
+                    <div class="aspect-[245/342] bg-gradient-to-br from-red-100 to-orange-200 flex items-center justify-center">
+                        <span class="text-6xl">🔥</span>
+                    </div>
+                    <div class="p-3">
+                        <h3 class="font-bold text-sm mb-1 truncate">噴火龍 VSTAR</h3>
+                        <p class="text-xs text-gray-500 mb-2">SV08 023/108</p>
+                        <div class="flex items-center justify-between">
+                            <span class="px-2 py-0.5 bg-red-100 text-red-700 rounded text-xs font-medium">火</span>
+                            <span class="text-xs font-bold text-purple-600">SR</span>
+                        </div>
+                        <div class="mt-2 text-xs text-gray-600">價值: HK$ 1,280</div>
+                    </div>
+                </a>
+            </div>
+
+            <!-- Owned Card 3 -->
+            <div class="bg-white rounded-lg shadow-md overflow-hidden card-hover cursor-pointer relative">
+                <div class="absolute top-2 right-2 z-10">
+                    <div class="bg-blue-600 text-white rounded-full w-8 h-8 flex items-center justify-center text-sm font-bold">
+                        2
+                    </div>
+                </div>
+                <a href="card-detail.html">
+                    <div class="aspect-[245/342] bg-gradient-to-br from-blue-100 to-cyan-200 flex items-center justify-center">
+                        <span class="text-6xl">💧</span>
+                    </div>
+                    <div class="p-3">
+                        <h3 class="font-bold text-sm mb-1 truncate">水箭龜 ex</h3>
+                        <p class="text-xs text-gray-500 mb-2">SV08 031/108</p>
+                        <div class="flex items-center justify-between">
+                            <span class="px-2 py-0.5 bg-blue-100 text-blue-700 rounded text-xs font-medium">水</span>
+                            <span class="text-xs font-bold text-blue-600">RR</span>
+                        </div>
+                        <div class="mt-2 text-xs text-gray-600">價值: HK$ 320</div>
+                    </div>
+                </a>
+            </div>
+
+            <!-- Owned Card 4 -->
+            <div class="bg-white rounded-lg shadow-md overflow-hidden card-hover cursor-pointer relative">
+                <div class="absolute top-2 right-2 z-10">
+                    <div class="bg-blue-600 text-white rounded-full w-8 h-8 flex items-center justify-center text-sm font-bold">
+                        4
+                    </div>
+                </div>
+                <a href="card-detail.html">
+                    <div class="aspect-[245/342] bg-gradient-to-br from-green-100 to-emerald-200 flex items-center justify-center">
+                        <span class="text-6xl">🌿</span>
+                    </div>
+                    <div class="p-3">
+                        <h3 class="font-bold text-sm mb-1 truncate">妙蛙花</h3>
+                        <p class="text-xs text-gray-500 mb-2">SV08 005/108</p>
+                        <div class="flex items-center justify-between">
+                            <span class="px-2 py-0.5 bg-green-100 text-green-700 rounded text-xs font-medium">草</span>
+                            <span class="text-xs font-bold text-gray-600">R</span>
+                        </div>
+                        <div class="mt-2 text-xs text-gray-600">價值: HK$ 45</div>
+                    </div>
+                </a>
+            </div>
+
+            <!-- Owned Card 5 -->
+            <div class="bg-white rounded-lg shadow-md overflow-hidden card-hover cursor-pointer relative">
+                <div class="absolute top-2 right-2 z-10">
+                    <div class="bg-blue-600 text-white rounded-full w-8 h-8 flex items-center justify-center text-sm font-bold">
+                        1
+                    </div>
+                </div>
+                <a href="card-detail.html">
+                    <div class="aspect-[245/342] bg-gradient-to-br from-purple-100 to-violet-200 flex items-center justify-center">
+                        <span class="text-6xl">🔮</span>
+                    </div>
+                    <div class="p-3">
+                        <h3 class="font-bold text-sm mb-1 truncate">超夢 ex</h3>
+                        <p class="text-xs text-gray-500 mb-2">SV07 089/108</p>
+                        <div class="flex items-center justify-between">
+                            <span class="px-2 py-0.5 bg-purple-100 text-purple-700 rounded text-xs font-medium">超</span>
+                            <span class="text-xs font-bold text-amber-600">UR</span>
+                        </div>
+                        <div class="mt-2 text-xs text-gray-600">價值: HK$ 3,200</div>
+                    </div>
+                </a>
+            </div>
+
+            <!-- Owned Card 6 -->
+            <div class="bg-white rounded-lg shadow-md overflow-hidden card-hover cursor-pointer relative">
+                <div class="absolute top-2 right-2 z-10">
+                    <div class="bg-blue-600 text-white rounded-full w-8 h-8 flex items-center justify-center text-sm font-bold">
+                        2
+                    </div>
+                </div>
+                <a href="card-detail.html">
+                    <div class="aspect-[245/342] bg-gradient-to-br from-amber-100 to-orange-200 flex items-center justify-center">
+                        <span class="text-6xl">👊</span>
+                    </div>
+                    <div class="p-3">
+                        <h3 class="font-bold text-sm mb-1 truncate">路卡利歐 ex</h3>
+                        <p class="text-xs text-gray-500 mb-2">SV08 045/108</p>
+                        <div class="flex items-center justify-between">
+                            <span class="px-2 py-0.5 bg-amber-100 text-amber-700 rounded text-xs font-medium">鬥</span>
+                            <span class="text-xs font-bold text-blue-600">RR</span>
+                        </div>
+                        <div class="mt-2 text-xs text-gray-600">價值: HK$ 280</div>
+                    </div>
+                </a>
+            </div>
+
+            <!-- Owned Card 7 -->
+            <div class="bg-white rounded-lg shadow-md overflow-hidden card-hover cursor-pointer relative">
+                <div class="absolute top-2 right-2 z-10">
+                    <div class="bg-blue-600 text-white rounded-full w-8 h-8 flex items-center justify-center text-sm font-bold">
+                        4
+                    </div>
+                </div>
+                <a href="card-detail.html">
+                    <div class="aspect-[245/342] bg-gradient-to-br from-yellow-100 to-yellow-200 flex items-center justify-center">
+                        <span class="text-6xl">⚡</span>
+                    </div>
+                    <div class="p-3">
+                        <h3 class="font-bold text-sm mb-1 truncate">皮丘</h3>
+                        <p class="text-xs text-gray-500 mb-2">SV08 013/108</p>
+                        <div class="flex items-center justify-between">
+                            <span class="px-2 py-0.5 bg-yellow-100 text-yellow-700 rounded text-xs font-medium">電</span>
+                            <span class="text-xs font-bold text-gray-400">C</span>
+                        </div>
+                        <div class="mt-2 text-xs text-gray-600">價值: HK$ 8</div>
+                    </div>
+                </a>
+            </div>
+
+            <!-- Owned Card 8 -->
+            <div class="bg-white rounded-lg shadow-md overflow-hidden card-hover cursor-pointer relative">
+                <div class="absolute top-2 right-2 z-10">
+                    <div class="bg-blue-600 text-white rounded-full w-8 h-8 flex items-center justify-center text-sm font-bold">
+                        1
+                    </div>
+                </div>
+                <a href="card-detail.html">
+                    <div class="aspect-[245/342] bg-gradient-to-br from-blue-100 to-cyan-200 flex items-center justify-center">
+                        <span class="text-6xl">🌊</span>
+                    </div>
+                    <div class="p-3">
+                        <h3 class="font-bold text-sm mb-1 truncate">蓋歐卡</h3>
+                        <p class="text-xs text-gray-500 mb-2">SV07 034/108</p>
+                        <div class="flex items-center justify-between">
+                            <span class="px-2 py-0.5 bg-blue-100 text-blue-700 rounded text-xs font-medium">水</span>
+                            <span class="text-xs font-bold text-gray-600">R</span>
+                        </div>
+                        <div class="mt-2 text-xs text-gray-600">價值: HK$ 55</div>
+                    </div>
+                </a>
+            </div>
+
+            <!-- Owned Card 9 -->
+            <div class="bg-white rounded-lg shadow-md overflow-hidden card-hover cursor-pointer relative">
+                <div class="absolute top-2 right-2 z-10">
+                    <div class="bg-blue-600 text-white rounded-full w-8 h-8 flex items-center justify-center text-sm font-bold">
+                        4
+                    </div>
+                </div>
+                <a href="card-detail.html">
+                    <div class="aspect-[245/342] bg-gradient-to-br from-red-100 to-orange-200 flex items-center justify-center">
+                        <span class="text-6xl">🔥</span>
+                    </div>
+                    <div class="p-3">
+                        <h3 class="font-bold text-sm mb-1 truncate">小火龍</h3>
+                        <p class="text-xs text-gray-500 mb-2">SV08 020/108</p>
+                        <div class="flex items-center justify-between">
+                            <span class="px-2 py-0.5 bg-red-100 text-red-700 rounded text-xs font-medium">火</span>
+                            <span class="text-xs font-bold text-gray-500">U</span>
+                        </div>
+                        <div class="mt-2 text-xs text-gray-600">價值: HK$ 12</div>
+                    </div>
+                </a>
+            </div>
+
+            <!-- Owned Card 10 -->
+            <div class="bg-white rounded-lg shadow-md overflow-hidden card-hover cursor-pointer relative">
+                <div class="absolute top-2 right-2 z-10">
+                    <div class="bg-blue-600 text-white rounded-full w-8 h-8 flex items-center justify-center text-sm font-bold">
+                        4
+                    </div>
+                </div>
+                <a href="card-detail.html">
+                    <div class="aspect-[245/342] bg-gradient-to-br from-green-100 to-emerald-200 flex items-center justify-center">
+                        <span class="text-6xl">🌱</span>
+                    </div>
+                    <div class="p-3">
+                        <h3 class="font-bold text-sm mb-1 truncate">妙蛙種子</h3>
+                        <p class="text-xs text-gray-500 mb-2">SV08 001/108</p>
+                        <div class="flex items-center justify-between">
+                            <span class="px-2 py-0.5 bg-green-100 text-green-700 rounded text-xs font-medium">草</span>
+                            <span class="text-xs font-bold text-gray-400">C</span>
+                        </div>
+                        <div class="mt-2 text-xs text-gray-600">價值: HK$ 6</div>
+                    </div>
+                </a>
+            </div>
+
+            <!-- Owned Card 11 -->
+            <div class="bg-white rounded-lg shadow-md overflow-hidden card-hover cursor-pointer relative">
+                <div class="absolute top-2 right-2 z-10">
+                    <div class="bg-blue-600 text-white rounded-full w-8 h-8 flex items-center justify-center text-sm font-bold">
+                        2
+                    </div>
+                </div>
+                <a href="card-detail.html">
+                    <div class="aspect-[245/342] bg-gradient-to-br from-purple-100 to-pink-200 flex items-center justify-center">
+                        <span class="text-6xl">✨</span>
+                    </div>
+                    <div class="p-3">
+                        <h3 class="font-bold text-sm mb-1 truncate">夢幻 ex</h3>
+                        <p class="text-xs text-gray-500 mb-2">SV08 056/108</p>
+                        <div class="flex items-center justify-between">
+                            <span class="px-2 py-0.5 bg-purple-100 text-purple-700 rounded text-xs font-medium">超</span>
+                            <span class="text-xs font-bold text-blue-600">RR</span>
+                        </div>
+                        <div class="mt-2 text-xs text-gray-600">價值: HK$ 380</div>
+                    </div>
+                </a>
+            </div>
+
+            <!-- Owned Card 12 -->
+            <div class="bg-white rounded-lg shadow-md overflow-hidden card-hover cursor-pointer relative">
+                <div class="absolute top-2 right-2 z-10">
+                    <div class="bg-blue-600 text-white rounded-full w-8 h-8 flex items-center justify-center text-sm font-bold">
+                        3
+                    </div>
+                </div>
+                <a href="card-detail.html">
+                    <div class="aspect-[245/342] bg-gradient-to-br from-gray-100 to-gray-200 flex items-center justify-center">
+                        <span class="text-6xl">😴</span>
+                    </div>
+                    <div class="p-3">
+                        <h3 class="font-bold text-sm mb-1 truncate">卡比獸</h3>
+                        <p class="text-xs text-gray-500 mb-2">SV07 098/108</p>
+                        <div class="flex items-center justify-between">
+                            <span class="px-2 py-0.5 bg-gray-100 text-gray-700 rounded text-xs font-medium">無</span>
+                            <span class="text-xs font-bold text-gray-600">R</span>
+                        </div>
+                        <div class="mt-2 text-xs text-gray-600">價值: HK$ 38</div>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
