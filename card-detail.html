@@ -59,51 +59,93 @@
         </div>
 
         <div class="grid grid-cols-12 gap-8">
-            <!-- Left Column - Card Image -->
-            <div class="col-span-4">
-                <div class="bg-white rounded-lg shadow-md p-6 sticky top-24">
-                    <!-- Variant Selector -->
-                    <div class="mb-4">
-                        <label class="text-sm font-medium text-gray-700 mb-2 block">卡片版本</label>
-                        <select id="variantSelector" class="w-full border border-gray-300 rounded-md px-3 py-2 text-sm bg-white focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
-                            <option value="normal" data-price="180">普通版 - HK$ 180</option>
-                            <option value="reverse-holo" data-price="240">反閃版 - HK$ 240</option>
-                            <option value="holo" data-price="380">閃卡版 - HK$ 380</option>
-                            <option value="full-art" data-price="650">全圖版 - HK$ 650</option>
-                            <option value="sar" data-price="2480" selected>SAR - HK$ 2,480</option>
-                        </select>
+            <!-- Left Column - Card Image (Larger) -->
+            <div class="col-span-5">
+                <div class="bg-white rounded-lg shadow-lg p-6 sticky top-24">
+                    <!-- Large Card Image -->
+                    <div class="aspect-[245/342] rounded-xl mb-6 overflow-hidden bg-gradient-to-br from-gray-100 to-gray-200 relative shadow-xl">
+                        <img id="cardImage" src="https://asia.pokemon-card.com/hk/card-img/hk00017762.png" alt="莉佳的霸王花ex" class="w-full h-full object-contain transition-all duration-300">
+                        <div id="imageLoading" class="hidden absolute inset-0 bg-white bg-opacity-75 flex items-center justify-center">
+                            <div class="animate-spin rounded-full h-16 w-16 border-b-2 border-blue-600"></div>
+                        </div>
+                        <!-- Variant Badge Overlay -->
+                        <div class="absolute top-4 right-4">
+                            <span id="variantBadge" class="px-3 py-1.5 bg-gradient-to-r from-purple-600 to-pink-600 text-white rounded-lg font-bold text-sm shadow-lg">SAR</span>
+                        </div>
+                    </div>
+
+                    <!-- Variant Thumbnail List -->
+                    <div class="mb-6">
+                        <h3 class="text-sm font-semibold text-gray-700 mb-3">選擇版本</h3>
+                        <div class="grid grid-cols-5 gap-2">
+                            <button class="variant-thumb cursor-pointer rounded-lg overflow-hidden border-2 border-transparent hover:border-blue-400 transition-all hover:shadow-md" data-variant="normal">
+                                <div class="aspect-[245/342] bg-gradient-to-br from-blue-100 to-blue-200 relative">
+                                    <img src="https://asia.pokemon-card.com/hk/card-img/hk00017760.png" alt="普通版" class="w-full h-full object-cover">
+                                    <div class="absolute bottom-0 inset-x-0 bg-gradient-to-t from-black/80 to-transparent p-1">
+                                        <div class="text-white text-[8px] font-bold text-center">RR</div>
+                                    </div>
+                                </div>
+                            </button>
+                            <button class="variant-thumb cursor-pointer rounded-lg overflow-hidden border-2 border-transparent hover:border-blue-400 transition-all hover:shadow-md" data-variant="reverse-holo">
+                                <div class="aspect-[245/342] bg-gradient-to-br from-purple-100 to-purple-200 relative">
+                                    <img src="https://asia.pokemon-card.com/hk/card-img/hk00017761.png" alt="反閃版" class="w-full h-full object-cover">
+                                    <div class="absolute bottom-0 inset-x-0 bg-gradient-to-t from-black/80 to-transparent p-1">
+                                        <div class="text-white text-[8px] font-bold text-center">RRR</div>
+                                    </div>
+                                </div>
+                            </button>
+                            <button class="variant-thumb cursor-pointer rounded-lg overflow-hidden border-2 border-transparent hover:border-blue-400 transition-all hover:shadow-md" data-variant="holo">
+                                <div class="aspect-[245/342] bg-gradient-to-br from-yellow-100 to-orange-200 relative">
+                                    <img src="https://asia.pokemon-card.com/hk/card-img/hk00017762.png" alt="閃卡版" class="w-full h-full object-cover">
+                                    <div class="absolute bottom-0 inset-x-0 bg-gradient-to-t from-black/80 to-transparent p-1">
+                                        <div class="text-white text-[8px] font-bold text-center">HOLO</div>
+                                    </div>
+                                </div>
+                            </button>
+                            <button class="variant-thumb cursor-pointer rounded-lg overflow-hidden border-2 border-transparent hover:border-blue-400 transition-all hover:shadow-md" data-variant="full-art">
+                                <div class="aspect-[245/342] bg-gradient-to-br from-purple-100 to-indigo-200 relative">
+                                    <img src="https://asia.pokemon-card.com/hk/card-img/hk00017763.png" alt="全圖版" class="w-full h-full object-cover">
+                                    <div class="absolute bottom-0 inset-x-0 bg-gradient-to-t from-black/80 to-transparent p-1">
+                                        <div class="text-white text-[8px] font-bold text-center">SR</div>
+                                    </div>
+                                </div>
+                            </button>
+                            <button class="variant-thumb cursor-pointer rounded-lg overflow-hidden border-2 border-blue-600 shadow-md" data-variant="sar">
+                                <div class="aspect-[245/342] bg-gradient-to-br from-pink-100 to-purple-200 relative">
+                                    <img src="https://asia.pokemon-card.com/hk/card-img/hk00017762.png" alt="SAR" class="w-full h-full object-cover">
+                                    <div class="absolute bottom-0 inset-x-0 bg-gradient-to-t from-black/80 to-transparent p-1">
+                                        <div class="text-white text-[8px] font-bold text-center">SAR</div>
+                                    </div>
+                                </div>
+                            </button>
+                        </div>
                     </div>
 
                     <!-- Current Price Display -->
-                    <div class="bg-gradient-to-r from-blue-50 to-indigo-50 rounded-lg p-4 mb-4 border border-blue-200">
-                        <div class="text-sm text-gray-600 mb-1">當前版本價格</div>
-                        <div id="currentPrice" class="text-3xl font-bold text-blue-600">HK$ 2,480</div>
-                        <div class="text-xs text-gray-500 mt-1">市場平均價 • 更新於 1 小時前</div>
-                        <div class="mt-2 pt-2 border-t border-blue-200">
-                            <div class="flex items-center justify-between text-xs">
-                                <span class="text-gray-600">版本稀有度:</span>
-                                <span id="variantBadge" class="px-2 py-0.5 bg-gradient-to-r from-purple-600 to-pink-600 text-white rounded-full font-medium">SAR</span>
+                    <div class="bg-gradient-to-r from-blue-50 to-indigo-50 rounded-lg p-5 mb-4 border border-blue-200">
+                        <div class="flex items-center justify-between">
+                            <div>
+                                <div class="text-sm text-gray-600 mb-1">當前版本價格</div>
+                                <div id="currentPrice" class="text-3xl font-bold text-blue-600">HK$ 2,480</div>
+                            </div>
+                            <div class="text-right">
+                                <div class="text-xs text-gray-500">市場平均價</div>
+                                <div class="text-xs text-gray-500">更新於 1 小時前</div>
                             </div>
                         </div>
                     </div>
 
-                    <div class="aspect-[245/342] rounded-lg mb-4 overflow-hidden bg-gradient-to-br from-gray-100 to-gray-200 relative">
-                        <img id="cardImage" src="https://asia.pokemon-card.com/hk/card-img/hk00017762.png" alt="莉佳的霸王花ex" class="w-full h-full object-contain transition-all duration-300">
-                        <div id="imageLoading" class="hidden absolute inset-0 bg-white bg-opacity-75 flex items-center justify-center">
-                            <div class="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600"></div>
-                        </div>
-                    </div>
-                    <button class="w-full bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700 mb-2">
+                    <button class="w-full bg-blue-600 text-white px-4 py-3 rounded-lg hover:bg-blue-700 mb-2 font-medium shadow-md hover:shadow-lg transition-all">
                         加入收藏
                     </button>
-                    <button class="w-full bg-white border border-blue-600 text-blue-600 px-4 py-2 rounded-md hover:bg-blue-50">
+                    <button class="w-full bg-white border-2 border-blue-600 text-blue-600 px-4 py-3 rounded-lg hover:bg-blue-50 font-medium">
                         加入套牌
                     </button>
                 </div>
             </div>
 
             <!-- Right Column - Card Details -->
-            <div class="col-span-8">
+            <div class="col-span-7">
                 <div class="bg-white rounded-lg shadow-md p-8 mb-6">
                     <div class="flex items-start justify-between mb-6">
                         <div>
@@ -441,16 +483,18 @@
             }
         };
 
-        // Variant selector change handler
-        const variantSelector = document.getElementById('variantSelector');
+        // DOM elements
         const currentPriceDisplay = document.getElementById('currentPrice');
         const cardImage = document.getElementById('cardImage');
         const imageLoading = document.getElementById('imageLoading');
         const variantBadge = document.getElementById('variantBadge');
         
-        variantSelector.addEventListener('change', (e) => {
-            const variant = e.target.value;
-            updateVariantDisplay(variant);
+        // Variant thumbnail handlers
+        document.querySelectorAll('.variant-thumb').forEach(thumb => {
+            thumb.addEventListener('click', () => {
+                const variant = thumb.getAttribute('data-variant');
+                updateVariantDisplay(variant);
+            });
         });
         
         function updateVariantDisplay(variant) {
@@ -461,7 +505,7 @@
             
             // Update variant badge
             variantBadge.textContent = priceData.badge;
-            variantBadge.className = `px-2 py-0.5 ${priceData.badgeColor} text-white rounded-full font-medium`;
+            variantBadge.className = `px-3 py-1.5 ${priceData.badgeColor} text-white rounded-lg font-bold text-sm shadow-lg`;
             
             // Update card image with loading state
             if (priceData.imageUrl) {
@@ -471,13 +515,28 @@
                 const img = new Image();
                 img.onload = () => {
                     cardImage.src = priceData.imageUrl;
-                    cardImall displays including image
-                updateVariantDisplays to load, keep current image
+                    cardImage.style.opacity = '1';
+                    imageLoading.classList.add('hidden');
+                };
+                img.onerror = () => {
+                    // If image fails to load, keep current image
                     cardImage.style.opacity = '1';
                     imageLoading.classList.add('hidden');
                 };
                 img.src = priceData.imageUrl;
             }
+            
+            // Update thumbnail borders
+            document.querySelectorAll('.variant-thumb').forEach(thumb => {
+                const thumbVariant = thumb.getAttribute('data-variant');
+                if (thumbVariant === variant) {
+                    thumb.classList.remove('border-transparent');
+                    thumb.classList.add('border-blue-600', 'shadow-md');
+                } else {
+                    thumb.classList.remove('border-blue-600', 'shadow-md');
+                    thumb.classList.add('border-transparent');
+                }
+            });
             
             // Update price tab if visible
             updatePriceTab(variant);
@@ -490,15 +549,7 @@
         document.querySelectorAll('.variant-price-btn').forEach(btn => {
             btn.addEventListener('click', () => {
                 const variant = btn.getAttribute('data-variant');
-                
-                // Update selector
-                variantSelector.value = variant;
-                
-                // Update displays
-                const priceData = variantPrices[variant];
-                currentPriceDisplay.textContent = `HK$ ${priceData.hk.toLocaleString()}`;
-                updatePriceTab(variant);
-                updateVariantButtons(variant);
+                updateVariantDisplay(variant);
             });
         });
 
@@ -551,9 +602,9 @@
         }
 
         // Tab switching
-        document.querySelectorAll('.tab-buttsar)
-        updateVariantDisplay('sar');
-        updateVariantButtons('sarve class from all tabs
+        document.querySelectorAll('.tab-button').forEach(button => {
+            button.addEventListener('click', () => {
+                // Remove active class from all tabs
                 document.querySelectorAll('.tab-button').forEach(btn => {
                     btn.classList.remove('tab-active');
                     btn.classList.add('text-gray-600');
@@ -574,9 +625,8 @@
             });
         });
 
-        // Initialize with default variant (normal)
-        updateVariantButtons('normal');
-        updatePriceTab('normal');
+        // Initialize with default variant (sar)
+        updateVariantDisplay('sar');
     </script>
 </body>
 </html>
