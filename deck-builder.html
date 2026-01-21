@@ -1,0 +1,598 @@
+<!DOCTYPE html>
+<html lang="zh-HK">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>牌組建構器 - PTCG CardDB</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Noto Sans TC', sans-serif;
+        }
+        .card-slot:hover {
+            transform: scale(1.02);
+        }
+    </style>
+</head>
+<body class="bg-gray-50 min-w-[1280px]">
+    <!-- Navigation -->
+    <nav class="bg-white shadow-md sticky top-0 z-50">
+        <div class="max-w-[1920px] mx-auto px-6">
+            <div class="flex items-center justify-between h-16">
+                <div class="flex items-center space-x-8">
+                    <div class="flex items-center">
+                        <span class="text-2xl font-bold text-blue-600">⚡ PTCG</span>
+                        <span class="ml-2 text-gray-600">卡牌資料庫</span>
+                    </div>
+                    <div class="hidden md:flex space-x-6">
+                        <a href="index.html" class="text-gray-700 hover:text-blue-600 px-3 py-2">首頁</a>
+                        <a href="index.html" class="text-gray-700 hover:text-blue-600 px-3 py-2">卡片</a>
+                        <a href="collection.html" class="text-gray-700 hover:text-blue-600 px-3 py-2">收藏</a>
+                        <a href="deck-builder.html" class="text-blue-600 font-medium border-b-2 border-blue-600 px-3 py-2">套牌</a>
+                        <a href="events.html" class="text-gray-700 hover:text-blue-600 px-3 py-2">比賽</a>
+                        <a href="#" class="text-gray-700 hover:text-blue-600 px-3 py-2">價格</a>
+                    </div>
+                </div>
+                <div class="flex items-center space-x-4">
+                    <a href="login.html" class="bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700">登入</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <div class="max-w-[1920px] mx-auto px-6 py-8">
+        <!-- Header -->
+        <div class="flex items-center justify-between mb-6">
+            <div>
+                <h1 class="text-3xl font-bold text-gray-900">牌組建構器</h1>
+                <p class="text-gray-600 mt-1">建立和管理你的對戰牌組</p>
+            </div>
+            <div class="flex items-center space-x-3">
+                <button onclick="openImportModal()" class="bg-purple-600 text-white px-6 py-2 rounded-lg hover:bg-purple-700 font-medium shadow-md flex items-center space-x-2">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"></path>
+                    </svg>
+                    <span>從比賽匯入</span>
+                </button>
+                <button class="bg-gray-600 text-white px-6 py-2 rounded-lg hover:bg-gray-700 font-medium">新增牌組</button>
+                <button class="bg-blue-600 text-white px-6 py-2 rounded-lg hover:bg-blue-700 font-medium shadow-md">儲存牌組</button>
+            </div>
+        </div>
+
+        <div class="grid grid-cols-12 gap-6">
+            <!-- Left: Deck Info -->
+            <div class="col-span-3">
+                <div class="bg-white rounded-lg shadow-md p-6 mb-6 sticky top-24">
+                    <h3 class="text-lg font-bold text-gray-900 mb-4">牌組資訊</h3>
+                    
+                    <div class="space-y-4">
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">牌組名稱</label>
+                            <input type="text" id="deckName" value="莉佳的草系套牌" class="w-full border border-gray-300 rounded-md px-3 py-2 text-sm">
+                        </div>
+
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">套牌類型</label>
+                            <select class="w-full border border-gray-300 rounded-md px-3 py-2 text-sm">
+                                <option>控制型</option>
+                                <option>攻擊型</option>
+                                <option>組合技</option>
+                                <option>中速型</option>
+                                <option>工具箱</option>
+                            </select>
+                        </div>
+
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">賽制</label>
+                            <select class="w-full border border-gray-300 rounded-md px-3 py-2 text-sm">
+                                <option>標準賽制</option>
+                                <option>擴充賽制</option>
+                            </select>
+                        </div>
+
+                        <!-- Deck Stats -->
+                        <div class="pt-4 border-t">
+                            <div class="flex items-center justify-between mb-3">
+                                <span class="text-sm font-medium text-gray-700">卡片數量</span>
+                                <span id="totalCards" class="text-2xl font-bold text-blue-600">12/60</span>
+                            </div>
+                            <div class="w-full bg-gray-200 rounded-full h-3 mb-4">
+                                <div id="deckProgress" class="bg-blue-600 h-3 rounded-full transition-all" style="width: 20%"></div>
+                            </div>
+
+                            <div class="space-y-2 text-sm">
+                                <div class="flex justify-between">
+                                    <span class="text-gray-600">寶可夢:</span>
+                                    <span id="pokemonCount" class="font-medium">8</span>
+                                </div>
+                                <div class="flex justify-between">
+                                    <span class="text-gray-600">訓練師:</span>
+                                    <span id="trainerCount" class="font-medium">3</span>
+                                </div>
+                                <div class="flex justify-between">
+                                    <span class="text-gray-600">能量:</span>
+                                    <span id="energyCount" class="font-medium">1</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Validation -->
+                        <div class="pt-4 border-t">
+                            <h4 class="text-sm font-bold text-gray-900 mb-2">牌組檢查</h4>
+                            <div class="space-y-2 text-xs">
+                                <div id="validation60" class="flex items-center space-x-2">
+                                    <span class="text-red-600">✗</span>
+                                    <span class="text-gray-600">需要 60 張卡片</span>
+                                </div>
+                                <div id="validation4of" class="flex items-center space-x-2">
+                                    <span class="text-green-600">✓</span>
+                                    <span class="text-gray-600">符合 4 張規則</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Center: Deck List -->
+            <div class="col-span-6">
+                <div class="bg-white rounded-lg shadow-md p-6">
+                    <div class="flex items-center justify-between mb-4">
+                        <h3 class="text-xl font-bold text-gray-900">牌組列表</h3>
+                        <button onclick="clearDeck()" class="text-red-600 hover:text-red-800 text-sm">清空牌組</button>
+                    </div>
+
+                    <!-- Pokemon Section -->
+                    <div class="mb-6">
+                        <h4 class="text-sm font-bold text-gray-900 mb-3 flex items-center">
+                            <span class="mr-2">🎴</span>
+                            寶可夢 (<span id="pokemonListCount">8</span>)
+                        </h4>
+                        <div id="pokemonList" class="space-y-2">
+                            <!-- Sample Pokemon Card -->
+                            <div class="flex items-center justify-between p-3 bg-gradient-to-r from-green-50 to-emerald-50 rounded-lg border border-green-200 hover:shadow-md transition-all card-slot">
+                                <div class="flex items-center space-x-3">
+                                    <img src="https://asia.pokemon-card.com/hk/card-img/hk00017762.png" alt="Card" class="w-12 h-16 object-cover rounded shadow-sm">
+                                    <div>
+                                        <div class="font-medium text-sm">莉佳的霸王花ex</div>
+                                        <div class="text-xs text-gray-500">MC J005/742</div>
+                                        <span class="text-xs bg-green-100 text-green-700 px-2 py-0.5 rounded-full font-medium">草</span>
+                                    </div>
+                                </div>
+                                <div class="flex items-center space-x-3">
+                                    <div class="flex items-center space-x-1">
+                                        <button onclick="decreaseCard(1)" class="w-7 h-7 bg-gray-200 hover:bg-gray-300 rounded flex items-center justify-center">
+                                            <span class="text-sm">−</span>
+                                        </button>
+                                        <span class="w-8 text-center font-bold">2</span>
+                                        <button onclick="increaseCard(1)" class="w-7 h-7 bg-blue-600 hover:bg-blue-700 text-white rounded flex items-center justify-center">
+                                            <span class="text-sm">+</span>
+                                        </button>
+                                    </div>
+                                    <button onclick="removeCard(1)" class="text-red-600 hover:text-red-800">
+                                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"></path>
+                                        </svg>
+                                    </button>
+                                </div>
+                            </div>
+
+                            <div class="flex items-center justify-between p-3 bg-gradient-to-r from-green-50 to-emerald-50 rounded-lg border border-green-200 hover:shadow-md transition-all card-slot">
+                                <div class="flex items-center space-x-3">
+                                    <img src="https://asia.pokemon-card.com/hk/card-img/hk00017761.png" alt="Card" class="w-12 h-16 object-cover rounded shadow-sm">
+                                    <div>
+                                        <div class="font-medium text-sm">莉佳的臭臭花</div>
+                                        <div class="text-xs text-gray-500">MC J004/742</div>
+                                        <span class="text-xs bg-green-100 text-green-700 px-2 py-0.5 rounded-full font-medium">草</span>
+                                    </div>
+                                </div>
+                                <div class="flex items-center space-x-3">
+                                    <div class="flex items-center space-x-1">
+                                        <button onclick="decreaseCard(2)" class="w-7 h-7 bg-gray-200 hover:bg-gray-300 rounded flex items-center justify-center">
+                                            <span class="text-sm">−</span>
+                                        </button>
+                                        <span class="w-8 text-center font-bold">3</span>
+                                        <button onclick="increaseCard(2)" class="w-7 h-7 bg-blue-600 hover:bg-blue-700 text-white rounded flex items-center justify-center">
+                                            <span class="text-sm">+</span>
+                                        </button>
+                                    </div>
+                                    <button onclick="removeCard(2)" class="text-red-600 hover:text-red-800">
+                                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"></path>
+                                        </svg>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Trainer Section -->
+                    <div class="mb-6">
+                        <h4 class="text-sm font-bold text-gray-900 mb-3 flex items-center">
+                            <span class="mr-2">⚙️</span>
+                            訓練師 (<span id="trainerListCount">3</span>)
+                        </h4>
+                        <div id="trainerList" class="space-y-2">
+                            <div class="flex items-center justify-between p-3 bg-gradient-to-r from-pink-50 to-rose-50 rounded-lg border border-pink-200 hover:shadow-md transition-all card-slot">
+                                <div class="flex items-center space-x-3">
+                                    <img src="https://asia.pokemon-card.com/hk/card-img/hk00017750.png" alt="Card" class="w-12 h-16 object-cover rounded shadow-sm">
+                                    <div>
+                                        <div class="font-medium text-sm">莉佳</div>
+                                        <div class="text-xs text-gray-500">MC J095/742</div>
+                                        <span class="text-xs bg-pink-100 text-pink-700 px-2 py-0.5 rounded-full font-medium">支援者</span>
+                                    </div>
+                                </div>
+                                <div class="flex items-center space-x-3">
+                                    <div class="flex items-center space-x-1">
+                                        <button class="w-7 h-7 bg-gray-200 hover:bg-gray-300 rounded flex items-center justify-center">
+                                            <span class="text-sm">−</span>
+                                        </button>
+                                        <span class="w-8 text-center font-bold">3</span>
+                                        <button class="w-7 h-7 bg-blue-600 hover:bg-blue-700 text-white rounded flex items-center justify-center">
+                                            <span class="text-sm">+</span>
+                                        </button>
+                                    </div>
+                                    <button class="text-red-600 hover:text-red-800">
+                                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"></path>
+                                        </svg>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Energy Section -->
+                    <div>
+                        <h4 class="text-sm font-bold text-gray-900 mb-3 flex items-center">
+                            <span class="mr-2">⚡</span>
+                            能量 (<span id="energyListCount">1</span>)
+                        </h4>
+                        <div id="energyList" class="space-y-2">
+                            <div class="flex items-center justify-between p-3 bg-gradient-to-r from-emerald-50 to-teal-50 rounded-lg border border-emerald-200 hover:shadow-md transition-all card-slot">
+                                <div class="flex items-center space-x-3">
+                                    <div class="w-12 h-16 bg-gradient-to-br from-green-100 to-emerald-200 rounded shadow-sm flex items-center justify-center">
+                                        <span class="text-2xl">🌿</span>
+                                    </div>
+                                    <div>
+                                        <div class="font-medium text-sm">基本草能量</div>
+                                        <div class="text-xs text-gray-500">MC J110/742</div>
+                                        <span class="text-xs bg-green-100 text-green-700 px-2 py-0.5 rounded-full font-medium">基本能量</span>
+                                    </div>
+                                </div>
+                                <div class="flex items-center space-x-3">
+                                    <div class="flex items-center space-x-1">
+                                        <button class="w-7 h-7 bg-gray-200 hover:bg-gray-300 rounded flex items-center justify-center">
+                                            <span class="text-sm">−</span>
+                                        </button>
+                                        <span class="w-8 text-center font-bold">1</span>
+                                        <button class="w-7 h-7 bg-blue-600 hover:bg-blue-700 text-white rounded flex items-center justify-center">
+                                            <span class="text-sm">+</span>
+                                        </button>
+                                    </div>
+                                    <button class="text-red-600 hover:text-red-800">
+                                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"></path>
+                                        </svg>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right: Card Search -->
+            <div class="col-span-3">
+                <div class="bg-white rounded-lg shadow-md p-6 sticky top-24">
+                    <h3 class="text-lg font-bold text-gray-900 mb-4">新增卡片</h3>
+                    
+                    <div class="mb-4">
+                        <input type="text" placeholder="搜尋卡片..." class="w-full border border-gray-300 rounded-md px-3 py-2 text-sm" onkeyup="searchCards(this.value)">
+                    </div>
+
+                    <div class="space-y-2 mb-4">
+                        <button class="w-full text-left px-3 py-2 rounded-md bg-green-50 text-green-700 hover:bg-green-100 text-sm font-medium">
+                            寶可夢
+                        </button>
+                        <button class="w-full text-left px-3 py-2 rounded-md hover:bg-gray-100 text-sm">
+                            訓練師
+                        </button>
+                        <button class="w-full text-left px-3 py-2 rounded-md hover:bg-gray-100 text-sm">
+                            能量
+                        </button>
+                    </div>
+
+                    <div id="searchResults" class="space-y-2 max-h-96 overflow-y-auto">
+                        <!-- Search Results -->
+                        <div class="text-center py-4 text-gray-400 text-sm">
+                            輸入關鍵字搜尋卡片
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Import from Event Modal -->
+    <div id="importModal" class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+        <div class="bg-white rounded-lg shadow-xl w-[1000px] max-h-[90vh] overflow-hidden">
+            <div class="px-6 py-4 border-b flex items-center justify-between bg-gradient-to-r from-purple-600 to-indigo-600">
+                <h3 class="text-xl font-bold text-white flex items-center">
+                    <svg class="w-6 h-6 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"></path>
+                    </svg>
+                    從比賽匯入牌組
+                </h3>
+                <button onclick="closeImportModal()" class="text-white hover:text-gray-200">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                    </svg>
+                </button>
+            </div>
+
+            <div class="p-6">
+                <!-- Search Events -->
+                <div class="mb-6">
+                    <label class="block text-sm font-medium text-gray-700 mb-2">搜尋比賽</label>
+                    <input type="text" placeholder="輸入比賽名稱或日期..." class="w-full border border-gray-300 rounded-lg px-4 py-2" onkeyup="searchEvents(this.value)">
+                </div>
+
+                <!-- Event List -->
+                <div class="space-y-3 max-h-[500px] overflow-y-auto">
+                    <!-- Event 1 -->
+                    <div class="border rounded-lg p-4 hover:bg-purple-50 cursor-pointer transition-all" onclick="toggleEventDetails(1)">
+                        <div class="flex items-center justify-between">
+                            <div>
+                                <h4 class="font-bold text-gray-900">香港錦標賽 2026</h4>
+                                <p class="text-sm text-gray-600">2026-01-15 • 香港會議展覽中心</p>
+                                <div class="flex items-center space-x-2 mt-1">
+                                    <span class="text-xs bg-purple-100 text-purple-700 px-2 py-0.5 rounded-full font-medium">冠軍賽</span>
+                                    <span class="text-xs text-gray-500">128 位參賽者</span>
+                                </div>
+                            </div>
+                            <svg class="w-5 h-5 text-gray-400 transition-transform" id="arrow-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                            </svg>
+                        </div>
+
+                        <!-- Event Details (Hidden by default) -->
+                        <div id="event-details-1" class="hidden mt-4 pt-4 border-t">
+                            <h5 class="font-bold text-sm mb-3">前 8 名牌組</h5>
+                            <div class="space-y-2">
+                                <!-- Deck 1 -->
+                                <div class="flex items-center justify-between p-3 bg-white rounded-lg border hover:shadow-md transition-all">
+                                    <div>
+                                        <div class="flex items-center space-x-2">
+                                            <span class="font-bold text-yellow-600 text-lg">🥇</span>
+                                            <div>
+                                                <div class="font-medium text-sm">莉佳的草系組合技</div>
+                                                <div class="text-xs text-gray-500">玩家: 陳大明 • 名次: 冠軍</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <button onclick="importDeck(1); event.stopPropagation();" class="bg-purple-600 text-white px-4 py-2 rounded-lg hover:bg-purple-700 text-sm font-medium">
+                                        匯入
+                                    </button>
+                                </div>
+
+                                <!-- Deck 2 -->
+                                <div class="flex items-center justify-between p-3 bg-white rounded-lg border hover:shadow-md transition-all">
+                                    <div>
+                                        <div class="flex items-center space-x-2">
+                                            <span class="font-bold text-gray-400 text-lg">🥈</span>
+                                            <div>
+                                                <div class="font-medium text-sm">火系快攻套牌</div>
+                                                <div class="text-xs text-gray-500">玩家: 李小華 • 名次: 亞軍</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <button onclick="importDeck(2); event.stopPropagation();" class="bg-purple-600 text-white px-4 py-2 rounded-lg hover:bg-purple-700 text-sm font-medium">
+                                        匯入
+                                    </button>
+                                </div>
+
+                                <!-- Deck 3 -->
+                                <div class="flex items-center justify-between p-3 bg-white rounded-lg border hover:shadow-md transition-all">
+                                    <div>
+                                        <div class="flex items-center space-x-2">
+                                            <span class="font-bold text-orange-600 text-lg">🥉</span>
+                                            <div>
+                                                <div class="font-medium text-sm">水系控制套牌</div>
+                                                <div class="text-xs text-gray-500">玩家: 王美玲 • 名次: 季軍</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <button onclick="importDeck(3); event.stopPropagation();" class="bg-purple-600 text-white px-4 py-2 rounded-lg hover:bg-purple-700 text-sm font-medium">
+                                        匯入
+                                    </button>
+                                </div>
+
+                                <!-- More decks -->
+                                <div class="flex items-center justify-between p-3 bg-white rounded-lg border hover:shadow-md transition-all">
+                                    <div>
+                                        <div class="flex items-center space-x-2">
+                                            <span class="font-bold text-gray-600 text-sm">4th</span>
+                                            <div>
+                                                <div class="font-medium text-sm">雷系中速套牌</div>
+                                                <div class="text-xs text-gray-500">玩家: 張志明</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <button onclick="importDeck(4); event.stopPropagation();" class="bg-purple-600 text-white px-4 py-2 rounded-lg hover:bg-purple-700 text-sm font-medium">
+                                        匯入
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Event 2 -->
+                    <div class="border rounded-lg p-4 hover:bg-purple-50 cursor-pointer transition-all" onclick="toggleEventDetails(2)">
+                        <div class="flex items-center justify-between">
+                            <div>
+                                <h4 class="font-bold text-gray-900">台北地區賽 2026</h4>
+                                <p class="text-sm text-gray-600">2026-01-08 • 台北世貿中心</p>
+                                <div class="flex items-center space-x-2 mt-1">
+                                    <span class="text-xs bg-blue-100 text-blue-700 px-2 py-0.5 rounded-full font-medium">地區賽</span>
+                                    <span class="text-xs text-gray-500">96 位參賽者</span>
+                                </div>
+                            </div>
+                            <svg class="w-5 h-5 text-gray-400 transition-transform" id="arrow-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                            </svg>
+                        </div>
+
+                        <div id="event-details-2" class="hidden mt-4 pt-4 border-t">
+                            <h5 class="font-bold text-sm mb-3">前 8 名牌組</h5>
+                            <div class="space-y-2">
+                                <div class="flex items-center justify-between p-3 bg-white rounded-lg border hover:shadow-md transition-all">
+                                    <div>
+                                        <div class="flex items-center space-x-2">
+                                            <span class="font-bold text-yellow-600 text-lg">🥇</span>
+                                            <div>
+                                                <div class="font-medium text-sm">超能力控場套牌</div>
+                                                <div class="text-xs text-gray-500">玩家: 林建國 • 名次: 冠軍</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <button onclick="importDeck(5); event.stopPropagation();" class="bg-purple-600 text-white px-4 py-2 rounded-lg hover:bg-purple-700 text-sm font-medium">
+                                        匯入
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Event 3 -->
+                    <div class="border rounded-lg p-4 hover:bg-purple-50 cursor-pointer transition-all">
+                        <div class="flex items-center justify-between">
+                            <div>
+                                <h4 class="font-bold text-gray-900">深圳特別賽事 2025</h4>
+                                <p class="text-sm text-gray-600">2025-12-28 • 深圳會展中心</p>
+                                <div class="flex items-center space-x-2 mt-1">
+                                    <span class="text-xs bg-green-100 text-green-700 px-2 py-0.5 rounded-full font-medium">特別賽事</span>
+                                    <span class="text-xs text-gray-500">64 位參賽者</span>
+                                </div>
+                            </div>
+                            <svg class="w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="px-6 py-4 border-t bg-gray-50 flex justify-end">
+                <button onclick="closeImportModal()" class="px-6 py-2 bg-gray-600 text-white rounded-lg hover:bg-gray-700">
+                    關閉
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function openImportModal() {
+            document.getElementById('importModal').classList.remove('hidden');
+        }
+
+        function closeImportModal() {
+            document.getElementById('importModal').classList.add('hidden');
+        }
+
+        function toggleEventDetails(eventId) {
+            const details = document.getElementById(`event-details-${eventId}`);
+            const arrow = document.getElementById(`arrow-${eventId}`);
+            
+            if (details.classList.contains('hidden')) {
+                details.classList.remove('hidden');
+                arrow.style.transform = 'rotate(180deg)';
+            } else {
+                details.classList.add('hidden');
+                arrow.style.transform = 'rotate(0deg)';
+            }
+        }
+
+        function importDeck(deckId) {
+            // Simulate deck import
+            closeImportModal();
+            
+            // Show success notification
+            const notification = document.createElement('div');
+            notification.className = 'fixed top-4 right-4 bg-green-600 text-white px-6 py-3 rounded-lg shadow-lg z-50';
+            notification.innerHTML = `
+                <div class="flex items-center space-x-2">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                    </svg>
+                    <span>牌組已成功匯入！</span>
+                </div>
+            `;
+            document.body.appendChild(notification);
+            
+            setTimeout(() => {
+                notification.remove();
+            }, 3000);
+
+            // Update deck stats (in production, this would load actual deck data)
+            document.getElementById('totalCards').textContent = '60/60';
+            document.getElementById('deckProgress').style.width = '100%';
+            document.getElementById('pokemonCount').textContent = '18';
+            document.getElementById('trainerCount').textContent = '30';
+            document.getElementById('energyCount').textContent = '12';
+            document.getElementById('validation60').innerHTML = `
+                <span class="text-green-600">✓</span>
+                <span class="text-gray-600">包含 60 張卡片</span>
+            `;
+        }
+
+        function searchEvents(query) {
+            // Implement event search logic
+            console.log('Searching events:', query);
+        }
+
+        function searchCards(query) {
+            const resultsDiv = document.getElementById('searchResults');
+            
+            if (!query || query.length < 2) {
+                resultsDiv.innerHTML = `
+                    <div class="text-center py-4 text-gray-400 text-sm">
+                        輸入關鍵字搜尋卡片
+                    </div>
+                `;
+                return;
+            }
+            
+            // Simulate search (in production, this would be an API call)
+            resultsDiv.innerHTML = `
+                <div class="text-center py-4 text-gray-600 text-sm">
+                    搜尋中...
+                </div>
+            `;
+        }
+
+        function increaseCard(cardId) {
+            console.log('Increase card:', cardId);
+            // Update card quantity logic
+        }
+
+        function decreaseCard(cardId) {
+            console.log('Decrease card:', cardId);
+            // Update card quantity logic
+        }
+
+        function removeCard(cardId) {
+            console.log('Remove card:', cardId);
+            // Remove card logic
+        }
+
+        function clearDeck() {
+            if (confirm('確定要清空整個牌組嗎？')) {
+                console.log('Clearing deck');
+                // Clear deck logic
+            }
+        }
+    </script>
+</body>
+</html>
