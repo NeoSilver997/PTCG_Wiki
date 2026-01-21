@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="zh-HK">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>シティリーグ2026 シーズン3 - 賽事結果 | PTCG CardDB</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Noto Sans TC', sans-serif;
+        }
+        .deck-card {
+            transition: all 0.2s;
+        }
+        .deck-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+        }
+    </style>
+</head>
+<body class="bg-gray-50 min-w-[1280px]">
+    <!-- Navigation -->
+    <nav class="bg-white shadow-md sticky top-0 z-50">
+        <div class="max-w-[1920px] mx-auto px-6">
+            <div class="flex items-center justify-between h-16">
+                <div class="flex items-center space-x-8">
+                    <div class="flex items-center">
+                        <span class="text-2xl font-bold text-blue-600">⚡ PTCG</span>
+                        <span class="ml-2 text-gray-600">卡牌資料庫</span>
+                    </div>
+                    <div class="hidden md:flex space-x-6">
+                        <a href="index.html" class="text-gray-700 hover:text-blue-600 px-3 py-2">首頁</a>
+                        <a href="index.html" class="text-gray-700 hover:text-blue-600 px-3 py-2">卡片</a>
+                        <a href="collection.html" class="text-gray-700 hover:text-blue-600 px-3 py-2">收藏</a>
+                        <a href="#" class="text-gray-700 hover:text-blue-600 px-3 py-2">套牌</a>
+                        <a href="events.html" class="text-blue-600 font-medium border-b-2 border-blue-600 px-3 py-2">比賽</a>
+                        <a href="#" class="text-gray-700 hover:text-blue-600 px-3 py-2">價格</a>
+                    </div>
+                </div>
+                <div class="flex items-center space-x-4">
+                    <div class="relative">
+                        <select class="border border-gray-300 rounded-md px-3 py-1.5 text-sm bg-white">
+                            <option value="zh-HK">繁體中文</option>
+                            <option value="en" disabled>English</option>
+                        </select>
+                    </div>
+                    <a href="login.html" class="bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700">登入</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <div class="max-w-[1600px] mx-auto px-6 py-8">
+        <!-- Breadcrumb -->
+        <div class="mb-6 text-sm text-gray-600">
+            <a href="index.html" class="hover:text-blue-600">首頁</a>
+            <span class="mx-2">/</span>
+            <a href="events.html" class="hover:text-blue-600">比賽</a>
+            <span class="mx-2">/</span>
+            <span class="text-gray-900">シティリーグ2026 S3</span>
+        </div>
+
+        <!-- Event Header -->
+        <div class="bg-white rounded-lg shadow-md p-8 mb-6">
+            <div class="flex items-start justify-between mb-6">
+                <div>
+                    <div class="flex items-center gap-3 mb-4">
+                        <span class="px-3 py-1 bg-blue-100 text-blue-700 rounded-full text-sm font-medium">城市聯賽 2026 S3</span>
+                        <span class="px-3 py-1 bg-green-100 text-green-700 rounded-full text-sm font-medium">公開組</span>
+                        <span class="px-3 py-1 bg-purple-100 text-purple-700 rounded-full text-sm font-medium">標準</span>
+                    </div>
+                    <h1 class="text-3xl font-bold text-gray-900 mb-3">シティリーグ2026 シーズン3 オープンリーグ</h1>
+                    <p class="text-gray-600 text-lg">City League 2026 Season 3 Open League</p>
+                </div>
+                <img src="https://players.pokemon-card.com/img/city.26045045.png" alt="City League" class="w-32 h-32 object-contain">
+            </div>
+
+            <div class="grid grid-cols-4 gap-6">
+                <div class="bg-gray-50 rounded-lg p-4">
+                    <div class="text-sm text-gray-500 mb-1">日期時間</div>
+                    <div class="font-bold text-gray-900">2026年01月20日 (火)</div>
+                    <div class="text-sm text-gray-600">12:00 開始</div>
+                </div>
+                <div class="bg-gray-50 rounded-lg p-4">
+                    <div class="text-sm text-gray-500 mb-1">參賽人數</div>
+                    <div class="font-bold text-gray-900 text-2xl">64</div>
+                    <div class="text-sm text-gray-600">定員 64 人</div>
+                </div>
+                <div class="bg-gray-50 rounded-lg p-4">
+                    <div class="text-sm text-gray-500 mb-1">參加費</div>
+                    <div class="font-bold text-gray-900 text-2xl">¥500</div>
+                    <div class="text-sm text-gray-600">現金</div>
+                </div>
+                <div class="bg-gray-50 rounded-lg p-4">
+                    <div class="text-sm text-gray-500 mb-1">地點</div>
+                    <div class="font-bold text-gray-900">千葉縣</div>
+                    <div class="text-sm text-gray-600">柏市</div>
+                </div>
+            </div>
+
+            <div class="mt-6 pt-6 border-t">
+                <h3 class="font-bold text-gray-900 mb-2">主辦店舖</h3>
+                <div class="text-gray-700">トーナメントセンターバトロコ　柏駅前</div>
+                <div class="text-sm text-gray-600">〒277-0005 千葉県柏市柏1-2-31 新星堂カルチェ4階</div>
+            </div>
+        </div>
+
+        <!-- Top 4 Results -->
+        <div class="mb-6">
+            <h2 class="text-2xl font-bold text-gray-800 mb-4">賽事結果 - Top 4</h2>
+        </div>
+
+        <div class="grid grid-cols-1 gap-6">
+            <!-- 1st Place -->
+            <div class="deck-card bg-gradient-to-r from-yellow-50 to-white border-2 border-yellow-400 rounded-lg shadow-lg overflow-hidden">
+                <div class="p-6">
+                    <div class="flex items-start justify-between mb-4">
+                        <div class="flex items-center gap-4">
+                            <div class="bg-gradient-to-br from-yellow-400 to-yellow-600 text-white rounded-full w-16 h-16 flex items-center justify-center">
+                                <span class="text-2xl font-bold">🥇</span>
+                            </div>
+                            <div>
+                                <div class="text-3xl font-bold text-gray-900">1位</div>
+                                <div class="text-sm text-gray-600">Championship Points: 100pt</div>
+                            </div>
+                        </div>
+                        <div class="text-right">
+                            <div class="text-xl font-bold text-gray-900">ちいひか</div>
+                            <div class="text-sm text-gray-600">Player ID: 0000884482</div>
+                            <div class="text-sm text-gray-600">📍 埼玉県</div>
+                        </div>
+                    </div>
+
+                    <div class="bg-white rounded-lg p-4 border-2 border-yellow-200">
+                        <h3 class="font-bold text-lg mb-3 flex items-center gap-2">
+                            <span>🎴</span>
+                            <span>使用套牌</span>
+                        </h3>
+                        <div class="flex items-center gap-3 mb-4">
+                            <span class="px-4 py-2 bg-gradient-to-r from-purple-500 to-pink-500 text-white rounded-lg font-bold text-lg">
+                                ミュウツーex / テツノカシラex
+                            </span>
+                            <span class="px-3 py-1 bg-purple-100 text-purple-700 rounded-full text-sm font-medium">超能力</span>
+                        </div>
+                        <div class="grid grid-cols-4 gap-3 text-sm">
+                            <div class="bg-gray-50 rounded p-3">
+                                <div class="text-gray-600 mb-1">主要寶可夢</div>
+                                <div class="font-bold">ミュウツーex ×2</div>
+                                <div class="text-gray-600">テツノカシラex ×2</div>
+                            </div>
+                            <div class="bg-gray-50 rounded p-3">
+                                <div class="text-gray-600 mb-1">支援者</div>
+                                <div class="font-bold">ナンジャモ ×4</div>
+                                <div class="text-gray-600">ボスの指令 ×3</div>
+                            </div>
+                            <div class="bg-gray-50 rounded p-3">
+                                <div class="text-gray-600 mb-1">物品</div>
+                                <div class="font-bold">ネストボール ×4</div>
+                                <div class="text-gray-600">ハイパーボール ×3</div>
+                            </div>
+                            <div class="bg-gray-50 rounded p-3">
+                                <div class="text-gray-600 mb-1">能量</div>
+                                <div class="font-bold">基本超能量 ×11</div>
+                                <div class="text-gray-600">ジェットエネルギー ×2</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 2nd Place -->
+            <div class="deck-card bg-gradient-to-r from-gray-50 to-white border-2 border-gray-400 rounded-lg shadow-lg overflow-hidden">
+                <div class="p-6">
+                    <div class="flex items-start justify-between mb-4">
+                        <div class="flex items-center gap-4">
+                            <div class="bg-gradient-to-br from-gray-400 to-gray-600 text-white rounded-full w-16 h-16 flex items-center justify-center">
+                                <span class="text-2xl font-bold">🥈</span>
+                            </div>
+                            <div>
+                                <div class="text-3xl font-bold text-gray-900">2位</div>
+                                <div class="text-sm text-gray-600">Championship Points: 75pt</div>
+                            </div>
+                        </div>
+                        <div class="text-right">
+                            <div class="text-xl font-bold text-gray-900">ショチョー</div>
+                            <div class="text-sm text-gray-600">Player ID: 0007163355</div>
+                            <div class="text-sm text-gray-600">📍 千葉県</div>
+                        </div>
+                    </div>
+
+                    <div class="bg-white rounded-lg p-4 border-2 border-gray-200">
+                        <h3 class="font-bold text-lg mb-3 flex items-center gap-2">
+                            <span>🎴</span>
+                            <span>使用套牌</span>
+                        </h3>
+                        <div class="flex items-center gap-3 mb-4">
+                            <span class="px-4 py-2 bg-gradient-to-r from-blue-500 to-cyan-500 text-white rounded-lg font-bold text-lg">
+                                リザードンex / ピジョットex
+                            </span>
+                            <span class="px-3 py-1 bg-red-100 text-red-700 rounded-full text-sm font-medium">火焰</span>
+                        </div>
+                        <div class="grid grid-cols-4 gap-3 text-sm">
+                            <div class="bg-gray-50 rounded p-3">
+                                <div class="text-gray-600 mb-1">主要寶可夢</div>
+                                <div class="font-bold">リザードンex ×2</div>
+                                <div class="text-gray-600">ピジョットex ×2</div>
+                            </div>
+                            <div class="bg-gray-50 rounded p-3">
+                                <div class="text-gray-600 mb-1">支援者</div>
+                                <div class="font-bold">ナンジャモ ×4</div>
+                                <div class="text-gray-600">ボスの指令 ×2</div>
+                            </div>
+                            <div class="bg-gray-50 rounded p-3">
+                                <div class="text-gray-600 mb-1">物品</div>
+                                <div class="font-bold">ネストボール ×4</div>
+                                <div class="text-gray-600">なかよしポフィン ×3</div>
+                            </div>
+                            <div class="bg-gray-50 rounded p-3">
+                                <div class="text-gray-600 mb-1">能量</div>
+                                <div class="font-bold">基本炎能量 ×10</div>
+                                <div class="text-gray-600">ジェットエネルギー ×2</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 3rd Place -->
+            <div class="deck-card bg-gradient-to-r from-orange-50 to-white border-2 border-orange-400 rounded-lg shadow-lg overflow-hidden">
+                <div class="p-6">
+                    <div class="flex items-start justify-between mb-4">
+                        <div class="flex items-center gap-4">
+                            <div class="bg-gradient-to-br from-orange-400 to-orange-600 text-white rounded-full w-16 h-16 flex items-center justify-center">
+                                <span class="text-2xl font-bold">🥉</span>
+                            </div>
+                            <div>
+                                <div class="text-3xl font-bold text-gray-900">3位</div>
+                                <div class="text-sm text-gray-600">Championship Points: 50pt</div>
+                            </div>
+                        </div>
+                        <div class="text-right">
+                            <div class="text-xl font-bold text-gray-900">あやと</div>
+                            <div class="text-sm text-gray-600">Player ID: 0009854815</div>
+                            <div class="text-sm text-gray-600">📍 東京都</div>
+                        </div>
+                    </div>
+
+                    <div class="bg-white rounded-lg p-4 border-2 border-orange-200">
+                        <h3 class="font-bold text-lg mb-3 flex items-center gap-2">
+                            <span>🎴</span>
+                            <span>使用套牌</span>
+                        </h3>
+                        <div class="flex items-center gap-3 mb-4">
+                            <span class="px-4 py-2 bg-gradient-to-r from-yellow-500 to-amber-500 text-white rounded-lg font-bold text-lg">
+                                サーナイトex / ミミッキュ
+                            </span>
+                            <span class="px-3 py-1 bg-purple-100 text-purple-700 rounded-full text-sm font-medium">超能力</span>
+                        </div>
+                        <div class="grid grid-cols-4 gap-3 text-sm">
+                            <div class="bg-gray-50 rounded p-3">
+                                <div class="text-gray-600 mb-1">主要寶可夢</div>
+                                <div class="font-bold">サーナイトex ×2</div>
+                                <div class="text-gray-600">ミミッキュ ×2</div>
+                            </div>
+                            <div class="bg-gray-50 rounded p-3">
+                                <div class="text-gray-600 mb-1">支援者</div>
+                                <div class="font-bold">ナンジャモ ×4</div>
+                                <div class="text-gray-600">ボスの指令 ×3</div>
+                            </div>
+                            <div class="bg-gray-50 rounded p-3">
+                                <div class="text-gray-600 mb-1">物品</div>
+                                <div class="font-bold">ネストボール ×4</div>
+                                <div class="text-gray-600">ふしぎなアメ ×4</div>
+                            </div>
+                            <div class="bg-gray-50 rounded p-3">
+                                <div class="text-gray-600 mb-1">能量</div>
+                                <div class="font-bold">基本超能量 ×10</div>
+                                <div class="text-gray-600">ジェットエネルギー ×2</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 4th Place -->
+            <div class="deck-card bg-gradient-to-r from-blue-50 to-white border-2 border-blue-300 rounded-lg shadow-lg overflow-hidden">
+                <div class="p-6">
+                    <div class="flex items-start justify-between mb-4">
+                        <div class="flex items-center gap-4">
+                            <div class="bg-gradient-to-br from-blue-400 to-blue-600 text-white rounded-full w-16 h-16 flex items-center justify-center">
+                                <span class="text-2xl font-bold">4</span>
+                            </div>
+                            <div>
+                                <div class="text-3xl font-bold text-gray-900">3位</div>
+                                <div class="text-sm text-gray-600">Championship Points: 50pt</div>
+                            </div>
+                        </div>
+                        <div class="text-right">
+                            <div class="text-xl font-bold text-gray-900">snow</div>
+                            <div class="text-sm text-gray-600">Player ID: 0016609675</div>
+                            <div class="text-sm text-gray-600">📍 千葉県</div>
+                        </div>
+                    </div>
+
+                    <div class="bg-white rounded-lg p-4 border-2 border-blue-200">
+                        <h3 class="font-bold text-lg mb-3 flex items-center gap-2">
+                            <span>🎴</span>
+                            <span>使用套牌</span>
+                        </h3>
+                        <div class="flex items-center gap-3 mb-4">
+                            <span class="px-4 py-2 bg-gradient-to-r from-green-500 to-teal-500 text-white rounded-lg font-bold text-lg">
+                                リーフィアVSTAR / ロストギラティナ
+                            </span>
+                            <span class="px-3 py-1 bg-green-100 text-green-700 rounded-full text-sm font-medium">草系</span>
+                        </div>
+                        <div class="grid grid-cols-4 gap-3 text-sm">
+                            <div class="bg-gray-50 rounded p-3">
+                                <div class="text-gray-600 mb-1">主要寶可夢</div>
+                                <div class="font-bold">リーフィアVSTAR ×2</div>
+                                <div class="text-gray-600">ギラティナVSTAR ×2</div>
+                            </div>
+                            <div class="bg-gray-50 rounded p-3">
+                                <div class="text-gray-600 mb-1">支援者</div>
+                                <div class="font-bold">ナンジャモ ×3</div>
+                                <div class="text-gray-600">ボスの指令 ×2</div>
+                            </div>
+                            <div class="bg-gray-50 rounded p-3">
+                                <div class="text-gray-600 mb-1">物品</div>
+                                <div class="font-bold">ネストボール ×4</div>
+                                <div class="text-gray-600">ロストスイーパー ×3</div>
+                            </div>
+                            <div class="bg-gray-50 rounded p-3">
+                                <div class="text-gray-600 mb-1">能量</div>
+                                <div class="font-bold">基本草能量 ×8</div>
+                                <div class="text-gray-600">Vガードエネルギー ×2</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Meta Analysis -->
+        <div class="mt-8 bg-white rounded-lg shadow-md p-6">
+            <h2 class="text-2xl font-bold text-gray-800 mb-4">賽事分析</h2>
+            <div class="grid grid-cols-3 gap-6">
+                <div class="bg-gradient-to-br from-purple-50 to-purple-100 rounded-lg p-4">
+                    <h3 class="font-bold text-purple-900 mb-2">最多使用套牌</h3>
+                    <div class="space-y-2">
+                        <div class="flex items-center justify-between">
+                            <span class="text-sm">ミュウツーex</span>
+                            <span class="font-bold text-purple-700">18人 (28%)</span>
+                        </div>
+                        <div class="flex items-center justify-between">
+                            <span class="text-sm">リザードンex</span>
+                            <span class="font-bold text-purple-700">15人 (23%)</span>
+                        </div>
+                        <div class="flex items-center justify-between">
+                            <span class="text-sm">サーナイトex</span>
+                            <span class="font-bold text-purple-700">12人 (19%)</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-gradient-to-br from-blue-50 to-blue-100 rounded-lg p-4">
+                    <h3 class="font-bold text-blue-900 mb-2">屬性分布</h3>
+                    <div class="space-y-2">
+                        <div class="flex items-center justify-between">
+                            <span class="text-sm">超能力 🔮</span>
+                            <span class="font-bold text-blue-700">30人 (47%)</span>
+                        </div>
+                        <div class="flex items-center justify-between">
+                            <span class="text-sm">火焰 🔥</span>
+                            <span class="font-bold text-blue-700">18人 (28%)</span>
+                        </div>
+                        <div class="flex items-center justify-between">
+                            <span class="text-sm">草系 🍃</span>
+                            <span class="font-bold text-blue-700">10人 (16%)</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-gradient-to-br from-green-50 to-green-100 rounded-lg p-4">
+                    <h3 class="font-bold text-green-900 mb-2">勝率統計</h3>
+                    <div class="space-y-2">
+                        <div class="flex items-center justify-between">
+                            <span class="text-sm">ミュウツーex</span>
+                            <span class="font-bold text-green-700">62%</span>
+                        </div>
+                        <div class="flex items-center justify-between">
+                            <span class="text-sm">リザードンex</span>
+                            <span class="font-bold text-green-700">58%</span>
+                        </div>
+                        <div class="flex items-center justify-between">
+                            <span class="text-sm">サーナイトex</span>
+                            <span class="font-bold text-green-700">55%</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Back Button -->
+        <div class="mt-8 text-center">
+            <a href="events.html" class="inline-block bg-gray-200 text-gray-700 px-6 py-3 rounded-md hover:bg-gray-300 font-medium">
+                ← 返回賽事列表
+            </a>
+        </div>
+    </div>
+</body>
+</html>

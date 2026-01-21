@@ -184,256 +184,139 @@
                 <!-- Event Cards -->
                 <div class="space-y-4">
                     <!-- Event 1 -->
-                    <div class="event-card bg-white rounded-lg shadow-md p-6 cursor-pointer">
-                        <div class="flex items-start justify-between">
-                            <div class="flex-1">
-                                <div class="flex items-center gap-3 mb-2">
-                                    <span class="px-3 py-1 bg-blue-100 text-blue-700 rounded-full text-xs font-medium">城市聯賽 2026 S3</span>
-                                    <span class="px-3 py-1 bg-green-100 text-green-700 rounded-full text-xs font-medium">公開組</span>
-                                    <span class="px-3 py-1 bg-purple-100 text-purple-700 rounded-full text-xs font-medium">標準</span>
+                    <div class="event-card bg-white rounded-lg shadow-md overflow-hidden">
+                        <div class="p-6">
+                            <div class="flex items-center gap-3 mb-3">
+                                <span class="px-3 py-1 bg-blue-100 text-blue-700 rounded-full text-xs font-medium">城市聯賽 2026 S3</span>
+                                <span class="px-3 py-1 bg-green-100 text-green-700 rounded-full text-xs font-medium">公開組</span>
+                                <span class="px-3 py-1 bg-purple-100 text-purple-700 rounded-full text-xs font-medium">標準</span>
+                            </div>
+                            <h3 class="text-xl font-bold text-gray-900 mb-3">シティリーグ2026 シーズン3 オープンリーグ</h3>
+                            <div class="flex gap-6 text-sm text-gray-600 mb-4">
+                                <div class="flex items-center gap-2">
+                                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
+                                    </svg>
+                                    <span>01/20 (火) 12:00</span>
                                 </div>
-                                <h3 class="text-xl font-bold text-gray-900 mb-2">シティリーグ2026 シーズン3 オープンリーグ</h3>
-                                <div class="grid grid-cols-2 gap-4 text-sm text-gray-600 mb-3">
-                                    <div class="flex items-center gap-2">
-                                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
-                                        </svg>
-                                        <span>01/20 (火) 12:00</span>
-                                    </div>
-                                    <div class="flex items-center gap-2">
-                                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path>
-                                        </svg>
-                                        <span>64 人 / 定員 64 人</span>
-                                    </div>
-                                    <div class="flex items-center gap-2">
-                                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
-                                        </svg>
-                                        <span>千葉縣</span>
-                                    </div>
-                                    <div class="flex items-center gap-2">
-                                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1"></path>
-                                        </svg>
-                                        <span>參加費 ¥500</span>
-                                    </div>
+                                <div class="flex items-center gap-2">
+                                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path>
+                                    </svg>
+                                    <span>64 人參賽</span>
                                 </div>
-                                <div class="text-sm text-gray-700">
-                                    <div class="font-medium mb-1">トーナメントセンターバトロコ　柏駅前</div>
-                                    <div class="text-gray-500">千葉県柏市柏1-2-31 新星堂カルチェ4階</div>
+                                <div class="flex items-center gap-2">
+                                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                                    </svg>
+                                    <span>千葉縣</span>
                                 </div>
                             </div>
-                            <div class="ml-4">
-                                <button class="bg-blue-600 text-white px-6 py-2 rounded-md hover:bg-blue-700 font-medium">
-                                    查看結果
-                                </button>
+
+                            <!-- Top 4 Results -->
+                            <div class="border-t pt-4">
+                                <h4 class="font-bold text-gray-800 mb-3">🏆 Top 4 結果</h4>
+                                <div class="grid grid-cols-2 gap-3">
+                                    <!-- 1st Place -->
+                                    <div class="bg-gradient-to-r from-yellow-50 to-white border-l-4 border-yellow-500 rounded p-3">
+                                        <div class="flex items-center gap-2 mb-2">
+                                            <span class="font-bold text-yellow-600">🥇 1位</span>
+                                            <span class="text-sm text-gray-600">ちいひか</span>
+                                            <span class="text-xs text-gray-500">100pt</span>
+                                        </div>
+                                        <div class="bg-gradient-to-r from-purple-500 to-pink-500 text-white px-3 py-1.5 rounded text-sm font-bold">
+                                            ミュウツーex / テツノカシラex
+                                        </div>
+                                    </div>
+                                    <!-- 2nd Place -->
+                                    <div class="bg-gradient-to-r from-gray-50 to-white border-l-4 border-gray-400 rounded p-3">
+                                        <div class="flex items-center gap-2 mb-2">
+                                            <span class="font-bold text-gray-600">🥈 2位</span>
+                                            <span class="text-sm text-gray-600">ショチョー</span>
+                                            <span class="text-xs text-gray-500">75pt</span>
+                                        </div>
+                                        <div class="bg-gradient-to-r from-red-500 to-orange-500 text-white px-3 py-1.5 rounded text-sm font-bold">
+                                            リザードンex / ピジョットex
+                                        </div>
+                                    </div>
+                                    <!-- 3rd Place -->
+                                    <div class="bg-gradient-to-r from-orange-50 to-white border-l-4 border-orange-400 rounded p-3">
+                                        <div class="flex items-center gap-2 mb-2">
+                                            <span class="font-bold text-orange-600">🥉 3位</span>
+                                            <span class="text-sm text-gray-600">あやと</span>
+                                            <span class="text-xs text-gray-500">50pt</span>
+                                        </div>
+                                        <div class="bg-gradient-to-r from-pink-500 to-purple-500 text-white px-3 py-1.5 rounded text-sm font-bold">
+                                            サーナイトex / ミミッキュ
+                                        </div>
+                                    </div>
+                                    <!-- 4th Place -->
+                                    <div class="bg-gradient-to-r from-blue-50 to-white border-l-4 border-blue-300 rounded p-3">
+                                        <div class="flex items-center gap-2 mb-2">
+                                            <span class="font-bold text-blue-600">4位</span>
+                                            <span class="text-sm text-gray-600">snow</span>
+                                            <span class="text-xs text-gray-500">50pt</span>
+                                        </div>
+                                        <div class="bg-gradient-to-r from-green-500 to-teal-500 text-white px-3 py-1.5 rounded text-sm font-bold">
+                                            リーフィアVSTAR / ロストギラティナ
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="mt-3 text-right">
+                                    <a href="event-detail.html" class="text-blue-600 hover:text-blue-700 text-sm font-medium">
+                                        查看完整詳情 →
+                                    </a>
+                                </div>
                             </div>
                         </div>
                     </div>
 
                     <!-- Event 2 -->
-                    <div class="event-card bg-white rounded-lg shadow-md p-6 cursor-pointer">
-                        <div class="flex items-start justify-between">
-                            <div class="flex-1">
-                                <div class="flex items-center gap-3 mb-2">
-                                    <span class="px-3 py-1 bg-blue-100 text-blue-700 rounded-full text-xs font-medium">城市聯賽 2026 S3</span>
-                                    <span class="px-3 py-1 bg-green-100 text-green-700 rounded-full text-xs font-medium">公開組</span>
-                                    <span class="px-3 py-1 bg-purple-100 text-purple-700 rounded-full text-xs font-medium">標準</span>
+                    <div class="event-card bg-white rounded-lg shadow-md overflow-hidden" data-event-id="2">
+                        <div class="p-6">
+                            <div class="flex items-center gap-3 mb-3">
+                                <span class="px-3 py-1 bg-blue-100 text-blue-700 rounded-full text-xs font-medium">城市聯賽 2026 S3</span>
+                                <span class="px-3 py-1 bg-green-100 text-green-700 rounded-full text-xs font-medium">公開組</span>
+                                <span class="px-3 py-1 bg-purple-100 text-purple-700 rounded-full text-xs font-medium">標準</span>
+                            </div>
+                            <h3 class="text-xl font-bold text-gray-900 mb-3">シティリーグ2026 シーズン3 オープンリーグ</h3>
+                            <div class="flex gap-6 text-sm text-gray-600 mb-4">
+                                <div class="flex items-center gap-2">
+                                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
+                                    </svg>
+                                    <span>01/20 (火) 12:00</span>
                                 </div>
-                                <h3 class="text-xl font-bold text-gray-900 mb-2">シティリーグ2026 シーズン3 オープンリーグ</h3>
-                                <div class="grid grid-cols-2 gap-4 text-sm text-gray-600 mb-3">
-                                    <div class="flex items-center gap-2">
-                                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
-                                        </svg>
-                                        <span>01/20 (火) 12:00</span>
-                                    </div>
-                                    <div class="flex items-center gap-2">
-                                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path>
-                                        </svg>
-                                        <span>64 人 / 定員 64 人</span>
-                                    </div>
-                                    <div class="flex items-center gap-2">
-                                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
-                                        </svg>
-                                        <span>大阪府</span>
-                                    </div>
-                                    <div class="flex items-center gap-2">
-                                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1"></path>
-                                        </svg>
-                                        <span>參加費 ¥500</span>
-                                    </div>
+                                <div class="flex items-center gap-2">
+                                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path>
+                                    </svg>
+                                    <span>64 人參賽</span>
                                 </div>
-                                <div class="text-sm text-gray-700">
-                                    <div class="font-medium mb-1">トレカショップ竜のしっぽ　布施店</div>
-                                    <div class="text-gray-500">大阪府東大阪市長堂１丁目２−１ A+FUSEビル ３階</div>
+                                <div class="flex items-center gap-2">
+                                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                                    </svg>
+                                    <span>大阪府</span>
                                 </div>
                             </div>
-                            <div class="ml-4">
-                                <button class="bg-blue-600 text-white px-6 py-2 rounded-md hover:bg-blue-700 font-medium">
-                                    查看結果
-                                </button>
+
+                            <!-- Loading Placeholder for Top 4 -->
+                            <div class="results-container hidden">
+                                <div class="border-t pt-4">
+                                    <div class="flex items-center justify-center py-8">
+                                        <div class="animate-pulse text-gray-400">
+                                            <svg class="w-8 h-8 animate-spin" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"></path>
+                                            </svg>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
-
-                    <!-- Event 3 -->
-                    <div class="event-card bg-white rounded-lg shadow-md p-6 cursor-pointer">
-                        <div class="flex items-start justify-between">
-                            <div class="flex-1">
-                                <div class="flex items-center gap-3 mb-2">
-                                    <span class="px-3 py-1 bg-blue-100 text-blue-700 rounded-full text-xs font-medium">城市聯賽 2026 S3</span>
-                                    <span class="px-3 py-1 bg-green-100 text-green-700 rounded-full text-xs font-medium">公開組</span>
-                                    <span class="px-3 py-1 bg-purple-100 text-purple-700 rounded-full text-xs font-medium">標準</span>
-                                </div>
-                                <h3 class="text-xl font-bold text-gray-900 mb-2">シティリーグ2026 シーズン3 オープンリーグ</h3>
-                                <div class="grid grid-cols-2 gap-4 text-sm text-gray-600 mb-3">
-                                    <div class="flex items-center gap-2">
-                                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
-                                        </svg>
-                                        <span>01/20 (火) 11:00</span>
-                                    </div>
-                                    <div class="flex items-center gap-2">
-                                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path>
-                                        </svg>
-                                        <span>64 人 / 定員 64 人</span>
-                                    </div>
-                                    <div class="flex items-center gap-2">
-                                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
-                                        </svg>
-                                        <span>神奈川縣</span>
-                                    </div>
-                                    <div class="flex items-center gap-2">
-                                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1"></path>
-                                        </svg>
-                                        <span>參加費 ¥500</span>
-                                    </div>
-                                </div>
-                                <div class="text-sm text-gray-700">
-                                    <div class="font-medium mb-1">【CARDBOX】青馬堂矢向店</div>
-                                    <div class="text-gray-500">神奈川県横浜市鶴見区矢向5-8-42</div>
-                                </div>
-                            </div>
-                            <div class="ml-4">
-                                <button class="bg-blue-600 text-white px-6 py-2 rounded-md hover:bg-blue-700 font-medium">
-                                    查看結果
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Event 4 - Special Event -->
-                    <div class="event-card bg-white rounded-lg shadow-md p-6 cursor-pointer border-l-4 border-amber-500">
-                        <div class="flex items-start justify-between">
-                            <div class="flex-1">
-                                <div class="flex items-center gap-3 mb-2">
-                                    <span class="px-3 py-1 bg-amber-100 text-amber-700 rounded-full text-xs font-medium">特別活動</span>
-                                    <span class="px-3 py-1 bg-green-100 text-green-700 rounded-full text-xs font-medium">公開組</span>
-                                    <span class="px-3 py-1 bg-purple-100 text-purple-700 rounded-full text-xs font-medium">其他</span>
-                                </div>
-                                <h3 class="text-xl font-bold text-gray-900 mb-2">100人大集合でたとこバトル！～スタートデッキ100 バトルコレクション～</h3>
-                                <div class="grid grid-cols-2 gap-4 text-sm text-gray-600 mb-3">
-                                    <div class="flex items-center gap-2">
-                                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
-                                        </svg>
-                                        <span>01/18 (日) 12:00 - 14:00</span>
-                                    </div>
-                                    <div class="flex items-center gap-2">
-                                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path>
-                                        </svg>
-                                        <span>50 人 / 定員 50 人</span>
-                                    </div>
-                                    <div class="flex items-center gap-2">
-                                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
-                                        </svg>
-                                        <span>愛媛縣</span>
-                                    </div>
-                                    <div class="flex items-center gap-2">
-                                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1"></path>
-                                        </svg>
-                                        <span>參加費 ¥1,000</span>
-                                    </div>
-                                </div>
-                                <div class="text-sm text-gray-700">
-                                    <div class="font-medium mb-1">トレカショップ　ファンクス</div>
-                                    <div class="text-gray-500">〒792-0023 愛媛県新居浜市繁本町5番31号　第3越智ビル1階</div>
-                                </div>
-                            </div>
-                            <div class="ml-4">
-                                <button class="bg-amber-600 text-white px-6 py-2 rounded-md hover:bg-amber-700 font-medium">
-                                    查看結果
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Event 5 - Senior Division -->
-                    <div class="event-card bg-white rounded-lg shadow-md p-6 cursor-pointer">
-                        <div class="flex items-start justify-between">
-                            <div class="flex-1">
-                                <div class="flex items-center gap-3 mb-2">
-                                    <span class="px-3 py-1 bg-blue-100 text-blue-700 rounded-full text-xs font-medium">城市聯賽 2026 S3</span>
-                                    <span class="px-3 py-1 bg-orange-100 text-orange-700 rounded-full text-xs font-medium">高級組</span>
-                                    <span class="px-3 py-1 bg-purple-100 text-purple-700 rounded-full text-xs font-medium">標準</span>
-                                </div>
-                                <h3 class="text-xl font-bold text-gray-900 mb-2">シティリーグ2026 シーズン3 シニアリーグ</h3>
-                                <div class="grid grid-cols-2 gap-4 text-sm text-gray-600 mb-3">
-                                    <div class="flex items-center gap-2">
-                                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
-                                        </svg>
-                                        <span>01/18 (日) 11:00</span>
-                                    </div>
-                                    <div class="flex items-center gap-2">
-                                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path>
-                                        </svg>
-                                        <span>32 人 / 定員 32 人</span>
-                                    </div>
-                                    <div class="flex items-center gap-2">
-                                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
-                                        </svg>
-                                        <span>兵庫縣</span>
-                                    </div>
-                                    <div class="flex items-center gap-2">
-                                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1"></path>
-                                        </svg>
-                                        <span>參加費 ¥500</span>
-                                    </div>
-                                </div>
-                                <div class="text-sm text-gray-700">
-                                    <div class="font-medium mb-1">トレカショップ竜のしっぽ　姫路店</div>
-                                    <div class="text-gray-500">兵庫県姫路市駅前町254 4姫路駅前ビル２F-B</div>
-                                </div>
-                            </div>
-                            <div class="ml-4">
-                                <button class="bg-blue-600 text-white px-6 py-2 rounded-md hover:bg-blue-700 font-medium">
-                                    查看結果
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
 
                 <!-- Pagination -->
                 <div class="mt-8 flex items-center justify-center gap-2">
@@ -456,13 +339,88 @@
     </div>
 
     <script>
-        // Add interactive functionality here
-        document.querySelectorAll('.event-card').forEach(card => {
-            card.addEventListener('click', function(e) {
-                if (!e.target.closest('button')) {
-                    // Navigate to event detail page
-                    console.log('Navigate to event detail');
+        // Mock data for different events
+        const eventData = {
+            '2': {
+                top4: [
+                    { rank: 1, medal: '🥇', player: 'タカシ', points: 100, deck: 'テラキオン / ルカリオex', deckClass: 'from-amber-500 to-yellow-500' },
+                    { rank: 2, medal: '🥈', player: 'ユウキ', points: 75, deck: 'ギラティナVSTAR / アルセウスVSTAR', deckClass: 'from-gray-500 to-slate-600' },
+                    { rank: 3, medal: '🥉', player: 'サトシ', points: 50, deck: 'ゲンガーex / ミミッキュ', deckClass: 'from-purple-500 to-indigo-500' },
+                    { rank: 4, medal: '4', player: 'ケンジ', points: 50, deck: 'ロストバレット / ゲッコウガex', deckClass: 'from-blue-500 to-cyan-500' }
+                ]
+            }
+        };
+
+        // Intersection Observer for lazy loading
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const card = entry.target;
+                    const eventId = card.dataset.eventId;
+                    const resultsContainer = card.querySelector('.results-container');
+                    
+                    if (resultsContainer && resultsContainer.classList.contains('hidden')) {
+                        // Simulate loading delay
+                        setTimeout(() => {
+                            loadEventResults(eventId, resultsContainer);
+                        }, 500);
+                        
+                        // Unobserve after loading
+                        observer.unobserve(card);
+                    }
                 }
+            });
+        }, {
+            threshold: 0.3,
+            rootMargin: '100px'
+        });
+
+        // Function to load event results
+        function loadEventResults(eventId, container) {
+            const data = eventData[eventId];
+            
+            if (!data) return;
+
+            const resultsHTML = `
+                <div class="border-t pt-4">
+                    <h4 class="font-bold text-gray-800 mb-3">🏆 Top 4 結果</h4>
+                    <div class="grid grid-cols-2 gap-3">
+                        ${data.top4.map((player, index) => `
+                            <div class="bg-gradient-to-r ${index === 0 ? 'from-yellow-50' : index === 1 ? 'from-gray-50' : index === 2 ? 'from-orange-50' : 'from-blue-50'} to-white border-l-4 ${index === 0 ? 'border-yellow-500' : index === 1 ? 'border-gray-400' : index === 2 ? 'border-orange-400' : 'border-blue-300'} rounded p-3">
+                                <div class="flex items-center gap-2 mb-2">
+                                    <span class="font-bold ${index === 0 ? 'text-yellow-600' : index === 1 ? 'text-gray-600' : index === 2 ? 'text-orange-600' : 'text-blue-600'}">${player.medal} ${player.rank}位</span>
+                                    <span class="text-sm text-gray-600">${player.player}</span>
+                                    <span class="text-xs text-gray-500">${player.points}pt</span>
+                                </div>
+                                <div class="bg-gradient-to-r ${player.deckClass} text-white px-3 py-1.5 rounded text-sm font-bold">
+                                    ${player.deck}
+                                </div>
+                            </div>
+                        `).join('')}
+                    </div>
+                    <div class="mt-3 text-right">
+                        <a href="event-detail.html" class="text-blue-600 hover:text-blue-700 text-sm font-medium">
+                            查看完整詳情 →
+                        </a>
+                    </div>
+                </div>
+            `;
+
+            container.innerHTML = resultsHTML;
+            container.classList.remove('hidden');
+            
+            // Add fade-in animation
+            container.style.opacity = '0';
+            setTimeout(() => {
+                container.style.transition = 'opacity 0.5s';
+                container.style.opacity = '1';
+            }, 10);
+        }
+
+        // Observe all event cards
+        document.addEventListener('DOMContentLoaded', () => {
+            document.querySelectorAll('.event-card[data-event-id]').forEach(card => {
+                observer.observe(card);
             });
         });
     </script>
