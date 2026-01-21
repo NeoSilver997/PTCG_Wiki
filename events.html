@@ -339,19 +339,18 @@
     </div>
 
     <script>
-        // Mock data for different events
-        const eventData = {
-            '2': {
-                top4: [
-                    { rank: 1, medal: '🥇', player: 'タカシ', points: 100, deck: 'テラキオン / ルカリオex', deckClass: 'from-amber-500 to-yellow-500' },
-                    { rank: 2, medal: '🥈', player: 'ユウキ', points: 75, deck: 'ギラティナVSTAR / アルセウスVSTAR', deckClass: 'from-gray-500 to-slate-600' },
-                    { rank: 3, medal: '🥉', player: 'サトシ', points: 50, deck: 'ゲンガーex / ミミッキュ', deckClass: 'from-purple-500 to-indigo-500' },
-                    { rank: 4, medal: '4', player: 'ケンジ', points: 50, deck: 'ロストバレット / ゲッコウガex', deckClass: 'from-blue-500 to-cyan-500' }
-                ]
-            }
+        // Static mockup data for UI demonstration
+        // Actual implementation will use PTCG_2026 API
+        const mockEventData = {
+            '2': [
+                { placement: 1, medal: '🥇', player: 'タカシ', points: 100, deck: 'テラキオン / ルカリオex', deckClass: 'from-amber-500 to-yellow-500' },
+                { placement: 2, medal: '🥈', player: 'ユウキ', points: 75, deck: 'ギラティナVSTAR / アルセウスVSTAR', deckClass: 'from-gray-500 to-slate-600' },
+                { placement: 3, medal: '🥉', player: 'サトシ', points: 50, deck: 'ゲンガーex / ミミッキュ', deckClass: 'from-purple-500 to-indigo-500' },
+                { placement: 4, medal: '4', player: 'ケンジ', points: 50, deck: 'ロストバレット / ゲッコウガex', deckClass: 'from-blue-500 to-cyan-500' }
+            ]
         };
 
-        // Intersection Observer for lazy loading
+        // Intersection Observer for lazy loading effect
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
@@ -360,12 +359,9 @@
                     const resultsContainer = card.querySelector('.results-container');
                     
                     if (resultsContainer && resultsContainer.classList.contains('hidden')) {
-                        // Simulate loading delay
                         setTimeout(() => {
-                            loadEventResults(eventId, resultsContainer);
+                            loadMockResults(eventId, resultsContainer);
                         }, 500);
-                        
-                        // Unobserve after loading
                         observer.unobserve(card);
                     }
                 }
@@ -375,20 +371,19 @@
             rootMargin: '100px'
         });
 
-        // Function to load event results
-        function loadEventResults(eventId, container) {
-            const data = eventData[eventId];
-            
+        // Load static mock data
+        function loadMockResults(eventId, container) {
+            const data = mockEventData[eventId];
             if (!data) return;
 
             const resultsHTML = `
                 <div class="border-t pt-4">
                     <h4 class="font-bold text-gray-800 mb-3">🏆 Top 4 結果</h4>
                     <div class="grid grid-cols-2 gap-3">
-                        ${data.top4.map((player, index) => `
+                        ${data.map((player, index) => `
                             <div class="bg-gradient-to-r ${index === 0 ? 'from-yellow-50' : index === 1 ? 'from-gray-50' : index === 2 ? 'from-orange-50' : 'from-blue-50'} to-white border-l-4 ${index === 0 ? 'border-yellow-500' : index === 1 ? 'border-gray-400' : index === 2 ? 'border-orange-400' : 'border-blue-300'} rounded p-3">
                                 <div class="flex items-center gap-2 mb-2">
-                                    <span class="font-bold ${index === 0 ? 'text-yellow-600' : index === 1 ? 'text-gray-600' : index === 2 ? 'text-orange-600' : 'text-blue-600'}">${player.medal} ${player.rank}位</span>
+                                    <span class="font-bold ${index === 0 ? 'text-yellow-600' : index === 1 ? 'text-gray-600' : index === 2 ? 'text-orange-600' : 'text-blue-600'}">${player.medal} ${player.placement}位</span>
                                     <span class="text-sm text-gray-600">${player.player}</span>
                                     <span class="text-xs text-gray-500">${player.points}pt</span>
                                 </div>
@@ -409,7 +404,7 @@
             container.innerHTML = resultsHTML;
             container.classList.remove('hidden');
             
-            // Add fade-in animation
+            // Fade-in animation
             container.style.opacity = '0';
             setTimeout(() => {
                 container.style.transition = 'opacity 0.5s';
@@ -417,7 +412,7 @@
             }, 10);
         }
 
-        // Observe all event cards
+        // Initialize
         document.addEventListener('DOMContentLoaded', () => {
             document.querySelectorAll('.event-card[data-event-id]').forEach(card => {
                 observer.observe(card);
