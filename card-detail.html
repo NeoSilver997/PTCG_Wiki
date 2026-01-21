@@ -62,8 +62,36 @@
             <!-- Left Column - Card Image -->
             <div class="col-span-4">
                 <div class="bg-white rounded-lg shadow-md p-6 sticky top-24">
-                    <div class="aspect-[245/342] rounded-lg mb-4 overflow-hidden">
-                        <img src="https://asia.pokemon-card.com/hk/card-img/hk00017762.png" alt="莉佳的霸王花ex" class="w-full h-full object-contain">
+                    <!-- Variant Selector -->
+                    <div class="mb-4">
+                        <label class="text-sm font-medium text-gray-700 mb-2 block">卡片版本</label>
+                        <select id="variantSelector" class="w-full border border-gray-300 rounded-md px-3 py-2 text-sm bg-white focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
+                            <option value="normal" data-price="180">普通版 - HK$ 180</option>
+                            <option value="reverse-holo" data-price="240">反閃版 - HK$ 240</option>
+                            <option value="holo" data-price="380">閃卡版 - HK$ 380</option>
+                            <option value="full-art" data-price="650">全圖版 - HK$ 650</option>
+                            <option value="sar" data-price="2480" selected>SAR - HK$ 2,480</option>
+                        </select>
+                    </div>
+
+                    <!-- Current Price Display -->
+                    <div class="bg-gradient-to-r from-blue-50 to-indigo-50 rounded-lg p-4 mb-4 border border-blue-200">
+                        <div class="text-sm text-gray-600 mb-1">當前版本價格</div>
+                        <div id="currentPrice" class="text-3xl font-bold text-blue-600">HK$ 2,480</div>
+                        <div class="text-xs text-gray-500 mt-1">市場平均價 • 更新於 1 小時前</div>
+                        <div class="mt-2 pt-2 border-t border-blue-200">
+                            <div class="flex items-center justify-between text-xs">
+                                <span class="text-gray-600">版本稀有度:</span>
+                                <span id="variantBadge" class="px-2 py-0.5 bg-gradient-to-r from-purple-600 to-pink-600 text-white rounded-full font-medium">SAR</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="aspect-[245/342] rounded-lg mb-4 overflow-hidden bg-gradient-to-br from-gray-100 to-gray-200 relative">
+                        <img id="cardImage" src="https://asia.pokemon-card.com/hk/card-img/hk00017762.png" alt="莉佳的霸王花ex" class="w-full h-full object-contain transition-all duration-300">
+                        <div id="imageLoading" class="hidden absolute inset-0 bg-white bg-opacity-75 flex items-center justify-center">
+                            <div class="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600"></div>
+                        </div>
                     </div>
                     <button class="w-full bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700 mb-2">
                         加入收藏
@@ -165,8 +193,35 @@
 
                     <!-- Prices Tab -->
                     <div id="prices-content" class="tab-content p-8">
-                        <h3 class="text-xl font-bold mb-4">市場價格</h3>
-                        <div class="space-y-4">
+                        <!-- Variant Price Comparison -->
+                        <div class="mb-6">
+                            <h3 class="text-xl font-bold mb-4">版本價格對比</h3>
+                            <div class="grid grid-cols-5 gap-3">
+                                <button class="variant-price-btn border-2 border-blue-600 bg-blue-50 rounded-lg p-3 text-center hover:shadow-md transition-all" data-variant="normal">
+                                    <div class="text-xs text-gray-600 mb-1">普通版</div>
+                                    <div class="text-lg font-bold text-blue-600">HK$ 180</div>
+                                </button>
+                                <button class="variant-price-btn border-2 border-gray-300 rounded-lg p-3 text-center hover:border-blue-600 hover:shadow-md transition-all" data-variant="reverse-holo">
+                                    <div class="text-xs text-gray-600 mb-1">反閃版</div>
+                                    <div class="text-lg font-bold text-gray-900">HK$ 240</div>
+                                </button>
+                                <button class="variant-price-btn border-2 border-gray-300 rounded-lg p-3 text-center hover:border-blue-600 hover:shadow-md transition-all" data-variant="holo">
+                                    <div class="text-xs text-gray-600 mb-1">閃卡版</div>
+                                    <div class="text-lg font-bold text-gray-900">HK$ 380</div>
+                                </button>
+                                <button class="variant-price-btn border-2 border-gray-300 rounded-lg p-3 text-center hover:border-blue-600 hover:shadow-md transition-all" data-variant="full-art">
+                                    <div class="text-xs text-gray-600 mb-1">全圖版</div>
+                                    <div class="text-lg font-bold text-gray-900">HK$ 650</div>
+                                </button>
+                                <button class="variant-price-btn border-2 border-gray-300 rounded-lg p-3 text-center hover:border-blue-600 hover:shadow-md transition-all" data-variant="sar">
+                                    <div class="text-xs text-gray-600 mb-1">SAR</div>
+                                    <div class="text-lg font-bold text-gray-900">HK$ 2,480</div>
+                                </button>
+                            </div>
+                        </div>
+
+                        <h3 class="text-xl font-bold mb-4">市場價格 <span id="variantLabel" class="text-base font-normal text-gray-600">(普通版)</span></h3>
+                        <div id="priceList" class="space-y-4">
                             <div class="flex items-center justify-between p-4 border rounded-lg hover:bg-gray-50">
                                 <div class="flex items-center space-x-4">
                                     <div class="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center">
@@ -178,7 +233,7 @@
                                     </div>
                                 </div>
                                 <div class="text-right">
-                                    <div class="text-2xl font-bold text-blue-600">¥2,480</div>
+                                    <div class="text-2xl font-bold text-blue-600">¥1,480</div>
                                     <div class="text-xs text-gray-500">更新於 2 小時前</div>
                                 </div>
                             </div>
@@ -194,7 +249,7 @@
                                     </div>
                                 </div>
                                 <div class="text-right">
-                                    <div class="text-2xl font-bold text-blue-600">¥2,680</div>
+                                    <div class="text-2xl font-bold text-blue-600">¥1,680</div>
                                     <div class="text-xs text-gray-500">更新於 1 小時前</div>
                                 </div>
                             </div>
@@ -210,7 +265,7 @@
                                     </div>
                                 </div>
                                 <div class="text-right">
-                                    <div class="text-2xl font-bold text-blue-600">€24.99</div>
+                                    <div class="text-2xl font-bold text-blue-600">€18.99</div>
                                     <div class="text-xs text-gray-500">更新於 3 小時前</div>
                                 </div>
                             </div>
@@ -220,7 +275,7 @@
                             <div class="flex items-center justify-between">
                                 <div>
                                     <div class="text-sm text-gray-600">建議價格</div>
-                                    <div class="text-xl font-bold text-blue-600">HK$ 240 - 260</div>
+                                    <div id="suggestedPrice" class="text-xl font-bold text-blue-600">HK$ 170 - 190</div>
                                 </div>
                                 <button class="bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700">
                                     設定價格提醒
@@ -317,10 +372,188 @@
     </div>
 
     <script>
+        // Price and image data for different variants
+        const variantPrices = {
+            'normal': {
+                name: '普通版',
+                badge: 'RR',
+                badgeColor: 'bg-blue-600',
+                hk: 180,
+                imageUrl: 'https://asia.pokemon-card.com/hk/card-img/hk00017760.png',
+                prices: [
+                    { store: 'Yuyu-tei', price: '¥1,480', stock: 12 },
+                    { store: 'Hareruya', price: '¥1,680', stock: 8 },
+                    { store: 'CardMarket', price: '€18.99', stock: 25 }
+                ],
+                suggested: 'HK$ 170 - 190'
+            },
+            'reverse-holo': {
+                name: '反閃版',
+                badge: 'RRR',
+                badgeColor: 'bg-gradient-to-r from-blue-500 to-purple-500',
+                hk: 240,
+                imageUrl: 'https://asia.pokemon-card.com/hk/card-img/hk00017761.png',
+                prices: [
+                    { store: 'Yuyu-tei', price: '¥1,980', stock: 8 },
+                    { store: 'Hareruya', price: '¥2,180', stock: 5 },
+                    { store: 'CardMarket', price: '€22.99', stock: 18 }
+                ],
+                suggested: 'HK$ 230 - 250'
+            },
+            'holo': {
+                name: '閃卡版',
+                badge: 'HOLO',
+                badgeColor: 'bg-gradient-to-r from-yellow-500 to-orange-500',
+                hk: 380,
+                imageUrl: 'https://asia.pokemon-card.com/hk/card-img/hk00017762.png',
+                prices: [
+                    { store: 'Yuyu-tei', price: '¥3,180', stock: 6 },
+                    { store: 'Hareruya', price: '¥3,480', stock: 4 },
+                    { store: 'CardMarket', price: '€36.99', stock: 12 }
+                ],
+                suggested: 'HK$ 360 - 400'
+            },
+            'full-art': {
+                name: '全圖版',
+                badge: 'SR',
+                badgeColor: 'bg-gradient-to-r from-purple-500 to-indigo-600',
+                hk: 650,
+                imageUrl: 'https://asia.pokemon-card.com/hk/card-img/hk00017763.png',
+                prices: [
+                    { store: 'Yuyu-tei', price: '¥5,480', stock: 3 },
+                    { store: 'Hareruya', price: '¥5,980', stock: 2 },
+                    { store: 'CardMarket', price: '€58.99', stock: 7 }
+                ],
+                suggested: 'HK$ 620 - 680'
+            },
+            'sar': {
+                name: 'SAR',
+                badge: 'SAR',
+                badgeColor: 'bg-gradient-to-r from-purple-600 to-pink-600',
+                hk: 2480,
+                imageUrl: 'https://asia.pokemon-card.com/hk/card-img/hk00017762.png',
+                prices: [
+                    { store: 'Yuyu-tei', price: '¥21,800', stock: 1 },
+                    { store: 'Hareruya', price: '¥22,800', stock: 1 },
+                    { store: 'CardMarket', price: '€228.99', stock: 3 }
+                ],
+                suggested: 'HK$ 2,400 - 2,600'
+            }
+        };
+
+        // Variant selector change handler
+        const variantSelector = document.getElementById('variantSelector');
+        const currentPriceDisplay = document.getElementById('currentPrice');
+        const cardImage = document.getElementById('cardImage');
+        const imageLoading = document.getElementById('imageLoading');
+        const variantBadge = document.getElementById('variantBadge');
+        
+        variantSelector.addEventListener('change', (e) => {
+            const variant = e.target.value;
+            updateVariantDisplay(variant);
+        });
+        
+        function updateVariantDisplay(variant) {
+            const priceData = variantPrices[variant];
+            
+            // Update current price display
+            currentPriceDisplay.textContent = `HK$ ${priceData.hk.toLocaleString()}`;
+            
+            // Update variant badge
+            variantBadge.textContent = priceData.badge;
+            variantBadge.className = `px-2 py-0.5 ${priceData.badgeColor} text-white rounded-full font-medium`;
+            
+            // Update card image with loading state
+            if (priceData.imageUrl) {
+                imageLoading.classList.remove('hidden');
+                cardImage.style.opacity = '0.5';
+                
+                const img = new Image();
+                img.onload = () => {
+                    cardImage.src = priceData.imageUrl;
+                    cardImall displays including image
+                updateVariantDisplays to load, keep current image
+                    cardImage.style.opacity = '1';
+                    imageLoading.classList.add('hidden');
+                };
+                img.src = priceData.imageUrl;
+            }
+            
+            // Update price tab if visible
+            updatePriceTab(variant);
+            
+            // Update variant price buttons in price tab
+            updateVariantButtons(variant);
+        }
+
+        // Variant price button handlers
+        document.querySelectorAll('.variant-price-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                const variant = btn.getAttribute('data-variant');
+                
+                // Update selector
+                variantSelector.value = variant;
+                
+                // Update displays
+                const priceData = variantPrices[variant];
+                currentPriceDisplay.textContent = `HK$ ${priceData.hk.toLocaleString()}`;
+                updatePriceTab(variant);
+                updateVariantButtons(variant);
+            });
+        });
+
+        function updateVariantButtons(activeVariant) {
+            document.querySelectorAll('.variant-price-btn').forEach(btn => {
+                const variant = btn.getAttribute('data-variant');
+                if (variant === activeVariant) {
+                    btn.classList.remove('border-gray-300', 'bg-white');
+                    btn.classList.add('border-blue-600', 'bg-blue-50');
+                    btn.querySelector('.text-gray-900')?.classList.replace('text-gray-900', 'text-blue-600');
+                } else {
+                    btn.classList.remove('border-blue-600', 'bg-blue-50');
+                    btn.classList.add('border-gray-300');
+                    btn.querySelector('.text-blue-600')?.classList.replace('text-blue-600', 'text-gray-900');
+                }
+            });
+        }
+
+        function updatePriceTab(variant) {
+            const priceData = variantPrices[variant];
+            
+            // Update variant label
+            document.getElementById('variantLabel').textContent = `(${priceData.name})`;
+            
+            // Update suggested price
+            document.getElementById('suggestedPrice').textContent = priceData.suggested;
+            
+            // Update price list
+            const priceList = document.getElementById('priceList');
+            const storeIcons = ['🏪', '🛒', '💳'];
+            const storeColors = ['blue', 'green', 'purple'];
+            
+            priceList.innerHTML = priceData.prices.map((item, index) => `
+                <div class="flex items-center justify-between p-4 border rounded-lg hover:bg-gray-50">
+                    <div class="flex items-center space-x-4">
+                        <div class="w-12 h-12 bg-${storeColors[index]}-100 rounded-lg flex items-center justify-center">
+                            <span class="text-xl">${storeIcons[index]}</span>
+                        </div>
+                        <div>
+                            <div class="font-bold">${item.store}</div>
+                            <div class="text-sm text-gray-500">庫存: ${item.stock} 張</div>
+                        </div>
+                    </div>
+                    <div class="text-right">
+                        <div class="text-2xl font-bold text-blue-600">${item.price}</div>
+                        <div class="text-xs text-gray-500">更新於 ${index + 1} 小時前</div>
+                    </div>
+                </div>
+            `).join('');
+        }
+
         // Tab switching
-        document.querySelectorAll('.tab-button').forEach(button => {
-            button.addEventListener('click', () => {
-                // Remove active class from all tabs
+        document.querySelectorAll('.tab-buttsar)
+        updateVariantDisplay('sar');
+        updateVariantButtons('sarve class from all tabs
                 document.querySelectorAll('.tab-button').forEach(btn => {
                     btn.classList.remove('tab-active');
                     btn.classList.add('text-gray-600');
@@ -340,6 +573,10 @@
                 document.getElementById(tabId + '-content').classList.remove('hidden');
             });
         });
+
+        // Initialize with default variant (normal)
+        updateVariantButtons('normal');
+        updatePriceTab('normal');
     </script>
 </body>
 </html>
