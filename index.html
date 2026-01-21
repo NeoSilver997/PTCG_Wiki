@@ -66,41 +66,194 @@
                            class="w-full border border-gray-300 rounded-md px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500">
                 </div>
 
+                <!-- Card Category Filter -->
+                <div class="mb-6">
+                    <label class="block text-sm font-medium text-gray-700 mb-2">卡片類別</label>
+                    <div class="space-y-2">
+                        <label class="flex items-center">
+                            <input type="checkbox" class="filter-category rounded text-blue-600" value="pokemon" checked>
+                            <span class="ml-2 text-sm">寶可夢</span>
+                        </label>
+                        <label class="flex items-center">
+                            <input type="checkbox" class="filter-category rounded text-blue-600" value="trainer" checked>
+                            <span class="ml-2 text-sm">訓練家</span>
+                        </label>
+                        <label class="flex items-center">
+                            <input type="checkbox" class="filter-category rounded text-blue-600" value="energy" checked>
+                            <span class="ml-2 text-sm">能量</span>
+                        </label>
+                    </div>
+                </div>
+
                 <!-- Expansion Filter -->
                 <div class="mb-6">
                     <label class="block text-sm font-medium text-gray-700 mb-2">擴充包</label>
                     <div class="space-y-2">
                         <label class="flex items-center">
-                            <input type="checkbox" class="filter-expansion rounded text-blue-600" value="SV08" checked>
+                            <input type="checkbox" class="filter-expansion rounded text-blue-600" value="MC" checked>
+                            <span class="ml-2 text-sm">MC 初階牌組 100對戰收藏</span>
+                        </label>
+                        <label class="flex items-center">
+                            <input type="checkbox" class="filter-expansion rounded text-blue-600" value="M2a" checked>
+                            <span class="ml-2 text-sm">M2a 超級進化夢想ex</span>
+                        </label>
+                        <label class="flex items-center">
+                            <input type="checkbox" class="filter-expansion rounded text-blue-600" value="SV08">
                             <span class="ml-2 text-sm">SV08 超電突破</span>
                         </label>
                         <label class="flex items-center">
                             <input type="checkbox" class="filter-expansion rounded text-blue-600" value="SV07">
                             <span class="ml-2 text-sm">SV07 星晶風暴</span>
                         </label>
-                        <label class="flex items-center">
-                            <input type="checkbox" class="filter-expansion rounded text-blue-600" value="SV06">
-                            <span class="ml-2 text-sm">SV06 變幻假面</span>
-                        </label>
-                        <label class="flex items-center">
-                            <input type="checkbox" class="filter-expansion rounded text-blue-600" value="SV05">
-                            <span class="ml-2 text-sm">SV05 狂野之力</span>
-                        </label>
                     </div>
                 </div>
 
                 <!-- Type Filter -->
                 <div class="mb-6">
-                    <label class="block text-sm font-medium text-gray-700 mb-2">類型</label>
+                    <label class="block text-sm font-medium text-gray-700 mb-2">屬性</label>
                     <div class="flex flex-wrap gap-2">
+                        <button class="filter-type px-3 py-1 rounded-full text-xs font-medium bg-green-100 text-green-700 hover:bg-green-200" data-type="grass">草</button>
                         <button class="filter-type px-3 py-1 rounded-full text-xs font-medium bg-red-100 text-red-700 hover:bg-red-200" data-type="fire">火</button>
                         <button class="filter-type px-3 py-1 rounded-full text-xs font-medium bg-blue-100 text-blue-700 hover:bg-blue-200" data-type="water">水</button>
-                        <button class="filter-type px-3 py-1 rounded-full text-xs font-medium bg-green-100 text-green-700 hover:bg-green-200" data-type="grass">草</button>
                         <button class="filter-type px-3 py-1 rounded-full text-xs font-medium bg-yellow-100 text-yellow-700 hover:bg-yellow-200" data-type="electric">電</button>
                         <button class="filter-type px-3 py-1 rounded-full text-xs font-medium bg-purple-100 text-purple-700 hover:bg-purple-200" data-type="psychic">超</button>
                         <button class="filter-type px-3 py-1 rounded-full text-xs font-medium bg-amber-100 text-amber-700 hover:bg-amber-200" data-type="fighting">鬥</button>
+                        <button class="filter-type px-3 py-1 rounded-full text-xs font-medium bg-gray-800 text-white hover:bg-gray-900" data-type="darkness">惡</button>
+                        <button class="filter-type px-3 py-1 rounded-full text-xs font-medium bg-gray-400 text-gray-700 hover:bg-gray-500" data-type="metal">鋼</button>
                         <button class="filter-type px-3 py-1 rounded-full text-xs font-medium bg-pink-100 text-pink-700 hover:bg-pink-200" data-type="fairy">妖精</button>
+                        <button class="filter-type px-3 py-1 rounded-full text-xs font-medium bg-teal-100 text-teal-700 hover:bg-teal-200" data-type="dragon">龍</button>
                         <button class="filter-type px-3 py-1 rounded-full text-xs font-medium bg-gray-100 text-gray-700 hover:bg-gray-200" data-type="colorless">無</button>
+                    </div>
+                </div>
+
+                <!-- Regulation Mark Filter -->
+                <div class="mb-6">
+                    <label class="block text-sm font-medium text-gray-700 mb-2">適用標記</label>
+                    <div class="flex flex-wrap gap-2">
+                        <label class="flex items-center">
+                            <input type="checkbox" class="filter-regulation rounded text-blue-600" value="J">
+                            <span class="ml-2 text-sm font-bold">J</span>
+                        </label>
+                        <label class="flex items-center">
+                            <input type="checkbox" class="filter-regulation rounded text-blue-600" value="H">
+                            <span class="ml-2 text-sm font-bold">H</span>
+                        </label>
+                        <label class="flex items-center">
+                            <input type="checkbox" class="filter-regulation rounded text-blue-600" value="G">
+                            <span class="ml-2 text-sm font-bold">G</span>
+                        </label>
+                        <label class="flex items-center">
+                            <input type="checkbox" class="filter-regulation rounded text-blue-600" value="F">
+                            <span class="ml-2 text-sm font-bold">F</span>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Trainer Subcategory Filter -->
+                <div class="mb-6">
+                    <label class="block text-sm font-medium text-gray-700 mb-2">訓練家類別</label>
+                    <div class="space-y-2">
+                        <label class="flex items-center">
+                            <input type="checkbox" class="filter-trainer-type rounded text-blue-600" value="item">
+                            <span class="ml-2 text-sm">物品</span>
+                        </label>
+                        <label class="flex items-center">
+                            <input type="checkbox" class="filter-trainer-type rounded text-blue-600" value="supporter">
+                            <span class="ml-2 text-sm">支援者</span>
+                        </label>
+                        <label class="flex items-center">
+                            <input type="checkbox" class="filter-trainer-type rounded text-blue-600" value="stadium">
+                            <span class="ml-2 text-sm">競技場</span>
+                        </label>
+                        <label class="flex items-center">
+                            <input type="checkbox" class="filter-trainer-type rounded text-blue-600" value="tool">
+                            <span class="ml-2 text-sm">寶可夢道具</span>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- HP Range Filter -->
+                <div class="mb-6">
+                    <label class="block text-sm font-medium text-gray-700 mb-2">HP 範圍</label>
+                    <div class="space-y-2">
+                        <label class="flex items-center">
+                            <input type="checkbox" class="filter-hp rounded text-blue-600" value="0-60">
+                            <span class="ml-2 text-sm">0-60</span>
+                        </label>
+                        <label class="flex items-center">
+                            <input type="checkbox" class="filter-hp rounded text-blue-600" value="70-120">
+                            <span class="ml-2 text-sm">70-120</span>
+                        </label>
+                        <label class="flex items-center">
+                            <input type="checkbox" class="filter-hp rounded text-blue-600" value="130-200">
+                            <span class="ml-2 text-sm">130-200</span>
+                        </label>
+                        <label class="flex items-center">
+                            <input type="checkbox" class="filter-hp rounded text-blue-600" value="210-280">
+                            <span class="ml-2 text-sm">210-280</span>
+                        </label>
+                        <label class="flex items-center">
+                            <input type="checkbox" class="filter-hp rounded text-blue-600" value="290+">
+                            <span class="ml-2 text-sm">290+</span>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Retreat Cost Filter -->
+                <div class="mb-6">
+                    <label class="block text-sm font-medium text-gray-700 mb-2">撤退費用</label>
+                    <div class="flex gap-2">
+                        <label class="flex items-center">
+                            <input type="checkbox" class="filter-retreat rounded text-blue-600" value="0">
+                            <span class="ml-2 text-sm">0</span>
+                        </label>
+                        <label class="flex items-center">
+                            <input type="checkbox" class="filter-retreat rounded text-blue-600" value="1">
+                            <span class="ml-2 text-sm">1</span>
+                        </label>
+                        <label class="flex items-center">
+                            <input type="checkbox" class="filter-retreat rounded text-blue-600" value="2">
+                            <span class="ml-2 text-sm">2</span>
+                        </label>
+                        <label class="flex items-center">
+                            <input type="checkbox" class="filter-retreat rounded text-blue-600" value="3">
+                            <span class="ml-2 text-sm">3</span>
+                        </label>
+                        <label class="flex items-center">
+                            <input type="checkbox" class="filter-retreat rounded text-blue-600" value="4+">
+                            <span class="ml-2 text-sm">4+</span>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Special Features Filter -->
+                <div class="mb-6">
+                    <label class="block text-sm font-medium text-gray-700 mb-2">特殊特性</label>
+                    <div class="space-y-2">
+                        <label class="flex items-center">
+                            <input type="checkbox" class="filter-feature rounded text-blue-600" value="ex">
+                            <span class="ml-2 text-sm">ex 寶可夢</span>
+                        </label>
+                        <label class="flex items-center">
+                            <input type="checkbox" class="filter-feature rounded text-blue-600" value="vstar">
+                            <span class="ml-2 text-sm">VSTAR</span>
+                        </label>
+                        <label class="flex items-center">
+                            <input type="checkbox" class="filter-feature rounded text-blue-600" value="vmax">
+                            <span class="ml-2 text-sm">VMAX</span>
+                        </label>
+                        <label class="flex items-center">
+                            <input type="checkbox" class="filter-feature rounded text-blue-600" value="mega">
+                            <span class="ml-2 text-sm">M 進化</span>
+                        </label>
+                        <label class="flex items-center">
+                            <input type="checkbox" class="filter-feature rounded text-blue-600" value="shiny">
+                            <span class="ml-2 text-sm">閃卡</span>
+                        </label>
+                        <label class="flex items-center">
+                            <input type="checkbox" class="filter-feature rounded text-blue-600" value="full-art">
+                            <span class="ml-2 text-sm">全圖</span>
+                        </label>
                     </div>
                 </div>
 
@@ -142,9 +295,43 @@
 
             <!-- Main Content - Card Grid -->
             <main class="flex-1">
-                <div class="mb-6">
-                    <h1 class="text-3xl font-bold text-gray-800 mb-2">卡片列表</h1>
-                    <p class="text-gray-600">瀏覽所有寶可夢卡牌資料</p>
+                <div class="mb-6 flex items-center justify-between">
+                    <div>
+                        <h1 class="text-3xl font-bold text-gray-800 mb-2">卡片列表</h1>
+                        <p class="text-gray-600">瀏覽所有寶可夢卡牌資料</p>
+                    </div>
+                    <div class="flex items-center gap-3">
+                        <div class="flex items-center gap-2">
+                            <label class="text-sm text-gray-600">排序:</label>
+                            <select id="sortSelect" class="border border-gray-300 rounded-md px-3 py-1.5 text-sm bg-white">
+                                <option value="number-asc">卡號 (升序)</option>
+                                <option value="number-desc">卡號 (降序)</option>
+                                <option value="name-asc">名稱 (A-Z)</option>
+                                <option value="name-desc">名稱 (Z-A)</option>
+                                <option value="hp-asc">HP (低到高)</option>
+                                <option value="hp-desc">HP (高到低)</option>
+                                <option value="rarity-asc">稀有度 (低到高)</option>
+                                <option value="rarity-desc">稀有度 (高到低)</option>
+                                <option value="price-asc">價格 (低到高)</option>
+                                <option value="price-desc">價格 (高到低)</option>
+                            </select>
+                        </div>
+                        <div class="flex items-center gap-2 border-l pl-3">
+                            <label class="text-sm text-gray-600">顯示:</label>
+                            <select id="viewSelect" class="border border-gray-300 rounded-md px-3 py-1.5 text-sm bg-white">
+                                <option value="24">24 張</option>
+                                <option value="48">48 張</option>
+                                <option value="96">96 張</option>
+                                <option value="all">全部</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Filter Summary -->
+                <div id="filterSummary" class="mb-4 flex items-center gap-2 flex-wrap hidden">
+                    <span class="text-sm text-gray-600">已套用篩選:</span>
+                    <!-- Active filter tags will be inserted here by JavaScript -->
                 </div>
 
                 <div id="cardGrid" class="grid grid-cols-6 gap-4">
