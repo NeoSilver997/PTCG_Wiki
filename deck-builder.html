@@ -140,16 +140,31 @@
                 <div class="bg-white rounded-lg shadow-md p-6">
                     <div class="flex items-center justify-between mb-4">
                         <h3 class="text-xl font-bold text-gray-900">牌組列表</h3>
-                        <button onclick="clearDeck()" class="text-red-600 hover:text-red-800 text-sm">清空牌組</button>
+                        <div class="flex items-center space-x-2">
+                            <div class="flex bg-gray-100 rounded-lg p-1">
+                                <button onclick="switchView('list')" id="view-list" class="px-3 py-1 rounded bg-white shadow-sm text-sm font-medium text-gray-900">
+                                    列表
+                                </button>
+                                <button onclick="switchView('grid')" id="view-grid" class="px-3 py-1 rounded text-sm font-medium text-gray-600 hover:text-gray-900">
+                                    網格
+                                </button>
+                                <button onclick="switchView('visual')" id="view-visual" class="px-3 py-1 rounded text-sm font-medium text-gray-600 hover:text-gray-900">
+                                    視覺
+                                </button>
+                            </div>
+                            <button onclick="clearDeck()" class="text-red-600 hover:text-red-800 text-sm">清空</button>
+                        </div>
                     </div>
 
-                    <!-- Pokemon Section -->
-                    <div class="mb-6">
-                        <h4 class="text-sm font-bold text-gray-900 mb-3 flex items-center">
-                            <span class="mr-2">🎴</span>
-                            寶可夢 (<span id="pokemonListCount">8</span>)
-                        </h4>
-                        <div id="pokemonList" class="space-y-2">
+                    <!-- List View -->
+                    <div id="listView" class="">
+                        <!-- Pokemon Section -->
+                        <div class="mb-6">
+                            <h4 class="text-sm font-bold text-gray-900 mb-3 flex items-center">
+                                <span class="mr-2">🎴</span>
+                                寶可夢 (<span id="pokemonListCount">18</span>)
+                            </h4>
+                            <div id="pokemonList" class="space-y-2">
                             <!-- Sample Pokemon Card -->
                             <div class="flex items-center justify-between p-3 bg-gradient-to-r from-green-50 to-emerald-50 rounded-lg border border-green-200 hover:shadow-md transition-all card-slot">
                                 <div class="flex items-center space-x-3">
@@ -204,14 +219,42 @@
                                     </button>
                                 </div>
                             </div>
+
+                            <div class="flex items-center justify-between p-3 bg-gradient-to-r from-green-50 to-emerald-50 rounded-lg border border-green-200 hover:shadow-md transition-all card-slot">
+                                <div class="flex items-center space-x-3">
+                                    <img src="https://asia.pokemon-card.com/hk/card-img/hk00017760.png" alt="Card" class="w-12 h-16 object-cover rounded shadow-sm">
+                                    <div>
+                                        <div class="font-medium text-sm">莉佳的走路草</div>
+                                        <div class="text-xs text-gray-500">MC J003/742</div>
+                                        <span class="text-xs bg-green-100 text-green-700 px-2 py-0.5 rounded-full font-medium">草</span>
+                                    </div>
+                                </div>
+                                <div class="flex items-center space-x-3">
+                                    <div class="flex items-center space-x-1">
+                                        <button class="w-7 h-7 bg-gray-200 hover:bg-gray-300 rounded flex items-center justify-center">
+                                            <span class="text-sm">−</span>
+                                        </button>
+                                        <span class="w-8 text-center font-bold">3</span>
+                                        <button class="w-7 h-7 bg-blue-600 hover:bg-blue-700 text-white rounded flex items-center justify-center">
+                                            <span class="text-sm">+</span>
+                                        </button>
+                                    </div>
+                                    <button class="text-red-600 hover:text-red-800">
+                                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"></path>
+                                        </svg>
+                                    </button>
+                                </div>
+                            </div>
                         </div>
                     </div>
 
                     <!-- Trainer Section -->
                     <div class="mb-6">
+                    <div class="mb-6">
                         <h4 class="text-sm font-bold text-gray-900 mb-3 flex items-center">
                             <span class="mr-2">⚙️</span>
-                            訓練師 (<span id="trainerListCount">3</span>)
+                            訓練師 (<span id="trainerListCount">30</span>)
                         </h4>
                         <div id="trainerList" class="space-y-2">
                             <div class="flex items-center justify-between p-3 bg-gradient-to-r from-pink-50 to-rose-50 rounded-lg border border-pink-200 hover:shadow-md transition-all card-slot">
@@ -240,14 +283,69 @@
                                     </button>
                                 </div>
                             </div>
+
+                            <div class="flex items-center justify-between p-3 bg-gradient-to-r from-pink-50 to-rose-50 rounded-lg border border-pink-200 hover:shadow-md transition-all card-slot">
+                                <div class="flex items-center space-x-3">
+                                    <img src="https://asia.pokemon-card.com/hk/card-img/hk00017755.png" alt="Card" class="w-12 h-16 object-cover rounded shadow-sm">
+                                    <div>
+                                        <div class="font-medium text-sm">進化之歡騰</div>
+                                        <div class="text-xs text-gray-500">MC J084/742</div>
+                                        <span class="text-xs bg-pink-100 text-pink-700 px-2 py-0.5 rounded-full font-medium">物品</span>
+                                    </div>
+                                </div>
+                                <div class="flex items-center space-x-3">
+                                    <div class="flex items-center space-x-1">
+                                        <button class="w-7 h-7 bg-gray-200 hover:bg-gray-300 rounded flex items-center justify-center">
+                                            <span class="text-sm">−</span>
+                                        </button>
+                                        <span class="w-8 text-center font-bold">4</span>
+                                        <button class="w-7 h-7 bg-blue-600 hover:bg-blue-700 text-white rounded flex items-center justify-center">
+                                            <span class="text-sm">+</span>
+                                        </button>
+                                    </div>
+                                    <button class="text-red-600 hover:text-red-800">
+                                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"></path>
+                                        </svg>
+                                    </button>
+                                </div>
+                            </div>
+
+                            <div class="flex items-center justify-between p-3 bg-gradient-to-r from-pink-50 to-rose-50 rounded-lg border border-pink-200 hover:shadow-md transition-all card-slot">
+                                <div class="flex items-center space-x-3">
+                                    <img src="https://asia.pokemon-card.com/hk/card-img/hk00017751.png" alt="Card" class="w-12 h-16 object-cover rounded shadow-sm">
+                                    <div>
+                                        <div class="font-medium text-sm">超級球</div>
+                                        <div class="text-xs text-gray-500">MC J088/742</div>
+                                        <span class="text-xs bg-pink-100 text-pink-700 px-2 py-0.5 rounded-full font-medium">物品</span>
+                                    </div>
+                                </div>
+                                <div class="flex items-center space-x-3">
+                                    <div class="flex items-center space-x-1">
+                                        <button class="w-7 h-7 bg-gray-200 hover:bg-gray-300 rounded flex items-center justify-center">
+                                            <span class="text-sm">−</span>
+                                        </button>
+                                        <span class="w-8 text-center font-bold">4</span>
+                                        <button class="w-7 h-7 bg-blue-600 hover:bg-blue-700 text-white rounded flex items-center justify-center">
+                                            <span class="text-sm">+</span>
+                                        </button>
+                                    </div>
+                                    <button class="text-red-600 hover:text-red-800">
+                                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"></path>
+                                        </svg>
+                                    </button>
+                                </div>
+                            </div>
                         </div>
                     </div>
 
                     <!-- Energy Section -->
                     <div>
+                    <div>
                         <h4 class="text-sm font-bold text-gray-900 mb-3 flex items-center">
                             <span class="mr-2">⚡</span>
-                            能量 (<span id="energyListCount">1</span>)
+                            能量 (<span id="energyListCount">12</span>)
                         </h4>
                         <div id="energyList" class="space-y-2">
                             <div class="flex items-center justify-between p-3 bg-gradient-to-r from-emerald-50 to-teal-50 rounded-lg border border-emerald-200 hover:shadow-md transition-all card-slot">
@@ -266,7 +364,7 @@
                                         <button class="w-7 h-7 bg-gray-200 hover:bg-gray-300 rounded flex items-center justify-center">
                                             <span class="text-sm">−</span>
                                         </button>
-                                        <span class="w-8 text-center font-bold">1</span>
+                                        <span class="w-8 text-center font-bold">12</span>
                                         <button class="w-7 h-7 bg-blue-600 hover:bg-blue-700 text-white rounded flex items-center justify-center">
                                             <span class="text-sm">+</span>
                                         </button>
@@ -280,34 +378,309 @@
                             </div>
                         </div>
                     </div>
+                    </div>
+
+                    <!-- Grid View -->
+                    <div id="gridView" class="hidden">
+                        <div class="grid grid-cols-6 gap-3">
+                            <!-- Pokemon Cards -->
+                            <div class="relative group cursor-pointer" onclick="showCardPreview(1)">
+                                <img src="https://asia.pokemon-card.com/hk/card-img/hk00017762.png" alt="Card" class="w-full rounded-lg shadow-md hover:shadow-xl transition-all">
+                                <div class="absolute top-1 right-1 bg-blue-600 text-white text-xs font-bold rounded-full w-6 h-6 flex items-center justify-center">2</div>
+                            </div>
+                            <div class="relative group cursor-pointer" onclick="showCardPreview(2)">
+                                <img src="https://asia.pokemon-card.com/hk/card-img/hk00017761.png" alt="Card" class="w-full rounded-lg shadow-md hover:shadow-xl transition-all">
+                                <div class="absolute top-1 right-1 bg-blue-600 text-white text-xs font-bold rounded-full w-6 h-6 flex items-center justify-center">3</div>
+                            </div>
+                            <div class="relative group cursor-pointer" onclick="showCardPreview(3)">
+                                <img src="https://asia.pokemon-card.com/hk/card-img/hk00017760.png" alt="Card" class="w-full rounded-lg shadow-md hover:shadow-xl transition-all">
+                                <div class="absolute top-1 right-1 bg-blue-600 text-white text-xs font-bold rounded-full w-6 h-6 flex items-center justify-center">3</div>
+                            </div>
+                            <!-- Trainer Cards -->
+                            <div class="relative group cursor-pointer" onclick="showCardPreview(4)">
+                                <img src="https://asia.pokemon-card.com/hk/card-img/hk00017750.png" alt="Card" class="w-full rounded-lg shadow-md hover:shadow-xl transition-all">
+                                <div class="absolute top-1 right-1 bg-pink-600 text-white text-xs font-bold rounded-full w-6 h-6 flex items-center justify-center">3</div>
+                            </div>
+                            <div class="relative group cursor-pointer" onclick="showCardPreview(5)">
+                                <img src="https://asia.pokemon-card.com/hk/card-img/hk00017755.png" alt="Card" class="w-full rounded-lg shadow-md hover:shadow-xl transition-all">
+                                <div class="absolute top-1 right-1 bg-pink-600 text-white text-xs font-bold rounded-full w-6 h-6 flex items-center justify-center">4</div>
+                            </div>
+                            <div class="relative group cursor-pointer" onclick="showCardPreview(6)">
+                                <img src="https://asia.pokemon-card.com/hk/card-img/hk00017751.png" alt="Card" class="w-full rounded-lg shadow-md hover:shadow-xl transition-all">
+                                <div class="absolute top-1 right-1 bg-pink-600 text-white text-xs font-bold rounded-full w-6 h-6 flex items-center justify-center">4</div>
+                            </div>
+                            <!-- Energy -->
+                            <div class="relative group cursor-pointer" onclick="showCardPreview(7)">
+                                <div class="w-full aspect-[2/3] bg-gradient-to-br from-green-100 to-emerald-200 rounded-lg shadow-md hover:shadow-xl transition-all flex items-center justify-center">
+                                    <span class="text-6xl">🌿</span>
+                                </div>
+                                <div class="absolute top-1 right-1 bg-green-600 text-white text-xs font-bold rounded-full w-6 h-6 flex items-center justify-center">12</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Visual View -->
+                    <div id="visualView" class="hidden">
+                        <div class="space-y-4">
+                            <!-- Visual deck representation -->
+                            <div class="bg-gradient-to-br from-green-50 to-emerald-50 rounded-lg p-4 border-2 border-green-200">
+                                <h4 class="font-bold text-sm mb-2 flex items-center">
+                                    <span class="mr-2">🎴</span>
+                                    寶可夢 (18 張)
+                                </h4>
+                                <div class="flex flex-wrap gap-1">
+                                    <div class="w-10 h-14 bg-white rounded shadow-sm border border-green-300" title="莉佳的霸王花ex x2"></div>
+                                    <div class="w-10 h-14 bg-white rounded shadow-sm border border-green-300"></div>
+                                    <div class="w-10 h-14 bg-white rounded shadow-sm border border-green-300" title="莉佳的臭臭花 x3"></div>
+                                    <div class="w-10 h-14 bg-white rounded shadow-sm border border-green-300"></div>
+                                    <div class="w-10 h-14 bg-white rounded shadow-sm border border-green-300"></div>
+                                    <div class="w-10 h-14 bg-white rounded shadow-sm border border-green-300" title="莉佳的走路草 x3"></div>
+                                    <div class="w-10 h-14 bg-white rounded shadow-sm border border-green-300"></div>
+                                    <div class="w-10 h-14 bg-white rounded shadow-sm border border-green-300"></div>
+                                    <div class="w-10 h-14 bg-white rounded shadow-sm border border-green-300"></div>
+                                    <div class="w-10 h-14 bg-white rounded shadow-sm border border-green-300"></div>
+                                    <div class="w-10 h-14 bg-white rounded shadow-sm border border-green-300"></div>
+                                    <div class="w-10 h-14 bg-white rounded shadow-sm border border-green-300"></div>
+                                    <div class="w-10 h-14 bg-white rounded shadow-sm border border-green-300"></div>
+                                    <div class="w-10 h-14 bg-white rounded shadow-sm border border-green-300"></div>
+                                    <div class="w-10 h-14 bg-white rounded shadow-sm border border-green-300"></div>
+                                    <div class="w-10 h-14 bg-white rounded shadow-sm border border-green-300"></div>
+                                    <div class="w-10 h-14 bg-white rounded shadow-sm border border-green-300"></div>
+                                    <div class="w-10 h-14 bg-white rounded shadow-sm border border-green-300"></div>
+                                </div>
+                            </div>
+                            <div class="bg-gradient-to-br from-pink-50 to-rose-50 rounded-lg p-4 border-2 border-pink-200">
+                                <h4 class="font-bold text-sm mb-2 flex items-center">
+                                    <span class="mr-2">⚙️</span>
+                                    訓練師 (30 張)
+                                </h4>
+                                <div class="flex flex-wrap gap-1">
+                                    <div class="w-10 h-14 bg-white rounded shadow-sm border border-pink-300" title="莉佳 x3"></div>
+                                    <div class="w-10 h-14 bg-white rounded shadow-sm border border-pink-300"></div>
+                                    <div class="w-10 h-14 bg-white rounded shadow-sm border border-pink-300"></div>
+                                    <div class="w-10 h-14 bg-white rounded shadow-sm border border-pink-300" title="進化之歡騰 x4"></div>
+                                    <div class="w-10 h-14 bg-white rounded shadow-sm border border-pink-300"></div>
+                                    <div class="w-10 h-14 bg-white rounded shadow-sm border border-pink-300"></div>
+                                    <div class="w-10 h-14 bg-white rounded shadow-sm border border-pink-300"></div>
+                                    <div class="w-10 h-14 bg-white rounded shadow-sm border border-pink-300" title="超級球 x4"></div>
+                                    <div class="w-10 h-14 bg-white rounded shadow-sm border border-pink-300"></div>
+                                    <div class="w-10 h-14 bg-white rounded shadow-sm border border-pink-300"></div>
+                                    <div class="w-10 h-14 bg-white rounded shadow-sm border border-pink-300"></div>
+                                    <div class="w-10 h-14 bg-white rounded shadow-sm border border-pink-300"></div>
+                                    <div class="w-10 h-14 bg-white rounded shadow-sm border border-pink-300"></div>
+                                    <div class="w-10 h-14 bg-white rounded shadow-sm border border-pink-300"></div>
+                                    <div class="w-10 h-14 bg-white rounded shadow-sm border border-pink-300"></div>
+                                    <div class="w-10 h-14 bg-white rounded shadow-sm border border-pink-300"></div>
+                                    <div class="w-10 h-14 bg-white rounded shadow-sm border border-pink-300"></div>
+                                    <div class="w-10 h-14 bg-white rounded shadow-sm border border-pink-300"></div>
+                                    <div class="w-10 h-14 bg-white rounded shadow-sm border border-pink-300"></div>
+                                    <div class="w-10 h-14 bg-white rounded shadow-sm border border-pink-300"></div>
+                                    <div class="w-10 h-14 bg-white rounded shadow-sm border border-pink-300"></div>
+                                    <div class="w-10 h-14 bg-white rounded shadow-sm border border-pink-300"></div>
+                                    <div class="w-10 h-14 bg-white rounded shadow-sm border border-pink-300"></div>
+                                    <div class="w-10 h-14 bg-white rounded shadow-sm border border-pink-300"></div>
+                                    <div class="w-10 h-14 bg-white rounded shadow-sm border border-pink-300"></div>
+                                    <div class="w-10 h-14 bg-white rounded shadow-sm border border-pink-300"></div>
+                                    <div class="w-10 h-14 bg-white rounded shadow-sm border border-pink-300"></div>
+                                    <div class="w-10 h-14 bg-white rounded shadow-sm border border-pink-300"></div>
+                                    <div class="w-10 h-14 bg-white rounded shadow-sm border border-pink-300"></div>
+                                    <div class="w-10 h-14 bg-white rounded shadow-sm border border-pink-300"></div>
+                                </div>
+                            </div>
+                            <div class="bg-gradient-to-br from-emerald-50 to-teal-50 rounded-lg p-4 border-2 border-emerald-200">
+                                <h4 class="font-bold text-sm mb-2 flex items-center">
+                                    <span class="mr-2">⚡</span>
+                                    能量 (12 張)
+                                </h4>
+                                <div class="flex flex-wrap gap-1">
+                                    <div class="w-10 h-14 bg-gradient-to-br from-green-100 to-emerald-200 rounded shadow-sm border border-emerald-300 flex items-center justify-center" title="基本草能量 x12">
+                                        <span class="text-xs">🌿</span>
+                                    </div>
+                                    <div class="w-10 h-14 bg-gradient-to-br from-green-100 to-emerald-200 rounded shadow-sm border border-emerald-300 flex items-center justify-center">
+                                        <span class="text-xs">🌿</span>
+                                    </div>
+                                    <div class="w-10 h-14 bg-gradient-to-br from-green-100 to-emerald-200 rounded shadow-sm border border-emerald-300 flex items-center justify-center">
+                                        <span class="text-xs">🌿</span>
+                                    </div>
+                                    <div class="w-10 h-14 bg-gradient-to-br from-green-100 to-emerald-200 rounded shadow-sm border border-emerald-300 flex items-center justify-center">
+                                        <span class="text-xs">🌿</span>
+                                    </div>
+                                    <div class="w-10 h-14 bg-gradient-to-br from-green-100 to-emerald-200 rounded shadow-sm border border-emerald-300 flex items-center justify-center">
+                                        <span class="text-xs">🌿</span>
+                                    </div>
+                                    <div class="w-10 h-14 bg-gradient-to-br from-green-100 to-emerald-200 rounded shadow-sm border border-emerald-300 flex items-center justify-center">
+                                        <span class="text-xs">🌿</span>
+                                    </div>
+                                    <div class="w-10 h-14 bg-gradient-to-br from-green-100 to-emerald-200 rounded shadow-sm border border-emerald-300 flex items-center justify-center">
+                                        <span class="text-xs">🌿</span>
+                                    </div>
+                                    <div class="w-10 h-14 bg-gradient-to-br from-green-100 to-emerald-200 rounded shadow-sm border border-emerald-300 flex items-center justify-center">
+                                        <span class="text-xs">🌿</span>
+                                    </div>
+                                    <div class="w-10 h-14 bg-gradient-to-br from-green-100 to-emerald-200 rounded shadow-sm border border-emerald-300 flex items-center justify-center">
+                                        <span class="text-xs">🌿</span>
+                                    </div>
+                                    <div class="w-10 h-14 bg-gradient-to-br from-green-100 to-emerald-200 rounded shadow-sm border border-emerald-300 flex items-center justify-center">
+                                        <span class="text-xs">🌿</span>
+                                    </div>
+                                    <div class="w-10 h-14 bg-gradient-to-br from-green-100 to-emerald-200 rounded shadow-sm border border-emerald-300 flex items-center justify-center">
+                                        <span class="text-xs">🌿</span>
+                                    </div>
+                                    <div class="w-10 h-14 bg-gradient-to-br from-green-100 to-emerald-200 rounded shadow-sm border border-emerald-300 flex items-center justify-center">
+                                        <span class="text-xs">🌿</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
 
-            <!-- Right: Card Search -->
+            <!-- Right: Card Suggestions -->
             <div class="col-span-3">
-                <div class="bg-white rounded-lg shadow-md p-6 sticky top-24">
-                    <h3 class="text-lg font-bold text-gray-900 mb-4">新增卡片</h3>
-                    
-                    <div class="mb-4">
-                        <input type="text" placeholder="搜尋卡片..." class="w-full border border-gray-300 rounded-md px-3 py-2 text-sm" onkeyup="searchCards(this.value)">
-                    </div>
-
-                    <div class="space-y-2 mb-4">
-                        <button class="w-full text-left px-3 py-2 rounded-md bg-green-50 text-green-700 hover:bg-green-100 text-sm font-medium">
-                            寶可夢
-                        </button>
-                        <button class="w-full text-left px-3 py-2 rounded-md hover:bg-gray-100 text-sm">
-                            訓練師
-                        </button>
-                        <button class="w-full text-left px-3 py-2 rounded-md hover:bg-gray-100 text-sm">
-                            能量
+                <div class="bg-white rounded-lg shadow-md p-6 sticky top-24 max-h-[calc(100vh-120px)] overflow-y-auto">
+                    <div class="flex items-center justify-between mb-4">
+                        <h3 class="text-lg font-bold text-gray-900">建議卡片</h3>
+                        <button onclick="openCardSearch()" class="text-blue-600 hover:text-blue-800 text-sm font-medium">
+                            + 搜尋
                         </button>
                     </div>
 
-                    <div id="searchResults" class="space-y-2 max-h-96 overflow-y-auto">
-                        <!-- Search Results -->
-                        <div class="text-center py-4 text-gray-400 text-sm">
-                            輸入關鍵字搜尋卡片
+                    <!-- Tabs -->
+                    <div class="flex space-x-2 mb-4 border-b">
+                        <button onclick="switchSuggestionTab('event')" id="tab-event" class="px-3 py-2 text-sm font-medium border-b-2 border-blue-600 text-blue-600">
+                            比賽推薦
+                        </button>
+                        <button onclick="switchSuggestionTab('related')" id="tab-related" class="px-3 py-2 text-sm font-medium text-gray-600 hover:text-gray-900">
+                            相關卡片
+                        </button>
+                    </div>
+
+                    <!-- Event-based Suggestions -->
+                    <div id="eventSuggestions" class="space-y-3">
+                        <div class="text-xs text-gray-500 mb-2">基於「香港錦標賽 2026」冠軍牌組</div>
+                        
+                        <div class="flex items-center justify-between p-2 bg-purple-50 rounded-lg border border-purple-200 hover:bg-purple-100 cursor-pointer transition-all" onclick="addSuggestedCard(1)">
+                            <div class="flex items-center space-x-2">
+                                <img src="https://asia.pokemon-card.com/hk/card-img/hk00017762.png" alt="Card" class="w-10 h-14 object-cover rounded shadow-sm">
+                                <div>
+                                    <div class="font-medium text-xs">莉佳的霸王花ex</div>
+                                    <div class="text-xs text-gray-500">主力寶可夢</div>
+                                    <span class="text-xs bg-purple-100 text-purple-700 px-1.5 py-0.5 rounded-full">熱門</span>
+                                </div>
+                            </div>
+                            <svg class="w-5 h-5 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"></path>
+                            </svg>
+                        </div>
+
+                        <div class="flex items-center justify-between p-2 bg-purple-50 rounded-lg border border-purple-200 hover:bg-purple-100 cursor-pointer transition-all" onclick="addSuggestedCard(2)">
+                            <div class="flex items-center space-x-2">
+                                <img src="https://asia.pokemon-card.com/hk/card-img/hk00017755.png" alt="Card" class="w-10 h-14 object-cover rounded shadow-sm">
+                                <div>
+                                    <div class="font-medium text-xs">進化之歡騰</div>
+                                    <div class="text-xs text-gray-500">加速進化</div>
+                                    <span class="text-xs bg-purple-100 text-purple-700 px-1.5 py-0.5 rounded-full">熱門</span>
+                                </div>
+                            </div>
+                            <svg class="w-5 h-5 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"></path>
+                            </svg>
+                        </div>
+
+                        <div class="flex items-center justify-between p-2 bg-purple-50 rounded-lg border border-purple-200 hover:bg-purple-100 cursor-pointer transition-all" onclick="addSuggestedCard(3)">
+                            <div class="flex items-center space-x-2">
+                                <img src="https://asia.pokemon-card.com/hk/card-img/hk00017751.png" alt="Card" class="w-10 h-14 object-cover rounded shadow-sm">
+                                <div>
+                                    <div class="font-medium text-xs">超級球</div>
+                                    <div class="text-xs text-gray-500">搜尋寶可夢</div>
+                                    <span class="text-xs bg-purple-100 text-purple-700 px-1.5 py-0.5 rounded-full">必備</span>
+                                </div>
+                            </div>
+                            <svg class="w-5 h-5 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"></path>
+                            </svg>
+                        </div>
+
+                        <div class="text-xs text-gray-500 mt-4 mb-2">其他熱門選擇</div>
+
+                        <div class="flex items-center justify-between p-2 bg-gray-50 rounded-lg border border-gray-200 hover:bg-gray-100 cursor-pointer transition-all" onclick="addSuggestedCard(4)">
+                            <div class="flex items-center space-x-2">
+                                <img src="https://asia.pokemon-card.com/hk/card-img/hk00017750.png" alt="Card" class="w-10 h-14 object-cover rounded shadow-sm">
+                                <div>
+                                    <div class="font-medium text-xs">莉佳</div>
+                                    <div class="text-xs text-gray-500">抽牌支援</div>
+                                    <span class="text-xs bg-blue-100 text-blue-700 px-1.5 py-0.5 rounded-full">80%</span>
+                                </div>
+                            </div>
+                            <svg class="w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"></path>
+                            </svg>
+                        </div>
+
+                        <div class="flex items-center justify-between p-2 bg-gray-50 rounded-lg border border-gray-200 hover:bg-gray-100 cursor-pointer transition-all" onclick="addSuggestedCard(5)">
+                            <div class="flex items-center space-x-2">
+                                <div class="w-10 h-14 bg-gradient-to-br from-green-100 to-emerald-200 rounded shadow-sm flex items-center justify-center">
+                                    <span class="text-lg">🌿</span>
+                                </div>
+                                <div>
+                                    <div class="font-medium text-xs">基本草能量</div>
+                                    <div class="text-xs text-gray-500">能量卡</div>
+                                    <span class="text-xs bg-green-100 text-green-700 px-1.5 py-0.5 rounded-full">必備</span>
+                                </div>
+                            </div>
+                            <svg class="w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"></path>
+                            </svg>
+                        </div>
+                    </div>
+
+                    <!-- Related Cards Suggestions -->
+                    <div id="relatedSuggestions" class="hidden space-y-3">
+                        <div class="text-xs text-gray-500 mb-2">基於目前牌組內容推薦</div>
+                        
+                        <div class="flex items-center justify-between p-2 bg-green-50 rounded-lg border border-green-200 hover:bg-green-100 cursor-pointer transition-all" onclick="addSuggestedCard(6)">
+                            <div class="flex items-center space-x-2">
+                                <img src="https://asia.pokemon-card.com/hk/card-img/hk00017760.png" alt="Card" class="w-10 h-14 object-cover rounded shadow-sm">
+                                <div>
+                                    <div class="font-medium text-xs">莉佳的走路草</div>
+                                    <div class="text-xs text-gray-500">進化鏈前身</div>
+                                    <span class="text-xs bg-green-100 text-green-700 px-1.5 py-0.5 rounded-full">配套</span>
+                                </div>
+                            </div>
+                            <svg class="w-5 h-5 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"></path>
+                            </svg>
+                        </div>
+
+                        <div class="flex items-center justify-between p-2 bg-green-50 rounded-lg border border-green-200 hover:bg-green-100 cursor-pointer transition-all" onclick="addSuggestedCard(7)">
+                            <div class="flex items-center space-x-2">
+                                <img src="https://asia.pokemon-card.com/hk/card-img/hk00017761.png" alt="Card" class="w-10 h-14 object-cover rounded shadow-sm">
+                                <div>
+                                    <div class="font-medium text-xs">莉佳的臭臭花</div>
+                                    <div class="text-xs text-gray-500">中間進化</div>
+                                    <span class="text-xs bg-green-100 text-green-700 px-1.5 py-0.5 rounded-full">配套</span>
+                                </div>
+                            </div>
+                            <svg class="w-5 h-5 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"></path>
+                            </svg>
+                        </div>
+
+                        <div class="text-xs text-gray-500 mt-4 mb-2">能量配套</div>
+
+                        <div class="flex items-center justify-between p-2 bg-gray-50 rounded-lg border border-gray-200 hover:bg-gray-100 cursor-pointer transition-all" onclick="addSuggestedCard(8)">
+                            <div class="flex items-center space-x-2">
+                                <img src="https://asia.pokemon-card.com/hk/card-img/hk00017760.png" alt="Card" class="w-10 h-14 object-cover rounded shadow-sm">
+                                <div>
+                                    <div class="font-medium text-xs">治療能量</div>
+                                    <div class="text-xs text-gray-500">特殊能量</div>
+                                    <span class="text-xs bg-yellow-100 text-yellow-700 px-1.5 py-0.5 rounded-full">選配</span>
+                                </div>
+                            </div>
+                            <svg class="w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"></path>
+                            </svg>
                         </div>
                     </div>
                 </div>
@@ -493,6 +866,70 @@
     </div>
 
     <script>
+        let currentView = 'list';
+        let currentSuggestionTab = 'event';
+
+        function switchView(view) {
+            currentView = view;
+            
+            // Update view buttons
+            document.getElementById('view-list').className = view === 'list' 
+                ? 'px-3 py-1 rounded bg-white shadow-sm text-sm font-medium text-gray-900'
+                : 'px-3 py-1 rounded text-sm font-medium text-gray-600 hover:text-gray-900';
+            document.getElementById('view-grid').className = view === 'grid'
+                ? 'px-3 py-1 rounded bg-white shadow-sm text-sm font-medium text-gray-900'
+                : 'px-3 py-1 rounded text-sm font-medium text-gray-600 hover:text-gray-900';
+            document.getElementById('view-visual').className = view === 'visual'
+                ? 'px-3 py-1 rounded bg-white shadow-sm text-sm font-medium text-gray-900'
+                : 'px-3 py-1 rounded text-sm font-medium text-gray-600 hover:text-gray-900';
+            
+            // Toggle view visibility
+            document.getElementById('listView').classList.toggle('hidden', view !== 'list');
+            document.getElementById('gridView').classList.toggle('hidden', view !== 'grid');
+            document.getElementById('visualView').classList.toggle('hidden', view !== 'visual');
+        }
+
+        function switchSuggestionTab(tab) {
+            currentSuggestionTab = tab;
+            
+            // Update tab buttons
+            if (tab === 'event') {
+                document.getElementById('tab-event').className = 'px-3 py-2 text-sm font-medium border-b-2 border-blue-600 text-blue-600';
+                document.getElementById('tab-related').className = 'px-3 py-2 text-sm font-medium text-gray-600 hover:text-gray-900';
+                document.getElementById('eventSuggestions').classList.remove('hidden');
+                document.getElementById('relatedSuggestions').classList.add('hidden');
+            } else {
+                document.getElementById('tab-event').className = 'px-3 py-2 text-sm font-medium text-gray-600 hover:text-gray-900';
+                document.getElementById('tab-related').className = 'px-3 py-2 text-sm font-medium border-b-2 border-blue-600 text-blue-600';
+                document.getElementById('eventSuggestions').classList.add('hidden');
+                document.getElementById('relatedSuggestions').classList.remove('hidden');
+            }
+        }
+
+        function addSuggestedCard(cardId) {
+            // Show success notification
+            const notification = document.createElement('div');
+            notification.className = 'fixed top-20 right-4 bg-green-600 text-white px-4 py-2 rounded-lg shadow-lg z-50 text-sm';
+            notification.innerHTML = '✓ 卡片已加入牌組';
+            document.body.appendChild(notification);
+            
+            setTimeout(() => {
+                notification.remove();
+            }, 2000);
+
+            // In production, this would add the card to the deck
+            console.log('Adding suggested card:', cardId);
+        }
+
+        function openCardSearch() {
+            alert('開啟卡片搜尋功能（開發中）');
+        }
+
+        function showCardPreview(cardId) {
+            console.log('Preview card:', cardId);
+            // In production, this would show a card preview modal
+        }
+
         function openImportModal() {
             document.getElementById('importModal').classList.remove('hidden');
         }
