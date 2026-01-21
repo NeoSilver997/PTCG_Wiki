@@ -1,0 +1,846 @@
+<!DOCTYPE html>
+<html lang="zh-HK">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>編輯卡片 - 管理後台 | PTCG CardDB</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Noto Sans TC', sans-serif;
+        }
+        .tab-active {
+            border-bottom: 2px solid #2563eb;
+            color: #2563eb;
+            background-color: #eff6ff;
+        }
+    </style>
+</head>
+<body class="bg-gray-50 min-w-[1280px]">
+    <!-- Navigation -->
+    <nav class="bg-gradient-to-r from-purple-700 to-indigo-800 shadow-lg sticky top-0 z-50">
+        <div class="max-w-[1920px] mx-auto px-6">
+            <div class="flex items-center justify-between h-16">
+                <div class="flex items-center space-x-8">
+                    <div class="flex items-center">
+                        <span class="text-2xl font-bold text-white">⚙️ PTCG</span>
+                        <span class="ml-2 text-purple-200">管理後台</span>
+                    </div>
+                    <div class="text-purple-200 text-sm">
+                        <a href="admin.html" class="hover:text-white">卡片管理</a>
+                        <span class="mx-2">/</span>
+                        <span class="text-white">編輯卡片</span>
+                    </div>
+                </div>
+                <div class="flex items-center space-x-4">
+                    <a href="admin.html" class="text-purple-200 hover:text-white px-3 py-2">返回列表</a>
+                    <div class="flex items-center space-x-2 bg-white/10 px-4 py-2 rounded-lg">
+                        <span class="text-white font-medium">Admin</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <div class="max-w-[1800px] mx-auto px-6 py-8">
+        <div class="grid grid-cols-12 gap-8">
+            <!-- Left: Preview -->
+            <div class="col-span-4">
+                <div class="bg-white rounded-lg shadow-lg p-6 sticky top-24">
+                    <h3 class="text-lg font-bold text-gray-900 mb-4">卡片預覽</h3>
+                    
+                    <!-- Card Image Upload -->
+                    <div class="mb-4">
+                        <label class="block text-sm font-medium text-gray-700 mb-2">卡片圖片</label>
+                        <div id="imagePreviewContainer" class="aspect-[245/342] rounded-lg overflow-hidden bg-gradient-to-br from-gray-100 to-gray-200 border-2 border-dashed border-gray-300 flex items-center justify-center cursor-pointer hover:border-blue-500">
+                            <div class="text-center">
+                                <svg class="mx-auto h-12 w-12 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
+                                </svg>
+                                <p class="mt-2 text-sm text-gray-600">點擊上傳圖片</p>
+                                <p class="text-xs text-gray-500">或拖放圖片到此處</p>
+                            </div>
+                        </div>
+                        <input type="file" id="imageUpload" accept="image/*" class="hidden">
+                    </div>
+
+                    <!-- Variant Selector -->
+                    <div class="mb-4">
+                        <label class="text-sm font-medium text-gray-700 mb-2 block">卡片版本</label>
+                        <select class="w-full border border-gray-300 rounded-md px-3 py-2 text-sm">
+                            <option>普通版</option>
+                            <option>反閃版</option>
+                            <option>閃卡版</option>
+                            <option>全圖版</option>
+                            <option>SAR</option>
+                            <option>SR</option>
+                            <option>UR</option>
+                        </select>
+                    </div>
+
+                    <!-- Quick Info -->
+                    <div class="bg-blue-50 rounded-lg p-4 mb-4 border border-blue-200">
+                        <div class="text-sm text-gray-600 mb-1">卡片編號</div>
+                        <div id="previewCardNumber" class="text-lg font-bold text-blue-600">MC J005/742</div>
+                    </div>
+
+                    <div class="space-y-2 text-sm">
+                        <div class="flex justify-between">
+                            <span class="text-gray-600">狀態:</span>
+                            <span class="font-medium text-green-600">已發布</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <span class="text-gray-600">建立時間:</span>
+                            <span class="font-medium">2026-01-20</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <span class="text-gray-600">最後更新:</span>
+                            <span class="font-medium">2026-01-21</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right: Form -->
+            <div class="col-span-8">
+                <div class="bg-white rounded-lg shadow-lg">
+                    <!-- Tabs -->
+                    <div class="border-b">
+                        <div class="flex space-x-8 px-8 pt-6">
+                            <button class="tab-button tab-active pb-3 font-medium px-4" data-tab="basic">基本資料</button>
+                            <button class="tab-button pb-3 font-medium text-gray-600 hover:text-blue-600 px-4" data-tab="details">詳細資料</button>
+                            <button class="tab-button pb-3 font-medium text-gray-600 hover:text-blue-600 px-4" data-tab="related">相關卡片</button>
+                            <button class="tab-button pb-3 font-medium text-gray-600 hover:text-blue-600 px-4" data-tab="variants">語言版本</button>
+                            <button class="tab-button pb-3 font-medium text-gray-600 hover:text-blue-600 px-4" data-tab="pricing">價格管理</button>
+                        </div>
+                    </div>
+
+                    <!-- Basic Info Tab -->
+                    <div id="basic-content" class="tab-content p-8">
+                        <div class="grid grid-cols-2 gap-6">
+                            <div class="col-span-2">
+                                <label class="block text-sm font-medium text-gray-700 mb-2">卡片名稱 (繁體中文) *</label>
+                                <input type="text" value="莉佳的霸王花ex" class="w-full border border-gray-300 rounded-md px-4 py-2" required>
+                            </div>
+
+                            <div class="col-span-2">
+                                <label class="block text-sm font-medium text-gray-700 mb-2">英文名稱</label>
+                                <input type="text" value="Erika's Vileplume ex" class="w-full border border-gray-300 rounded-md px-4 py-2">
+                            </div>
+
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-2">卡片編號 *</label>
+                                <input type="text" value="MC J005/742" class="w-full border border-gray-300 rounded-md px-4 py-2" required>
+                            </div>
+
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-2">WebCard ID</label>
+                                <input type="text" value="hk00017762" class="w-full border border-gray-300 rounded-md px-4 py-2" placeholder="例: hk00017762">
+                            </div>
+
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-2">擴充包 *</label>
+                                <select class="w-full border border-gray-300 rounded-md px-4 py-2">
+                                    <option selected>MC 初階牌組 100對戰收藏</option>
+                                    <option>SV08 超電突破</option>
+                                    <option>SV07 太陽能冠軍</option>
+                                    <option>SV06 面具變幻</option>
+                                </select>
+                            </div>
+
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-2">語言</label>
+                                <select class="w-full border border-gray-300 rounded-md px-4 py-2">
+                                    <option value="ZH-HK" selected>繁體中文 (香港)</option>
+                                    <option value="JA-JP">日文</option>
+                                    <option value="EN-US">英文</option>
+                                </select>
+                            </div>
+
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-2">超級類型 *</label>
+                                <select class="w-full border border-gray-300 rounded-md px-4 py-2">
+                                    <option selected>寶可夢</option>
+                                    <option>訓練師</option>
+                                    <option>能量</option>
+                                </select>
+                            </div>
+
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-2">子類型</label>
+                                <select class="w-full border border-gray-300 rounded-md px-4 py-2">
+                                    <option>基本</option>
+                                    <option selected>1階進化</option>
+                                    <option>2階進化</option>
+                                    <option>V</option>
+                                    <option>VMAX</option>
+                                    <option>VSTAR</option>
+                                    <option>ex</option>
+                                </select>
+                            </div>
+
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-2">稀有度 *</label>
+                                <select class="w-full border border-gray-300 rounded-md px-4 py-2">
+                                    <option>C - 普通</option>
+                                    <option>U - 非普通</option>
+                                    <option>R - 稀有</option>
+                                    <option>RR - 雙倍稀有</option>
+                                    <option>RRR - 三倍稀有</option>
+                                    <option>SR - 超級稀有</option>
+                                    <option selected>SAR - 特別插圖稀有</option>
+                                    <option>UR - 極稀有</option>
+                                </select>
+                            </div>
+
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-2">版本類型</label>
+                                <select class="w-full border border-gray-300 rounded-md px-4 py-2">
+                                    <option>普通版</option>
+                                    <option>反閃版</option>
+                                    <option>閃卡版</option>
+                                    <option>全圖版</option>
+                                    <option selected>特別插圖</option>
+                                </select>
+                            </div>
+
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-2">適用標記</label>
+                                <input type="text" value="J" class="w-full border border-gray-300 rounded-md px-4 py-2" placeholder="例: J, H, G">
+                            </div>
+
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-2">發布狀態</label>
+                                <select class="w-full border border-gray-300 rounded-md px-4 py-2">
+                                    <option>草稿</option>
+                                    <option selected>已發布</option>
+                                    <option>待審核</option>
+                                    <option>已隱藏</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Details Tab -->
+                    <div id="details-content" class="tab-content p-8 hidden">
+                        <div class="grid grid-cols-2 gap-6">
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-2">HP</label>
+                                <input type="number" value="310" class="w-full border border-gray-300 rounded-md px-4 py-2">
+                            </div>
+
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-2">屬性</label>
+                                <select multiple class="w-full border border-gray-300 rounded-md px-4 py-2 h-24">
+                                    <option selected>草</option>
+                                    <option>火</option>
+                                    <option>水</option>
+                                    <option>雷</option>
+                                    <option>超</option>
+                                    <option>鬥</option>
+                                    <option>惡</option>
+                                    <option>鋼</option>
+                                    <option>妖</option>
+                                    <option>龍</option>
+                                    <option>無</option>
+                                </select>
+                            </div>
+
+                            <div class="col-span-2">
+                                <label class="block text-sm font-medium text-gray-700 mb-2">進化自</label>
+                                <input type="text" value="莉佳的臭臭花" class="w-full border border-gray-300 rounded-md px-4 py-2">
+                            </div>
+
+                            <div class="col-span-2">
+                                <label class="block text-sm font-medium text-gray-700 mb-2">特性名稱</label>
+                                <input type="text" value="花粉危害" class="w-full border border-gray-300 rounded-md px-4 py-2">
+                            </div>
+
+                            <div class="col-span-2">
+                                <label class="block text-sm font-medium text-gray-700 mb-2">特性效果</label>
+                                <textarea rows="3" class="w-full border border-gray-300 rounded-md px-4 py-2">只要這隻寶可夢在戰鬥場上，雙方的手牌最多只能保留4張。若一方的手牌有5張以上，則該玩家將手牌丟棄至4張為止。</textarea>
+                            </div>
+
+                            <!-- Attacks -->
+                            <div class="col-span-2">
+                                <label class="block text-sm font-medium text-gray-700 mb-2">招式</label>
+                                <div class="space-y-4">
+                                    <div class="border rounded-lg p-4 bg-gray-50">
+                                        <div class="grid grid-cols-2 gap-4">
+                                            <div>
+                                                <label class="block text-xs font-medium text-gray-600 mb-1">招式名稱</label>
+                                                <input type="text" value="花瓣暴風雪" class="w-full border border-gray-300 rounded-md px-3 py-2 text-sm">
+                                            </div>
+                                            <div>
+                                                <label class="block text-xs font-medium text-gray-600 mb-1">傷害</label>
+                                                <input type="text" value="180" class="w-full border border-gray-300 rounded-md px-3 py-2 text-sm">
+                                            </div>
+                                            <div class="col-span-2">
+                                                <label class="block text-xs font-medium text-gray-600 mb-1">能量需求</label>
+                                                <input type="text" value="草,草,無" class="w-full border border-gray-300 rounded-md px-3 py-2 text-sm" placeholder="用逗號分隔">
+                                            </div>
+                                            <div class="col-span-2">
+                                                <label class="block text-xs font-medium text-gray-600 mb-1">招式效果</label>
+                                                <textarea rows="2" class="w-full border border-gray-300 rounded-md px-3 py-2 text-sm">這隻寶可夢身上附加的能量全部丟棄。</textarea>
+                                            </div>
+                                        </div>
+                                        <button class="mt-2 text-red-600 text-sm hover:text-red-800">刪除招式</button>
+                                    </div>
+                                    <button class="w-full border-2 border-dashed border-gray-300 rounded-lg py-3 text-gray-600 hover:border-blue-500 hover:text-blue-600">
+                                        + 新增招式
+                                    </button>
+                                </div>
+                            </div>
+
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-2">弱點</label>
+                                <input type="text" value="火 ×2" class="w-full border border-gray-300 rounded-md px-4 py-2">
+                            </div>
+
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-2">抵抗</label>
+                                <input type="text" class="w-full border border-gray-300 rounded-md px-4 py-2" placeholder="無">
+                            </div>
+
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-2">撤退費用</label>
+                                <input type="text" value="3" class="w-full border border-gray-300 rounded-md px-4 py-2">
+                            </div>
+
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-2">繪師</label>
+                                <input type="text" value="AKIRA EGAWA" class="w-full border border-gray-300 rounded-md px-4 py-2">
+                            </div>
+
+                            <div class="col-span-2">
+                                <label class="block text-sm font-medium text-gray-700 mb-2">風味文字</label>
+                                <textarea rows="2" class="w-full border border-gray-300 rounded-md px-4 py-2"></textarea>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Related Cards Tab -->
+                    <div id="related-content" class="tab-content p-8 hidden">
+                        <!-- Evolution Chain -->
+                        <div class="mb-8">
+                            <div class="flex items-center justify-between mb-4">
+                                <h3 class="text-lg font-bold text-gray-900 flex items-center">
+                                    <span class="mr-2">🔗</span>
+                                    進化鏈管理
+                                </h3>
+                                <button class="bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-700 text-sm" onclick="openCardSearchModal('evolution')">
+                                    + 新增進化卡片
+                                </button>
+                            </div>
+                            
+                            <div class="bg-gradient-to-r from-green-50 to-emerald-50 rounded-lg p-6 border border-green-200">
+                                <div class="space-y-4">
+                                    <!-- Pre-evolution -->
+                                    <div>
+                                        <label class="block text-sm font-medium text-gray-700 mb-2">進化自 (前一階段)</label>
+                                        <div id="preEvolutionList" class="space-y-2">
+                                            <div class="flex items-center justify-between p-3 bg-white rounded-lg border">
+                                                <div class="flex items-center space-x-3">
+                                                    <img src="https://asia.pokemon-card.com/hk/card-img/hk00017761.png" alt="Card" class="w-12 h-16 object-cover rounded shadow-sm">
+                                                    <div>
+                                                        <div class="font-medium text-sm">莉佳的臭臭花</div>
+                                                        <div class="text-xs text-gray-500">MC J004/742</div>
+                                                        <span class="text-xs bg-green-100 text-green-700 px-2 py-0.5 rounded-full font-medium">1階進化</span>
+                                                    </div>
+                                                </div>
+                                                <button class="text-red-600 hover:text-red-800">
+                                                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                                                    </svg>
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Evolution from base -->
+                                    <div>
+                                        <label class="block text-sm font-medium text-gray-700 mb-2">基本階段</label>
+                                        <div id="baseEvolutionList" class="space-y-2">
+                                            <div class="flex items-center justify-between p-3 bg-white rounded-lg border">
+                                                <div class="flex items-center space-x-3">
+                                                    <img src="https://asia.pokemon-card.com/hk/card-img/hk00017760.png" alt="Card" class="w-12 h-16 object-cover rounded shadow-sm">
+                                                    <div>
+                                                        <div class="font-medium text-sm">莉佳的走路草</div>
+                                                        <div class="text-xs text-gray-500">MC J003/742</div>
+                                                        <span class="text-xs bg-blue-100 text-blue-700 px-2 py-0.5 rounded-full font-medium">基本</span>
+                                                    </div>
+                                                </div>
+                                                <button class="text-red-600 hover:text-red-800">
+                                                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                                                    </svg>
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Next evolution -->
+                                    <div>
+                                        <label class="block text-sm font-medium text-gray-700 mb-2">進化為 (下一階段)</label>
+                                        <div id="nextEvolutionList" class="space-y-2">
+                                            <div class="text-center py-8 text-gray-400 border-2 border-dashed border-gray-300 rounded-lg">
+                                                無下一階段進化
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Related Trainer Cards -->
+                        <div class="mb-8">
+                            <div class="flex items-center justify-between mb-4">
+                                <h3 class="text-lg font-bold text-gray-900 flex items-center">
+                                    <span class="mr-2">⚙️</span>
+                                    相關訓練師卡
+                                </h3>
+                                <button class="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 text-sm" onclick="openCardSearchModal('trainer')">
+                                    + 新增訓練師卡
+                                </button>
+                            </div>
+                            
+                            <div id="trainerCardsList" class="grid grid-cols-4 gap-4">
+                                <!-- Trainer Card 1 -->
+                                <div class="bg-white border rounded-lg overflow-hidden shadow-sm relative group">
+                                    <img src="https://asia.pokemon-card.com/hk/card-img/hk00017750.png" alt="Card" class="w-full aspect-[245/342] object-cover">
+                                    <div class="p-3">
+                                        <div class="font-medium text-sm truncate">莉佳</div>
+                                        <div class="text-xs text-gray-500 mb-1">MC J095/742</div>
+                                        <span class="text-xs bg-pink-100 text-pink-700 px-2 py-0.5 rounded-full font-medium">支援者</span>
+                                    </div>
+                                    <button class="absolute top-2 right-2 bg-red-600 text-white p-1.5 rounded-full opacity-0 group-hover:opacity-100 transition-opacity shadow-lg">
+                                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                                        </svg>
+                                    </button>
+                                </div>
+
+                                <!-- Trainer Card 2 -->
+                                <div class="bg-white border rounded-lg overflow-hidden shadow-sm relative group">
+                                    <img src="https://asia.pokemon-card.com/hk/card-img/hk00017751.png" alt="Card" class="w-full aspect-[245/342] object-cover">
+                                    <div class="p-3">
+                                        <div class="font-medium text-sm truncate">進化之歡騰</div>
+                                        <div class="text-xs text-gray-500 mb-1">MC J096/742</div>
+                                        <span class="text-xs bg-amber-100 text-amber-700 px-2 py-0.5 rounded-full font-medium">道具</span>
+                                    </div>
+                                    <button class="absolute top-2 right-2 bg-red-600 text-white p-1.5 rounded-full opacity-0 group-hover:opacity-100 transition-opacity shadow-lg">
+                                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                                        </svg>
+                                    </button>
+                                </div>
+
+                                <!-- Add more placeholder -->
+                                <div class="border-2 border-dashed border-gray-300 rounded-lg aspect-[245/342] flex items-center justify-center cursor-pointer hover:border-blue-500 hover:bg-blue-50" onclick="openCardSearchModal('trainer')">
+                                    <div class="text-center text-gray-400">
+                                        <svg class="mx-auto h-12 w-12 mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path>
+                                        </svg>
+                                        <p class="text-sm">新增卡片</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Related Energy Cards -->
+                        <div>
+                            <div class="flex items-center justify-between mb-4">
+                                <h3 class="text-lg font-bold text-gray-900 flex items-center">
+                                    <span class="mr-2">⚡</span>
+                                    推薦能量卡
+                                </h3>
+                                <button class="bg-purple-600 text-white px-4 py-2 rounded-lg hover:bg-purple-700 text-sm" onclick="openCardSearchModal('energy')">
+                                    + 新增能量卡
+                                </button>
+                            </div>
+                            
+                            <div id="energyCardsList" class="grid grid-cols-4 gap-4">
+                                <!-- Energy Card 1 -->
+                                <div class="bg-white border rounded-lg overflow-hidden shadow-sm relative group">
+                                    <div class="w-full aspect-[245/342] bg-gradient-to-br from-green-100 to-emerald-200 flex items-center justify-center">
+                                        <span class="text-8xl">🌿</span>
+                                    </div>
+                                    <div class="p-3">
+                                        <div class="font-medium text-sm truncate">基本草能量</div>
+                                        <div class="text-xs text-gray-500 mb-1">MC J110/742</div>
+                                        <span class="text-xs bg-green-100 text-green-700 px-2 py-0.5 rounded-full font-medium">基本能量</span>
+                                    </div>
+                                    <button class="absolute top-2 right-2 bg-red-600 text-white p-1.5 rounded-full opacity-0 group-hover:opacity-100 transition-opacity shadow-lg">
+                                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                                        </svg>
+                                    </button>
+                                </div>
+
+                                <!-- Energy Card 2 -->
+                                <div class="bg-white border rounded-lg overflow-hidden shadow-sm relative group">
+                                    <img src="https://asia.pokemon-card.com/hk/card-img/hk00017754.png" alt="Card" class="w-full aspect-[245/342] object-cover">
+                                    <div class="p-3">
+                                        <div class="font-medium text-sm truncate">治療能量</div>
+                                        <div class="text-xs text-gray-500 mb-1">MC J099/742</div>
+                                        <span class="text-xs bg-emerald-100 text-emerald-700 px-2 py-0.5 rounded-full font-medium">特殊能量</span>
+                                    </div>
+                                    <button class="absolute top-2 right-2 bg-red-600 text-white p-1.5 rounded-full opacity-0 group-hover:opacity-100 transition-opacity shadow-lg">
+                                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                                        </svg>
+                                    </button>
+                                </div>
+
+                                <!-- Add more placeholder -->
+                                <div class="border-2 border-dashed border-gray-300 rounded-lg aspect-[245/342] flex items-center justify-center cursor-pointer hover:border-purple-500 hover:bg-purple-50" onclick="openCardSearchModal('energy')">
+                                    <div class="text-center text-gray-400">
+                                        <svg class="mx-auto h-12 w-12 mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path>
+                                        </svg>
+                                        <p class="text-sm">新增能量卡</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Language Variants Tab -->
+                    <div id="variants-content" class="tab-content p-8 hidden">
+                        <div class="mb-6">
+                            <h3 class="text-lg font-bold text-gray-900 mb-4">語言版本管理</h3>
+                            <button class="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700">+ 新增語言版本</button>
+                        </div>
+
+                        <div class="space-y-4">
+                            <!-- Variant 1 -->
+                            <div class="border rounded-lg p-4 bg-gradient-to-r from-blue-50 to-indigo-50">
+                                <div class="flex items-center justify-between mb-3">
+                                    <div class="flex items-center space-x-3">
+                                        <span class="px-3 py-1 bg-blue-600 text-white rounded-full text-sm font-medium">ZH-HK</span>
+                                        <span class="font-bold">繁體中文 (香港)</span>
+                                        <span class="text-green-600 text-sm">✓ 已發布</span>
+                                    </div>
+                                    <div class="space-x-2">
+                                        <button class="text-blue-600 hover:text-blue-800">編輯</button>
+                                        <button class="text-red-600 hover:text-red-800">刪除</button>
+                                    </div>
+                                </div>
+                                <div class="grid grid-cols-3 gap-4 text-sm">
+                                    <div>
+                                        <span class="text-gray-600">卡片名稱:</span>
+                                        <span class="ml-2 font-medium">莉佳的霸王花ex</span>
+                                    </div>
+                                    <div>
+                                        <span class="text-gray-600">WebCard ID:</span>
+                                        <span class="ml-2 font-medium">hk00017762</span>
+                                    </div>
+                                    <div>
+                                        <span class="text-gray-600">圖片:</span>
+                                        <span class="ml-2 text-green-600">✓ 已上傳</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Variant 2 -->
+                            <div class="border rounded-lg p-4">
+                                <div class="flex items-center justify-between mb-3">
+                                    <div class="flex items-center space-x-3">
+                                        <span class="px-3 py-1 bg-gray-600 text-white rounded-full text-sm font-medium">JA-JP</span>
+                                        <span class="font-bold">日文</span>
+                                        <span class="text-gray-600 text-sm">草稿</span>
+                                    </div>
+                                    <div class="space-x-2">
+                                        <button class="text-blue-600 hover:text-blue-800">編輯</button>
+                                        <button class="text-red-600 hover:text-red-800">刪除</button>
+                                    </div>
+                                </div>
+                                <div class="grid grid-cols-3 gap-4 text-sm">
+                                    <div>
+                                        <span class="text-gray-600">卡片名稱:</span>
+                                        <span class="ml-2 font-medium">エリカのラフレシアex</span>
+                                    </div>
+                                    <div>
+                                        <span class="text-gray-600">WebCard ID:</span>
+                                        <span class="ml-2 font-medium">jp49355</span>
+                                    </div>
+                                    <div>
+                                        <span class="text-gray-600">圖片:</span>
+                                        <span class="ml-2 text-orange-600">待上傳</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Pricing Tab -->
+                    <div id="pricing-content" class="tab-content p-8 hidden">
+                        <div class="mb-6">
+                            <h3 class="text-lg font-bold text-gray-900 mb-4">價格管理</h3>
+                            <button class="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700">+ 新增價格來源</button>
+                        </div>
+
+                        <div class="space-y-6">
+                            <!-- Price by Variant -->
+                            <div>
+                                <h4 class="font-bold text-gray-900 mb-3">普通版 (Normal)</h4>
+                                <div class="space-y-3">
+                                    <div class="grid grid-cols-4 gap-4 border rounded-lg p-4">
+                                        <div>
+                                            <label class="block text-xs font-medium text-gray-600 mb-1">來源</label>
+                                            <input type="text" value="Yuyu-tei" class="w-full border border-gray-300 rounded-md px-3 py-2 text-sm">
+                                        </div>
+                                        <div>
+                                            <label class="block text-xs font-medium text-gray-600 mb-1">價格</label>
+                                            <input type="number" value="1480" class="w-full border border-gray-300 rounded-md px-3 py-2 text-sm">
+                                        </div>
+                                        <div>
+                                            <label class="block text-xs font-medium text-gray-600 mb-1">貨幣</label>
+                                            <select class="w-full border border-gray-300 rounded-md px-3 py-2 text-sm">
+                                                <option selected>JPY</option>
+                                                <option>HKD</option>
+                                                <option>USD</option>
+                                                <option>EUR</option>
+                                            </select>
+                                        </div>
+                                        <div>
+                                            <label class="block text-xs font-medium text-gray-600 mb-1">庫存</label>
+                                            <input type="number" value="12" class="w-full border border-gray-300 rounded-md px-3 py-2 text-sm">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div>
+                                <h4 class="font-bold text-gray-900 mb-3">SAR 版本</h4>
+                                <div class="space-y-3">
+                                    <div class="grid grid-cols-4 gap-4 border rounded-lg p-4 bg-gradient-to-r from-purple-50 to-pink-50">
+                                        <div>
+                                            <label class="block text-xs font-medium text-gray-600 mb-1">來源</label>
+                                            <input type="text" value="Yuyu-tei" class="w-full border border-gray-300 rounded-md px-3 py-2 text-sm">
+                                        </div>
+                                        <div>
+                                            <label class="block text-xs font-medium text-gray-600 mb-1">價格</label>
+                                            <input type="number" value="21800" class="w-full border border-gray-300 rounded-md px-3 py-2 text-sm">
+                                        </div>
+                                        <div>
+                                            <label class="block text-xs font-medium text-gray-600 mb-1">貨幣</label>
+                                            <select class="w-full border border-gray-300 rounded-md px-3 py-2 text-sm">
+                                                <option selected>JPY</option>
+                                                <option>HKD</option>
+                                                <option>USD</option>
+                                                <option>EUR</option>
+                                            </select>
+                                        </div>
+                                        <div>
+                                            <label class="block text-xs font-medium text-gray-600 mb-1">庫存</label>
+                                            <input type="number" value="1" class="w-full border border-gray-300 rounded-md px-3 py-2 text-sm">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Action Buttons -->
+                    <div class="border-t px-8 py-6 bg-gray-50 flex items-center justify-between rounded-b-lg">
+                        <button onclick="window.location.href='admin.html'" class="px-6 py-2 border border-gray-300 rounded-lg hover:bg-gray-100">取消</button>
+                        <div class="space-x-3">
+                            <button class="px-6 py-2 bg-gray-600 text-white rounded-lg hover:bg-gray-700">儲存為草稿</button>
+                            <button class="px-6 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 font-medium shadow-md">發布卡片</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Tab switching
+        document.querySelectorAll('.tab-button').forEach(button => {
+            button.addEventListener('click', () => {
+                // Remove active class from all tabs
+                document.querySelectorAll('.tab-button').forEach(btn => {
+                    btn.classList.remove('tab-active');
+                    btn.classList.add('text-gray-600');
+                });
+                
+                // Add active class to clicked tab
+                button.classList.add('tab-active');
+                button.classList.remove('text-gray-600');
+                
+                // Hide all tab contents
+                document.querySelectorAll('.tab-content').forEach(content => {
+                    content.classList.add('hidden');
+                });
+                
+                // Show selected tab content
+                const tabId = button.getAttribute('data-tab');
+                document.getElementById(tabId + '-content').classList.remove('hidden');
+            });
+        });
+
+        // Image upload preview
+        document.getElementById('imagePreviewContainer').addEventListener('click', () => {
+            document.getElementById('imageUpload').click();
+        });
+
+        document.getElementById('imageUpload').addEventListener('change', (e) => {
+            const file = e.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = (e) => {
+                    document.getElementById('imagePreviewContainer').innerHTML = `
+                        <img src="${e.target.result}" class="w-full h-full object-contain">
+                    `;
+                };
+                reader.readAsDataURL(file);
+            }
+        });
+
+        // Drag and drop
+        const container = document.getElementById('imagePreviewContainer');
+        container.addEventListener('dragover', (e) => {
+            e.preventDefault();
+            container.classList.add('border-blue-500');
+        });
+
+        container.addEventListener('dragleave', () => {
+            container.classList.remove('border-blue-500');
+        });
+
+        container.addEventListener('drop', (e) => {
+            e.preventDefault();
+            container.classList.remove('border-blue-500');
+            const file = e.dataTransfer.files[0];
+            if (file && file.type.startsWith('image/')) {
+                const reader = new FileReader();
+                reader.onload = (e) => {
+                    container.innerHTML = `
+                        <img src="${e.target.result}" class="w-full h-full object-contain">
+                    `;
+                };
+                reader.readAsDataURL(file);
+            }
+        });
+
+        // Card search modal functions
+        function openCardSearchModal(type) {
+            let title = '';
+            let placeholder = '';
+            
+            switch(type) {
+                case 'evolution':
+                    title = '搜尋進化卡片';
+                    placeholder = '輸入卡片名稱或編號...';
+                    break;
+                case 'trainer':
+                    title = '搜尋訓練師卡';
+                    placeholder = '輸入訓練師卡名稱...';
+                    break;
+                case 'energy':
+                    title = '搜尋能量卡';
+                    placeholder = '輸入能量卡名稱...';
+                    break;
+            }
+            
+            // Create modal
+            const modal = document.createElement('div');
+            modal.className = 'fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50';
+            modal.innerHTML = `
+                <div class="bg-white rounded-lg shadow-xl w-[800px] max-h-[80vh] overflow-hidden">
+                    <div class="px-6 py-4 border-b flex items-center justify-between">
+                        <h3 class="text-lg font-bold">${title}</h3>
+                        <button onclick="this.closest('.fixed').remove()" class="text-gray-500 hover:text-gray-700">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                            </svg>
+                        </button>
+                    </div>
+                    <div class="p-6">
+                        <input type="text" placeholder="${placeholder}" class="w-full border border-gray-300 rounded-lg px-4 py-3 mb-4" onkeyup="searchCards(this.value, '${type}')">
+                        <div id="searchResults" class="grid grid-cols-4 gap-4 max-h-96 overflow-y-auto">
+                            <!-- Search results will appear here -->
+                            <div class="col-span-4 text-center py-8 text-gray-400">
+                                輸入關鍵字開始搜尋...
+                            </div>
+                        </div>
+                    </div>
+                    <div class="px-6 py-4 border-t bg-gray-50 flex justify-end">
+                        <button onclick="this.closest('.fixed').remove()" class="px-6 py-2 bg-gray-600 text-white rounded-lg hover:bg-gray-700">
+                            關閉
+                        </button>
+                    </div>
+                </div>
+            `;
+            
+            document.body.appendChild(modal);
+        }
+
+        function searchCards(query, type) {
+            const resultsDiv = document.getElementById('searchResults');
+            
+            if (!query || query.length < 2) {
+                resultsDiv.innerHTML = `
+                    <div class="col-span-4 text-center py-8 text-gray-400">
+                        輸入關鍵字開始搜尋...
+                    </div>
+                `;
+                return;
+            }
+            
+            // Simulate search results (in production, this would be an API call)
+            const mockResults = [
+                { id: 1, name: '莉佳的走路草', number: 'MC J003/742', image: 'hk00017760.png', type: '基本' },
+                { id: 2, name: '莉佳的臭臭花', number: 'MC J004/742', image: 'hk00017761.png', type: '1階進化' },
+                { id: 3, name: '稀有糖果', number: 'MC J097/742', image: 'hk00017752.png', type: '道具' },
+                { id: 4, name: '雙倍綠松石能量', number: 'MC J100/742', image: 'hk00017755.png', type: '特殊能量' }
+            ];
+            
+            const filteredResults = mockResults.filter(card => 
+                card.name.toLowerCase().includes(query.toLowerCase()) ||
+                card.number.toLowerCase().includes(query.toLowerCase())
+            );
+            
+            if (filteredResults.length === 0) {
+                resultsDiv.innerHTML = `
+                    <div class="col-span-4 text-center py-8 text-gray-400">
+                        找不到符合的卡片
+                    </div>
+                `;
+                return;
+            }
+            
+            resultsDiv.innerHTML = filteredResults.map(card => `
+                <div class="bg-white border rounded-lg overflow-hidden cursor-pointer hover:shadow-lg transition-all" onclick="addRelatedCard(${card.id}, '${type}')">
+                    <img src="https://asia.pokemon-card.com/hk/card-img/${card.image}" alt="${card.name}" class="w-full aspect-[245/342] object-cover">
+                    <div class="p-2">
+                        <div class="font-medium text-xs truncate">${card.name}</div>
+                        <div class="text-[10px] text-gray-500">${card.number}</div>
+                        <div class="text-[10px] text-blue-600 font-medium">${card.type}</div>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function addRelatedCard(cardId, type) {
+            console.log(`Adding card ${cardId} to ${type} list`);
+            // Close modal
+            document.querySelector('.fixed.inset-0').remove();
+            
+            // Show success notification
+            const notification = document.createElement('div');
+            notification.className = 'fixed top-4 right-4 bg-green-600 text-white px-6 py-3 rounded-lg shadow-lg z-50';
+            notification.textContent = '✓ 卡片已新增';
+            document.body.appendChild(notification);
+            
+            setTimeout(() => {
+                notification.remove();
+            }, 2000);
+            
+            // In production, this would add the card to the appropriate list
+        }
+    </script>
+</body>
+</html>

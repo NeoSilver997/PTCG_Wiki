@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="zh-HK">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>管理後台 - PTCG CardDB</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Noto Sans TC', sans-serif;
+        }
+    </style>
+</head>
+<body class="bg-gray-50 min-w-[1280px]">
+    <!-- Navigation -->
+    <nav class="bg-gradient-to-r from-purple-700 to-indigo-800 shadow-lg sticky top-0 z-50">
+        <div class="max-w-[1920px] mx-auto px-6">
+            <div class="flex items-center justify-between h-16">
+                <div class="flex items-center space-x-8">
+                    <div class="flex items-center">
+                        <span class="text-2xl font-bold text-white">⚙️ PTCG</span>
+                        <span class="ml-2 text-purple-200">管理後台</span>
+                    </div>
+                    <div class="hidden md:flex space-x-6">
+                        <a href="admin.html" class="text-white font-medium border-b-2 border-white px-3 py-2">卡片管理</a>
+                        <a href="#" class="text-purple-200 hover:text-white px-3 py-2">擴充包管理</a>
+                        <a href="#" class="text-purple-200 hover:text-white px-3 py-2">比賽管理</a>
+                        <a href="#" class="text-purple-200 hover:text-white px-3 py-2">用戶管理</a>
+                        <a href="#" class="text-purple-200 hover:text-white px-3 py-2">數據分析</a>
+                    </div>
+                </div>
+                <div class="flex items-center space-x-4">
+                    <a href="index.html" class="text-purple-200 hover:text-white px-3 py-2">返回前台</a>
+                    <div class="flex items-center space-x-2 bg-white/10 px-4 py-2 rounded-lg">
+                        <span class="text-white font-medium">Admin</span>
+                        <span class="bg-yellow-400 text-yellow-900 px-2 py-0.5 rounded text-xs font-bold">管理員</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <div class="max-w-[1920px] mx-auto px-6 py-8">
+        <!-- Stats Cards -->
+        <div class="grid grid-cols-4 gap-6 mb-8">
+            <div class="bg-white rounded-lg shadow-md p-6">
+                <div class="flex items-center justify-between mb-4">
+                    <div class="text-3xl">📊</div>
+                    <div class="text-sm text-gray-500">總計</div>
+                </div>
+                <div class="text-3xl font-bold text-gray-900">2,847</div>
+                <div class="text-sm text-gray-600">卡片數量</div>
+                <div class="mt-2 text-xs text-green-600">+124 本月新增</div>
+            </div>
+
+            <div class="bg-white rounded-lg shadow-md p-6">
+                <div class="flex items-center justify-between mb-4">
+                    <div class="text-3xl">📦</div>
+                    <div class="text-sm text-gray-500">總計</div>
+                </div>
+                <div class="text-3xl font-bold text-gray-900">68</div>
+                <div class="text-sm text-gray-600">擴充包系列</div>
+                <div class="mt-2 text-xs text-blue-600">3 個進行中</div>
+            </div>
+
+            <div class="bg-white rounded-lg shadow-md p-6">
+                <div class="flex items-center justify-between mb-4">
+                    <div class="text-3xl">🏆</div>
+                    <div class="text-sm text-gray-500">總計</div>
+                </div>
+                <div class="text-3xl font-bold text-gray-900">156</div>
+                <div class="text-sm text-gray-600">比賽記錄</div>
+                <div class="mt-2 text-xs text-purple-600">8 場本週</div>
+            </div>
+
+            <div class="bg-white rounded-lg shadow-md p-6">
+                <div class="flex items-center justify-between mb-4">
+                    <div class="text-3xl">👥</div>
+                    <div class="text-sm text-gray-500">總計</div>
+                </div>
+                <div class="text-3xl font-bold text-gray-900">1,234</div>
+                <div class="text-sm text-gray-600">註冊用戶</div>
+                <div class="mt-2 text-xs text-orange-600">45 位活躍</div>
+            </div>
+        </div>
+
+        <!-- Card Management Section -->
+        <div class="bg-white rounded-lg shadow-md mb-6">
+            <div class="border-b px-6 py-4">
+                <div class="flex items-center justify-between">
+                    <h2 class="text-2xl font-bold text-gray-900">卡片管理</h2>
+                    <button onclick="window.location.href='admin-card-edit.html'" class="bg-blue-600 text-white px-6 py-2 rounded-lg hover:bg-blue-700 font-medium shadow-md">
+                        + 新增卡片
+                    </button>
+                </div>
+            </div>
+
+            <!-- Filters -->
+            <div class="border-b px-6 py-4 bg-gray-50">
+                <div class="grid grid-cols-5 gap-4">
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-1">搜尋</label>
+                        <input type="text" placeholder="卡片名稱或編號..." class="w-full border border-gray-300 rounded-md px-3 py-2 text-sm">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-1">擴充包</label>
+                        <select class="w-full border border-gray-300 rounded-md px-3 py-2 text-sm">
+                            <option>全部</option>
+                            <option>MC 初階牌組 100對戰收藏</option>
+                            <option>SV08 超電突破</option>
+                            <option>SV07 太陽能冠軍</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-1">類型</label>
+                        <select class="w-full border border-gray-300 rounded-md px-3 py-2 text-sm">
+                            <option>全部</option>
+                            <option>寶可夢</option>
+                            <option>訓練師</option>
+                            <option>能量</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-1">稀有度</label>
+                        <select class="w-full border border-gray-300 rounded-md px-3 py-2 text-sm">
+                            <option>全部</option>
+                            <option>C - 普通</option>
+                            <option>U - 非普通</option>
+                            <option>R - 稀有</option>
+                            <option>RR - 雙倍稀有</option>
+                            <option>SAR - 特別插圖稀有</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-1">狀態</label>
+                        <select class="w-full border border-gray-300 rounded-md px-3 py-2 text-sm">
+                            <option>全部</option>
+                            <option>已發布</option>
+                            <option>草稿</option>
+                            <option>待審核</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card List Table -->
+            <div class="overflow-x-auto">
+                <table class="w-full">
+                    <thead class="bg-gray-100 border-b">
+                        <tr>
+                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">
+                                <input type="checkbox" class="rounded border-gray-300">
+                            </th>
+                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">圖片</th>
+                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">卡片名稱</th>
+                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">編號</th>
+                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">擴充包</th>
+                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">類型</th>
+                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">稀有度</th>
+                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">語言版本</th>
+                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">狀態</th>
+                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">操作</th>
+                        </tr>
+                    </thead>
+                    <tbody class="bg-white divide-y divide-gray-200">
+                        <!-- Sample Row 1 -->
+                        <tr class="hover:bg-gray-50">
+                            <td class="px-6 py-4">
+                                <input type="checkbox" class="rounded border-gray-300">
+                            </td>
+                            <td class="px-6 py-4">
+                                <img src="https://asia.pokemon-card.com/hk/card-img/hk00017762.png" alt="Card" class="w-12 h-16 object-cover rounded shadow-sm">
+                            </td>
+                            <td class="px-6 py-4">
+                                <div class="font-medium text-gray-900">莉佳的霸王花ex</div>
+                                <div class="text-sm text-gray-500">Erika's Vileplume ex</div>
+                            </td>
+                            <td class="px-6 py-4 text-sm text-gray-900">MC J005/742</td>
+                            <td class="px-6 py-4 text-sm text-gray-900">MC 初階牌組 100對戰收藏</td>
+                            <td class="px-6 py-4">
+                                <span class="inline-flex px-2 py-1 text-xs font-medium bg-green-100 text-green-700 rounded-full">🌿 草</span>
+                            </td>
+                            <td class="px-6 py-4">
+                                <span class="inline-flex px-2 py-1 text-xs font-bold bg-gradient-to-r from-purple-600 to-pink-600 text-white rounded-full">SAR</span>
+                            </td>
+                            <td class="px-6 py-4 text-sm text-gray-900">ZH-HK, JA-JP, EN-US</td>
+                            <td class="px-6 py-4">
+                                <span class="inline-flex px-2 py-1 text-xs font-medium bg-green-100 text-green-700 rounded-full">已發布</span>
+                            </td>
+                            <td class="px-6 py-4">
+                                <div class="flex items-center space-x-2">
+                                    <button onclick="window.location.href='admin-card-edit.html?id=1'" class="text-blue-600 hover:text-blue-800">
+                                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"></path>
+                                        </svg>
+                                    </button>
+                                    <button class="text-green-600 hover:text-green-800">
+                                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path>
+                                        </svg>
+                                    </button>
+                                    <button class="text-red-600 hover:text-red-800">
+                                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"></path>
+                                        </svg>
+                                    </button>
+                                </div>
+                            </td>
+                        </tr>
+
+                        <!-- Sample Row 2 -->
+                        <tr class="hover:bg-gray-50">
+                            <td class="px-6 py-4">
+                                <input type="checkbox" class="rounded border-gray-300">
+                            </td>
+                            <td class="px-6 py-4">
+                                <img src="https://asia.pokemon-card.com/hk/card-img/hk00017761.png" alt="Card" class="w-12 h-16 object-cover rounded shadow-sm">
+                            </td>
+                            <td class="px-6 py-4">
+                                <div class="font-medium text-gray-900">莉佳的臭臭花</div>
+                                <div class="text-sm text-gray-500">Erika's Gloom</div>
+                            </td>
+                            <td class="px-6 py-4 text-sm text-gray-900">MC J004/742</td>
+                            <td class="px-6 py-4 text-sm text-gray-900">MC 初階牌組 100對戰收藏</td>
+                            <td class="px-6 py-4">
+                                <span class="inline-flex px-2 py-1 text-xs font-medium bg-green-100 text-green-700 rounded-full">🌿 草</span>
+                            </td>
+                            <td class="px-6 py-4">
+                                <span class="inline-flex px-2 py-1 text-xs font-bold bg-blue-600 text-white rounded-full">U</span>
+                            </td>
+                            <td class="px-6 py-4 text-sm text-gray-900">ZH-HK</td>
+                            <td class="px-6 py-4">
+                                <span class="inline-flex px-2 py-1 text-xs font-medium bg-green-100 text-green-700 rounded-full">已發布</span>
+                            </td>
+                            <td class="px-6 py-4">
+                                <div class="flex items-center space-x-2">
+                                    <button onclick="window.location.href='admin-card-edit.html?id=2'" class="text-blue-600 hover:text-blue-800">
+                                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"></path>
+                                        </svg>
+                                    </button>
+                                    <button class="text-green-600 hover:text-green-800">
+                                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path>
+                                        </svg>
+                                    </button>
+                                    <button class="text-red-600 hover:text-red-800">
+                                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"></path>
+                                        </svg>
+                                    </button>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- Pagination -->
+            <div class="px-6 py-4 border-t flex items-center justify-between">
+                <div class="text-sm text-gray-700">
+                    顯示 <span class="font-medium">1</span> 至 <span class="font-medium">20</span>，共 <span class="font-medium">2,847</span> 筆
+                </div>
+                <div class="flex items-center space-x-2">
+                    <button class="px-3 py-2 border rounded-md text-sm hover:bg-gray-50">上一頁</button>
+                    <button class="px-3 py-2 bg-blue-600 text-white rounded-md text-sm">1</button>
+                    <button class="px-3 py-2 border rounded-md text-sm hover:bg-gray-50">2</button>
+                    <button class="px-3 py-2 border rounded-md text-sm hover:bg-gray-50">3</button>
+                    <span class="px-3 py-2">...</span>
+                    <button class="px-3 py-2 border rounded-md text-sm hover:bg-gray-50">143</button>
+                    <button class="px-3 py-2 border rounded-md text-sm hover:bg-gray-50">下一頁</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Batch Actions -->
+        <div class="bg-white rounded-lg shadow-md p-6">
+            <h3 class="text-lg font-bold text-gray-900 mb-4">批次操作</h3>
+            <div class="flex items-center space-x-4">
+                <button class="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700">批次發布</button>
+                <button class="px-4 py-2 bg-gray-600 text-white rounded-lg hover:bg-gray-700">批次隱藏</button>
+                <button class="px-4 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700">批次刪除</button>
+                <button class="px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700">批次匯出</button>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
