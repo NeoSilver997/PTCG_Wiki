@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>賽事結果 | PTCG 卡牌資料庫 (Grok-2)</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet">
+  <style>
+    body { font-family: 'Noto Sans TC', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial; }
+  </style>
+</head>
+<body class="bg-gradient-to-br from-purple-50 to-violet-100 min-h-screen">
+  <!-- Navigation -->
+  <nav class="bg-white/90 backdrop-blur-md border-b border-purple-200 sticky top-0 z-50">
+    <div class="max-w-7xl mx-auto px-4">
+      <div class="flex items-center justify-between h-16">
+        <div class="flex items-center space-x-6">
+          <div class="flex items-center">
+            <div class="w-10 h-10 bg-gradient-to-r from-purple-500 to-violet-600 rounded-xl flex items-center justify-center shadow-lg">
+              <span class="text-white font-bold text-lg">G2</span>
+            </div>
+            <span class="ml-3 text-2xl font-bold text-gray-800">PTCG</span>
+          </div>
+          <div class="hidden md:flex space-x-1">
+            <a href="index.html" class="px-4 py-2 text-gray-600 hover:text-purple-600 hover:bg-purple-50 rounded-lg transition-colors">結果</a>
+            <a href="events.html" class="px-4 py-2 text-purple-600 bg-purple-100 rounded-lg font-medium">賽事</a>
+            <a href="deck-builder.html" class="px-4 py-2 text-gray-600 hover:text-purple-600 hover:bg-purple-50 rounded-lg transition-colors">牌組</a>
+            <a href="collection.html" class="px-4 py-2 text-gray-600 hover:text-purple-600 hover:bg-purple-50 rounded-lg transition-colors">收藏</a>
+          </div>
+        </div>
+        <div class="flex items-center space-x-3">
+          <button class="bg-purple-600 hover:bg-purple-700 text-white px-4 py-2 rounded-lg text-sm font-medium transition-colors">
+            登入
+          </button>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <div class="max-w-7xl mx-auto px-4 py-8">
+    <!-- Events Header -->
+    <div class="bg-white rounded-xl p-6 shadow-lg mb-6">
+      <div class="flex items-center justify-between mb-4">
+        <div>
+          <h1 class="text-3xl font-bold text-gray-800 mb-2">賽事結果</h1>
+          <p class="text-gray-600">莉佳的霸王花ex 賽事結果查詢</p>
+        </div>
+        <div class="flex items-center space-x-3">
+          <input type="text" placeholder="搜尋賽事..." class="bg-gray-50 border border-gray-300 rounded-lg px-4 py-2 text-gray-800 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-purple-500 w-64">
+          <select class="bg-gray-50 border border-gray-300 rounded-lg px-4 py-2 text-gray-800 focus:outline-none focus:ring-2 focus:ring-purple-500">
+            <option>全部結果</option>
+            <option>已結束</option>
+            <option>進行中</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- Filter Tabs -->
+      <div class="flex space-x-1 mb-4">
+        <button class="px-4 py-2 bg-purple-600 text-white rounded-lg font-medium">全部</button>
+        <button class="px-4 py-2 text-gray-600 hover:text-purple-600 hover:bg-purple-50 rounded-lg transition-colors">區域賽</button>
+        <button class="px-4 py-2 text-gray-600 hover:text-purple-600 hover:bg-purple-50 rounded-lg transition-colors">線上賽</button>
+        <button class="px-4 py-2 text-gray-600 hover:text-purple-600 hover:bg-purple-50 rounded-lg transition-colors">冠軍賽</button>
+      </div>
+    </div>
+
+    <!-- Results Grid -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <!-- Result Card 1 -->
+      <div class="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow">
+        <div class="h-32 bg-gradient-to-r from-purple-400 to-purple-600 flex items-center justify-center">
+          <div class="text-white text-center">
+            <div class="text-2xl mb-1">🏆</div>
+            <div class="text-sm font-medium">已結束</div>
+          </div>
+        </div>
+        <div class="p-6">
+          <h3 class="text-xl font-bold text-gray-800 mb-2">台北 PTCG 冠軍賽</h3>
+          <p class="text-gray-600 text-sm mb-4">莉佳的霸王花ex 主題賽</p>
+
+          <div class="space-y-3 mb-4">
+            <div class="flex justify-between text-sm">
+              <span class="text-gray-600">日期:</span>
+              <span class="text-gray-800 font-medium">2026/01/15</span>
+            </div>
+            <div class="flex justify-between text-sm">
+              <span class="text-gray-600">冠軍:</span>
+              <span class="text-gray-800 font-medium">選手 A</span>
+            </div>
+            <div class="flex justify-between text-sm">
+              <span class="text-gray-600">牌組:</span>
+              <span class="text-purple-600 font-medium">莉佳的霸王花ex</span>
+            </div>
+            <div class="flex justify-between text-sm">
+              <span class="text-gray-600">參賽人數:</span>
+              <span class="text-gray-800 font-medium">64</span>
+            </div>
+            <div class="flex justify-between text-sm">
+              <span class="text-gray-600">獎金:</span>
+              <span class="text-green-600 font-medium">NT$ 50,000</span>
+            </div>
+          </div>
+
+          <a href="event-detail.html" class="w-full bg-purple-600 hover:bg-purple-700 text-white py-2 px-4 rounded-lg font-medium transition-colors text-center block">
+            查看詳情
+          </a>
+        </div>
+      </div>
+
+      <!-- Result Card 2 -->
+      <div class="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow">
+        <div class="h-32 bg-gradient-to-r from-violet-400 to-violet-600 flex items-center justify-center">
+          <div class="text-white text-center">
+            <div class="text-2xl mb-1">🥈</div>
+            <div class="text-sm font-medium">已結束</div>
+          </div>
+        </div>
+        <div class="p-6">
+          <h3 class="text-xl font-bold text-gray-800 mb-2">高雄 PTCG 挑戰賽</h3>
+          <p class="text-gray-600 text-sm mb-4">水屬性牌組專用</p>
+
+          <div class="space-y-3 mb-4">
+            <div class="flex justify-between text-sm">
+              <span class="text-gray-600">日期:</span>
+              <span class="text-gray-800 font-medium">2026/01/12</span>
+            </div>
+            <div class="flex justify-between text-sm">
+              <span class="text-gray-600">冠軍:</span>
+              <span class="text-gray-800 font-medium">選手 B</span>
+            </div>
+            <div class="flex justify-between text-sm">
+              <span class="text-gray-600">牌組:</span>
+              <span class="text-purple-600 font-medium">水箭龜ex</span>
+            </div>
+            <div class="flex justify-between text-sm">
+              <span class="text-gray-600">參賽人數:</span>
+              <span class="text-gray-800 font-medium">48</span>
+            </div>
+            <div class="flex justify-between text-sm">
+              <span class="text-gray-600">獎金:</span>
+              <span class="text-green-600 font-medium">NT$ 30,000</span>
+            </div>
+          </div>
+
+          <a href="event-detail.html" class="w-full bg-purple-600 hover:bg-purple-700 text-white py-2 px-4 rounded-lg font-medium transition-colors text-center block">
+            查看詳情
+          </a>
+        </div>
+      </div>
+
+      <!-- Result Card 3 -->
+      <div class="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow">
+        <div class="h-32 bg-gradient-to-r from-indigo-400 to-indigo-600 flex items-center justify-center">
+          <div class="text-white text-center">
+            <div class="text-2xl mb-1">🥉</div>
+            <div class="text-sm font-medium">已結束</div>
+          </div>
+        </div>
+        <div class="p-6">
+          <h3 class="text-xl font-bold text-gray-800 mb-2">台中 PTCG 大賽</h3>
+          <p class="text-gray-600 text-sm mb-4">全卡牌環境開放</p>
+
+          <div class="space-y-3 mb-4">
+            <div class="flex justify-between text-sm">
+              <span class="text-gray-600">日期:</span>
+              <span class="text-gray-800 font-medium">2026/01/08</span>
+            </div>
+            <div class="flex justify-between text-sm">
+              <span class="text-gray-600">冠軍:</span>
+              <span class="text-gray-800 font-medium">選手 C</span>
+            </div>
+            <div class="flex justify-between text-sm">
+              <span class="text-gray-600">牌組:</span>
+              <span class="text-purple-600 font-medium">皮卡丘ex</span>
+            </div>
+            <div class="flex justify-between text-sm">
+              <span class="text-gray-600">參賽人數:</span>
+              <span class="text-gray-800 font-medium">32</span>
+            </div>
+            <div class="flex justify-between text-sm">
+              <span class="text-gray-600">獎金:</span>
+              <span class="text-green-600 font-medium">NT$ 20,000</span>
+            </div>
+          </div>
+
+          <a href="event-detail.html" class="w-full bg-purple-600 hover:bg-purple-700 text-white py-2 px-4 rounded-lg font-medium transition-colors text-center block">
+            查看詳情
+          </a>
+        </div>
+      </div>
+
+      <!-- Result Card 4 -->
+      <div class="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow">
+        <div class="h-32 bg-gradient-to-r from-purple-400 to-purple-600 flex items-center justify-center">
+          <div class="text-white text-center">
+            <div class="text-2xl mb-1">🎯</div>
+            <div class="text-sm font-medium">已結束</div>
+          </div>
+        </div>
+        <div class="p-6">
+          <h3 class="text-xl font-bold text-gray-800 mb-2">線上 PTCG 杯賽</h3>
+          <p class="text-gray-600 text-sm mb-4">莉佳的霸王花ex 杯賽</p>
+
+          <div class="space-y-3 mb-4">
+            <div class="flex justify-between text-sm">
+              <span class="text-gray-600">日期:</span>
+              <span class="text-gray-800 font-medium">2026/01/05</span>
+            </div>
+            <div class="flex justify-between text-sm">
+              <span class="text-gray-600">冠軍:</span>
+              <span class="text-gray-800 font-medium">選手 D</span>
+            </div>
+            <div class="flex justify-between text-sm">
+              <span class="text-gray-600">牌組:</span>
+              <span class="text-purple-600 font-medium">莉佳的霸王花ex</span>
+            </div>
+            <div class="flex justify-between text-sm">
+              <span class="text-gray-600">參賽人數:</span>
+              <span class="text-gray-800 font-medium">96</span>
+            </div>
+            <div class="flex justify-between text-sm">
+              <span class="text-gray-600">獎金:</span>
+              <span class="text-green-600 font-medium">NT$ 15,000</span>
+            </div>
+          </div>
+
+          <a href="event-detail.html" class="w-full bg-purple-600 hover:bg-purple-700 text-white py-2 px-4 rounded-lg font-medium transition-colors text-center block">
+            查看詳情
+          </a>
+        </div>
+      </div>
+
+      <!-- Result Card 5 -->
+      <div class="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow">
+        <div class="h-32 bg-gradient-to-r from-violet-400 to-violet-600 flex items-center justify-center">
+          <div class="text-white text-center">
+            <div class="text-2xl mb-1">⚡</div>
+            <div class="text-sm font-medium">已結束</div>
+          </div>
+        </div>
+        <div class="p-6">
+          <h3 class="text-xl font-bold text-gray-800 mb-2">新竹 PTCG 快閃賽</h3>
+          <p class="text-gray-600 text-sm mb-4">電屬性主題賽事</p>
+
+          <div class="space-y-3 mb-4">
+            <div class="flex justify-between text-sm">
+              <span class="text-gray-600">日期:</span>
+              <span class="text-gray-800 font-medium">2026/01/03</span>
+            </div>
+            <div class="flex justify-between text-sm">
+              <span class="text-gray-600">冠軍:</span>
+              <span class="text-gray-800 font-medium">選手 E</span>
+            </div>
+            <div class="flex justify-between text-sm">
+              <span class="text-gray-600">牌組:</span>
+              <span class="text-purple-600 font-medium">皮卡丘ex</span>
+            </div>
+            <div class="flex justify-between text-sm">
+              <span class="text-gray-600">參賽人數:</span>
+              <span class="text-gray-800 font-medium">24</span>
+            </div>
+            <div class="flex justify-between text-sm">
+              <span class="text-gray-600">獎金:</span>
+              <span class="text-green-600 font-medium">NT$ 10,000</span>
+            </div>
+          </div>
+
+          <a href="event-detail.html" class="w-full bg-purple-600 hover:bg-purple-700 text-white py-2 px-4 rounded-lg font-medium transition-colors text-center block">
+            查看詳情
+          </a>
+        </div>
+      </div>
+
+      <!-- Result Card 6 -->
+      <div class="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow">
+        <div class="h-32 bg-gradient-to-r from-indigo-400 to-indigo-600 flex items-center justify-center">
+          <div class="text-white text-center">
+            <div class="text-2xl mb-1">🌊</div>
+            <div class="text-sm font-medium">已結束</div>
+          </div>
+        </div>
+        <div class="p-6">
+          <h3 class="text-xl font-bold text-gray-800 mb-2">花蓮 PTCG 區域賽</h3>
+          <p class="text-gray-600 text-sm mb-4">莉佳的霸王花ex 限定</p>
+
+          <div class="space-y-3 mb-4">
+            <div class="flex justify-between text-sm">
+              <span class="text-gray-600">日期:</span>
+              <span class="text-gray-800 font-medium">2026/01/01</span>
+            </div>
+            <div class="flex justify-between text-sm">
+              <span class="text-gray-600">冠軍:</span>
+              <span class="text-gray-800 font-medium">選手 F</span>
+            </div>
+            <div class="flex justify-between text-sm">
+              <span class="text-gray-600">牌組:</span>
+              <span class="text-purple-600 font-medium">莉佳的霸王花ex</span>
+            </div>
+            <div class="flex justify-between text-sm">
+              <span class="text-gray-600">參賽人數:</span>
+              <span class="text-gray-800 font-medium">40</span>
+            </div>
+            <div class="flex justify-between text-sm">
+              <span class="text-gray-600">獎金:</span>
+              <span class="text-green-600 font-medium">NT$ 25,000</span>
+            </div>
+          </div>
+
+          <a href="event-detail.html" class="w-full bg-purple-600 hover:bg-purple-700 text-white py-2 px-4 rounded-lg font-medium transition-colors text-center block">
+            查看詳情
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Pagination -->
+    <div class="mt-8 flex items-center justify-center">
+      <nav class="flex items-center space-x-2">
+        <button class="px-3 py-2 text-gray-500 bg-white border border-gray-300 rounded-lg hover:bg-gray-50 disabled:opacity-50 disabled:cursor-not-allowed" disabled>
+          <span>上一頁</span>
+        </button>
+        <button class="px-3 py-2 text-white bg-purple-600 border border-purple-600 rounded-lg">1</button>
+        <button class="px-3 py-2 text-gray-700 bg-white border border-gray-300 rounded-lg hover:bg-gray-50">2</button>
+        <button class="px-3 py-2 text-gray-700 bg-white border border-gray-300 rounded-lg hover:bg-gray-50">3</button>
+        <span class="px-2 py-2 text-gray-500">...</span>
+        <button class="px-3 py-2 text-gray-700 bg-white border border-gray-300 rounded-lg hover:bg-gray-50">12</button>
+        <button class="px-3 py-2 text-gray-500 bg-white border border-gray-300 rounded-lg hover:bg-gray-50">
+          <span>下一頁</span>
+        </button>
+      </nav>
+    </div>
+  </div>
+</body>
+</html>

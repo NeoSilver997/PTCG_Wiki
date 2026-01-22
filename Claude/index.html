@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>首頁 | PTCG 卡牌資料庫 (Claude)</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet">
+  <style>
+    body { font-family: 'Noto Sans TC', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial; }
+  </style>
+</head>
+<body class="bg-gray-50">
+  <!-- Navigation -->
+  <nav class="bg-gradient-to-r from-blue-600 to-teal-600 shadow-lg sticky top-0 z-50">
+    <div class="max-w-[1400px] mx-auto px-6">
+      <div class="flex items-center justify-between h-16">
+        <div class="flex items-center space-x-6">
+          <div class="flex items-center">
+            <span class="text-2xl font-bold text-white">🃏 PTCG</span>
+            <span class="ml-2 text-blue-200">卡牌資料庫</span>
+          </div>
+          <div class="text-blue-200 text-sm">
+            <span class="text-white">首頁</span>
+          </div>
+        </div>
+        <div class="flex items-center space-x-4">
+          <a href="collection.html" class="text-blue-200 hover:text-white px-3 py-2">我的收藏</a>
+          <a href="deck-builder.html" class="text-blue-200 hover:text-white px-3 py-2">牌組建構</a>
+          <a href="events.html" class="text-blue-200 hover:text-white px-3 py-2">賽事</a>
+          <a href="login.html" class="text-blue-200 hover:text-white px-3 py-2">登入</a>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <div class="bg-gradient-to-r from-blue-600 to-teal-600 text-white">
+    <div class="max-w-[1400px] mx-auto px-6 py-16">
+      <div class="text-center">
+        <h1 class="text-5xl font-bold mb-6">歡迎來到 PTCG 卡牌資料庫</h1>
+        <p class="text-xl text-blue-100 mb-8 max-w-2xl mx-auto">
+          探索寶可夢卡牌遊戲的完整世界。管理您的收藏、建構牌組、追蹤賽事，並與全球玩家交流。
+        </p>
+        <div class="flex justify-center space-x-4">
+          <a href="collection.html" class="px-8 py-3 bg-white text-blue-600 rounded-lg font-bold hover:bg-blue-50 transition-colors">
+            開始探索
+          </a>
+          <a href="deck-builder.html" class="px-8 py-3 bg-blue-500 text-white rounded-lg font-bold hover:bg-blue-700 transition-colors">
+            建構牌組
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Features -->
+  <div class="max-w-[1400px] mx-auto px-6 py-16">
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+      <!-- Collection -->
+      <div class="bg-white rounded-lg shadow-lg p-8 text-center hover:shadow-xl transition-shadow">
+        <div class="text-6xl mb-4">🗃️</div>
+        <h3 class="text-2xl font-bold text-gray-900 mb-4">卡牌收藏</h3>
+        <p class="text-gray-600 mb-6">
+          管理您的寶可夢卡牌收藏，追蹤價值，發現新卡。
+        </p>
+        <a href="collection.html" class="inline-block px-6 py-3 bg-blue-600 text-white rounded-lg font-medium hover:bg-blue-700 transition-colors">
+          查看收藏
+        </a>
+      </div>
+
+      <!-- Deck Builder -->
+      <div class="bg-white rounded-lg shadow-lg p-8 text-center hover:shadow-xl transition-shadow">
+        <div class="text-6xl mb-4">⚔️</div>
+        <h3 class="text-2xl font-bold text-gray-900 mb-4">牌組建構</h3>
+        <p class="text-gray-600 mb-6">
+          使用我們的強大工具建構完美的 60 張牌組。
+        </p>
+        <a href="deck-builder.html" class="inline-block px-6 py-3 bg-teal-600 text-white rounded-lg font-medium hover:bg-teal-700 transition-colors">
+          開始建構
+        </a>
+      </div>
+
+      <!-- Tournaments -->
+      <div class="bg-white rounded-lg shadow-lg p-8 text-center hover:shadow-xl transition-shadow">
+        <div class="text-6xl mb-4">🏆</div>
+        <h3 class="text-2xl font-bold text-gray-900 mb-4">賽事資訊</h3>
+        <p class="text-gray-600 mb-6">
+          瀏覽即將到來的比賽，查看結果，學習頂尖策略。
+        </p>
+        <a href="events.html" class="inline-block px-6 py-3 bg-green-600 text-white rounded-lg font-medium hover:bg-green-700 transition-colors">
+          探索賽事
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Stats -->
+  <div class="bg-gray-100">
+    <div class="max-w-[1400px] mx-auto px-6 py-16">
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+        <div>
+          <div class="text-4xl font-bold text-blue-600 mb-2">15,000+</div>
+          <div class="text-gray-600">卡牌資料</div>
+        </div>
+        <div>
+          <div class="text-4xl font-bold text-teal-600 mb-2">50,000+</div>
+          <div class="text-gray-600">活躍玩家</div>
+        </div>
+        <div>
+          <div class="text-4xl font-bold text-green-600 mb-2">1,200+</div>
+          <div class="text-gray-600">已完成賽事</div>
+        </div>
+        <div>
+          <div class="text-4xl font-bold text-purple-600 mb-2">99.9%</div>
+          <div class="text-gray-600">資料準確度</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="bg-gray-900 text-white">
+    <div class="max-w-[1400px] mx-auto px-6 py-12">
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+        <div>
+          <div class="text-2xl font-bold text-white mb-4">🃏 PTCG</div>
+          <p class="text-gray-400">
+            寶可夢卡牌遊戲的終極資料庫和社群平台。
+          </p>
+        </div>
+        <div>
+          <h4 class="font-bold mb-4">功能</h4>
+          <ul class="space-y-2 text-gray-400">
+            <li><a href="collection.html" class="hover:text-white">卡牌收藏</a></li>
+            <li><a href="deck-builder.html" class="hover:text-white">牌組建構</a></li>
+            <li><a href="events.html" class="hover:text-white">賽事資訊</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="font-bold mb-4">社群</h4>
+          <ul class="space-y-2 text-gray-400">
+            <li><a href="#" class="hover:text-white">論壇</a></li>
+            <li><a href="#" class="hover:text-white">Discord</a></li>
+            <li><a href="#" class="hover:text-white">Reddit</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="font-bold mb-4">關於</h4>
+          <ul class="space-y-2 text-gray-400">
+            <li><a href="#" class="hover:text-white">隱私權政策</a></li>
+            <li><a href="#" class="hover:text-white">服務條款</a></li>
+            <li><a href="#" class="hover:text-white">聯絡我們</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400">
+        <p>&copy; 2026 PTCG 卡牌資料庫。由 Claude 提供技術支援。</p>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>

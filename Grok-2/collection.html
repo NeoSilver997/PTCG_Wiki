@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>牌組收藏 | PTCG 卡牌資料庫 (Grok-2)</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet">
+  <style>
+    body { font-family: 'Noto Sans TC', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial; }
+  </style>
+</head>
+<body class="bg-gradient-to-br from-purple-50 to-violet-100 min-h-screen">
+  <!-- Navigation -->
+  <nav class="bg-white/90 backdrop-blur-md border-b border-purple-200 sticky top-0 z-50">
+    <div class="max-w-7xl mx-auto px-4">
+      <div class="flex items-center justify-between h-16">
+        <div class="flex items-center space-x-6">
+          <div class="flex items-center">
+            <div class="w-10 h-10 bg-gradient-to-r from-purple-500 to-violet-600 rounded-xl flex items-center justify-center shadow-lg">
+              <span class="text-white font-bold text-lg">G2</span>
+            </div>
+            <span class="ml-3 text-2xl font-bold text-gray-800">PTCG</span>
+          </div>
+          <div class="hidden md:flex space-x-1">
+            <a href="index.html" class="px-4 py-2 text-gray-600 hover:text-purple-600 hover:bg-purple-50 rounded-lg transition-colors">結果</a>
+            <a href="events.html" class="px-4 py-2 text-gray-600 hover:text-purple-600 hover:bg-purple-50 rounded-lg transition-colors">賽事</a>
+            <a href="deck-builder.html" class="px-4 py-2 text-gray-600 hover:text-purple-600 hover:bg-purple-50 rounded-lg transition-colors">牌組</a>
+            <a href="collection.html" class="px-4 py-2 text-purple-600 bg-purple-100 rounded-lg font-medium">收藏</a>
+          </div>
+        </div>
+        <div class="flex items-center space-x-3">
+          <button class="bg-purple-600 hover:bg-purple-700 text-white px-4 py-2 rounded-lg text-sm font-medium transition-colors">
+            新增收藏
+          </button>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <div class="max-w-7xl mx-auto px-4 py-8">
+    <!-- Collection Header -->
+    <div class="bg-white rounded-xl p-6 shadow-lg mb-6">
+      <div class="flex items-center justify-between mb-4">
+        <div>
+          <h1 class="text-3xl font-bold text-gray-800 mb-2">牌組收藏</h1>
+          <p class="text-gray-600">莉佳的霸王花ex 牌組收藏與賽事表現</p>
+        </div>
+        <div class="flex items-center space-x-3">
+          <select class="bg-gray-50 border border-gray-300 rounded-lg px-4 py-2 text-gray-800 focus:outline-none focus:ring-2 focus:ring-purple-500">
+            <option>全部收藏</option>
+            <option>競賽牌組</option>
+            <option>休閒牌組</option>
+            <option>收藏用</option>
+          </select>
+          <input type="text" placeholder="搜尋牌組..." class="bg-gray-50 border border-gray-300 rounded-lg px-4 py-2 text-gray-800 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-purple-500 w-64">
+        </div>
+      </div>
+
+      <!-- Collection Stats -->
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
+        <div class="bg-purple-50 rounded-lg p-4 text-center">
+          <div class="text-2xl font-bold text-purple-600 mb-1">24</div>
+          <div class="text-sm text-gray-600">收藏牌組</div>
+        </div>
+        <div class="bg-purple-50 rounded-lg p-4 text-center">
+          <div class="text-2xl font-bold text-purple-600 mb-1">156</div>
+          <div class="text-sm text-gray-600">總卡牌數</div>
+        </div>
+        <div class="bg-green-50 rounded-lg p-4 text-center">
+          <div class="text-2xl font-bold text-green-600 mb-1">NT$ 1.2M</div>
+          <div class="text-sm text-gray-600">總價值</div>
+        </div>
+        <div class="bg-blue-50 rounded-lg p-4 text-center">
+          <div class="text-2xl font-bold text-blue-600 mb-1">89</div>
+          <div class="text-sm text-gray-600">賽事參賽</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Deck Collection Grid -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <!-- Deck Card 1 -->
+      <div class="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow">
+        <div class="h-48 bg-gradient-to-r from-purple-400 to-violet-600 flex items-center justify-center">
+          <div class="text-white text-center">
+            <div class="text-3xl mb-2">💧</div>
+            <div class="text-lg font-medium">莉佳的霸王花ex</div>
+          </div>
+        </div>
+        <div class="p-6">
+          <h3 class="text-xl font-bold text-gray-800 mb-2">競賽水屬組</h3>
+          <p class="text-gray-600 text-sm mb-4">莉佳的霸王花ex 主力牌組</p>
+
+          <div class="space-y-3 mb-4">
+            <div class="flex justify-between text-sm">
+              <span class="text-gray-600">卡牌數量:</span>
+              <span class="text-gray-800 font-medium">60張</span>
+            </div>
+            <div class="flex justify-between text-sm">
+              <span class="text-gray-600">總價值:</span>
+              <span class="text-green-600 font-medium">NT$ 45,200</span>
+            </div>
+            <div class="flex justify-between text-sm">
+              <span class="text-gray-600">賽事成績:</span>
+              <span class="text-purple-600 font-medium">12勝 2敗</span>
+            </div>
+            <div class="flex justify-between text-sm">
+              <span class="text-gray-600">最佳排名:</span>
+              <span class="text-yellow-600 font-medium">冠軍</span>
+            </div>
+          </div>
+
+          <div class="flex space-x-2">
+            <button class="flex-1 bg-purple-600 hover:bg-purple-700 text-white py-2 px-4 rounded-lg font-medium transition-colors text-sm">
+              編輯牌組
+            </button>
+            <button class="flex-1 bg-gray-600 hover:bg-gray-700 text-white py-2 px-4 rounded-lg font-medium transition-colors text-sm">
+              複製
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Deck Card 2 -->
+      <div class="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow">
+        <div class="h-48 bg-gradient-to-r from-blue-400 to-blue-600 flex items-center justify-center">
+          <div class="text-white text-center">
+            <div class="text-3xl mb-2">💧</div>
+            <div class="text-lg font-medium">水箭龜ex</div>
+          </div>
+        </div>
+        <div class="p-6">
+          <h3 class="text-xl font-bold text-gray-800 mb-2">加速水屬組</h3>
+          <p class="text-gray-600 text-sm mb-4">水箭龜ex 主力牌組</p>
+
+          <div class="space-y-3 mb-4">
+            <div class="flex justify-between text-sm">
+              <span class="text-gray-600">卡牌數量:</span>
+              <span class="text-gray-800 font-medium">60張</span>
+            </div>
+            <div class="flex justify-between text-sm">
+              <span class="text-gray-600">總價值:</span>
+              <span class="text-green-600 font-medium">NT$ 38,500</span>
+            </div>
+            <div class="flex justify-between text-sm">
+              <span class="text-gray-600">賽事成績:</span>
+              <span class="text-purple-600 font-medium">8勝 4敗</span>
+            </div>
+            <div class="flex justify-between text-sm">
+              <span class="text-gray-600">最佳排名:</span>
+              <span class="text-gray-600 font-medium">亞軍</span>
+            </div>
+          </div>
+
+          <div class="flex space-x-2">
+            <button class="flex-1 bg-purple-600 hover:bg-purple-700 text-white py-2 px-4 rounded-lg font-medium transition-colors text-sm">
+              編輯牌組
+            </button>
+            <button class="flex-1 bg-gray-600 hover:bg-gray-700 text-white py-2 px-4 rounded-lg font-medium transition-colors text-sm">
+              複製
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Deck Card 3 -->
+      <div class="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow">
+        <div class="h-48 bg-gradient-to-r from-yellow-400 to-yellow-600 flex items-center justify-center">
+          <div class="text-white text-center">
+            <div class="text-3xl mb-2">⚡</div>
+            <div class="text-lg font-medium">皮卡丘ex</div>
+          </div>
+        </div>
+        <div class="p-6">
+          <h3 class="text-xl font-bold text-gray-800 mb-2">快攻電屬組</h3>
+          <p class="text-gray-600 text-sm mb-4">皮卡丘ex 主力牌組</p>
+
+          <div class="space-y-3 mb-4">
+            <div class="flex justify-between text-sm">
+              <span class="text-gray-600">卡牌數量:</span>
+              <span class="text-gray-800 font-medium">60張</span>
+            </div>
+            <div class="flex justify-between text-sm">
+              <span class="text-gray-600">總價值:</span>
+              <span class="text-green-600 font-medium">NT$ 42,800</span>
+            </div>
+            <div class="flex justify-between text-sm">
+              <span class="text-gray-600">賽事成績:</span>
+              <span class="text-purple-600 font-medium">6勝 6敗</span>
+            </div>
+            <div class="flex justify-between text-sm">
+              <span class="text-gray-600">最佳排名:</span>
+              <span class="text-orange-600 font-medium">季軍</span>
+            </div>
+          </div>
+
+          <div class="flex space-x-2">
+            <button class="flex-1 bg-purple-600 hover:bg-purple-700 text-white py-2 px-4 rounded-lg font-medium transition-colors text-sm">
+              編輯牌組
+            </button>
+            <button class="flex-1 bg-gray-600 hover:bg-gray-700 text-white py-2 px-4 rounded-lg font-medium transition-colors text-sm">
+              複製
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Deck Card 4 -->
+      <div class="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow">
+        <div class="h-48 bg-gradient-to-r from-green-400 to-green-600 flex items-center justify-center">
+          <div class="text-white text-center">
+            <div class="text-3xl mb-2">🌱</div>
+            <div class="text-lg font-medium">妙蛙種子ex</div>
+          </div>
+        </div>
+        <div class="p-6">
+          <h3 class="text-xl font-bold text-gray-800 mb-2">草屬控制組</h3>
+          <p class="text-gray-600 text-sm mb-4">妙蛙種子ex 主力牌組</p>
+
+          <div class="space-y-3 mb-4">
+            <div class="flex justify-between text-sm">
+              <span class="text-gray-600">卡牌數量:</span>
+              <span class="text-gray-800 font-medium">60張</span>
+            </div>
+            <div class="flex justify-between text-sm">
+              <span class="text-gray-600">總價值:</span>
+              <span class="text-green-600 font-medium">NT$ 35,600</span>
+            </div>
+            <div class="flex justify-between text-sm">
+              <span class="text-gray-600">賽事成績:</span>
+              <span class="text-purple-600 font-medium">4勝 8敗</span>
+            </div>
+            <div class="flex justify-between text-sm">
+              <span class="text-gray-600">最佳排名:</span>
+              <span class="text-gray-600 font-medium">16強</span>
+            </div>
+          </div>
+
+          <div class="flex space-x-2">
+            <button class="flex-1 bg-purple-600 hover:bg-purple-700 text-white py-2 px-4 rounded-lg font-medium transition-colors text-sm">
+              編輯牌組
+            </button>
+            <button class="flex-1 bg-gray-600 hover:bg-gray-700 text-white py-2 px-4 rounded-lg font-medium transition-colors text-sm">
+              複製
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Deck Card 5 -->
+      <div class="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow">
+        <div class="h-48 bg-gradient-to-r from-red-400 to-red-600 flex items-center justify-center">
+          <div class="text-white text-center">
+            <div class="text-3xl mb-2">🔥</div>
+            <div class="text-lg font-medium">小火龍ex</div>
+          </div>
+        </div>
+        <div class="p-6">
+          <h3 class="text-xl font-bold text-gray-800 mb-2">火屬快攻組</h3>
+          <p class="text-gray-600 text-sm mb-4">小火龍ex 主力牌組</p>
+
+          <div class="space-y-3 mb-4">
+            <div class="flex justify-between text-sm">
+              <span class="text-gray-600">卡牌數量:</span>
+              <span class="text-gray-800 font-medium">60張</span>
+            </div>
+            <div class="flex justify-between text-sm">
+              <span class="text-gray-600">總價值:</span>
+              <span class="text-green-600 font-medium">NT$ 41,200</span>
+            </div>
+            <div class="flex justify-between text-sm">
+              <span class="text-gray-600">賽事成績:</span>
+              <span class="text-purple-600 font-medium">5勝 7敗</span>
+            </div>
+            <div class="flex justify-between text-sm">
+              <span class="text-gray-600">最佳排名:</span>
+              <span class="text-gray-600 font-medium">32強</span>
+            </div>
+          </div>
+
+          <div class="flex space-x-2">
+            <button class="flex-1 bg-purple-600 hover:bg-purple-700 text-white py-2 px-4 rounded-lg font-medium transition-colors text-sm">
+              編輯牌組
+            </button>
+            <button class="flex-1 bg-gray-600 hover:bg-gray-700 text-white py-2 px-4 rounded-lg font-medium transition-colors text-sm">
+              複製
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Deck Card 6 -->
+      <div class="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow">
+        <div class="h-48 bg-gradient-to-r from-purple-400 to-violet-600 flex items-center justify-center">
+          <div class="text-white text-center">
+            <div class="text-3xl mb-2">💧</div>
+            <div class="text-lg font-medium">傑尼龜ex</div>
+          </div>
+        </div>
+        <div class="p-6">
+          <h3 class="text-xl font-bold text-gray-800 mb-2">防禦水屬組</h3>
+          <p class="text-gray-600 text-sm mb-4">傑尼龜ex 主力牌組</p>
+
+          <div class="space-y-3 mb-4">
+            <div class="flex justify-between text-sm">
+              <span class="text-gray-600">卡牌數量:</span>
+              <span class="text-gray-800 font-medium">60張</span>
+            </div>
+            <div class="flex justify-between text-sm">
+              <span class="text-gray-600">總價值:</span>
+              <span class="text-green-600 font-medium">NT$ 33,800</span>
+            </div>
+            <div class="flex justify-between text-sm">
+              <span class="text-gray-600">賽事成績:</span>
+              <span class="text-purple-600 font-medium">3勝 9敗</span>
+            </div>
+            <div class="flex justify-between text-sm">
+              <span class="text-gray-600">最佳排名:</span>
+              <span class="text-gray-600 font-medium">64強</span>
+            </div>
+          </div>
+
+          <div class="flex space-x-2">
+            <button class="flex-1 bg-purple-600 hover:bg-purple-700 text-white py-2 px-4 rounded-lg font-medium transition-colors text-sm">
+              編輯牌組
+            </button>
+            <button class="flex-1 bg-gray-600 hover:bg-gray-700 text-white py-2 px-4 rounded-lg font-medium transition-colors text-sm">
+              複製
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Tournament Performance Summary -->
+    <div class="bg-white rounded-xl shadow-lg p-6 mt-6">
+      <h2 class="text-2xl font-bold text-gray-800 mb-4">賽事表現總結</h2>
+      <div class="overflow-x-auto">
+        <table class="w-full">
+          <thead class="bg-gray-50">
+            <tr>
+              <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">牌組</th>
+              <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">參賽次數</th>
+              <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">勝場</th>
+              <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">勝率</th>
+              <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">最佳成績</th>
+              <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">總獎金</th>
+            </tr>
+          </thead>
+          <tbody class="bg-white divide-y divide-gray-200">
+            <tr class="hover:bg-gray-50">
+              <td class="px-6 py-4 whitespace-nowrap">
+                <div class="text-sm font-medium text-gray-900">莉佳的霸王花ex</div>
+              </td>
+              <td class="px-6 py-4 whitespace-nowrap">
+                <div class="text-sm text-gray-500">14</div>
+              </td>
+              <td class="px-6 py-4 whitespace-nowrap">
+                <div class="text-sm text-gray-900">12</div>
+              </td>
+              <td class="px-6 py-4 whitespace-nowrap">
+                <div class="text-sm text-green-600 font-medium">85.7%</div>
+              </td>
+              <td class="px-6 py-4 whitespace-nowrap">
+                <div class="text-sm text-yellow-600 font-medium">冠軍</div>
+              </td>
+              <td class="px-6 py-4 whitespace-nowrap">
+                <div class="text-sm text-green-600 font-medium">NT$ 150,000</div>
+              </td>
+            </tr>
+
+            <tr class="hover:bg-gray-50">
+              <td class="px-6 py-4 whitespace-nowrap">
+                <div class="text-sm font-medium text-gray-900">水箭龜ex</div>
+              </td>
+              <td class="px-6 py-4 whitespace-nowrap">
+                <div class="text-sm text-gray-500">12</div>
+              </td>
+              <td class="px-6 py-4 whitespace-nowrap">
+                <div class="text-sm text-gray-900">8</div>
+              </td>
+              <td class="px-6 py-4 whitespace-nowrap">
+                <div class="text-sm text-green-600 font-medium">66.7%</div>
+              </td>
+              <td class="px-6 py-4 whitespace-nowrap">
+                <div class="text-sm text-gray-600 font-medium">亞軍</div>
+              </td>
+              <td class="px-6 py-4 whitespace-nowrap">
+                <div class="text-sm text-green-600 font-medium">NT$ 80,000</div>
+              </td>
+            </tr>
+
+            <tr class="hover:bg-gray-50">
+              <td class="px-6 py-4 whitespace-nowrap">
+                <div class="text-sm font-medium text-gray-900">皮卡丘ex</div>
+              </td>
+              <td class="px-6 py-4 whitespace-nowrap">
+                <div class="text-sm text-gray-500">10</div>
+              </td>
+              <td class="px-6 py-4 whitespace-nowrap">
+                <div class="text-sm text-gray-900">6</div>
+              </td>
+              <td class="px-6 py-4 whitespace-nowrap">
+                <div class="text-sm text-yellow-600 font-medium">60.0%</div>
+              </td>
+              <td class="px-6 py-4 whitespace-nowrap">
+                <div class="text-sm text-orange-600 font-medium">季軍</div>
+              </td>
+              <td class="px-6 py-4 whitespace-nowrap">
+                <div class="text-sm text-green-600 font-medium">NT$ 50,000</div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

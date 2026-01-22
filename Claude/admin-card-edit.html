@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>編輯卡牌 - 管理員 | PTCG 卡牌資料庫 (Claude)</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet">
+  <style>
+    body { font-family: 'Noto Sans TC', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial; }
+    .tab-active { border-bottom: 2px solid #2563eb; color: #2563eb; background-color: #eff6ff; }
+  </style>
+</head>
+<body class="bg-gray-50 min-w-[1200px]">
+  <!-- Navigation -->
+  <nav class="bg-gradient-to-r from-blue-600 to-teal-600 shadow-lg sticky top-0 z-50">
+    <div class="max-w-[1400px] mx-auto px-6">
+      <div class="flex items-center justify-between h-16">
+        <div class="flex items-center space-x-6">
+          <div class="flex items-center">
+            <span class="text-2xl font-bold text-white">⚙️ PTCG</span>
+            <span class="ml-2 text-blue-200">管理員</span>
+          </div>
+          <div class="text-blue-200 text-sm">
+            <a href="admin.html" class="hover:text-white">卡牌</a>
+            <span class="mx-2">/</span>
+            <span class="text-white">編輯卡牌</span>
+          </div>
+        </div>
+        <div class="flex items-center space-x-4">
+          <a href="admin.html" class="text-blue-200 hover:text-white px-3 py-2">返回列表</a>
+          <div class="flex items-center space-x-2 bg-white/10 px-4 py-2 rounded-lg">
+            <span class="text-white font-medium">管理員</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <div class="max-w-[1400px] mx-auto px-6 py-8">
+    <div class="grid grid-cols-12 gap-8">
+      <!-- Left: Preview -->
+      <div class="col-span-4">
+        <div class="bg-white rounded-lg shadow-lg p-6 sticky top-24">
+          <h3 class="text-lg font-bold text-gray-900 mb-4">卡牌預覽</h3>
+
+          <div class="mb-4">
+            <label class="block text-sm font-medium text-gray-700 mb-2">卡牌圖片</label>
+            <div id="imagePreviewContainer" class="aspect-[245/342] rounded-lg overflow-hidden bg-gradient-to-br from-gray-100 to-gray-200 border-2 border-dashed border-gray-300 flex items-center justify-center cursor-pointer hover:border-blue-500">
+              <div class="text-center">
+                <svg class="mx-auto h-12 w-12 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
+                </svg>
+                <p class="mt-2 text-sm text-gray-600">點擊上傳圖片</p>
+                <p class="text-xs text-gray-500">或拖拽到這裡</p>
+              </div>
+            </div>
+            <input type="file" id="imageUpload" accept="image/*" class="hidden">
+          </div>
+
+          <div class="mb-4">
+            <label class="text-sm font-medium text-gray-700 mb-2 block">變體</label>
+            <select class="w-full border border-gray-300 rounded-md px-3 py-2 text-sm">
+              <option>普通</option>
+              <option>反向全息</option>
+              <option>全息</option>
+              <option>全藝術</option>
+            </select>
+          </div>
+
+          <div class="bg-blue-50 rounded-lg p-4 mb-4 border border-blue-200">
+            <div class="text-sm text-gray-600 mb-1">卡牌編號</div>
+            <div id="previewCardNumber" class="text-lg font-bold text-blue-600">MC J005/742</div>
+          </div>
+
+          <div class="space-y-2 text-sm">
+            <div class="flex justify-between"><span class="text-gray-600">狀態:</span><span class="font-medium text-green-600">已發布</span></div>
+            <div class="flex justify-between"><span class="text-gray-600">建立:</span><span class="font-medium">2026-01-20</span></div>
+            <div class="flex justify-between"><span class="text-gray-600">更新:</span><span class="font-medium">2026-01-22</span></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right: Form -->
+      <div class="col-span-8">
+        <div class="bg-white rounded-lg shadow-lg">
+          <div class="border-b">
+            <div class="flex space-x-8 px-8 pt-6">
+              <button class="tab-button tab-active pb-3 font-medium px-4" data-tab="basic">基本</button>
+              <button class="tab-button pb-3 font-medium text-gray-600 hover:text-blue-600 px-4" data-tab="details">詳細</button>
+              <button class="tab-button pb-3 font-medium text-gray-600 hover:text-blue-600 px-4" data-tab="related">相關</button>
+              <button class="tab-button pb-3 font-medium text-gray-600 hover:text-blue-600 px-4" data-tab="variants">變體</button>
+              <button class="tab-button pb-3 font-medium text-gray-600 hover:text-blue-600 px-4" data-tab="pricing">價格</button>
+            </div>
+          </div>
+
+          <div id="basic-content" class="tab-content p-8">
+            <div class="grid grid-cols-2 gap-6">
+              <div class="col-span-2">
+                <label class="block text-sm font-medium text-gray-700 mb-2">卡牌名稱 *</label>
+                <input type="text" value="艾莉卡的妙蛙花 ex" class="w-full border border-gray-300 rounded-md px-4 py-2" required>
+              </div>
+              <div class="col-span-2">
+                <label class="block text-sm font-medium text-gray-700 mb-2">WebCard ID</label>
+                <input type="text" value="hk00017762" class="w-full border border-gray-300 rounded-md px-4 py-2" placeholder="例如：hk00017762">
+              </div>
+
+              <div>
+                <label class="block text-sm font-medium text-gray-700 mb-2">系列 *</label>
+                <select class="w-full border border-gray-300 rounded-md px-4 py-2">
+                  <option selected>MC 入門組合</option>
+                  <option>SV08 閃電突破</option>
+                </select>
+              </div>
+
+              <div>
+                <label class="block text-sm font-medium text-gray-700 mb-2">語言</label>
+                <select class="w-full border border-gray-300 rounded-md px-4 py-2">
+                  <option value="ZH-HK">ZH-HK</option>
+                  <option value="JA-JP">JA-JP</option>
+                  <option value="EN-US" selected>EN-US</option>
+                </select>
+              </div>
+
+              <div>
+                <label class="block text-sm font-medium text-gray-700 mb-2">超級類型 *</label>
+                <select class="w-full border border-gray-300 rounded-md px-4 py-2">
+                  <option selected>寶可夢</option>
+                  <option>訓練家</option>
+                  <option>能量</option>
+                </select>
+              </div>
+
+              <div>
+                <label class="block text-sm font-medium text-gray-700 mb-2">稀有度 *</label>
+                <select class="w-full border border-gray-300 rounded-md px-4 py-2">
+                  <option>C - 一般</option>
+                  <option>R - 稀有</option>
+                  <option selected>SAR - 特殊藝術稀有</option>
+                </select>
+              </div>
+
+              <div class="col-span-2">
+                <label class="block text-sm font-medium text-gray-700 mb-2">標籤</label>
+                <input type="text" value="J" class="w-full border border-gray-300 rounded-md px-4 py-2" placeholder="例如：J, H, G">
+              </div>
+            </div>
+          </div>
+
+          <div id="details-content" class="tab-content p-8 hidden">
+            <div class="grid grid-cols-2 gap-6">
+              <div>
+                <label class="block text-sm font-medium text-gray-700 mb-2">HP</label>
+                <input type="number" value="310" class="w-full border border-gray-300 rounded-md px-4 py-2">
+              </div>
+              <div>
+                <label class="block text-sm font-medium text-gray-700 mb-2">屬性</label>
+                <select multiple class="w-full border border-gray-300 rounded-md px-4 py-2 h-24">
+                  <option selected>草</option>
+                  <option>火</option>
+                </select>
+              </div>
+              <div class="col-span-2">
+                <label class="block text-sm font-medium text-gray-700 mb-2">風格文字</label>
+                <textarea rows="3" class="w-full border border-gray-300 rounded-md px-4 py-2"></textarea>
+              </div>
+            </div>
+          </div>
+
+          <div id="related-content" class="tab-content p-8 hidden">
+            <h3 class="text-lg font-bold mb-4">相關卡牌</h3>
+            <div class="grid grid-cols-4 gap-4">
+              <div class="bg-white border rounded-lg overflow-hidden shadow-sm relative group">
+                <div class="w-full aspect-[245/342] bg-gray-100 flex items-center justify-center">無圖片</div>
+                <div class="p-3">
+                  <div class="font-medium text-sm truncate">樣本訓練家</div>
+                  <div class="text-xs text-gray-500 mb-1">MC J095/742</div>
+                </div>
+              </div>
+              <div class="border-2 border-dashed border-gray-300 rounded-lg aspect-[245/342] flex items-center justify-center cursor-pointer hover:border-blue-500 hover:bg-blue-50">
+                <div class="text-center text-gray-400">+ 新增卡牌</div>
+              </div>
+            </div>
+          </div>
+
+          <div id="variants-content" class="tab-content p-8 hidden">
+            <h3 class="text-lg font-bold mb-4">語言變體</h3>
+            <div class="space-y-4">
+              <div class="border rounded-lg p-4 bg-gradient-to-r from-blue-50 to-teal-50">
+                <div class="flex items-center justify-between mb-3">
+                  <div class="flex items-center space-x-3">
+                    <span class="px-3 py-1 bg-blue-600 text-white rounded-full text-sm font-medium">ZH-HK</span>
+                    <span class="font-bold">繁體中文（香港）</span>
+                    <span class="text-green-600 text-sm">✓ 已發布</span>
+                  </div>
+                  <div class="space-x-2"><button class="text-blue-600">編輯</button><button class="text-red-600">刪除</button></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div id="pricing-content" class="tab-content p-8 hidden">
+            <h3 class="text-lg font-bold mb-4">價格</h3>
+            <div class="space-y-4">
+              <div class="grid grid-cols-4 gap-4 border rounded-lg p-4">
+                <div><label class="block text-xs text-gray-600 mb-1">來源</label><input type="text" value="Yuyu-tei" class="w-full border px-3 py-2 rounded" /></div>
+                <div><label class="block text-xs text-gray-600 mb-1">價格</label><input type="number" value="1480" class="w-full border px-3 py-2 rounded" /></div>
+                <div><label class="block text-xs text-gray-600 mb-1">貨幣</label><select class="w-full border px-3 py-2 rounded"><option selected>JPY</option></select></div>
+                <div><label class="block text-xs text-gray-600 mb-1">庫存</label><input type="number" value="12" class="w-full border px-3 py-2 rounded" /></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="border-t px-8 py-6 bg-gray-50 flex items-center justify-between rounded-b-lg">
+            <button onclick="window.location.href='admin.html'" class="px-6 py-2 border border-gray-300 rounded-lg hover:bg-gray-100">取消</button>
+            <div class="space-x-3">
+              <button class="px-6 py-2 bg-gray-600 text-white rounded-lg">儲存草稿</button>
+              <button class="px-6 py-2 bg-blue-600 text-white rounded-lg font-medium shadow-md">發布卡牌</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    document.querySelectorAll('.tab-button').forEach(button => {
+      button.addEventListener('click', () => {
+        document.querySelectorAll('.tab-button').forEach(btn => { btn.classList.remove('tab-active'); btn.classList.add('text-gray-600'); });
+        button.classList.add('tab-active'); button.classList.remove('text-gray-600');
+        document.querySelectorAll('.tab-content').forEach(content => content.classList.add('hidden'));
+        const tabId = button.getAttribute('data-tab');
+        document.getElementById(tabId + '-content').classList.remove('hidden');
+      });
+    });
+
+    document.getElementById('imagePreviewContainer').addEventListener('click', () => { document.getElementById('imageUpload').click(); });
+    document.getElementById('imageUpload').addEventListener('change', (e) => {
+      const file = e.target.files[0]; if (file) { const reader = new FileReader(); reader.onload = (ev) => { document.getElementById('imagePreviewContainer').innerHTML = `<img src="${ev.target.result}" class="w-full h-full object-contain">`; }; reader.readAsDataURL(file); }
+    });
+
+    const container = document.getElementById('imagePreviewContainer');
+    container.addEventListener('dragover', (e) => { e.preventDefault(); container.classList.add('border-blue-500'); });
+    container.addEventListener('dragleave', () => { container.classList.remove('border-blue-500'); });
+    container.addEventListener('drop', (e) => { e.preventDefault(); container.classList.remove('border-blue-500'); const file = e.dataTransfer.files[0]; if (file && file.type.startsWith('image/')) { const reader = new FileReader(); reader.onload = (ev) => { container.innerHTML = `<img src="${ev.target.result}" class="w-full h-full object-contain">`; }; reader.readAsDataURL(file); } });
+  </script>
+</body>
+</html>

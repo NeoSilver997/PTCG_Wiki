@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>管理後台 | PTCG 卡牌資料庫 (Copilot)</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet">
+  <style>
+    body { font-family: 'Noto Sans TC', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial; }
+  </style>
+</head>
+<body class="bg-slate-900 min-h-screen">
+  <!-- Modern Admin Navigation -->
+  <nav class="bg-slate-800 border-b border-slate-700 sticky top-0 z-50">
+    <div class="max-w-7xl mx-auto px-4">
+      <div class="flex items-center justify-between h-14">
+        <div class="flex items-center space-x-6">
+          <div class="flex items-center">
+            <div class="w-8 h-8 bg-gradient-to-r from-teal-400 to-cyan-500 rounded-lg flex items-center justify-center">
+              <span class="text-white font-bold text-sm">C</span>
+            </div>
+            <span class="ml-3 text-xl font-bold text-white">PTCG</span>
+            <span class="ml-2 text-teal-400">管理</span>
+          </div>
+          <div class="hidden md:flex space-x-1">
+            <a href="admin.html" class="px-3 py-2 text-teal-400 border-b-2 border-teal-400 font-medium">總覽</a>
+            <a href="admin-card-edit.html" class="px-3 py-2 text-slate-300 hover:text-white">卡牌</a>
+            <a href="#" class="px-3 py-2 text-slate-300 hover:text-white">用戶</a>
+            <a href="#" class="px-3 py-2 text-slate-300 hover:text-white">統計</a>
+          </div>
+        </div>
+        <div class="flex items-center space-x-3">
+          <div class="flex items-center space-x-2 bg-slate-700 px-3 py-2 rounded-lg">
+            <div class="w-6 h-6 bg-teal-500 rounded-full flex items-center justify-center">
+              <span class="text-white text-xs font-bold">A</span>
+            </div>
+            <span class="text-slate-200 text-sm">管理員</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <div class="max-w-7xl mx-auto px-4 py-6">
+    <!-- Dashboard Stats -->
+    <div class="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
+      <div class="bg-slate-800 rounded-xl p-6 border border-slate-700">
+        <div class="flex items-center justify-between">
+          <div>
+            <p class="text-slate-400 text-sm">總卡牌數</p>
+            <p class="text-2xl font-bold text-white">1,247</p>
+          </div>
+          <div class="w-12 h-12 bg-teal-500/20 rounded-lg flex items-center justify-center">
+            <span class="text-teal-400 text-xl">📄</span>
+          </div>
+        </div>
+        <div class="mt-4 flex items-center">
+          <span class="text-green-400 text-sm">+12 新增</span>
+          <span class="text-slate-500 text-sm ml-2">本週</span>
+        </div>
+      </div>
+
+      <div class="bg-slate-800 rounded-xl p-6 border border-slate-700">
+        <div class="flex items-center justify-between">
+          <div>
+            <p class="text-slate-400 text-sm">活躍用戶</p>
+            <p class="text-2xl font-bold text-white">3,492</p>
+          </div>
+          <div class="w-12 h-12 bg-cyan-500/20 rounded-lg flex items-center justify-center">
+            <span class="text-cyan-400 text-xl">👥</span>
+          </div>
+        </div>
+        <div class="mt-4 flex items-center">
+          <span class="text-green-400 text-sm">+8.2%</span>
+          <span class="text-slate-500 text-sm ml-2">較上月</span>
+        </div>
+      </div>
+
+      <div class="bg-slate-800 rounded-xl p-6 border border-slate-700">
+        <div class="flex items-center justify-between">
+          <div>
+            <p class="text-slate-400 text-sm">牌組數量</p>
+            <p class="text-2xl font-bold text-white">15,678</p>
+          </div>
+          <div class="w-12 h-12 bg-blue-500/20 rounded-lg flex items-center justify-center">
+            <span class="text-blue-400 text-xl">🃏</span>
+          </div>
+        </div>
+        <div class="mt-4 flex items-center">
+          <span class="text-green-400 text-sm">+156</span>
+          <span class="text-slate-500 text-sm ml-2">今日</span>
+        </div>
+      </div>
+
+      <div class="bg-slate-800 rounded-xl p-6 border border-slate-700">
+        <div class="flex items-center justify-between">
+          <div>
+            <p class="text-slate-400 text-sm">系統狀態</p>
+            <p class="text-2xl font-bold text-green-400">正常</p>
+          </div>
+          <div class="w-12 h-12 bg-green-500/20 rounded-lg flex items-center justify-center">
+            <span class="text-green-400 text-xl">✅</span>
+          </div>
+        </div>
+        <div class="mt-4 flex items-center">
+          <span class="text-slate-400 text-sm">所有服務運行中</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Quick Actions & Recent Activity -->
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-8">
+      <!-- Quick Actions -->
+      <div class="bg-slate-800 rounded-xl p-6 border border-slate-700">
+        <h3 class="text-lg font-bold text-white mb-4">快速操作</h3>
+        <div class="space-y-3">
+          <a href="admin-card-edit.html" class="flex items-center p-3 bg-slate-700 hover:bg-slate-600 rounded-lg transition-colors">
+            <div class="w-10 h-10 bg-teal-500/20 rounded-lg flex items-center justify-center mr-3">
+              <span class="text-teal-400">➕</span>
+            </div>
+            <div>
+              <div class="text-white font-medium">新增卡牌</div>
+              <div class="text-slate-400 text-sm">添加新卡牌到資料庫</div>
+            </div>
+          </a>
+          <a href="#" class="flex items-center p-3 bg-slate-700 hover:bg-slate-600 rounded-lg transition-colors">
+            <div class="w-10 h-10 bg-cyan-500/20 rounded-lg flex items-center justify-center mr-3">
+              <span class="text-cyan-400">📊</span>
+            </div>
+            <div>
+              <div class="text-white font-medium">匯出資料</div>
+              <div class="text-slate-400 text-sm">匯出卡牌和用戶資料</div>
+            </div>
+          </a>
+          <a href="#" class="flex items-center p-3 bg-slate-700 hover:bg-slate-600 rounded-lg transition-colors">
+            <div class="w-10 h-10 bg-blue-500/20 rounded-lg flex items-center justify-center mr-3">
+              <span class="text-blue-400">🔧</span>
+            </div>
+            <div>
+              <div class="text-white font-medium">系統設定</div>
+              <div class="text-slate-400 text-sm">調整系統參數</div>
+            </div>
+          </a>
+        </div>
+      </div>
+
+      <!-- Recent Activity -->
+      <div class="bg-slate-800 rounded-xl p-6 border border-slate-700">
+        <h3 class="text-lg font-bold text-white mb-4">最近活動</h3>
+        <div class="space-y-4">
+          <div class="flex items-start space-x-3">
+            <div class="w-8 h-8 bg-green-500/20 rounded-full flex items-center justify-center flex-shrink-0">
+              <span class="text-green-400 text-sm">✓</span>
+            </div>
+            <div class="flex-1">
+              <p class="text-white text-sm">新增了 12 張新卡牌</p>
+              <p class="text-slate-400 text-xs">2 分鐘前</p>
+            </div>
+          </div>
+          <div class="flex items-start space-x-3">
+            <div class="w-8 h-8 bg-blue-500/20 rounded-full flex items-center justify-center flex-shrink-0">
+              <span class="text-blue-400 text-sm">👤</span>
+            </div>
+            <div class="flex-1">
+              <p class="text-white text-sm">新用戶註冊：player123</p>
+              <p class="text-slate-400 text-xs">15 分鐘前</p>
+            </div>
+          </div>
+          <div class="flex items-start space-x-3">
+            <div class="w-8 h-8 bg-purple-500/20 rounded-full flex items-center justify-center flex-shrink-0">
+              <span class="text-purple-400 text-sm">🃏</span>
+            </div>
+            <div class="flex-1">
+              <p class="text-white text-sm">牌組「火系控制」已更新</p>
+              <p class="text-slate-400 text-xs">1 小時前</p>
+            </div>
+          </div>
+          <div class="flex items-start space-x-3">
+            <div class="w-8 h-8 bg-orange-500/20 rounded-full flex items-center justify-center flex-shrink-0">
+              <span class="text-orange-400 text-sm">🏆</span>
+            </div>
+            <div class="flex-1">
+              <p class="text-white text-sm">比賽結果已發布</p>
+              <p class="text-slate-400 text-xs">2 小時前</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- System Health -->
+      <div class="bg-slate-800 rounded-xl p-6 border border-slate-700">
+        <h3 class="text-lg font-bold text-white mb-4">系統健康</h3>
+        <div class="space-y-4">
+          <div class="flex items-center justify-between">
+            <span class="text-slate-300 text-sm">資料庫</span>
+            <div class="flex items-center">
+              <div class="w-2 h-2 bg-green-400 rounded-full mr-2"></div>
+              <span class="text-green-400 text-sm">正常</span>
+            </div>
+          </div>
+          <div class="flex items-center justify-between">
+            <span class="text-slate-300 text-sm">API 服務</span>
+            <div class="flex items-center">
+              <div class="w-2 h-2 bg-green-400 rounded-full mr-2"></div>
+              <span class="text-green-400 text-sm">正常</span>
+            </div>
+          </div>
+          <div class="flex items-center justify-between">
+            <span class="text-slate-300 text-sm">檔案儲存</span>
+            <div class="flex items-center">
+              <div class="w-2 h-2 bg-yellow-400 rounded-full mr-2"></div>
+              <span class="text-yellow-400 text-sm">警告</span>
+            </div>
+          </div>
+          <div class="flex items-center justify-between">
+            <span class="text-slate-300 text-sm">快取服務</span>
+            <div class="flex items-center">
+              <div class="w-2 h-2 bg-green-400 rounded-full mr-2"></div>
+              <span class="text-green-400 text-sm">正常</span>
+            </div>
+          </div>
+        </div>
+        <div class="mt-4 pt-4 border-t border-slate-700">
+          <div class="text-center">
+            <button class="text-teal-400 hover:text-teal-300 text-sm font-medium">
+              查看詳細狀態
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Data Tables -->
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+      <!-- Recent Cards -->
+      <div class="bg-slate-800 rounded-xl border border-slate-700">
+        <div class="p-6 border-b border-slate-700">
+          <div class="flex items-center justify-between">
+            <h3 class="text-lg font-bold text-white">最近新增卡牌</h3>
+            <a href="admin-card-edit.html" class="text-teal-400 hover:text-teal-300 text-sm font-medium">查看全部</a>
+          </div>
+        </div>
+        <div class="p-6">
+          <div class="space-y-4">
+            <div class="flex items-center space-x-4">
+              <div class="w-12 h-12 bg-gradient-to-br from-yellow-400/20 to-yellow-600/20 rounded-lg flex items-center justify-center">
+                <span class="text-2xl">⚡</span>
+              </div>
+              <div class="flex-1">
+                <div class="text-white font-medium">皮卡丘 ex</div>
+                <div class="text-slate-400 text-sm">SV08 014/108 • 電屬性</div>
+              </div>
+              <div class="text-right">
+                <div class="text-blue-400 font-bold">RR</div>
+                <div class="text-slate-400 text-xs">今天</div>
+              </div>
+            </div>
+            <div class="flex items-center space-x-4">
+              <div class="w-12 h-12 bg-gradient-to-br from-red-400/20 to-orange-600/20 rounded-lg flex items-center justify-center">
+                <span class="text-2xl">🔥</span>
+              </div>
+              <div class="flex-1">
+                <div class="text-white font-medium">噴火龍 VSTAR</div>
+                <div class="text-slate-400 text-sm">SV08 023/108 • 火屬性</div>
+              </div>
+              <div class="text-right">
+                <div class="text-purple-400 font-bold">SR</div>
+                <div class="text-slate-400 text-xs">昨天</div>
+              </div>
+            </div>
+            <div class="flex items-center space-x-4">
+              <div class="w-12 h-12 bg-gradient-to-br from-blue-400/20 to-cyan-600/20 rounded-lg flex items-center justify-center">
+                <span class="text-2xl">💧</span>
+              </div>
+              <div class="flex-1">
+                <div class="text-white font-medium">水箭龜 ex</div>
+                <div class="text-slate-400 text-sm">SV08 031/108 • 水屬性</div>
+              </div>
+              <div class="text-right">
+                <div class="text-blue-400 font-bold">RR</div>
+                <div class="text-slate-400 text-xs">2天前</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Top Users -->
+      <div class="bg-slate-800 rounded-xl border border-slate-700">
+        <div class="p-6 border-b border-slate-700">
+          <div class="flex items-center justify-between">
+            <h3 class="text-lg font-bold text-white">活躍用戶</h3>
+            <a href="#" class="text-teal-400 hover:text-teal-300 text-sm font-medium">管理用戶</a>
+          </div>
+        </div>
+        <div class="p-6">
+          <div class="space-y-4">
+            <div class="flex items-center space-x-4">
+              <div class="w-10 h-10 bg-gradient-to-r from-teal-400 to-cyan-500 rounded-full flex items-center justify-center">
+                <span class="text-white font-bold text-sm">P</span>
+              </div>
+              <div class="flex-1">
+                <div class="text-white font-medium">PokemonMaster</div>
+                <div class="text-slate-400 text-sm">156 個牌組 • 加入 3 個月</div>
+              </div>
+              <div class="text-teal-400 font-bold">VIP</div>
+            </div>
+            <div class="flex items-center space-x-4">
+              <div class="w-10 h-10 bg-gradient-to-r from-purple-400 to-pink-500 rounded-full flex items-center justify-center">
+                <span class="text-white font-bold text-sm">C</span>
+              </div>
+              <div class="flex-1">
+                <div class="text-white font-medium">CardCollector</div>
+                <div class="text-slate-400 text-sm">89 個牌組 • 加入 6 個月</div>
+              </div>
+              <div class="text-cyan-400 font-bold">PRO</div>
+            </div>
+            <div class="flex items-center space-x-4">
+              <div class="w-10 h-10 bg-gradient-to-r from-blue-400 to-indigo-500 rounded-full flex items-center justify-center">
+                <span class="text-white font-bold text-sm">D</span>
+              </div>
+              <div class="flex-1">
+                <div class="text-white font-medium">DeckBuilder</div>
+                <div class="text-slate-400 text-sm">234 個牌組 • 加入 1 年</div>
+              </div>
+              <div class="text-blue-400 font-bold">MVP</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

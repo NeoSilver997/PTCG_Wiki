@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="zh-HK">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>賽事詳情 - Claude Sonnet 4.5 Edition</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Noto Sans TC', sans-serif;
+            background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+        }
+        .glass-panel {
+            background: rgba(51, 65, 85, 0.6);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(148, 163, 184, 0.1);
+        }
+        .gold-accent {
+            background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%);
+        }
+        .text-gold {
+            color: #fbbf24;
+        }
+        .stat-glow {
+            text-shadow: 0 0 10px rgba(251, 191, 36, 0.5);
+        }
+        .rank-badge {
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body class="min-h-screen text-slate-100">
+    <!-- Navigation -->
+    <nav class="glass-panel sticky top-0 z-50 border-b border-slate-700/50">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="flex items-center justify-between h-16">
+                <div class="flex items-center space-x-8">
+                    <div class="flex items-center">
+                        <span class="text-3xl font-bold text-gold stat-glow">✦ PTCG</span>
+                        <span class="ml-3 text-amber-200 font-light">菁英資料庫</span>
+                    </div>
+                    <div class="hidden md:flex space-x-6">
+                        <a href="index.html" class="text-slate-300 hover:text-amber-400 transition px-3 py-2">首頁</a>
+                        <a href="collection.html" class="text-slate-300 hover:text-amber-400 transition px-3 py-2">收藏</a>
+                        <a href="deck-builder.html" class="text-slate-300 hover:text-amber-400 transition px-3 py-2">套牌</a>
+                        <a href="events.html" class="text-amber-400 font-medium border-b-2 border-gold px-3 py-2">比賽</a>
+                        <a href="#" class="text-slate-300 hover:text-amber-400 transition px-3 py-2">價格</a>
+                    </div>
+                </div>
+                <div class="flex items-center space-x-4">
+                    <select class="glass-panel border border-slate-600 rounded-lg px-4 py-2 text-sm text-slate-200">
+                        <option value="zh-HK">繁體中文</option>
+                        <option value="ja-JP">日本語</option>
+                        <option value="en">English</option>
+                    </select>
+                    <a href="login.html" class="gold-accent text-slate-900 font-semibold px-5 py-2 rounded-lg hover:shadow-lg hover:shadow-amber-500/50 transition">登入</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <div class="max-w-7xl mx-auto px-6 py-8">
+        <!-- Breadcrumb -->
+        <div class="mb-6 text-sm">
+            <a href="events.html" class="text-amber-400 hover:text-amber-300">← 返回賽事列表</a>
+        </div>
+
+        <!-- Event Header -->
+        <div class="glass-panel rounded-2xl p-8 mb-8 border border-amber-500/20">
+            <div class="flex justify-between items-start mb-6">
+                <div>
+                    <h1 class="text-4xl font-bold text-gold stat-glow mb-3">2026 香港地區錦標賽</h1>
+                    <p class="text-slate-300 text-lg mb-4">Regional Championship - 香港站</p>
+                    <div class="flex gap-4 text-sm">
+                        <div class="flex items-center gap-2">
+                            <span class="text-slate-400">📅</span>
+                            <span class="text-slate-200">2026-02-15 (星期六)</span>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <span class="text-slate-400">🕐</span>
+                            <span class="text-slate-200">09:00 - 18:00</span>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <span class="text-slate-400">📍</span>
+                            <span class="text-slate-200">香港會議展覽中心</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="text-right">
+                    <div class="bg-green-500/20 text-green-400 px-4 py-2 rounded-full text-sm font-medium mb-3">
+                        ✓ 報名中
+                    </div>
+                    <button class="gold-accent text-slate-900 font-semibold px-6 py-3 rounded-lg hover:shadow-lg hover:shadow-amber-500/50 transition">
+                        立即報名
+                    </button>
+                </div>
+            </div>
+
+            <!-- Stats -->
+            <div class="grid grid-cols-5 gap-4">
+                <div class="glass-panel rounded-lg p-4 border border-amber-500/30 text-center">
+                    <div class="text-3xl font-bold text-gold stat-glow">247</div>
+                    <div class="text-sm text-slate-400 mt-1">參賽人數</div>
+                </div>
+                <div class="glass-panel rounded-lg p-4 border border-green-500/30 text-center">
+                    <div class="text-3xl font-bold text-green-400">$25K</div>
+                    <div class="text-sm text-slate-400 mt-1">獎金池</div>
+                </div>
+                <div class="glass-panel rounded-lg p-4 border border-blue-500/30 text-center">
+                    <div class="text-3xl font-bold text-blue-400">8</div>
+                    <div class="text-sm text-slate-400 mt-1">預選輪次</div>
+                </div>
+                <div class="glass-panel rounded-lg p-4 border border-purple-500/30 text-center">
+                    <div class="text-3xl font-bold text-purple-400">128</div>
+                    <div class="text-sm text-slate-400 mt-1">套牌數量</div>
+                </div>
+                <div class="glass-panel rounded-lg p-4 border border-amber-500/30 text-center">
+                    <div class="text-3xl font-bold text-amber-400">12</div>
+                    <div class="text-sm text-slate-400 mt-1">套牌類型</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="grid grid-cols-3 gap-6">
+            <!-- Left Column - Tournament Results -->
+            <div class="col-span-2 space-y-6">
+                <!-- Top 8 Results -->
+                <div class="glass-panel rounded-xl p-6 border border-slate-700/50">
+                    <h2 class="text-2xl font-bold text-amber-400 mb-6">Top 8 排名</h2>
+                    
+                    <!-- Winner -->
+                    <div class="glass-panel rounded-xl p-6 mb-4 border-2 border-gold">
+                        <div class="flex items-center gap-4">
+                            <div class="rank-badge gold-accent text-slate-900 text-xl">
+                                🏆
+                            </div>
+                            <div class="flex-1">
+                                <div class="flex items-center gap-3 mb-2">
+                                    <h3 class="text-xl font-bold text-gold stat-glow">張偉明</h3>
+                                    <span class="text-sm text-slate-400">🇭🇰 香港</span>
+                                </div>
+                                <div class="flex items-center gap-2">
+                                    <span class="bg-green-500/20 text-green-400 px-3 py-1 rounded-full text-sm font-medium">
+                                        🌿 莉佳霸王花ex
+                                    </span>
+                                    <span class="text-slate-400 text-sm">戰績: 8-1-0</span>
+                                </div>
+                            </div>
+                            <div class="text-right">
+                                <div class="text-2xl font-bold text-gold stat-glow">$10,000</div>
+                                <div class="text-sm text-slate-400">獎金</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 2nd Place -->
+                    <div class="glass-panel rounded-xl p-5 mb-3 border border-slate-600/50 hover:border-amber-500/50 transition">
+                        <div class="flex items-center gap-4">
+                            <div class="rank-badge bg-slate-400 text-slate-900 text-lg">
+                                2
+                            </div>
+                            <div class="flex-1">
+                                <div class="flex items-center gap-3 mb-2">
+                                    <h3 class="text-lg font-bold text-amber-300">李小龍</h3>
+                                    <span class="text-sm text-slate-400">🇭🇰 香港</span>
+                                </div>
+                                <div class="flex items-center gap-2">
+                                    <span class="bg-blue-500/20 text-blue-400 px-3 py-1 rounded-full text-sm">
+                                        💧 基拉祈控制
+                                    </span>
+                                    <span class="text-slate-400 text-sm">7-2-0</span>
+                                </div>
+                            </div>
+                            <div class="text-right">
+                                <div class="text-xl font-bold text-slate-300">$5,000</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 3rd Place -->
+                    <div class="glass-panel rounded-xl p-5 mb-3 border border-slate-600/50 hover:border-amber-500/50 transition">
+                        <div class="flex items-center gap-4">
+                            <div class="rank-badge bg-amber-700 text-slate-900 text-lg">
+                                3
+                            </div>
+                            <div class="flex-1">
+                                <div class="flex items-center gap-3 mb-2">
+                                    <h3 class="text-lg font-bold text-amber-300">陳美玲</h3>
+                                    <span class="text-sm text-slate-400">🇭🇰 香港</span>
+                                </div>
+                                <div class="flex items-center gap-2">
+                                    <span class="bg-green-500/20 text-green-400 px-3 py-1 rounded-full text-sm">
+                                        🌿 莉佳霸王花ex
+                                    </span>
+                                    <span class="text-slate-400 text-sm">7-2-0</span>
+                                </div>
+                            </div>
+                            <div class="text-right">
+                                <div class="text-xl font-bold text-slate-300">$2,500</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 4th-8th Places -->
+                    <div class="space-y-2">
+                        <div class="glass-panel rounded-lg p-4 border border-slate-700/30 hover:border-amber-500/30 transition">
+                            <div class="flex items-center gap-3">
+                                <div class="rank-badge bg-slate-700 text-slate-300">4</div>
+                                <div class="flex-1 flex items-center justify-between">
+                                    <div>
+                                        <span class="font-bold text-slate-300">王大明</span>
+                                        <span class="text-slate-500 ml-2 text-sm">🇨🇳 中國</span>
+                                    </div>
+                                    <span class="bg-purple-500/20 text-purple-400 px-3 py-1 rounded-full text-sm">🔮 夢幻ex</span>
+                                    <span class="text-slate-400 text-sm">6-3-0</span>
+                                    <span class="text-slate-300 font-medium">$1,500</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="glass-panel rounded-lg p-4 border border-slate-700/30 hover:border-amber-500/30 transition">
+                            <div class="flex items-center gap-3">
+                                <div class="rank-badge bg-slate-700 text-slate-300">5</div>
+                                <div class="flex-1 flex items-center justify-between">
+                                    <div>
+                                        <span class="font-bold text-slate-300">林志明</span>
+                                        <span class="text-slate-500 ml-2 text-sm">🇹🇼 台灣</span>
+                                    </div>
+                                    <span class="bg-red-500/20 text-red-400 px-3 py-1 rounded-full text-sm">🔥 噴火龍ex</span>
+                                    <span class="text-slate-400 text-sm">6-3-0</span>
+                                    <span class="text-slate-300 font-medium">$1,000</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="glass-panel rounded-lg p-4 border border-slate-700/30 hover:border-amber-500/30 transition">
+                            <div class="flex items-center gap-3">
+                                <div class="rank-badge bg-slate-700 text-slate-300">6</div>
+                                <div class="flex-1 flex items-center justify-between">
+                                    <div>
+                                        <span class="font-bold text-slate-300">黃小華</span>
+                                        <span class="text-slate-500 ml-2 text-sm">🇭🇰 香港</span>
+                                    </div>
+                                    <span class="bg-yellow-500/20 text-yellow-400 px-3 py-1 rounded-full text-sm">⚡ 皮卡丘VMAX</span>
+                                    <span class="text-slate-400 text-sm">6-3-0</span>
+                                    <span class="text-slate-300 font-medium">$800</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="glass-panel rounded-lg p-4 border border-slate-700/30 hover:border-amber-500/30 transition">
+                            <div class="flex items-center gap-3">
+                                <div class="rank-badge bg-slate-700 text-slate-300">7</div>
+                                <div class="flex-1 flex items-center justify-between">
+                                    <div>
+                                        <span class="font-bold text-slate-300">鈴木一郎</span>
+                                        <span class="text-slate-500 ml-2 text-sm">🇯🇵 日本</span>
+                                    </div>
+                                    <span class="bg-green-500/20 text-green-400 px-3 py-1 rounded-full text-sm">🌿 莉佳霸王花ex</span>
+                                    <span class="text-slate-400 text-sm">6-3-0</span>
+                                    <span class="text-slate-300 font-medium">$500</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="glass-panel rounded-lg p-4 border border-slate-700/30 hover:border-amber-500/30 transition">
+                            <div class="flex items-center gap-3">
+                                <div class="rank-badge bg-slate-700 text-slate-300">8</div>
+                                <div class="flex-1 flex items-center justify-between">
+                                    <div>
+                                        <span class="font-bold text-slate-300">Park Min-jun</span>
+                                        <span class="text-slate-500 ml-2 text-sm">🇰🇷 韓國</span>
+                                    </div>
+                                    <span class="bg-blue-500/20 text-blue-400 px-3 py-1 rounded-full text-sm">💧 基拉祈控制</span>
+                                    <span class="text-slate-400 text-sm">6-3-0</span>
+                                    <span class="text-slate-300 font-medium">$500</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Deck Breakdown -->
+                <div class="glass-panel rounded-xl p-6 border border-slate-700/50">
+                    <h2 class="text-2xl font-bold text-amber-400 mb-6">套牌分布</h2>
+                    <div class="space-y-3">
+                        <div>
+                            <div class="flex justify-between mb-2">
+                                <span class="text-slate-300 font-medium">🌿 莉佳霸王花ex</span>
+                                <span class="text-amber-400 font-bold">87.3%</span>
+                            </div>
+                            <div class="w-full bg-slate-700/50 rounded-full h-3">
+                                <div class="gold-accent h-3 rounded-full" style="width: 87.3%"></div>
+                            </div>
+                        </div>
+
+                        <div>
+                            <div class="flex justify-between mb-2">
+                                <span class="text-slate-300 font-medium">💧 基拉祈控制</span>
+                                <span class="text-blue-400 font-bold">52.1%</span>
+                            </div>
+                            <div class="w-full bg-slate-700/50 rounded-full h-3">
+                                <div class="bg-blue-500 h-3 rounded-full" style="width: 52.1%"></div>
+                            </div>
+                        </div>
+
+                        <div>
+                            <div class="flex justify-between mb-2">
+                                <span class="text-slate-300 font-medium">⚡ 皮卡丘VMAX</span>
+                                <span class="text-yellow-400 font-bold">38.6%</span>
+                            </div>
+                            <div class="w-full bg-slate-700/50 rounded-full h-3">
+                                <div class="bg-yellow-500 h-3 rounded-full" style="width: 38.6%"></div>
+                            </div>
+                        </div>
+
+                        <div>
+                            <div class="flex justify-between mb-2">
+                                <span class="text-slate-300 font-medium">🔮 夢幻ex</span>
+                                <span class="text-purple-400 font-bold">29.4%</span>
+                            </div>
+                            <div class="w-full bg-slate-700/50 rounded-full h-3">
+                                <div class="bg-purple-500 h-3 rounded-full" style="width: 29.4%"></div>
+                            </div>
+                        </div>
+
+                        <div>
+                            <div class="flex justify-between mb-2">
+                                <span class="text-slate-300 font-medium">🔥 噴火龍ex</span>
+                                <span class="text-red-400 font-bold">18.2%</span>
+                            </div>
+                            <div class="w-full bg-slate-700/50 rounded-full h-3">
+                                <div class="bg-red-500 h-3 rounded-full" style="width: 18.2%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right Column - Event Info -->
+            <div class="space-y-6">
+                <!-- Event Details -->
+                <div class="glass-panel rounded-xl p-6 border border-slate-700/50">
+                    <h3 class="text-xl font-bold text-amber-400 mb-4">賽事資訊</h3>
+                    <div class="space-y-4 text-sm">
+                        <div>
+                            <div class="text-slate-400 mb-1">主辦單位</div>
+                            <div class="text-slate-200 font-medium">寶可夢公司香港</div>
+                        </div>
+                        <div>
+                            <div class="text-slate-400 mb-1">賽制</div>
+                            <div class="text-slate-200 font-medium">標準賽制 (Standard)</div>
+                        </div>
+                        <div>
+                            <div class="text-slate-400 mb-1">年齡組別</div>
+                            <div class="text-slate-200 font-medium">公開組 (Open)</div>
+                        </div>
+                        <div>
+                            <div class="text-slate-400 mb-1">報名費用</div>
+                            <div class="text-slate-200 font-medium">HK$ 250</div>
+                        </div>
+                        <div>
+                            <div class="text-slate-400 mb-1">賽事級別</div>
+                            <div class="text-slate-200 font-medium">地區錦標賽</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Prize Distribution -->
+                <div class="glass-panel rounded-xl p-6 border border-slate-700/50">
+                    <h3 class="text-xl font-bold text-amber-400 mb-4">獎金分配</h3>
+                    <div class="space-y-2 text-sm">
+                        <div class="flex justify-between">
+                            <span class="text-slate-400">🥇 冠軍</span>
+                            <span class="text-gold font-bold">$10,000</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <span class="text-slate-400">🥈 亞軍</span>
+                            <span class="text-slate-300 font-medium">$5,000</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <span class="text-slate-400">🥉 季軍</span>
+                            <span class="text-slate-300 font-medium">$2,500</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <span class="text-slate-400">4th</span>
+                            <span class="text-slate-300">$1,500</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <span class="text-slate-400">5th-8th</span>
+                            <span class="text-slate-300">$500-$1,000</span>
+                        </div>
+                    </div>
+                    <div class="mt-4 pt-4 border-t border-slate-700/50">
+                        <div class="flex justify-between font-bold">
+                            <span class="text-amber-400">總獎金</span>
+                            <span class="text-gold stat-glow">$25,000</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Location Map -->
+                <div class="glass-panel rounded-xl p-6 border border-slate-700/50">
+                    <h3 class="text-xl font-bold text-amber-400 mb-4">場地位置</h3>
+                    <div class="aspect-video bg-slate-800 rounded-lg mb-4 flex items-center justify-center">
+                        <div class="text-center text-slate-500">
+                            <div class="text-4xl mb-2">🗺️</div>
+                            <div class="text-sm">地圖載入中...</div>
+                        </div>
+                    </div>
+                    <div class="text-sm space-y-2">
+                        <div class="text-slate-200 font-medium">香港會議展覽中心</div>
+                        <div class="text-slate-400">香港灣仔博覽道1號</div>
+                        <div class="text-slate-400">🚇 灣仔站 A5 出口</div>
+                    </div>
+                </div>
+
+                <!-- Contact -->
+                <div class="glass-panel rounded-xl p-6 border border-slate-700/50">
+                    <h3 class="text-xl font-bold text-amber-400 mb-4">聯絡資訊</h3>
+                    <div class="space-y-3 text-sm">
+                        <div class="flex items-center gap-2">
+                            <span class="text-slate-400">📧</span>
+                            <span class="text-slate-200">hk@pokemon.com</span>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <span class="text-slate-400">📱</span>
+                            <span class="text-slate-200">+852 2345 6789</span>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <span class="text-slate-400">🌐</span>
+                            <span class="text-slate-200">pokemon.hk/events</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="glass-panel border-t border-slate-700/50 mt-12">
+        <div class="max-w-7xl mx-auto px-6 py-6 text-center text-sm text-slate-500">
+            <p>© 2026 PTCG CardDB - Claude Sonnet 4.5 Edition</p>
+        </div>
+    </footer>
+</body>
+</html>

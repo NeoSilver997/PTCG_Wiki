@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>賽事結果 · Azure-2 | PTCG 卡牌資料庫</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet">
+  <style>
+    body { font-family: 'Noto Sans TC', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial; }
+    .glass { background: rgba(255,255,255,0.6); backdrop-filter: blur(6px) saturate(1.1); }
+  </style>
+</head>
+<body class="min-h-screen bg-gradient-to-br from-sky-50 via-teal-50 to-emerald-50">
+  <nav class="max-w-6xl mx-auto px-4 py-4 flex items-center justify-between">
+    <div class="flex items-center space-x-4">
+      <div class="w-10 h-10 rounded-lg bg-gradient-to-r from-teal-500 to-sky-500 flex items-center justify-center text-white font-bold">A2</div>
+      <h1 class="text-xl font-bold">PTCG • 賽事結果（Azure-2）</h1>
+    </div>
+    <div class="text-sm text-gray-600">樣本牌組：莉佳的霸王花ex</div>
+  </nav>
+
+  <main class="max-w-6xl mx-auto p-4">
+    <section class="glass rounded-xl p-6 shadow-md mb-6">
+      <div class="flex items-start gap-6">
+        <div class="flex-1">
+          <h2 class="text-2xl font-bold text-teal-700">最新賽事快訊</h2>
+          <p class="text-gray-600 mt-1">以「莉佳的霸王花ex」為主題的近期賽事結果快速檢視。</p>
+
+          <div class="mt-4 grid grid-cols-1 md:grid-cols-3 gap-4">
+            <div class="p-4 rounded-lg bg-white/80 border border-teal-100">
+              <div class="text-sm text-gray-500">賽事</div>
+              <div class="text-lg font-semibold">台北 冠軍賽</div>
+              <div class="text-sm text-gray-600">2026/01/15 • 冠軍：選手 A</div>
+              <div class="mt-2 text-teal-600 font-medium">牌組：莉佳的霸王花ex</div>
+            </div>
+
+            <div class="p-4 rounded-lg bg-white/80 border border-teal-100">
+              <div class="text-sm text-gray-500">賽事</div>
+              <div class="text-lg font-semibold">線上 杯賽</div>
+              <div class="text-sm text-gray-600">2026/01/05 • 冠軍：選手 D</div>
+              <div class="mt-2 text-teal-600 font-medium">牌組：莉佳的霸王花ex</div>
+            </div>
+
+            <div class="p-4 rounded-lg bg-white/80 border border-teal-100">
+              <div class="text-sm text-gray-500">賽事</div>
+              <div class="text-lg font-semibold">高雄 挑戰賽</div>
+              <div class="text-sm text-gray-600">2026/01/12 • 冠軍：選手 B</div>
+              <div class="mt-2 text-teal-600 font-medium">牌組：水箭龜ex</div>
+            </div>
+          </div>
+        </div>
+
+        <aside class="w-80">
+          <div class="p-4 rounded-lg bg-white/85 border border-sky-100">
+            <div class="text-xs text-gray-500">總覽</div>
+            <div class="mt-2 text-2xl font-bold text-teal-700">莉佳的霸王花ex</div>
+            <div class="text-sm text-gray-600">使用率：45% • 勝率：68% • 參賽次數：14</div>
+
+            <div class="mt-4">
+              <div class="text-xs text-gray-500">最近表現</div>
+              <ul class="mt-2 text-sm text-gray-700 space-y-1">
+                <li>1. 台北 冠軍賽 — 冠軍</li>
+                <li>2. 線上 杯賽 — 八強</li>
+                <li>3. 花蓮 區域賽 — 冠軍</li>
+              </ul>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <section class="rounded-xl p-6 shadow-md glass">
+      <h3 class="text-lg font-bold text-teal-700 mb-4">近期賽事詳情</h3>
+      <div class="overflow-x-auto">
+        <table class="w-full text-left text-sm">
+          <thead>
+            <tr class="text-xs text-gray-500">
+              <th class="px-4 py-2">賽事</th>
+              <th class="px-4 py-2">日期</th>
+              <th class="px-4 py-2">冠軍</th>
+              <th class="px-4 py-2">冠軍牌組</th>
+              <th class="px-4 py-2">參賽</th>
+              <th class="px-4 py-2">獎金</th>
+            </tr>
+          </thead>
+          <tbody class="bg-white/80">
+            <tr class="border-t">
+              <td class="px-4 py-3">台北 冠軍賽</td>
+              <td class="px-4 py-3">2026/01/15</td>
+              <td class="px-4 py-3">選手 A</td>
+              <td class="px-4 py-3">莉佳的霸王花ex</td>
+              <td class="px-4 py-3">64</td>
+              <td class="px-4 py-3">NT$ 50,000</td>
+            </tr>
+            <tr class="border-t">
+              <td class="px-4 py-3">高雄 挑戰賽</td>
+              <td class="px-4 py-3">2026/01/12</td>
+              <td class="px-4 py-3">選手 B</td>
+              <td class="px-4 py-3">水箭龜ex</td>
+              <td class="px-4 py-3">48</td>
+              <td class="px-4 py-3">NT$ 30,000</td>
+            </tr>
+            <tr class="border-t">
+              <td class="px-4 py-3">線上 杯賽</td>
+              <td class="px-4 py-3">2026/01/05</td>
+              <td class="px-4 py-3">選手 D</td>
+              <td class="px-4 py-3">莉佳的霸王花ex</td>
+              <td class="px-4 py-3">96</td>
+              <td class="px-4 py-3">NT$ 15,000</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+  </main>
+</body>
+</html>

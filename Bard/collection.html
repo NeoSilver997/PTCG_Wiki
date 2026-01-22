@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>我的收藏 | PTCG 卡牌資料庫 (Bard)</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet">
+  <style>
+    body { font-family: 'Noto Sans TC', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial; }
+  </style>
+</head>
+<body class="bg-gray-50">
+  <!-- Navigation -->
+  <nav class="bg-gradient-to-r from-red-600 to-orange-600 shadow-lg sticky top-0 z-50">
+    <div class="max-w-[1400px] mx-auto px-6">
+      <div class="flex items-center justify-between h-16">
+        <div class="flex items-center space-x-6">
+          <div class="flex items-center">
+            <span class="text-2xl font-bold text-white">🃏 PTCG</span>
+            <span class="ml-2 text-red-200">我的收藏</span>
+          </div>
+          <div class="text-red-200 text-sm">
+            <span class="text-white">1,247 張卡牌</span>
+          </div>
+        </div>
+        <div class="flex items-center space-x-4">
+          <a href="index.html" class="text-red-200 hover:text-white px-3 py-2">首頁</a>
+          <a href="deck-builder.html" class="text-red-200 hover:text-white px-3 py-2">牌組建構</a>
+          <div class="flex items-center space-x-2 bg-white/10 px-4 py-2 rounded-lg">
+            <span class="text-white font-medium">玩家</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <div class="max-w-[1400px] mx-auto px-6 py-8">
+    <div class="mb-8">
+      <h1 class="text-3xl font-bold text-gray-900 mb-2">我的收藏</h1>
+      <p class="text-gray-600">管理你的 PTCG 卡牌收藏，追蹤價值和完成度</p>
+    </div>
+
+    <!-- Collection Stats -->
+    <div class="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
+      <div class="bg-white rounded-lg shadow-lg p-6 text-center">
+        <div class="text-3xl font-bold text-red-600 mb-2">1,247</div>
+        <div class="text-gray-600">總卡牌數量</div>
+      </div>
+      <div class="bg-white rounded-lg shadow-lg p-6 text-center">
+        <div class="text-3xl font-bold text-orange-600 mb-2">HK$ 45,230</div>
+        <div class="text-gray-600">總價值</div>
+      </div>
+      <div class="bg-white rounded-lg shadow-lg p-6 text-center">
+        <div class="text-3xl font-bold text-amber-600 mb-2">89%</div>
+        <div class="text-gray-600">收藏完成度</div>
+      </div>
+      <div class="bg-white rounded-lg shadow-lg p-6 text-center">
+        <div class="text-3xl font-bold text-yellow-600 mb-2">156</div>
+        <div class="text-gray-600">稀有卡牌</div>
+      </div>
+    </div>
+
+    <!-- Filters and Search -->
+    <div class="bg-white rounded-lg shadow-lg p-6 mb-6">
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
+        <div>
+          <label class="block text-sm font-medium text-gray-700 mb-2">搜尋</label>
+          <input type="text" placeholder="卡牌名稱或編號" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-red-500">
+        </div>
+        <div>
+          <label class="block text-sm font-medium text-gray-700 mb-2">類型</label>
+          <select class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-red-500">
+            <option>全部</option>
+            <option>雷電</option>
+            <option>火</option>
+            <option>水</option>
+            <option>草</option>
+            <option>格鬥</option>
+            <option>超能力</option>
+            <option>惡</option>
+            <option>鋼</option>
+            <option>妖精</option>
+            <option>龍</option>
+            <option>無色</option>
+          </select>
+        </div>
+        <div>
+          <label class="block text-sm font-medium text-gray-700 mb-2">稀有度</label>
+          <select class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-red-500">
+            <option>全部</option>
+            <option>一般</option>
+            <option>罕見</option>
+            <option>超罕見</option>
+            <option>秘稀</option>
+            <option>傳說</option>
+          </select>
+        </div>
+        <div>
+          <label class="block text-sm font-medium text-gray-700 mb-2">排序</label>
+          <select class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-red-500">
+            <option>名稱</option>
+            <option>編號</option>
+            <option>價值</option>
+            <option>稀有度</option>
+            <option>新增時間</option>
+          </select>
+        </div>
+      </div>
+    </div>
+
+    <!-- Collection Grid -->
+    <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-4">
+      <!-- Card Item -->
+      <div class="bg-white rounded-lg shadow-lg p-4 hover:shadow-xl transition-shadow cursor-pointer group">
+        <div class="aspect-[3/4] bg-gray-100 rounded-lg mb-3 flex items-center justify-center relative">
+          <img src="https://via.placeholder.com/150x200?text=皮卡丘+VMAX" alt="皮卡丘 VMAX" class="w-full h-full object-cover rounded-lg">
+          <div class="absolute top-2 right-2 bg-red-600 text-white text-xs px-2 py-1 rounded">×2</div>
+        </div>
+        <div class="text-center">
+          <h3 class="font-bold text-sm text-gray-900 mb-1">皮卡丘 VMAX</h3>
+          <p class="text-xs text-gray-600 mb-2">SWSH12: 060/172</p>
+          <div class="flex justify-center space-x-1 mb-2">
+            <span class="w-4 h-4 bg-yellow-400 rounded-full"></span>
+          </div>
+          <p class="text-sm font-bold text-red-600">HK$ 250</p>
+        </div>
+      </div>
+
+      <div class="bg-white rounded-lg shadow-lg p-4 hover:shadow-xl transition-shadow cursor-pointer group">
+        <div class="aspect-[3/4] bg-gray-100 rounded-lg mb-3 flex items-center justify-center relative">
+          <img src="https://via.placeholder.com/150x200?text=噴火龍+VMAX" alt="噴火龍 VMAX" class="w-full h-full object-cover rounded-lg">
+          <div class="absolute top-2 right-2 bg-red-600 text-white text-xs px-2 py-1 rounded">×1</div>
+        </div>
+        <div class="text-center">
+          <h3 class="font-bold text-sm text-gray-900 mb-1">噴火龍 VMAX</h3>
+          <p class="text-xs text-gray-600 mb-2">SWSH12: 020/172</p>
+          <div class="flex justify-center space-x-1 mb-2">
+            <span class="w-4 h-4 bg-red-400 rounded-full"></span>
+          </div>
+          <p class="text-sm font-bold text-red-600">HK$ 180</p>
+        </div>
+      </div>
+
+      <div class="bg-white rounded-lg shadow-lg p-4 hover:shadow-xl transition-shadow cursor-pointer group">
+        <div class="aspect-[3/4] bg-gray-100 rounded-lg mb-3 flex items-center justify-center relative">
+          <img src="https://via.placeholder.com/150x200?text=水箭龜+VMAX" alt="水箭龜 VMAX" class="w-full h-full object-cover rounded-lg">
+          <div class="absolute top-2 right-2 bg-red-600 text-white text-xs px-2 py-1 rounded">×1</div>
+        </div>
+        <div class="text-center">
+          <h3 class="font-bold text-sm text-gray-900 mb-1">水箭龜 VMAX</h3>
+          <p class="text-xs text-gray-600 mb-2">SWSH12: 030/172</p>
+          <div class="flex justify-center space-x-1 mb-2">
+            <span class="w-4 h-4 bg-blue-400 rounded-full"></span>
+          </div>
+          <p class="text-sm font-bold text-red-600">HK$ 165</p>
+        </div>
+      </div>
+
+      <div class="bg-white rounded-lg shadow-lg p-4 hover:shadow-xl transition-shadow cursor-pointer group">
+        <div class="aspect-[3/4] bg-gray-100 rounded-lg mb-3 flex items-center justify-center relative">
+          <img src="https://via.placeholder.com/150x200?text=妙蛙花+VMAX" alt="妙蛙花 VMAX" class="w-full h-full object-cover rounded-lg">
+          <div class="absolute top-2 right-2 bg-red-600 text-white text-xs px-2 py-1 rounded">×1</div>
+        </div>
+        <div class="text-center">
+          <h3 class="font-bold text-sm text-gray-900 mb-1">妙蛙花 VMAX</h3>
+          <p class="text-xs text-gray-600 mb-2">SWSH12: 010/172</p>
+          <div class="flex justify-center space-x-1 mb-2">
+            <span class="w-4 h-4 bg-green-400 rounded-full"></span>
+          </div>
+          <p class="text-sm font-bold text-red-600">HK$ 175</p>
+        </div>
+      </div>
+
+      <div class="bg-white rounded-lg shadow-lg p-4 hover:shadow-xl transition-shadow cursor-pointer group">
+        <div class="aspect-[3/4] bg-gray-100 rounded-lg mb-3 flex items-center justify-center relative">
+          <img src="https://via.placeholder.com/150x200?text=路卡利歐+VSTAR" alt="路卡利歐 VSTAR" class="w-full h-full object-cover rounded-lg">
+          <div class="absolute top-2 right-2 bg-red-600 text-white text-xs px-2 py-1 rounded">×1</div>
+        </div>
+        <div class="text-center">
+          <h3 class="font-bold text-sm text-gray-900 mb-1">路卡利歐 VSTAR</h3>
+          <p class="text-xs text-gray-600 mb-2">SWSH12: 080/172</p>
+          <div class="flex justify-center space-x-1 mb-2">
+            <span class="w-4 h-4 bg-gray-400 rounded-full"></span>
+          </div>
+          <p class="text-sm font-bold text-red-600">HK$ 320</p>
+        </div>
+      </div>
+
+      <div class="bg-white rounded-lg shadow-lg p-4 hover:shadow-xl transition-shadow cursor-pointer group">
+        <div class="aspect-[3/4] bg-gray-100 rounded-lg mb-3 flex items-center justify-center relative">
+          <img src="https://via.placeholder.com/150x200?text= Gardevoir+VMAX" alt=" Gardevoir VMAX" class="w-full h-full object-cover rounded-lg">
+          <div class="absolute top-2 right-2 bg-red-600 text-white text-xs px-2 py-1 rounded">×1</div>
+        </div>
+        <div class="text-center">
+          <h3 class="font-bold text-sm text-gray-900 mb-1"> Gardevoir VMAX</h3>
+          <p class="text-xs text-gray-600 mb-2">SWSH12: 090/172</p>
+          <div class="flex justify-center space-x-1 mb-2">
+            <span class="w-4 h-4 bg-pink-400 rounded-full"></span>
+          </div>
+          <p class="text-sm font-bold text-red-600">HK$ 195</p>
+        </div>
+      </div>
+
+      <!-- Add more cards as needed -->
+      <div class="bg-gray-100 rounded-lg p-4 flex items-center justify-center border-2 border-dashed border-gray-300 cursor-pointer hover:bg-gray-200 transition-colors">
+        <div class="text-center">
+          <div class="text-3xl text-gray-400 mb-2">+</div>
+          <p class="text-gray-600">新增卡牌</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Pagination -->
+    <div class="mt-8 flex justify-center">
+      <nav class="flex items-center space-x-2">
+        <button class="px-3 py-2 border border-gray-300 rounded-md text-gray-500 hover:bg-gray-50">上一頁</button>
+        <button class="px-3 py-2 bg-red-600 text-white rounded-md">1</button>
+        <button class="px-3 py-2 border border-gray-300 rounded-md text-gray-700 hover:bg-gray-50">2</button>
+        <button class="px-3 py-2 border border-gray-300 rounded-md text-gray-700 hover:bg-gray-50">3</button>
+        <span class="px-2 text-gray-500">...</span>
+        <button class="px-3 py-2 border border-gray-300 rounded-md text-gray-700 hover:bg-gray-50">25</button>
+        <button class="px-3 py-2 border border-gray-300 rounded-md text-gray-700 hover:bg-gray-50">下一頁</button>
+      </nav>
+    </div>
+  </div>
+</body>
+</html>

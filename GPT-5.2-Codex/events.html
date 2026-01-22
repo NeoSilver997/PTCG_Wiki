@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="zh-HK">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>賽事中心 - GPT-5.2 Codex Edition</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Round" rel="stylesheet" />
+    <style>
+        body {
+            font-family: 'Noto Sans TC', sans-serif;
+            background-color: #0b1020;
+            color: #e5e7eb;
+        }
+        .codex-panel {
+            background: rgba(15, 23, 42, 0.9);
+            border: 1px solid rgba(148, 163, 184, 0.15);
+        }
+        .codex-gradient-text {
+            background: linear-gradient(90deg, #22d3ee, #38bdf8, #a78bfa);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+    </style>
+</head>
+<body class="min-h-screen">
+    <nav class="sticky top-0 z-50 bg-slate-950/80 border-b border-slate-800 backdrop-blur-xl">
+        <div class="max-w-7xl mx-auto px-6 h-20 flex justify-between items-center">
+            <div class="flex items-center gap-2">
+                <span class="material-icons-round text-4xl text-cyan-300">auto_awesome</span>
+                <h1 class="text-2xl font-bold codex-gradient-text">PTCG CardDB</h1>
+            </div>
+            <div class="hidden md:flex items-center gap-8 text-sm">
+                <a href="index.html" class="text-slate-300 hover:text-white">首頁</a>
+                <a href="events.html" class="text-cyan-200">賽事</a>
+                <a href="login.html" class="text-slate-300 hover:text-white">登入</a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="max-w-7xl mx-auto px-6 py-10">
+        <div class="mb-10">
+            <h2 class="text-3xl font-bold text-white mb-2">全球賽事追蹤</h2>
+            <p class="text-slate-400">Codex 即時同步錦標賽數據與分析</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-6 mb-10">
+            <div class="codex-panel rounded-3xl p-6">
+                <div class="w-12 h-12 rounded-2xl bg-cyan-500/20 text-cyan-200 flex items-center justify-center mb-4">
+                    <span class="material-icons-round">event_available</span>
+                </div>
+                <p class="text-3xl font-bold text-white mb-1">28</p>
+                <p class="text-sm text-slate-400">本月賽事 (↑15%)</p>
+            </div>
+            <div class="codex-panel rounded-3xl p-6">
+                <div class="w-12 h-12 rounded-2xl bg-purple-500/20 text-purple-200 flex items-center justify-center mb-4">
+                    <span class="material-icons-round">groups</span>
+                </div>
+                <p class="text-3xl font-bold text-white mb-1">1,247</p>
+                <p class="text-sm text-slate-400">活躍選手</p>
+            </div>
+            <div class="codex-panel rounded-3xl p-6">
+                <div class="w-12 h-12 rounded-2xl bg-emerald-500/20 text-emerald-200 flex items-center justify-center mb-4">
+                    <span class="material-icons-round">emoji_events</span>
+                </div>
+                <p class="text-3xl font-bold text-white mb-1">$520K</p>
+                <p class="text-sm text-slate-400">總獎金池</p>
+            </div>
+            <div class="codex-panel rounded-3xl p-6">
+                <div class="w-12 h-12 rounded-2xl bg-rose-500/20 text-rose-200 flex items-center justify-center mb-4">
+                    <span class="material-icons-round">trending_up</span>
+                </div>
+                <p class="text-3xl font-bold text-white mb-1">87.3%</p>
+                <p class="text-sm text-slate-400">霸王花使用率</p>
+            </div>
+        </div>
+
+        <div class="codex-panel rounded-2xl p-4 flex flex-wrap gap-4 items-center justify-between mb-8">
+            <div class="flex gap-4 items-center flex-1">
+                <div class="relative flex-1 max-w-md">
+                    <span class="material-icons-round absolute left-3 top-2.5 text-slate-500">search</span>
+                    <input type="text" placeholder="搜尋賽事名稱..." class="w-full bg-slate-900 border border-slate-800 rounded-xl py-2 pl-10 pr-4 text-sm focus:ring-2 focus:ring-cyan-400 outline-none" />
+                </div>
+                <div class="flex gap-2">
+                    <select class="bg-slate-900 border border-slate-800 rounded-xl py-2 pl-3 pr-8 text-sm">
+                        <option>全部級別</option>
+                        <option>地區錦標賽</option>
+                        <option>城市聯賽</option>
+                    </select>
+                    <select class="bg-slate-900 border border-slate-800 rounded-xl py-2 pl-3 pr-8 text-sm">
+                        <option>全部地區</option>
+                        <option>香港</option>
+                        <option>日本</option>
+                        <option>美國</option>
+                    </select>
+                </div>
+            </div>
+            <button class="px-6 py-2 rounded-xl bg-cyan-400 text-slate-900 font-bold">搜尋</button>
+        </div>
+
+        <div class="codex-panel rounded-3xl overflow-hidden">
+            <table class="w-full text-left border-collapse">
+                <thead>
+                    <tr class="bg-slate-900/70 border-b border-slate-800 text-xs text-slate-400 uppercase tracking-wider">
+                        <th class="p-6 font-bold">賽事名稱</th>
+                        <th class="p-6 font-bold">日期</th>
+                        <th class="p-6 font-bold">地點</th>
+                        <th class="p-6 font-bold text-center">人數</th>
+                        <th class="p-6 font-bold text-center">狀態</th>
+                        <th class="p-6 font-bold text-right"></th>
+                    </tr>
+                </thead>
+                <tbody class="divide-y divide-slate-800">
+                    <tr class="hover:bg-slate-900/60 transition group">
+                        <td class="p-6">
+                            <div class="font-bold text-white">2026 香港地區錦標賽</div>
+                            <div class="text-xs text-slate-400">Regional Championship</div>
+                        </td>
+                        <td class="p-6 text-sm text-slate-300">2026-02-15<div class="text-xs text-slate-500">09:00 - 18:00</div></td>
+                        <td class="p-6 text-sm text-slate-300">香港會議展覽中心<div class="text-xs text-slate-500">🇭🇰 香港</div></td>
+                        <td class="p-6 text-center text-sm font-bold text-white">247</td>
+                        <td class="p-6 text-center">
+                            <span class="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-bold bg-emerald-500/20 text-emerald-200">報名中</span>
+                        </td>
+                        <td class="p-6 text-right">
+                            <a href="event-detail.html" class="inline-flex items-center justify-center w-8 h-8 rounded-full bg-slate-900 border border-slate-800 text-slate-400 hover:text-cyan-200">→</a>
+                        </td>
+                    </tr>
+                    <tr class="hover:bg-slate-900/60 transition group">
+                        <td class="p-6">
+                            <div class="font-bold text-white">日本東京城市聯賽</div>
+                            <div class="text-xs text-slate-400">City League</div>
+                        </td>
+                        <td class="p-6 text-sm text-slate-300">2026-02-08<div class="text-xs text-slate-500">10:00 - 17:00</div></td>
+                        <td class="p-6 text-sm text-slate-300">東京都品川區<div class="text-xs text-slate-500">🇯🇵 日本</div></td>
+                        <td class="p-6 text-center text-sm font-bold text-white">128</td>
+                        <td class="p-6 text-center">
+                            <span class="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-bold bg-amber-500/20 text-amber-200">進行中</span>
+                        </td>
+                        <td class="p-6 text-right">
+                            <a href="event-detail.html" class="inline-flex items-center justify-center w-8 h-8 rounded-full bg-slate-900 border border-slate-800 text-slate-400 hover:text-cyan-200">→</a>
+                        </td>
+                    </tr>
+                    <tr class="hover:bg-slate-900/60 transition group">
+                        <td class="p-6">
+                            <div class="font-bold text-white">2026 美國加州站</div>
+                            <div class="text-xs text-slate-400">Regional Championship</div>
+                        </td>
+                        <td class="p-6 text-sm text-slate-300">2026-01-28<div class="text-xs text-slate-500">已結束</div></td>
+                        <td class="p-6 text-sm text-slate-300">洛杉磯會議中心<div class="text-xs text-slate-500">🇺🇸 美國</div></td>
+                        <td class="p-6 text-center text-sm font-bold text-white">312</td>
+                        <td class="p-6 text-center">
+                            <span class="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-bold bg-slate-700 text-slate-300">已結束</span>
+                        </td>
+                        <td class="p-6 text-right">
+                            <a href="event-detail.html" class="inline-flex items-center justify-center w-8 h-8 rounded-full bg-slate-900 border border-slate-800 text-slate-400 hover:text-cyan-200">👁</a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <div class="p-6 border-t border-slate-800 flex justify-center gap-2">
+                <button class="w-8 h-8 rounded-lg bg-slate-900 text-slate-400">1</button>
+                <button class="w-8 h-8 rounded-lg bg-cyan-400 text-slate-900">2</button>
+                <button class="w-8 h-8 rounded-lg bg-slate-900 text-slate-400">3</button>
+                <span class="w-8 h-8 flex items-center justify-center text-slate-600">...</span>
+                <button class="w-8 h-8 rounded-lg bg-slate-900 text-slate-400">9</button>
+            </div>
+        </div>
+    </main>
+</body>
+</html>

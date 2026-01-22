@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>編輯卡牌 | PTCG 卡牌資料庫 (Bard)</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet">
+  <style>
+    body { font-family: 'Noto Sans TC', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial; }
+  </style>
+</head>
+<body class="bg-gray-50">
+  <!-- Navigation -->
+  <nav class="bg-gradient-to-r from-red-600 to-orange-600 shadow-lg sticky top-0 z-50">
+    <div class="max-w-[1400px] mx-auto px-6">
+      <div class="flex items-center justify-between h-16">
+        <div class="flex items-center space-x-6">
+          <div class="flex items-center">
+            <span class="text-2xl font-bold text-white">🃏 PTCG</span>
+            <span class="ml-2 text-red-200">編輯卡牌</span>
+          </div>
+          <div class="text-red-200 text-sm">
+            <span class="text-white">管理員面板</span>
+          </div>
+        </div>
+        <div class="flex items-center space-x-4">
+          <a href="admin.html" class="text-red-200 hover:text-white px-3 py-2">返回管理</a>
+          <a href="index.html" class="text-red-200 hover:text-white px-3 py-2">首頁</a>
+          <div class="flex items-center space-x-2 bg-white/10 px-4 py-2 rounded-lg">
+            <span class="text-white font-medium">管理員</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <div class="max-w-[1400px] mx-auto px-6 py-8">
+    <div class="mb-8">
+      <h1 class="text-3xl font-bold text-gray-900 mb-2">編輯卡牌：皮卡丘 VMAX</h1>
+      <p class="text-gray-600">編輯卡牌的基本資訊、屬性、技能和圖片</p>
+    </div>
+
+    <!-- Tabs -->
+    <div class="bg-white rounded-lg shadow-lg mb-6">
+      <div class="border-b border-gray-200">
+        <nav class="flex space-x-8 px-6" id="tabs">
+          <button class="tab-button active py-4 px-1 border-b-2 border-red-600 text-red-600 font-medium" data-tab="basic">基本資訊</button>
+          <button class="tab-button py-4 px-1 border-b-2 border-transparent text-gray-500 hover:text-gray-700 font-medium" data-tab="attributes">屬性設定</button>
+          <button class="tab-button py-4 px-1 border-b-2 border-transparent text-gray-500 hover:text-gray-700 font-medium" data-tab="abilities">技能與能力</button>
+          <button class="tab-button py-4 px-1 border-b-2 border-transparent text-gray-500 hover:text-gray-700 font-medium" data-tab="images">圖片管理</button>
+          <button class="tab-button py-4 px-1 border-b-2 border-transparent text-gray-500 hover:text-gray-700 font-medium" data-tab="pricing">價格設定</button>
+        </nav>
+      </div>
+
+      <!-- Tab Content -->
+      <div class="p-6">
+        <!-- Basic Info Tab -->
+        <div id="basic-tab" class="tab-content">
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div>
+              <label class="block text-sm font-medium text-gray-700 mb-2">卡牌名稱</label>
+              <input type="text" value="皮卡丘 VMAX" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-red-500">
+            </div>
+            <div>
+              <label class="block text-sm font-medium text-gray-700 mb-2">英文名稱</label>
+              <input type="text" value="Pikachu VMAX" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-red-500">
+            </div>
+            <div>
+              <label class="block text-sm font-medium text-gray-700 mb-2">卡牌編號</label>
+              <input type="text" value="SWSH12: 060/172" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-red-500">
+            </div>
+            <div>
+              <label class="block text-sm font-medium text-gray-700 mb-2">稀有度</label>
+              <select class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-red-500">
+                <option>一般</option>
+                <option>罕見</option>
+                <option selected>超罕見</option>
+                <option>秘稀</option>
+                <option>傳說</option>
+              </select>
+            </div>
+            <div>
+              <label class="block text-sm font-medium text-gray-700 mb-2">類型</label>
+              <select class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-red-500">
+                <option selected>雷電</option>
+                <option>火</option>
+                <option>水</option>
+                <option>草</option>
+                <option>格鬥</option>
+                <option>超能力</option>
+                <option>惡</option>
+                <option>鋼</option>
+                <option>妖精</option>
+                <option>龍</option>
+                <option>無色</option>
+              </select>
+            </div>
+            <div>
+              <label class="block text-sm font-medium text-gray-700 mb-2">HP</label>
+              <input type="number" value="330" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-red-500">
+            </div>
+          </div>
+        </div>
+
+        <!-- Attributes Tab -->
+        <div id="attributes-tab" class="tab-content hidden">
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div>
+              <label class="block text-sm font-medium text-gray-700 mb-2">進化階段</label>
+              <select class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-red-500">
+                <option>基本</option>
+                <option>一階進化</option>
+                <option selected>二階進化</option>
+                <option>V</option>
+                <option>VMAX</option>
+                <option>VSTAR</option>
+              </select>
+            </div>
+            <div>
+              <label class="block text-sm font-medium text-gray-700 mb-2">弱點</label>
+              <select class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-red-500">
+                <option>無</option>
+                <option selected>格鬥</option>
+                <option>超能力</option>
+                <option>惡</option>
+              </select>
+            </div>
+            <div>
+              <label class="block text-sm font-medium text-gray-700 mb-2">抵抗力</label>
+              <select class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-red-500">
+                <option>無</option>
+                <option>金屬</option>
+                <option selected>雷電</option>
+                <option>水</option>
+              </select>
+            </div>
+            <div>
+              <label class="block text-sm font-medium text-gray-700 mb-2">撤退成本</label>
+              <input type="number" value="3" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-red-500">
+            </div>
+          </div>
+        </div>
+
+        <!-- Abilities Tab -->
+        <div id="abilities-tab" class="tab-content hidden">
+          <div class="space-y-6">
+            <div>
+              <label class="block text-sm font-medium text-gray-700 mb-2">能力</label>
+              <div class="border border-gray-300 rounded-md p-4">
+                <input type="text" placeholder="能力名稱" value="皮卡丘 VMAX" class="w-full px-3 py-2 border border-gray-300 rounded-md mb-2 focus:outline-none focus:ring-2 focus:ring-red-500">
+                <textarea placeholder="能力描述" rows="3" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-red-500">在自己的回合中，可使用1次。從自己的棄牌區選擇最多2張基本能量卡，附於自己的寶可夢身上。</textarea>
+              </div>
+            </div>
+            <div>
+              <label class="block text-sm font-medium text-gray-700 mb-2">攻擊</label>
+              <div class="border border-gray-300 rounded-md p-4">
+                <input type="text" placeholder="攻擊名稱" value="超極巨雷電風暴" class="w-full px-3 py-2 border border-gray-300 rounded-md mb-2 focus:outline-none focus:ring-2 focus:ring-red-500">
+                <div class="grid grid-cols-2 gap-4 mb-2">
+                  <input type="text" placeholder="能量成本" value="雷電雷電雷電雷電" class="px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-red-500">
+                  <input type="text" placeholder="傷害" value="300" class="px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-red-500">
+                </div>
+                <textarea placeholder="攻擊描述" rows="3" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-red-500">這個攻擊在造成傷害時，對手的戰鬥寶可夢【麻痺】。</textarea>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Images Tab -->
+        <div id="images-tab" class="tab-content hidden">
+          <div class="space-y-6">
+            <div>
+              <label class="block text-sm font-medium text-gray-700 mb-2">卡牌圖片</label>
+              <div class="border-2 border-dashed border-gray-300 rounded-lg p-8 text-center">
+                <div class="text-gray-500 mb-4">
+                  <div class="text-4xl mb-2">📸</div>
+                  <p>拖拽圖片到此處或點擊上傳</p>
+                </div>
+                <input type="file" accept="image/*" class="hidden" id="image-upload">
+                <button onclick="document.getElementById('image-upload').click()" class="bg-red-600 text-white px-4 py-2 rounded-md hover:bg-red-700">選擇圖片</button>
+              </div>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+              <div class="border border-gray-300 rounded-lg p-4">
+                <img src="https://via.placeholder.com/200x280?text=卡牌正面" alt="卡牌正面" class="w-full h-auto rounded">
+                <p class="text-center mt-2 text-sm text-gray-600">正面</p>
+              </div>
+              <div class="border border-gray-300 rounded-lg p-4">
+                <img src="https://via.placeholder.com/200x280?text=卡牌背面" alt="卡牌背面" class="w-full h-auto rounded">
+                <p class="text-center mt-2 text-sm text-gray-600">背面</p>
+              </div>
+              <div class="border border-gray-300 rounded-lg p-4">
+                <img src="https://via.placeholder.com/200x280?text=縮圖" alt="縮圖" class="w-full h-auto rounded">
+                <p class="text-center mt-2 text-sm text-gray-600">縮圖</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Pricing Tab -->
+        <div id="pricing-tab" class="tab-content hidden">
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div>
+              <label class="block text-sm font-medium text-gray-700 mb-2">市場價格 (HKD)</label>
+              <input type="number" value="250" step="0.01" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-red-500">
+            </div>
+            <div>
+              <label class="block text-sm font-medium text-gray-700 mb-2">建議售價 (HKD)</label>
+              <input type="number" value="220" step="0.01" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-red-500">
+            </div>
+            <div>
+              <label class="block text-sm font-medium text-gray-700 mb-2">最低價格 (HKD)</label>
+              <input type="number" value="180" step="0.01" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-red-500">
+            </div>
+            <div>
+              <label class="block text-sm font-medium text-gray-700 mb-2">最高價格 (HKD)</label>
+              <input type="number" value="350" step="0.01" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-red-500">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Action Buttons -->
+    <div class="flex justify-end space-x-4">
+      <button class="px-6 py-2 border border-gray-300 rounded-md text-gray-700 hover:bg-gray-50">取消</button>
+      <button class="px-6 py-2 bg-red-600 text-white rounded-md hover:bg-red-700">儲存變更</button>
+    </div>
+  </div>
+
+  <script>
+    // Tab switching functionality
+    const tabButtons = document.querySelectorAll('.tab-button');
+    const tabContents = document.querySelectorAll('.tab-content');
+
+    tabButtons.forEach(button => {
+      button.addEventListener('click', () => {
+        // Remove active class from all buttons
+        tabButtons.forEach(btn => {
+          btn.classList.remove('active', 'border-red-600', 'text-red-600');
+          btn.classList.add('border-transparent', 'text-gray-500');
+        });
+
+        // Add active class to clicked button
+        button.classList.add('active', 'border-red-600', 'text-red-600');
+        button.classList.remove('border-transparent', 'text-gray-500');
+
+        // Hide all tab contents
+        tabContents.forEach(content => content.classList.add('hidden'));
+
+        // Show selected tab content
+        const tabId = button.getAttribute('data-tab') + '-tab';
+        document.getElementById(tabId).classList.remove('hidden');
+      });
+    });
+  </script>
+</body>
+</html>

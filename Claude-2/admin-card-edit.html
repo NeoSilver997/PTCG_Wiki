@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>編輯卡牌 | PTCG 卡牌資料庫 (Claude-2)</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet">
+  <style>
+    body { font-family: 'Noto Sans TC', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial; }
+  </style>
+</head>
+<body class="bg-gradient-to-br from-blue-50 to-indigo-100 min-h-screen">
+  <!-- Navigation -->
+  <nav class="bg-white/90 backdrop-blur-md border-b border-blue-200 sticky top-0 z-50">
+    <div class="max-w-7xl mx-auto px-4">
+      <div class="flex items-center justify-between h-16">
+        <div class="flex items-center space-x-6">
+          <div class="flex items-center">
+            <div class="w-10 h-10 bg-gradient-to-r from-blue-500 to-indigo-600 rounded-xl flex items-center justify-center shadow-lg">
+              <span class="text-white font-bold text-lg">C2</span>
+            </div>
+            <span class="ml-3 text-2xl font-bold text-gray-800">PTCG</span>
+          </div>
+          <div class="hidden md:flex space-x-1">
+            <a href="index.html" class="px-4 py-2 text-gray-600 hover:text-blue-600 hover:bg-blue-50 rounded-lg transition-colors">首頁</a>
+            <a href="admin.html" class="px-4 py-2 text-gray-600 hover:text-blue-600 hover:bg-blue-50 rounded-lg transition-colors">管理</a>
+            <a href="admin-card-edit.html" class="px-4 py-2 text-blue-600 bg-blue-100 rounded-lg font-medium">編輯</a>
+          </div>
+        </div>
+        <div class="flex items-center space-x-3">
+          <button class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg text-sm font-medium transition-colors">
+            儲存
+          </button>
+          <button class="bg-gray-600 hover:bg-gray-700 text-white px-4 py-2 rounded-lg text-sm font-medium transition-colors">
+            取消
+          </button>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <div class="max-w-7xl mx-auto px-4 py-8">
+    <!-- Header -->
+    <div class="mb-8">
+      <h1 class="text-4xl font-bold text-gray-800 mb-2">編輯賽事結果</h1>
+      <p class="text-xl text-gray-600">編輯莉佳的霸王花ex牌組與賽事資料</p>
+    </div>
+
+    <!-- Edit Form -->
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+      <!-- Main Form -->
+      <div class="lg:col-span-2 space-y-6">
+        <!-- Tournament Info -->
+        <div class="bg-white rounded-xl p-6 shadow-lg">
+          <h2 class="text-2xl font-bold text-gray-800 mb-6">賽事資訊</h2>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div>
+              <label class="block text-sm font-medium text-gray-700 mb-2">賽事名稱</label>
+              <input type="text" value="台北 PTCG 大師賽" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+            </div>
+            <div>
+              <label class="block text-sm font-medium text-gray-700 mb-2">賽事日期</label>
+              <input type="date" value="2026-01-15" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+            </div>
+            <div>
+              <label class="block text-sm font-medium text-gray-700 mb-2">參賽人數</label>
+              <input type="number" value="128" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+            </div>
+            <div>
+              <label class="block text-sm font-medium text-gray-700 mb-2">賽事格式</label>
+              <select class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                <option>標準賽</option>
+                <option>擴張賽</option>
+                <option>主題賽</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <!-- Champion Deck -->
+        <div class="bg-white rounded-xl p-6 shadow-lg">
+          <h2 class="text-2xl font-bold text-gray-800 mb-6">冠軍牌組：莉佳的霸王花ex</h2>
+
+          <div class="space-y-6">
+            <!-- Deck Info -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div>
+                <label class="block text-sm font-medium text-gray-700 mb-2">牌組名稱</label>
+                <input type="text" value="莉佳的霸王花ex" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+              </div>
+              <div>
+                <label class="block text-sm font-medium text-gray-700 mb-2">使用選手</label>
+                <input type="text" value="莉佳" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+              </div>
+              <div>
+                <label class="block text-sm font-medium text-gray-700 mb-2">勝率</label>
+                <input type="number" value="78" min="0" max="100" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+              </div>
+              <div>
+                <label class="block text-sm font-medium text-gray-700 mb-2">使用率</label>
+                <input type="number" value="24" min="0" max="100" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+              </div>
+            </div>
+
+            <!-- Deck Description -->
+            <div>
+              <label class="block text-sm font-medium text-gray-700 mb-2">牌組描述</label>
+              <textarea rows="3" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent" placeholder="描述牌組的特點與策略...">莉佳使用的主力牌組，擅長控制與後期爆發。霸王花ex作為主軸寶可夢，搭配水屬性支援卡牌，形成強大的控制型牌組。</textarea>
+            </div>
+
+            <!-- Deck Cards -->
+            <div>
+              <label class="block text-sm font-medium text-gray-700 mb-4">牌組組成</label>
+              <div class="space-y-3">
+                <div class="flex items-center space-x-3">
+                  <input type="text" value="莉佳的霸王花ex" class="flex-1 px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                  <input type="number" value="1" min="1" class="w-20 px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                  <button class="text-red-600 hover:text-red-700 p-2">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"></path>
+                    </svg>
+                  </button>
+                </div>
+
+                <div class="flex items-center space-x-3">
+                  <input type="text" value="水箭龜ex" class="flex-1 px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                  <input type="number" value="2" min="1" class="w-20 px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                  <button class="text-red-600 hover:text-red-700 p-2">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"></path>
+                    </svg>
+                  </button>
+                </div>
+
+                <div class="flex items-center space-x-3">
+                  <input type="text" value="快泳蛙" class="flex-1 px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                  <input type="number" value="3" min="1" class="w-20 px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                  <button class="text-red-600 hover:text-red-700 p-2">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"></path>
+                    </svg>
+                  </button>
+                </div>
+
+                <div class="flex items-center space-x-3">
+                  <input type="text" value="電氣能量" class="flex-1 px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                  <input type="number" value="12" min="1" class="w-20 px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                  <button class="text-red-600 hover:text-red-700 p-2">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"></path>
+                    </svg>
+                  </button>
+                </div>
+
+                <button class="w-full bg-blue-600 hover:bg-blue-700 text-white py-2 px-4 rounded-lg font-medium transition-colors">
+                  + 新增卡牌
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tournament Results -->
+        <div class="bg-white rounded-xl p-6 shadow-lg">
+          <h2 class="text-2xl font-bold text-gray-800 mb-6">賽事排名</h2>
+
+          <div class="space-y-4">
+            <!-- Champion -->
+            <div class="flex items-center space-x-4 p-4 bg-yellow-50 border border-yellow-200 rounded-lg">
+              <div class="w-12 h-12 bg-yellow-100 rounded-full flex items-center justify-center">
+                <span class="text-yellow-800 font-bold text-lg">🥇</span>
+              </div>
+              <div class="flex-1">
+                <input type="text" value="莉佳" class="font-bold text-gray-800 bg-transparent border-none focus:outline-none w-full">
+                <input type="text" value="莉佳的霸王花ex" class="text-sm text-blue-600 bg-transparent border-none focus:outline-none w-full">
+              </div>
+              <input type="text" value="NT$50,000" class="text-right w-24 px-2 py-1 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500">
+            </div>
+
+            <!-- Runner-up -->
+            <div class="flex items-center space-x-4 p-4 bg-gray-50 border border-gray-200 rounded-lg">
+              <div class="w-12 h-12 bg-gray-100 rounded-full flex items-center justify-center">
+                <span class="text-gray-800 font-bold text-lg">🥈</span>
+              </div>
+              <div class="flex-1">
+                <input type="text" value="小智" class="font-bold text-gray-800 bg-transparent border-none focus:outline-none w-full">
+                <input type="text" value="皮卡丘 & 鯉魚王" class="text-sm text-blue-600 bg-transparent border-none focus:outline-none w-full">
+              </div>
+              <input type="text" value="NT$30,000" class="text-right w-24 px-2 py-1 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500">
+            </div>
+
+            <!-- Third Place -->
+            <div class="flex items-center space-x-4 p-4 bg-orange-50 border border-orange-200 rounded-lg">
+              <div class="w-12 h-12 bg-orange-100 rounded-full flex items-center justify-center">
+                <span class="text-orange-800 font-bold text-lg">🥉</span>
+              </div>
+              <div class="flex-1">
+                <input type="text" value="小霞" class="font-bold text-gray-800 bg-transparent border-none focus:outline-none w-full">
+                <input type="text" value="火箭隊的黑暗" class="text-sm text-blue-600 bg-transparent border-none focus:outline-none w-full">
+              </div>
+              <input type="text" value="NT$20,000" class="text-right w-24 px-2 py-1 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500">
+            </div>
+          </div>
+
+          <button class="w-full mt-4 bg-green-600 hover:bg-green-700 text-white py-2 px-4 rounded-lg font-medium transition-colors">
+            + 新增參賽者
+          </button>
+        </div>
+      </div>
+
+      <!-- Sidebar -->
+      <div class="space-y-6">
+        <!-- Card Preview -->
+        <div class="bg-white rounded-xl p-6 shadow-lg">
+          <h3 class="text-xl font-bold text-gray-800 mb-4">卡牌預覽</h3>
+          <div class="aspect-[245/342] bg-gradient-to-br from-blue-400/20 to-indigo-600/20 rounded-lg flex items-center justify-center mb-4">
+            <div class="text-center">
+              <div class="text-4xl mb-2">💧</div>
+              <div class="font-bold text-gray-800">莉佳的霸王花ex</div>
+              <div class="text-sm text-gray-600">UR • 水</div>
+            </div>
+          </div>
+          <button class="w-full bg-blue-600 hover:bg-blue-700 text-white py-2 px-4 rounded-lg font-medium transition-colors">
+            上傳圖片
+          </button>
+        </div>
+
+        <!-- Deck Analysis -->
+        <div class="bg-white rounded-xl p-6 shadow-lg">
+          <h3 class="text-xl font-bold text-gray-800 mb-4">牌組分析</h3>
+
+          <div class="space-y-4">
+            <div>
+              <div class="flex justify-between text-sm mb-1">
+                <span class="text-gray-600">總卡牌數</span>
+                <span class="font-bold text-gray-800">60</span>
+              </div>
+              <div class="w-full bg-gray-200 rounded-full h-2">
+                <div class="bg-blue-600 h-2 rounded-full" style="width: 100%"></div>
+              </div>
+            </div>
+
+            <div>
+              <div class="flex justify-between text-sm mb-1">
+                <span class="text-gray-600">水屬性</span>
+                <span class="font-bold text-gray-800">18張</span>
+              </div>
+              <div class="w-full bg-gray-200 rounded-full h-2">
+                <div class="bg-blue-600 h-2 rounded-full" style="width: 75%"></div>
+              </div>
+            </div>
+
+            <div>
+              <div class="flex justify-between text-sm mb-1">
+                <span class="text-gray-600">無屬性</span>
+                <span class="font-bold text-gray-800">24張</span>
+              </div>
+              <div class="w-full bg-gray-200 rounded-full h-2">
+                <div class="bg-gray-600 h-2 rounded-full" style="width: 40%"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Save Options -->
+        <div class="bg-white rounded-xl p-6 shadow-lg">
+          <h3 class="text-xl font-bold text-gray-800 mb-4">儲存選項</h3>
+
+          <div class="space-y-3">
+            <button class="w-full bg-blue-600 hover:bg-blue-700 text-white py-3 px-4 rounded-lg font-medium transition-colors">
+              儲存變更
+            </button>
+            <button class="w-full bg-green-600 hover:bg-green-700 text-white py-3 px-4 rounded-lg font-medium transition-colors">
+              發佈結果
+            </button>
+            <button class="w-full bg-gray-600 hover:bg-gray-700 text-white py-3 px-4 rounded-lg font-medium transition-colors">
+              預覽頁面
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

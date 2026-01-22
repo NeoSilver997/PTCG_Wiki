@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="zh-HK">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>我的收藏 - GPT-5.2 Codex</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Round" rel="stylesheet" />
+    <style>
+        body {
+            font-family: 'Noto Sans TC', sans-serif;
+            background-color: #0b1020;
+            color: #e5e7eb;
+        }
+        .codex-panel {
+            background: rgba(15, 23, 42, 0.9);
+            border: 1px solid rgba(148, 163, 184, 0.15);
+        }
+    </style>
+</head>
+<body class="min-h-screen">
+    <nav class="sticky top-0 z-50 bg-slate-950/80 border-b border-slate-800 backdrop-blur-xl">
+        <div class="max-w-7xl mx-auto px-6 h-20 flex justify-between items-center">
+            <a href="index.html" class="flex items-center gap-2">
+                <span class="material-icons-round text-3xl text-cyan-300">auto_awesome</span>
+                <span class="font-bold text-xl text-white">PTCG CardDB</span>
+            </a>
+            <div class="hidden md:flex items-center gap-8 text-sm">
+                <a href="index.html" class="text-slate-300 hover:text-white">首頁</a>
+                <a href="collection.html" class="text-cyan-200">收藏</a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="max-w-7xl mx-auto px-6 py-10">
+        <div class="flex flex-col md:flex-row justify-between items-end mb-10 gap-6">
+            <div>
+                <h1 class="text-4xl font-bold text-white mb-2">我的收藏</h1>
+                <p class="text-slate-400">管理你的寶可夢卡牌庫存與願望清單</p>
+            </div>
+            <div class="flex gap-4">
+                <div class="codex-panel px-6 py-3 rounded-2xl text-center">
+                    <p class="text-xs text-slate-400 uppercase font-bold">總數</p>
+                    <p class="text-xl font-bold text-white">1,247</p>
+                </div>
+                <div class="codex-panel px-6 py-3 rounded-2xl text-center">
+                    <p class="text-xs text-slate-400 uppercase font-bold">完成度</p>
+                    <p class="text-xl font-bold text-emerald-300">87.3%</p>
+                </div>
+                <div class="codex-panel px-6 py-3 rounded-2xl text-center">
+                    <p class="text-xs text-slate-400 uppercase font-bold">估值</p>
+                    <p class="text-xl font-bold text-purple-300">$128K</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="codex-panel rounded-2xl p-4 flex flex-wrap gap-4 items-center justify-between mb-8">
+            <div class="flex gap-4 items-center flex-1">
+                <div class="relative flex-1 max-w-md">
+                    <span class="material-icons-round absolute left-3 top-2.5 text-slate-500">search</span>
+                    <input type="text" placeholder="搜尋收藏..." class="w-full bg-slate-900 border border-slate-800 rounded-xl py-2 pl-10 pr-4 text-sm focus:ring-2 focus:ring-cyan-400 outline-none" />
+                </div>
+                <div class="flex gap-2">
+                    <select class="bg-slate-900 border border-slate-800 rounded-xl py-2 pl-3 pr-8 text-sm">
+                        <option>全部系列</option>
+                    </select>
+                </div>
+                <label class="flex items-center gap-2 cursor-pointer ml-4 text-sm text-slate-300">
+                    <input type="checkbox" class="rounded border-slate-700 text-rose-400 focus:ring-rose-400" />
+                    只顯示缺少的卡片 (15)
+                </label>
+            </div>
+        </div>
+
+        <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6">
+            <div class="codex-panel rounded-2xl p-3 border-2 border-transparent hover:border-cyan-400/40 transition">
+                <div class="aspect-[3/4] bg-slate-900 rounded-xl mb-3 relative overflow-hidden">
+                    <div class="absolute inset-0 bg-gradient-to-br from-emerald-500 to-teal-700"></div>
+                    <div class="absolute inset-0 flex flex-col justify-center items-center text-white">
+                        <span class="text-4xl mb-2">🌿</span>
+                    </div>
+                    <div class="absolute top-2 right-2 bg-emerald-500 text-slate-900 rounded-full w-6 h-6 flex items-center justify-center">
+                        <span class="material-icons-round text-sm">check</span>
+                    </div>
+                    <div class="absolute top-2 left-2 bg-white/90 text-slate-900 text-xs font-bold px-2 py-0.5 rounded-full">x4</div>
+                </div>
+                <div class="px-1">
+                    <div class="flex justify-between items-start">
+                        <h3 class="font-bold text-sm text-white truncate">莉佳的霸王花ex</h3>
+                    </div>
+                    <div class="flex justify-between items-center mt-1">
+                        <span class="text-xs text-slate-400">#014</span>
+                        <span class="text-xs font-bold text-slate-200">$850</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="codex-panel rounded-2xl p-3 border-2 border-rose-500/30 opacity-80 hover:opacity-100 transition">
+                <div class="aspect-[3/4] bg-slate-900 rounded-xl mb-3 relative overflow-hidden">
+                    <div class="absolute inset-0 bg-gradient-to-br from-rose-700 to-orange-900 opacity-80"></div>
+                    <div class="absolute inset-0 flex flex-col justify-center items-center text-white/50">
+                        <span class="text-4xl mb-2">🔥</span>
+                        <span class="material-icons-round text-3xl text-white">lock</span>
+                    </div>
+                    <div class="absolute top-2 right-2 bg-rose-500 text-white rounded-full w-6 h-6 flex items-center justify-center">
+                        <span class="material-icons-round text-sm">close</span>
+                    </div>
+                </div>
+                <div class="px-1">
+                    <div class="flex justify-between items-start">
+                        <h3 class="font-bold text-sm text-slate-400 truncate">噴火龍ex</h3>
+                    </div>
+                    <div class="flex justify-between items-center mt-1">
+                        <span class="text-xs text-slate-500">#125</span>
+                        <span class="text-xs font-bold text-rose-300">$2,150</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="codex-panel rounded-2xl p-3 border-2 border-transparent hover:border-cyan-400/40 transition">
+                <div class="aspect-[3/4] bg-slate-900 rounded-xl mb-3 relative overflow-hidden">
+                    <div class="absolute inset-0 bg-gradient-to-br from-yellow-500 to-amber-600"></div>
+                    <div class="absolute inset-0 flex flex-col justify-center items-center text-white">
+                        <span class="text-4xl mb-2">⚡</span>
+                    </div>
+                    <div class="absolute top-2 right-2 bg-emerald-500 text-slate-900 rounded-full w-6 h-6 flex items-center justify-center">
+                        <span class="material-icons-round text-sm">check</span>
+                    </div>
+                    <div class="absolute top-2 left-2 bg-white/90 text-slate-900 text-xs font-bold px-2 py-0.5 rounded-full">x3</div>
+                </div>
+                <div class="px-1">
+                    <div class="flex justify-between items-start">
+                        <h3 class="font-bold text-sm text-white truncate">皮卡丘VMAX</h3>
+                    </div>
+                    <div class="flex justify-between items-center mt-1">
+                        <span class="text-xs text-slate-400">#033</span>
+                        <span class="text-xs font-bold text-slate-200">$980</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+</body>
+</html>

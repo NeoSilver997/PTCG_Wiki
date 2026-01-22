@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>我的收藏 | PTCG 卡牌資料庫 (Copilot)</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet">
+  <style>
+    body { font-family: 'Noto Sans TC', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial; }
+  </style>
+</head>
+<body class="bg-slate-900 min-h-screen">
+  <!-- Modern Navigation -->
+  <nav class="bg-slate-800 border-b border-slate-700 sticky top-0 z-50">
+    <div class="max-w-7xl mx-auto px-4">
+      <div class="flex items-center justify-between h-14">
+        <div class="flex items-center space-x-6">
+          <div class="flex items-center">
+            <div class="w-8 h-8 bg-gradient-to-r from-teal-400 to-cyan-500 rounded-lg flex items-center justify-center">
+              <span class="text-white font-bold text-sm">C</span>
+            </div>
+            <span class="ml-3 text-xl font-bold text-white">PTCG</span>
+          </div>
+          <div class="hidden md:flex space-x-1">
+            <a href="index.html" class="px-3 py-2 text-slate-300 hover:text-white">首頁</a>
+            <a href="collection.html" class="px-3 py-2 text-teal-400 border-b-2 border-teal-400 font-medium">收藏</a>
+            <a href="deck-builder.html" class="px-3 py-2 text-slate-300 hover:text-white">組牌</a>
+            <a href="events.html" class="px-3 py-2 text-slate-300 hover:text-white">賽事</a>
+          </div>
+        </div>
+        <div class="flex items-center space-x-3">
+          <div class="flex items-center space-x-2 bg-slate-700 px-3 py-2 rounded-lg">
+            <div class="w-6 h-6 bg-teal-500 rounded-full flex items-center justify-center">
+              <span class="text-white text-xs font-bold">P</span>
+            </div>
+            <span class="text-slate-200 text-sm">玩家</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <div class="max-w-7xl mx-auto px-4 py-6">
+    <!-- Collection Header -->
+    <div class="bg-slate-800 rounded-xl border border-slate-700 p-6 mb-6">
+      <div class="flex items-center justify-between mb-4">
+        <div>
+          <h1 class="text-3xl font-bold text-white mb-2">我的收藏</h1>
+          <p class="text-slate-400">管理您的 PTCG 卡牌收藏</p>
+        </div>
+        <div class="flex items-center space-x-3">
+          <button class="bg-slate-700 hover:bg-slate-600 text-slate-200 px-4 py-2 rounded-lg text-sm font-medium">匯出收藏</button>
+          <button class="bg-teal-600 hover:bg-teal-700 text-white px-4 py-2 rounded-lg text-sm font-medium">新增卡牌</button>
+        </div>
+      </div>
+
+      <!-- Collection Stats -->
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+        <div class="bg-slate-700 rounded-lg p-4 text-center">
+          <div class="text-2xl font-bold text-teal-400 mb-1">247</div>
+          <div class="text-sm text-slate-400">總卡牌數</div>
+        </div>
+        <div class="bg-slate-700 rounded-lg p-4 text-center">
+          <div class="text-2xl font-bold text-cyan-400 mb-1">89</div>
+          <div class="text-sm text-slate-400">獨特卡牌</div>
+        </div>
+        <div class="bg-slate-700 rounded-lg p-4 text-center">
+          <div class="text-2xl font-bold text-blue-400 mb-1">NT$ 45,230</div>
+          <div class="text-sm text-slate-400">收藏價值</div>
+        </div>
+        <div class="bg-slate-700 rounded-lg p-4 text-center">
+          <div class="text-2xl font-bold text-purple-400 mb-1">12</div>
+          <div class="text-sm text-slate-400">完整擴充包</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Filters & Search -->
+    <div class="bg-slate-800 rounded-xl border border-slate-700 p-6 mb-6">
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
+        <div>
+          <label class="block text-sm font-medium text-slate-300 mb-2">搜尋</label>
+          <input type="text" placeholder="卡牌名稱..." class="w-full bg-slate-700 border border-slate-600 rounded-lg px-4 py-3 text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-transparent">
+        </div>
+        <div>
+          <label class="block text-sm font-medium text-slate-300 mb-2">屬性</label>
+          <select class="w-full bg-slate-700 border border-slate-600 rounded-lg px-4 py-3 text-white focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-transparent">
+            <option value="">全部屬性</option>
+            <option value="grass">草</option>
+            <option value="fire">火</option>
+            <option value="water">水</option>
+            <option value="electric">電</option>
+            <option value="psychic">超</option>
+            <option value="fighting">鬥</option>
+            <option value="darkness">惡</option>
+            <option value="metal">鋼</option>
+          </select>
+        </div>
+        <div>
+          <label class="block text-sm font-medium text-slate-300 mb-2">稀有度</label>
+          <select class="w-full bg-slate-700 border border-slate-600 rounded-lg px-4 py-3 text-white focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-transparent">
+            <option value="">全部稀有度</option>
+            <option value="C">普通</option>
+            <option value="U">非普通</option>
+            <option value="R">稀有</option>
+            <option value="RR">雙倍稀有</option>
+            <option value="SR">超級稀有</option>
+            <option value="UR">終極稀有</option>
+          </select>
+        </div>
+        <div>
+          <label class="block text-sm font-medium text-slate-300 mb-2">排序</label>
+          <select class="w-full bg-slate-700 border border-slate-600 rounded-lg px-4 py-3 text-white focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-transparent">
+            <option value="recent">最近新增</option>
+            <option value="name">名稱</option>
+            <option value="rarity">稀有度</option>
+            <option value="value">價值</option>
+          </select>
+        </div>
+      </div>
+    </div>
+
+    <!-- Collection Grid -->
+    <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-4 mb-8">
+      <!-- Card 1 -->
+      <div class="bg-slate-800 rounded-xl border border-slate-700 overflow-hidden hover:border-teal-500 transition-all duration-200 cursor-pointer group">
+        <div class="aspect-[245/342] bg-gradient-to-br from-yellow-400/20 to-yellow-600/20 flex items-center justify-center relative">
+          <span class="text-4xl">⚡</span>
+          <div class="absolute top-2 right-2 bg-yellow-500 text-black px-1.5 py-0.5 rounded text-xs font-bold">RR</div>
+          <div class="absolute top-2 left-2 bg-slate-900/80 text-white px-1.5 py-0.5 rounded text-xs">×2</div>
+        </div>
+        <div class="p-3">
+          <h3 class="font-bold text-white text-sm mb-1 truncate">皮卡丘 ex</h3>
+          <p class="text-xs text-slate-400 mb-2">SV08 014/108</p>
+          <div class="flex items-center justify-between">
+            <span class="px-1.5 py-0.5 bg-yellow-500/20 text-yellow-400 rounded text-xs border border-yellow-500/30">電</span>
+            <span class="text-xs text-slate-300">NT$ 250</span>
+          </div>
+        </div>
+        <div class="px-3 pb-3">
+          <div class="flex space-x-1">
+            <button class="flex-1 bg-slate-700 hover:bg-slate-600 text-slate-200 px-2 py-1 rounded text-xs font-medium transition-colors">編輯</button>
+            <button class="flex-1 bg-red-600 hover:bg-red-700 text-white px-2 py-1 rounded text-xs font-medium transition-colors">移除</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 2 -->
+      <div class="bg-slate-800 rounded-xl border border-slate-700 overflow-hidden hover:border-teal-500 transition-all duration-200 cursor-pointer group">
+        <div class="aspect-[245/342] bg-gradient-to-br from-red-400/20 to-orange-600/20 flex items-center justify-center relative">
+          <span class="text-4xl">🔥</span>
+          <div class="absolute top-2 right-2 bg-purple-500 text-white px-1.5 py-0.5 rounded text-xs font-bold">SR</div>
+          <div class="absolute top-2 left-2 bg-slate-900/80 text-white px-1.5 py-0.5 rounded text-xs">×1</div>
+        </div>
+        <div class="p-3">
+          <h3 class="font-bold text-white text-sm mb-1 truncate">噴火龍 VSTAR</h3>
+          <p class="text-xs text-slate-400 mb-2">SV08 023/108</p>
+          <div class="flex items-center justify-between">
+            <span class="px-1.5 py-0.5 bg-red-500/20 text-red-400 rounded text-xs border border-red-500/30">火</span>
+            <span class="text-xs text-slate-300">NT$ 850</span>
+          </div>
+        </div>
+        <div class="px-3 pb-3">
+          <div class="flex space-x-1">
+            <button class="flex-1 bg-slate-700 hover:bg-slate-600 text-slate-200 px-2 py-1 rounded text-xs font-medium transition-colors">編輯</button>
+            <button class="flex-1 bg-red-600 hover:bg-red-700 text-white px-2 py-1 rounded text-xs font-medium transition-colors">移除</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 3 -->
+      <div class="bg-slate-800 rounded-xl border border-slate-700 overflow-hidden hover:border-teal-500 transition-all duration-200 cursor-pointer group">
+        <div class="aspect-[245/342] bg-gradient-to-br from-blue-400/20 to-cyan-600/20 flex items-center justify-center relative">
+          <span class="text-4xl">💧</span>
+          <div class="absolute top-2 right-2 bg-blue-500 text-white px-1.5 py-0.5 rounded text-xs font-bold">RR</div>
+          <div class="absolute top-2 left-2 bg-slate-900/80 text-white px-1.5 py-0.5 rounded text-xs">×3</div>
+        </div>
+        <div class="p-3">
+          <h3 class="font-bold text-white text-sm mb-1 truncate">水箭龜 ex</h3>
+          <p class="text-xs text-slate-400 mb-2">SV08 031/108</p>
+          <div class="flex items-center justify-between">
+            <span class="px-1.5 py-0.5 bg-blue-500/20 text-blue-400 rounded text-xs border border-blue-500/30">水</span>
+            <span class="text-xs text-slate-300">NT$ 320</span>
+          </div>
+        </div>
+        <div class="px-3 pb-3">
+          <div class="flex space-x-1">
+            <button class="flex-1 bg-slate-700 hover:bg-slate-600 text-slate-200 px-2 py-1 rounded text-xs font-medium transition-colors">編輯</button>
+            <button class="flex-1 bg-red-600 hover:bg-red-700 text-white px-2 py-1 rounded text-xs font-medium transition-colors">移除</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 4 -->
+      <div class="bg-slate-800 rounded-xl border border-slate-700 overflow-hidden hover:border-teal-500 transition-all duration-200 cursor-pointer group">
+        <div class="aspect-[245/342] bg-gradient-to-br from-green-400/20 to-emerald-600/20 flex items-center justify-center relative">
+          <span class="text-4xl">🌿</span>
+          <div class="absolute top-2 right-2 bg-slate-500 text-white px-1.5 py-0.5 rounded text-xs font-bold">R</div>
+          <div class="absolute top-2 left-2 bg-slate-900/80 text-white px-1.5 py-0.5 rounded text-xs">×1</div>
+        </div>
+        <div class="p-3">
+          <h3 class="font-bold text-white text-sm mb-1 truncate">妙蛙花</h3>
+          <p class="text-xs text-slate-400 mb-2">SV08 005/108</p>
+          <div class="flex items-center justify-between">
+            <span class="px-1.5 py-0.5 bg-green-500/20 text-green-400 rounded text-xs border border-green-500/30">草</span>
+            <span class="text-xs text-slate-300">NT$ 45</span>
+          </div>
+        </div>
+        <div class="px-3 pb-3">
+          <div class="flex space-x-1">
+            <button class="flex-1 bg-slate-700 hover:bg-slate-600 text-slate-200 px-2 py-1 rounded text-xs font-medium transition-colors">編輯</button>
+            <button class="flex-1 bg-red-600 hover:bg-red-700 text-white px-2 py-1 rounded text-xs font-medium transition-colors">移除</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 5 -->
+      <div class="bg-slate-800 rounded-xl border border-slate-700 overflow-hidden hover:border-teal-500 transition-all duration-200 cursor-pointer group">
+        <div class="aspect-[245/342] bg-gradient-to-br from-purple-400/20 to-violet-600/20 flex items-center justify-center relative">
+          <span class="text-4xl">🔮</span>
+          <div class="absolute top-2 right-2 bg-amber-500 text-black px-1.5 py-0.5 rounded text-xs font-bold">UR</div>
+          <div class="absolute top-2 left-2 bg-slate-900/80 text-white px-1.5 py-0.5 rounded text-xs">×1</div>
+        </div>
+        <div class="p-3">
+          <h3 class="font-bold text-white text-sm mb-1 truncate">超夢 ex</h3>
+          <p class="text-xs text-slate-400 mb-2">SV07 089/108</p>
+          <div class="flex items-center justify-between">
+            <span class="px-1.5 py-0.5 bg-purple-500/20 text-purple-400 rounded text-xs border border-purple-500/30">超</span>
+            <span class="text-xs text-slate-300">NT$ 1,200</span>
+          </div>
+        </div>
+        <div class="px-3 pb-3">
+          <div class="flex space-x-1">
+            <button class="flex-1 bg-slate-700 hover:bg-slate-600 text-slate-200 px-2 py-1 rounded text-xs font-medium transition-colors">編輯</button>
+            <button class="flex-1 bg-red-600 hover:bg-red-700 text-white px-2 py-1 rounded text-xs font-medium transition-colors">移除</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 6 -->
+      <div class="bg-slate-800 rounded-xl border border-slate-700 overflow-hidden hover:border-teal-500 transition-all duration-200 cursor-pointer group">
+        <div class="aspect-[245/342] bg-gradient-to-br from-orange-400/20 to-amber-600/20 flex items-center justify-center relative">
+          <span class="text-4xl">👊</span>
+          <div class="absolute top-2 right-2 bg-blue-500 text-white px-1.5 py-0.5 rounded text-xs font-bold">RR</div>
+          <div class="absolute top-2 left-2 bg-slate-900/80 text-white px-1.5 py-0.5 rounded text-xs">×2</div>
+        </div>
+        <div class="p-3">
+          <h3 class="font-bold text-white text-sm mb-1 truncate">路卡利歐 ex</h3>
+          <p class="text-xs text-slate-400 mb-2">SV08 045/108</p>
+          <div class="flex items-center justify-between">
+            <span class="px-1.5 py-0.5 bg-orange-500/20 text-orange-400 rounded text-xs border border-orange-500/30">鬥</span>
+            <span class="text-xs text-slate-300">NT$ 180</span>
+          </div>
+        </div>
+        <div class="px-3 pb-3">
+          <div class="flex space-x-1">
+            <button class="flex-1 bg-slate-700 hover:bg-slate-600 text-slate-200 px-2 py-1 rounded text-xs font-medium transition-colors">編輯</button>
+            <button class="flex-1 bg-red-600 hover:bg-red-700 text-white px-2 py-1 rounded text-xs font-medium transition-colors">移除</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Pagination -->
+    <div class="flex justify-center">
+      <nav class="flex items-center space-x-2">
+        <button class="px-3 py-2 bg-slate-800 hover:bg-slate-700 text-slate-200 rounded-lg border border-slate-700">上一頁</button>
+        <button class="px-3 py-2 bg-teal-600 text-white rounded-lg">1</button>
+        <button class="px-3 py-2 bg-slate-800 hover:bg-slate-700 text-slate-200 rounded-lg border border-slate-700">2</button>
+        <button class="px-3 py-2 bg-slate-800 hover:bg-slate-700 text-slate-200 rounded-lg border border-slate-700">3</button>
+        <span class="px-2 text-slate-400">...</span>
+        <button class="px-3 py-2 bg-slate-800 hover:bg-slate-700 text-slate-200 rounded-lg border border-slate-700">12</button>
+        <button class="px-3 py-2 bg-slate-800 hover:bg-slate-700 text-slate-200 rounded-lg border border-slate-700">下一頁</button>
+      </nav>
+    </div>
+  </div>
+</body>
+</html>

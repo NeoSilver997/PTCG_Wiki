@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="zh-HK">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>登入 - Claude Sonnet 4.5 Edition</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Noto Sans TC', sans-serif;
+            background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+        }
+        .glass-panel {
+            background: rgba(51, 65, 85, 0.6);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(148, 163, 184, 0.1);
+        }
+        .gold-accent {
+            background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%);
+        }
+        .text-gold {
+            color: #fbbf24;
+        }
+        .stat-glow {
+            text-shadow: 0 0 10px rgba(251, 191, 36, 0.5);
+        }
+        .login-card {
+            animation: fadeInUp 0.6s ease-out;
+        }
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+<body class="min-h-screen flex items-center justify-center p-6">
+    <div class="w-full max-w-md login-card">
+        <!-- Logo -->
+        <div class="text-center mb-8">
+            <div class="text-6xl font-bold text-gold stat-glow mb-3">✦ PTCG</div>
+            <p class="text-amber-200 text-lg font-light">菁英資料庫</p>
+            <p class="text-slate-400 text-sm mt-2">Claude Sonnet 4.5 Edition</p>
+        </div>
+
+        <!-- Login Card -->
+        <div class="glass-panel rounded-2xl p-8 border border-amber-500/20 mb-6">
+            <h2 class="text-2xl font-bold text-amber-400 mb-6 text-center">會員登入</h2>
+            
+            <form class="space-y-5">
+                <!-- Email -->
+                <div>
+                    <label class="block text-sm font-medium text-slate-300 mb-2">電子郵件</label>
+                    <input type="email" placeholder="your@email.com" 
+                           class="w-full glass-panel border border-slate-600 rounded-lg px-4 py-3 text-slate-200 placeholder-slate-500 focus:ring-2 focus:ring-amber-500 focus:border-transparent transition">
+                </div>
+
+                <!-- Password -->
+                <div>
+                    <label class="block text-sm font-medium text-slate-300 mb-2">密碼</label>
+                    <input type="password" placeholder="••••••••" 
+                           class="w-full glass-panel border border-slate-600 rounded-lg px-4 py-3 text-slate-200 placeholder-slate-500 focus:ring-2 focus:ring-amber-500 focus:border-transparent transition">
+                </div>
+
+                <!-- Remember & Forgot -->
+                <div class="flex items-center justify-between text-sm">
+                    <label class="flex items-center cursor-pointer group">
+                        <input type="checkbox" class="rounded text-amber-500 border-slate-600 focus:ring-amber-500">
+                        <span class="ml-2 text-slate-400 group-hover:text-amber-400 transition">記住我</span>
+                    </label>
+                    <a href="#" class="text-amber-400 hover:text-amber-300 transition">忘記密碼？</a>
+                </div>
+
+                <!-- Login Button -->
+                <button type="submit" class="w-full gold-accent text-slate-900 font-bold py-3.5 rounded-lg hover:shadow-xl hover:shadow-amber-500/50 transition text-lg">
+                    登入
+                </button>
+
+                <!-- Divider -->
+                <div class="relative my-6">
+                    <div class="absolute inset-0 flex items-center">
+                        <div class="w-full border-t border-slate-700"></div>
+                    </div>
+                    <div class="relative flex justify-center text-sm">
+                        <span class="px-4 glass-panel text-slate-400">或使用以下方式登入</span>
+                    </div>
+                </div>
+
+                <!-- Social Login -->
+                <div class="grid grid-cols-2 gap-3">
+                    <button type="button" class="glass-panel border border-slate-600 rounded-lg px-4 py-3 text-slate-300 hover:border-amber-500 hover:text-amber-400 transition font-medium flex items-center justify-center gap-2">
+                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M12.545,10.239v3.821h5.445c-0.712,2.315-2.647,3.972-5.445,3.972c-3.332,0-6.033-2.701-6.033-6.032s2.701-6.032,6.033-6.032c1.498,0,2.866,0.549,3.921,1.453l2.814-2.814C17.503,2.988,15.139,2,12.545,2C7.021,2,2.543,6.477,2.543,12s4.478,10,10.002,10c8.396,0,10.249-7.85,9.426-11.748L12.545,10.239z"/>
+                        </svg>
+                        Google
+                    </button>
+                    <button type="button" class="glass-panel border border-slate-600 rounded-lg px-4 py-3 text-slate-300 hover:border-amber-500 hover:text-amber-400 transition font-medium flex items-center justify-center gap-2">
+                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z"/>
+                        </svg>
+                        Facebook
+                    </button>
+                </div>
+            </form>
+        </div>
+
+        <!-- Register Link -->
+        <div class="glass-panel rounded-xl p-6 border border-slate-700/50 text-center">
+            <p class="text-slate-400">
+                還沒有帳號？
+                <a href="#" class="text-amber-400 hover:text-amber-300 font-semibold transition ml-1">立即註冊</a>
+            </p>
+        </div>
+
+        <!-- Back to Home -->
+        <div class="text-center mt-6">
+            <a href="index.html" class="text-slate-400 hover:text-amber-400 transition text-sm">
+                ← 返回首頁
+            </a>
+        </div>
+    </div>
+
+    <!-- Decorative Elements -->
+    <div class="fixed top-10 left-10 text-amber-500/10 text-9xl pointer-events-none">⚡</div>
+    <div class="fixed bottom-10 right-10 text-amber-500/10 text-9xl pointer-events-none">✦</div>
+</body>
+</html>

@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>卡牌詳細 | PTCG 卡牌資料庫 (Claude)</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet">
+  <style>
+    body { font-family: 'Noto Sans TC', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial; }
+  </style>
+</head>
+<body class="bg-gray-50">
+  <!-- Navigation -->
+  <nav class="bg-gradient-to-r from-blue-600 to-teal-600 shadow-lg sticky top-0 z-50">
+    <div class="max-w-[1400px] mx-auto px-6">
+      <div class="flex items-center justify-between h-16">
+        <div class="flex items-center space-x-6">
+          <div class="flex items-center">
+            <span class="text-2xl font-bold text-white">🃏 PTCG</span>
+            <span class="ml-2 text-blue-200">卡牌資料庫</span>
+          </div>
+          <div class="text-blue-200 text-sm">
+            <a href="index.html" class="hover:text-white">首頁</a>
+            <span class="mx-2">/</span>
+            <span class="text-white">卡牌詳細</span>
+          </div>
+        </div>
+        <div class="flex items-center space-x-4">
+          <a href="collection.html" class="text-blue-200 hover:text-white px-3 py-2">收藏</a>
+          <a href="deck-builder.html" class="text-blue-200 hover:text-white px-3 py-2">牌組建構</a>
+          <a href="login.html" class="text-blue-200 hover:text-white px-3 py-2">登入</a>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <div class="max-w-[1400px] mx-auto px-6 py-8">
+    <div class="grid grid-cols-12 gap-8">
+      <!-- Left: Card Image -->
+      <div class="col-span-4">
+        <div class="bg-white rounded-lg shadow-lg p-6 sticky top-24">
+          <div class="aspect-[245/342] rounded-lg overflow-hidden bg-gradient-to-br from-gray-100 to-gray-200 mb-4">
+            <img src="https://via.placeholder.com/245x342/2563eb/ffffff?text=卡牌圖片" alt="卡牌圖片" class="w-full h-full object-contain">
+          </div>
+          <div class="text-center">
+            <div class="text-lg font-bold text-gray-900 mb-1">艾莉卡的妙蛙花 ex</div>
+            <div class="text-sm text-gray-600 mb-2">MC J005/742</div>
+            <div class="inline-flex items-center px-3 py-1 bg-green-100 text-green-800 rounded-full text-sm font-medium">
+              <span class="w-2 h-2 bg-green-500 rounded-full mr-2"></span>
+              可取得
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right: Card Details -->
+      <div class="col-span-8">
+        <div class="bg-white rounded-lg shadow-lg p-8">
+          <div class="flex items-center justify-between mb-6">
+            <h1 class="text-3xl font-bold text-gray-900">艾莉卡的妙蛙花 ex</h1>
+            <div class="flex items-center space-x-2">
+              <button class="px-4 py-2 bg-blue-600 text-white rounded-lg font-medium hover:bg-blue-700">加入收藏</button>
+              <button class="px-4 py-2 bg-teal-600 text-white rounded-lg font-medium hover:bg-teal-700">加入牌組</button>
+            </div>
+          </div>
+
+          <div class="grid grid-cols-2 gap-6 mb-8">
+            <div>
+              <h3 class="text-lg font-bold text-gray-900 mb-4">基本資訊</h3>
+              <div class="space-y-3">
+                <div class="flex justify-between"><span class="text-gray-600">系列:</span><span class="font-medium">MC 入門組合</span></div>
+                <div class="flex justify-between"><span class="text-gray-600">稀有度:</span><span class="font-medium">SAR - 特殊藝術稀有</span></div>
+                <div class="flex justify-between"><span class="text-gray-600">超級類型:</span><span class="font-medium">寶可夢</span></div>
+                <div class="flex justify-between"><span class="text-gray-600">語言:</span><span class="font-medium">EN-US</span></div>
+                <div class="flex justify-between"><span class="text-gray-600">HP:</span><span class="font-medium">310</span></div>
+                <div class="flex justify-between"><span class="text-gray-600">屬性:</span><span class="font-medium">草</span></div>
+              </div>
+            </div>
+
+            <div>
+              <h3 class="text-lg font-bold text-gray-900 mb-4">價格</h3>
+              <div class="space-y-3">
+                <div class="flex justify-between"><span class="text-gray-600">市場價格:</span><span class="font-bold text-green-600">$12.99</span></div>
+                <div class="flex justify-between"><span class="text-gray-600">最低:</span><span class="font-medium">$10.50</span></div>
+                <div class="flex justify-between"><span class="text-gray-600">最高:</span><span class="font-medium">$15.00</span></div>
+                <div class="flex justify-between"><span class="text-gray-600">最後更新:</span><span class="font-medium">2026-01-22</span></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="mb-8">
+            <h3 class="text-lg font-bold text-gray-900 mb-4">能力</h3>
+            <div class="bg-gray-50 rounded-lg p-4">
+              <div class="font-bold text-gray-900 mb-2">花之療癒</div>
+              <div class="text-gray-700">在你的回合，你可以選擇1隻你的寶可夢，治療其20點傷害。</div>
+            </div>
+          </div>
+
+          <div class="mb-8">
+            <h3 class="text-lg font-bold text-gray-900 mb-4">攻擊</h3>
+            <div class="space-y-4">
+              <div class="bg-gray-50 rounded-lg p-4">
+                <div class="flex items-center justify-between mb-2">
+                  <div class="font-bold text-gray-900">太陽光束</div>
+                  <div class="text-sm text-gray-600">草草無色</div>
+                </div>
+                <div class="text-gray-700 mb-2">這項攻擊對對手的1隻寶可夢造成100點傷害。（對場上的寶可夢使用時，不應用弱點和抵抗力。）</div>
+                <div class="text-sm text-gray-600">傷害: 100</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="mb-8">
+            <h3 class="text-lg font-bold text-gray-900 mb-4">相關卡牌</h3>
+            <div class="grid grid-cols-4 gap-4">
+              <div class="bg-white border rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-shadow cursor-pointer">
+                <div class="w-full aspect-[245/342] bg-gray-100 flex items-center justify-center">無圖片</div>
+                <div class="p-3">
+                  <div class="font-medium text-sm truncate">艾莉卡的妙蛙種子</div>
+                  <div class="text-xs text-gray-500 mb-1">MC J001/742</div>
+                </div>
+              </div>
+              <div class="bg-white border rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-shadow cursor-pointer">
+                <div class="w-full aspect-[245/342] bg-gray-100 flex items-center justify-center">無圖片</div>
+                <div class="p-3">
+                  <div class="font-medium text-sm truncate">艾莉卡的妙蛙草</div>
+                  <div class="text-xs text-gray-500 mb-1">MC J002/742</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="border-t pt-6">
+            <div class="flex items-center justify-between">
+              <div class="text-sm text-gray-600">
+                最後更新: 2026-01-22 14:30 UTC
+              </div>
+              <div class="flex space-x-2">
+                <button class="text-blue-600 hover:text-blue-800">回報問題</button>
+                <button class="text-gray-600 hover:text-gray-800">分享</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

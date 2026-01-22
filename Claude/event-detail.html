@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>賽事詳情 | PTCG 卡牌資料庫 (Claude)</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet">
+  <style>
+    body { font-family: 'Noto Sans TC', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial; }
+  </style>
+</head>
+<body class="bg-gray-50">
+  <!-- Navigation -->
+  <nav class="bg-gradient-to-r from-blue-600 to-teal-600 shadow-lg sticky top-0 z-50">
+    <div class="max-w-[1400px] mx-auto px-6">
+      <div class="flex items-center justify-between h-16">
+        <div class="flex items-center space-x-6">
+          <div class="flex items-center">
+            <span class="text-2xl font-bold text-white">🏆 PTCG</span>
+            <span class="ml-2 text-blue-200">賽事</span>
+          </div>
+          <div class="text-blue-200 text-sm">
+            <a href="index.html" class="hover:text-white">首頁</a>
+            <span class="mx-2">/</span>
+            <a href="events.html" class="hover:text-white">賽事</a>
+            <span class="mx-2">/</span>
+            <span class="text-white">區域錦標賽</span>
+          </div>
+        </div>
+        <div class="flex items-center space-x-4">
+          <a href="collection.html" class="text-blue-200 hover:text-white px-3 py-2">收藏</a>
+          <a href="deck-builder.html" class="text-blue-200 hover:text-white px-3 py-2">牌組建構</a>
+          <a href="login.html" class="text-blue-200 hover:text-white px-3 py-2">登入</a>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <div class="max-w-[1400px] mx-auto px-6 py-8">
+    <!-- Event Header -->
+    <div class="bg-white rounded-lg shadow-lg p-8 mb-8">
+      <div class="flex items-start justify-between mb-6">
+        <div>
+          <h1 class="text-4xl font-bold text-gray-900 mb-4">洛杉磯區域錦標賽</h1>
+          <div class="flex items-center space-x-6 text-lg text-gray-600 mb-4">
+            <span>📅 2026年2月15-16日</span>
+            <span>📍 洛杉磯會議中心，加州</span>
+            <span>🎯 標準格式</span>
+          </div>
+          <div class="flex items-center space-x-4">
+            <span class="px-4 py-2 bg-green-100 text-green-800 rounded-full font-medium">即將到來</span>
+            <span class="px-4 py-2 bg-blue-100 text-blue-800 rounded-full font-medium">區域錦標賽</span>
+          </div>
+        </div>
+        <div class="text-right">
+          <div class="text-3xl font-bold text-green-600 mb-2">$50,000</div>
+          <div class="text-gray-600">獎金池</div>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-4 gap-6">
+        <div class="text-center">
+          <div class="text-2xl font-bold text-gray-900">256</div>
+          <div class="text-sm text-gray-600">已報名玩家</div>
+        </div>
+        <div class="text-center">
+          <div class="text-2xl font-bold text-gray-900">32</div>
+          <div class="text-sm text-gray-600">最大玩家數</div>
+        </div>
+        <div class="text-center">
+          <div class="text-2xl font-bold text-gray-900">前32名</div>
+          <div class="text-sm text-gray-600">決賽圈</div>
+        </div>
+        <div class="text-center">
+          <div class="text-2xl font-bold text-gray-900">$250</div>
+          <div class="text-sm text-gray-600">報名費</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="grid grid-cols-12 gap-8">
+      <!-- Main Content -->
+      <div class="col-span-8">
+        <!-- Event Info -->
+        <div class="bg-white rounded-lg shadow-lg p-6 mb-6">
+          <h2 class="text-2xl font-bold text-gray-900 mb-6">賽事資訊</h2>
+
+          <div class="space-y-6">
+            <div>
+              <h3 class="text-lg font-bold text-gray-900 mb-3">描述</h3>
+              <p class="text-gray-700 leading-relaxed">
+                歡迎參加洛杉磯區域錦標賽！這場頂級比賽匯集了來自該地區的最佳玩家，競逐5萬美元獎金池，並取得國際錦標賽的資格。
+              </p>
+            </div>
+
+            <div>
+              <h3 class="text-lg font-bold text-gray-900 mb-3">時間表</h3>
+              <div class="space-y-2">
+                <div class="flex justify-between py-2 border-b border-gray-100">
+                  <span class="font-medium">第一天 - 瑞士輪</span>
+                  <span class="text-gray-600">2月15日，上午9:00 - 下午6:00</span>
+                </div>
+                <div class="flex justify-between py-2 border-b border-gray-100">
+                  <span class="font-medium">第二天 - 決賽圈</span>
+                  <span class="text-gray-600">2月16日，上午10:00 - 下午5:00</span>
+                </div>
+              </div>
+            </div>
+
+            <div>
+              <h3 class="text-lg font-bold text-gray-900 mb-3">規則與格式</h3>
+              <ul class="list-disc list-inside text-gray-700 space-y-1">
+                <li>使用當前標準格式，包括禁用和限制列表</li>
+                <li>瑞士輪為三戰兩勝制</li>
+                <li>前32名為三戰兩勝制單淘汰賽</li>
+                <li>60張牌組最低限制，無最高限制</li>
+                <li>每場比賽3張獎勵卡</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- Prize Distribution -->
+        <div class="bg-white rounded-lg shadow-lg p-6 mb-6">
+          <h2 class="text-2xl font-bold text-gray-900 mb-6">獎金分配</h2>
+
+          <div class="overflow-x-auto">
+            <table class="w-full">
+              <thead>
+                <tr class="border-b border-gray-200">
+                  <th class="text-left py-3 px-4 font-bold text-gray-900">名次</th>
+                  <th class="text-left py-3 px-4 font-bold text-gray-900">獎金</th>
+                  <th class="text-left py-3 px-4 font-bold text-gray-900">資格</th>
+                </tr>
+              </thead>
+              <tbody class="divide-y divide-gray-100">
+                <tr>
+                  <td class="py-3 px-4 font-medium">第1名</td>
+                  <td class="py-3 px-4">$15,000</td>
+                  <td class="py-3 px-4">國際錦標賽</td>
+                </tr>
+                <tr>
+                  <td class="py-3 px-4 font-medium">第2名</td>
+                  <td class="py-3 px-4">$10,000</td>
+                  <td class="py-3 px-4">國際錦標賽</td>
+                </tr>
+                <tr>
+                  <td class="py-3 px-4 font-medium">第3-4名</td>
+                  <td class="py-3 px-4">$5,000</td>
+                  <td class="py-3 px-4">區域錦標賽</td>
+                </tr>
+                <tr>
+                  <td class="py-3 px-4 font-medium">第5-8名</td>
+                  <td class="py-3 px-4">$2,500</td>
+                  <td class="py-3 px-4">-</td>
+                </tr>
+                <tr>
+                  <td class="py-3 px-4 font-medium">第9-16名</td>
+                  <td class="py-3 px-4">$1,000</td>
+                  <td class="py-3 px-4">-</td>
+                </tr>
+                <tr>
+                  <td class="py-3 px-4 font-medium">第17-32名</td>
+                  <td class="py-3 px-4">$500</td>
+                  <td class="py-3 px-4">-</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <!-- Sidebar -->
+      <div class="col-span-4">
+        <!-- Registration -->
+        <div class="bg-white rounded-lg shadow-lg p-6 mb-6">
+          <h3 class="text-xl font-bold text-gray-900 mb-4">報名</h3>
+
+          <div class="space-y-4">
+            <div class="text-center">
+              <div class="text-2xl font-bold text-green-600 mb-1">$250</div>
+              <div class="text-sm text-gray-600">報名費</div>
+            </div>
+
+            <button class="w-full px-6 py-3 bg-blue-600 text-white rounded-lg font-bold hover:bg-blue-700">
+              立即報名
+            </button>
+
+            <div class="text-sm text-gray-600 text-center">
+              報名截止：2026年2月10日
+            </div>
+          </div>
+        </div>
+
+        <!-- Registered Players -->
+        <div class="bg-white rounded-lg shadow-lg p-6 mb-6">
+          <h3 class="text-xl font-bold text-gray-900 mb-4">已報名玩家 (256/320)</h3>
+
+          <div class="space-y-3">
+            <div class="flex items-center justify-between py-2 border-b border-gray-100">
+              <span class="font-medium">John Doe</span>
+              <span class="text-sm text-gray-600">洛杉磯，加州</span>
+            </div>
+            <div class="flex items-center justify-between py-2 border-b border-gray-100">
+              <span class="font-medium">Jane Smith</span>
+              <span class="text-sm text-gray-600">舊金山，加州</span>
+            </div>
+            <div class="flex items-center justify-between py-2 border-b border-gray-100">
+              <span class="font-medium">Mike Johnson</span>
+              <span class="text-sm text-gray-600">拉斯維加斯，內華達</span>
+            </div>
+          </div>
+
+          <button class="w-full mt-4 px-4 py-2 bg-gray-100 text-gray-700 rounded-lg hover:bg-gray-200">
+            查看所有玩家
+          </button>
+        </div>
+
+        <!-- Organizer Info -->
+        <div class="bg-white rounded-lg shadow-lg p-6">
+          <h3 class="text-xl font-bold text-gray-900 mb-4">主辦單位</h3>
+
+          <div class="text-center">
+            <div class="text-lg font-bold text-gray-900 mb-2">寶可夢聯盟</div>
+            <div class="text-sm text-gray-600 mb-4">官方區域主辦單位</div>
+            <button class="px-4 py-2 bg-purple-600 text-white rounded-lg font-medium hover:bg-purple-700">
+              聯絡主辦單位
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

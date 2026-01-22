@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>牌組建構 | PTCG 卡牌資料庫 (Bard)</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet">
+  <style>
+    body { font-family: 'Noto Sans TC', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial; }
+  </style>
+</head>
+<body class="bg-gray-50">
+  <!-- Navigation -->
+  <nav class="bg-gradient-to-r from-red-600 to-orange-600 shadow-lg sticky top-0 z-50">
+    <div class="max-w-[1400px] mx-auto px-6">
+      <div class="flex items-center justify-between h-16">
+        <div class="flex items-center space-x-6">
+          <div class="flex items-center">
+            <span class="text-2xl font-bold text-white">🃏 PTCG</span>
+            <span class="ml-2 text-red-200">牌組建構</span>
+          </div>
+          <div class="text-red-200 text-sm">
+            <span class="text-white">雷電控制牌組</span>
+          </div>
+        </div>
+        <div class="flex items-center space-x-4">
+          <a href="index.html" class="text-red-200 hover:text-white px-3 py-2">首頁</a>
+          <a href="collection.html" class="text-red-200 hover:text-white px-3 py-2">我的收藏</a>
+          <div class="flex items-center space-x-2 bg-white/10 px-4 py-2 rounded-lg">
+            <span class="text-white font-medium">玩家</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <div class="max-w-[1400px] mx-auto px-6 py-8">
+    <div class="mb-8">
+      <h1 class="text-3xl font-bold text-gray-900 mb-2">牌組建構</h1>
+      <p class="text-gray-600">建立和編輯你的 PTCG 牌組，確保符合比賽規則</p>
+    </div>
+
+    <div class="grid grid-cols-1 lg:grid-cols-4 gap-6">
+      <!-- Deck Info -->
+      <div class="lg:col-span-1">
+        <div class="bg-white rounded-lg shadow-lg p-6 sticky top-24">
+          <h3 class="text-lg font-bold text-gray-900 mb-4">牌組資訊</h3>
+          <div class="space-y-4">
+            <div>
+              <label class="block text-sm font-medium text-gray-700 mb-1">牌組名稱</label>
+              <input type="text" value="雷電控制牌組" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-red-500">
+            </div>
+            <div>
+              <label class="block text-sm font-medium text-gray-700 mb-1">牌組格式</label>
+              <select class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-red-500">
+                <option selected>標準賽</option>
+                <option>擴充賽</option>
+                <option>主題賽</option>
+              </select>
+            </div>
+            <div class="grid grid-cols-2 gap-2">
+              <div class="text-center p-3 bg-red-50 rounded-lg">
+                <div class="text-2xl font-bold text-red-600">60</div>
+                <div class="text-xs text-gray-600">總卡牌</div>
+              </div>
+              <div class="text-center p-3 bg-orange-50 rounded-lg">
+                <div class="text-2xl font-bold text-orange-600">24</div>
+                <div class="text-xs text-gray-600">能量卡</div>
+              </div>
+            </div>
+            <div class="text-center p-3 bg-amber-50 rounded-lg">
+              <div class="text-2xl font-bold text-amber-600">HK$ 12,450</div>
+              <div class="text-xs text-gray-600">總價值</div>
+            </div>
+          </div>
+          <div class="mt-6 space-y-2">
+            <button class="w-full px-4 py-2 bg-red-600 text-white rounded-md hover:bg-red-700">儲存牌組</button>
+            <button class="w-full px-4 py-2 border border-gray-300 text-gray-700 rounded-md hover:bg-gray-50">匯出牌組</button>
+            <button class="w-full px-4 py-2 border border-red-300 text-red-700 rounded-md hover:bg-red-50">刪除牌組</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Main Content -->
+      <div class="lg:col-span-3 space-y-6">
+        <!-- Deck Cards -->
+        <div class="bg-white rounded-lg shadow-lg p-6">
+          <div class="flex justify-between items-center mb-4">
+            <h3 class="text-lg font-bold text-gray-900">牌組卡牌</h3>
+            <div class="flex space-x-2">
+              <button class="px-3 py-1 text-sm bg-gray-100 text-gray-700 rounded-md hover:bg-gray-200">寶可夢</button>
+              <button class="px-3 py-1 text-sm bg-red-600 text-white rounded-md">訓練家</button>
+              <button class="px-3 py-1 text-sm bg-gray-100 text-gray-700 rounded-md hover:bg-gray-200">能量</button>
+            </div>
+          </div>
+          <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+            <!-- Card in deck -->
+            <div class="border border-gray-200 rounded-lg p-3 hover:border-red-300 cursor-pointer">
+              <div class="aspect-[3/4] bg-gray-100 rounded mb-2 flex items-center justify-center">
+                <img src="https://via.placeholder.com/120x160?text=皮卡丘+VMAX" alt="皮卡丘 VMAX" class="w-full h-full object-cover rounded">
+              </div>
+              <div class="text-center">
+                <h4 class="font-medium text-sm text-gray-900">皮卡丘 VMAX</h4>
+                <p class="text-xs text-gray-600">×2</p>
+                <div class="flex justify-center mt-1">
+                  <button class="text-red-500 hover:text-red-700 text-sm">移除</button>
+                </div>
+              </div>
+            </div>
+
+            <div class="border border-gray-200 rounded-lg p-3 hover:border-red-300 cursor-pointer">
+              <div class="aspect-[3/4] bg-gray-100 rounded mb-2 flex items-center justify-center">
+                <img src="https://via.placeholder.com/120x160?text=雷電能量" alt="雷電能量" class="w-full h-full object-cover rounded">
+              </div>
+              <div class="text-center">
+                <h4 class="font-medium text-sm text-gray-900">雷電能量</h4>
+                <p class="text-xs text-gray-600">×24</p>
+                <div class="flex justify-center mt-1">
+                  <button class="text-red-500 hover:text-red-700 text-sm">移除</button>
+                </div>
+              </div>
+            </div>
+
+            <div class="border border-gray-200 rounded-lg p-3 hover:border-red-300 cursor-pointer">
+              <div class="aspect-[3/4] bg-gray-100 rounded mb-2 flex items-center justify-center">
+                <img src="https://via.placeholder.com/120x160?text=訓練家" alt="訓練家" class="w-full h-full object-cover rounded">
+              </div>
+              <div class="text-center">
+                <h4 class="font-medium text-sm text-gray-900">訓練家卡</h4>
+                <p class="text-xs text-gray-600">×12</p>
+                <div class="flex justify-center mt-1">
+                  <button class="text-red-500 hover:text-red-700 text-sm">移除</button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Empty slot -->
+            <div class="border-2 border-dashed border-gray-300 rounded-lg p-3 flex items-center justify-center text-gray-400">
+              <div class="text-center">
+                <div class="text-2xl mb-1">+</div>
+                <p class="text-sm">新增卡牌</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card Search -->
+        <div class="bg-white rounded-lg shadow-lg p-6">
+          <h3 class="text-lg font-bold text-gray-900 mb-4">搜尋卡牌</h3>
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4">
+            <input type="text" placeholder="卡牌名稱" class="px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-red-500">
+            <select class="px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-red-500">
+              <option>全部類型</option>
+              <option>雷電</option>
+              <option>火</option>
+              <option>水</option>
+              <option>草</option>
+            </select>
+            <button class="px-4 py-2 bg-red-600 text-white rounded-md hover:bg-red-700">搜尋</button>
+          </div>
+
+          <!-- Search Results -->
+          <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+            <div class="border border-gray-200 rounded-lg p-3 hover:border-red-300 cursor-pointer">
+              <div class="aspect-[3/4] bg-gray-100 rounded mb-2 flex items-center justify-center">
+                <img src="https://via.placeholder.com/120x160?text=皮卡丘+V" alt="皮卡丘 V" class="w-full h-full object-cover rounded">
+              </div>
+              <div class="text-center">
+                <h4 class="font-medium text-sm text-gray-900">皮卡丘 V</h4>
+                <p class="text-xs text-gray-600">SWSH12: 059/172</p>
+                <button class="mt-1 px-2 py-1 text-xs bg-red-600 text-white rounded hover:bg-red-700">加入牌組</button>
+              </div>
+            </div>
+
+            <div class="border border-gray-200 rounded-lg p-3 hover:border-red-300 cursor-pointer">
+              <div class="aspect-[3/4] bg-gray-100 rounded mb-2 flex items-center justify-center">
+                <img src="https://via.placeholder.com/120x160?text=雷丘" alt="雷丘" class="w-full h-full object-cover rounded">
+              </div>
+              <div class="text-center">
+                <h4 class="font-medium text-sm text-gray-900">雷丘</h4>
+                <p class="text-xs text-gray-600">SWSH12: 061/172</p>
+                <button class="mt-1 px-2 py-1 text-xs bg-red-600 text-white rounded hover:bg-red-700">加入牌組</button>
+              </div>
+            </div>
+
+            <div class="border border-gray-200 rounded-lg p-3 hover:border-red-300 cursor-pointer">
+              <div class="aspect-[3/4] bg-gray-100 rounded mb-2 flex items-center justify-center">
+                <img src="https://via.placeholder.com/120x160?text=訓練家" alt="訓練家" class="w-full h-full object-cover rounded">
+              </div>
+              <div class="text-center">
+                <h4 class="font-medium text-sm text-gray-900">雷電口袋</h4>
+                <p class="text-xs text-gray-600">SWSH12: 172/172</p>
+                <button class="mt-1 px-2 py-1 text-xs bg-red-600 text-white rounded hover:bg-red-700">加入牌組</button>
+              </div>
+            </div>
+
+            <div class="border border-gray-200 rounded-lg p-3 hover:border-red-300 cursor-pointer">
+              <div class="aspect-[3/4] bg-gray-100 rounded mb-2 flex items-center justify-center">
+                <img src="https://via.placeholder.com/120x160?text=能量" alt="能量" class="w-full h-full object-cover rounded">
+              </div>
+              <div class="text-center">
+                <h4 class="font-medium text-sm text-gray-900">基本雷電能量</h4>
+                <p class="text-xs text-gray-600">SWSH12: 173/172</p>
+                <button class="mt-1 px-2 py-1 text-xs bg-red-600 text-white rounded hover:bg-red-700">加入牌組</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Deck Validation -->
+        <div class="bg-white rounded-lg shadow-lg p-6">
+          <h3 class="text-lg font-bold text-gray-900 mb-4">牌組驗證</h3>
+          <div class="space-y-3">
+            <div class="flex items-center justify-between p-3 bg-green-50 rounded-lg">
+              <span class="text-sm text-gray-700">總卡牌數量：60 張</span>
+              <span class="text-green-600 font-medium">✓ 正確</span>
+            </div>
+            <div class="flex items-center justify-between p-3 bg-green-50 rounded-lg">
+              <span class="text-sm text-gray-700">基本寶可夢：至少 1 張</span>
+              <span class="text-green-600 font-medium">✓ 正確</span>
+            </div>
+            <div class="flex items-center justify-between p-3 bg-yellow-50 rounded-lg">
+              <span class="text-sm text-gray-700">相同卡牌：最多 4 張</span>
+              <span class="text-yellow-600 font-medium">⚠ 警告</span>
+            </div>
+            <div class="flex items-center justify-between p-3 bg-green-50 rounded-lg">
+              <span class="text-sm text-gray-700">格式規則：符合標準賽</span>
+              <span class="text-green-600 font-medium">✓ 正確</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

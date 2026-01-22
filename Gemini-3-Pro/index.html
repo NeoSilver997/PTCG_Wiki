@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="zh-HK">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PTCG 資料庫 - Gemini 3 Pro Edition</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Round" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Noto Sans TC', sans-serif;
+            background-color: #f0f4f8;
+            color: #1f2937;
+        }
+        .gemini-gradient-text {
+            background: linear-gradient(90deg, #4285F4, #9B72CB, #D96570);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .gemini-gradient-bg {
+            background: linear-gradient(135deg, #eef2ff 0%, #f3e8ff 50%, #ffe4e6 100%);
+        }
+        .gemini-button {
+            background: linear-gradient(90deg, #4285F4, #8E24AA);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .gemini-button:hover {
+            box-shadow: 0 10px 20px -10px rgba(66, 133, 244, 0.5);
+            transform: translateY(-1px);
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+        }
+        .nav-link {
+            position: relative;
+        }
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(90deg, #4285F4, #9B72CB);
+            transition: width 0.3s ease;
+        }
+        .nav-link:hover::after, .nav-link.active::after {
+            width: 100%;
+        }
+        .card-hoverable {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .card-hoverable:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+    </style>
+</head>
+<body class="min-h-screen">
+    <!-- Navbar -->
+    <nav class="sticky top-0 z-50 glass-card border-b border-gray-100">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="flex justify-between items-center h-20">
+                <!-- Logo -->
+                <div class="flex items-center gap-2">
+                    <span class="material-icons-round text-4xl text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-purple-600">auto_awesome</span>
+                    <div>
+                        <h1 class="text-2xl font-bold gemini-gradient-text tracking-tight">PTCG CardDB</h1>
+                        <p class="text-xs text-gray-500 font-medium tracking-widest uppercase">Gemini 3 Pro</p>
+                    </div>
+                </div>
+
+                <!-- Links -->
+                <div class="hidden md:flex items-center gap-8">
+                    <a href="index.html" class="nav-link active font-medium text-gray-800 hover:text-blue-600">首頁</a>
+                    <a href="collection.html" class="nav-link font-medium text-gray-600 hover:text-blue-600">收藏</a>
+                    <a href="deck-builder.html" class="nav-link font-medium text-gray-600 hover:text-blue-600">套牌</a>
+                    <a href="events.html" class="nav-link font-medium text-gray-600 hover:text-blue-600">賽事</a>
+                    <a href="#" class="nav-link font-medium text-gray-600 hover:text-blue-600">價格</a>
+                </div>
+
+                <!-- Actions -->
+                <div class="flex items-center gap-4">
+                    <div class="relative group">
+                        <button class="flex items-center gap-2 px-4 py-2 rounded-full bg-white border border-gray-200 text-sm font-medium hover:bg-gray-50 transition">
+                            <span class="material-icons-round text-base text-gray-500">translate</span>
+                            繁體中文
+                        </button>
+                    </div>
+                    <a href="login.html" class="gemini-button text-white px-6 py-2.5 rounded-full font-medium shadow-md flex items-center gap-2">
+                        <span>登入</span>
+                        <span class="material-icons-round text-sm">arrow_forward</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="max-w-7xl mx-auto px-6 py-10">
+        
+        <!-- Hero Section -->
+        <div class="rounded-3xl p-10 mb-12 gemini-gradient-bg relative overflow-hidden shadow-sm">
+            <div class="relative z-10 flex flex-col md:flex-row items-center gap-12">
+                <div class="flex-1">
+                    <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/60 border border-white/50 backdrop-blur-sm shadow-sm mb-4">
+                        <span class="w-2 h-2 rounded-full bg-green-500"></span>
+                        <span class="text-xs font-bold text-gray-600 uppercase tracking-wide">Trending Now</span>
+                    </div>
+                    <h2 class="text-4xl md:text-5xl font-bold text-gray-900 mb-4 leading-tight">
+                        莉佳的霸王花 <span class="gemini-gradient-text">ex</span>
+                        <br><span class="text-3xl md:text-4xl font-light text-gray-600">競技環境分析</span>
+                    </h2>
+                    <p class="text-gray-600 text-lg mb-8 leading-relaxed max-w-xl">
+                        探索 SV9 系列最強草系核心。AI 輔助分析顯示其在當前環境下的勝率與使用率均達到新高。
+                    </p>
+                    
+                    <div class="flex items-center gap-8 mb-8">
+                        <div>
+                            <p class="text-sm text-gray-500 font-medium uppercase mb-1">使用率</p>
+                            <p class="text-3xl font-bold text-gray-800">87.3%</p>
+                        </div>
+                        <div class="w-px h-10 bg-gray-300"></div>
+                        <div>
+                            <p class="text-sm text-gray-500 font-medium uppercase mb-1">勝率</p>
+                            <p class="text-3xl font-bold text-blue-600">68.5%</p>
+                        </div>
+                        <div class="w-px h-10 bg-gray-300"></div>
+                        <div>
+                            <p class="text-sm text-gray-500 font-medium uppercase mb-1">市價</p>
+                            <p class="text-3xl font-bold text-purple-600">HK$850</p>
+                        </div>
+                    </div>
+
+                    <div class="flex gap-4">
+                        <button class="gemini-button text-white px-8 py-3 rounded-2xl font-bold shadow-lg flex items-center gap-2">
+                            <span>查看詳情</span>
+                            <span class="material-icons-round">visibility</span>
+                        </button>
+                        <button class="px-8 py-3 rounded-2xl font-bold bg-white text-gray-700 hover:bg-gray-50 shadow-md transition flex items-center gap-2">
+                            <span>加入收藏</span>
+                            <span class="material-icons-round">bookmark_border</span>
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="flex-1 flex justify-center relative">
+                    <div class="absolute -inset-4 bg-gradient-to-r from-blue-400 to-purple-400 rounded-full opacity-20 blur-3xl"></div>
+                    <div class="card-hoverable bg-gradient-to-br from-green-50 to-green-100 p-2 rounded-[2rem] shadow-2xl relative z-10 rotate-3 border-4 border-white">
+                         <!-- Card Placeholder Visualization -->
+                         <div class="w-[300px] h-[420px] bg-gray-800 rounded-[1.5rem] relative overflow-hidden">
+                            <div class="absolute inset-0 bg-[url('https://placehold.co/300x420/1e293b/FFF?text=Vileplume+ex')] bg-cover opacity-80 mix-blend-overlay"></div>
+                            <div class="absolute inset-0 bg-gradient-to-b from-transparent to-black/60"></div>
+                            
+                            <!-- Card Content Mockup -->
+                            <div class="absolute top-4 left-4 flex justify-between w-[268px]">
+                                <span class="text-green-400 font-bold text-lg">莉佳的霸王花ex</span>
+                                <span class="text-white font-bold text-lg">HP310 <span class="text-xs text-green-400">🌿</span></span>
+                            </div>
+                            
+                            <div class="absolute bottom-6 left-4 right-4">
+                                <div class="bg-white/10 backdrop-blur-md rounded-xl p-3 border border-white/20">
+                                    <div class="flex justify-between items-center mb-1">
+                                        <span class="text-white font-bold text-sm">迷人花粉</span>
+                                        <span class="text-green-300 font-bold">120+</span>
+                                    </div>
+                                    <p class="text-[10px] text-gray-200 leading-tight">
+                                        若對手的戰鬥寶可夢處於中毒狀態，則增加120點傷害。
+                                    </p>
+                                </div>
+                            </div>
+                         </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="grid grid-cols-12 gap-8">
+            <!-- Sidebar -->
+            <aside class="col-span-12 lg:col-span-3 space-y-8">
+                <div class="bg-white rounded-3xl p-6 shadow-sm border border-gray-100">
+                    <h3 class="text-lg font-bold text-gray-800 mb-6 flex items-center gap-2">
+                        <span class="material-icons-round text-blue-500">tune</span> 篩選
+                    </h3>
+                    
+                    <div class="space-y-6">
+                        <!-- Search -->
+                        <div class="relative">
+                            <span class="material-icons-round absolute left-3 top-3 text-gray-400">search</span>
+                            <input type="text" placeholder="搜尋卡片名稱..." class="w-full bg-gray-50 border-none rounded-2xl py-3 pl-10 pr-4 text-sm focus:ring-2 focus:ring-blue-100 transition">
+                        </div>
+
+                        <!-- Types -->
+                        <div>
+                            <label class="text-xs font-bold text-gray-400 uppercase tracking-wider mb-3 block">屬性</label>
+                            <div class="flex flex-wrap gap-2">
+                                <button class="w-8 h-8 rounded-full bg-green-100 text-green-600 flex items-center justify-center hover:bg-green-200 transition">🌿</button>
+                                <button class="w-8 h-8 rounded-full bg-red-100 text-red-600 flex items-center justify-center hover:bg-red-200 transition">🔥</button>
+                                <button class="w-8 h-8 rounded-full bg-blue-100 text-blue-600 flex items-center justify-center hover:bg-blue-200 transition">💧</button>
+                                <button class="w-8 h-8 rounded-full bg-yellow-100 text-yellow-600 flex items-center justify-center hover:bg-yellow-200 transition">⚡</button>
+                                <button class="w-8 h-8 rounded-full bg-purple-100 text-purple-600 flex items-center justify-center hover:bg-purple-200 transition">🔮</button>
+                                <button class="w-8 h-8 rounded-full bg-gray-100 text-gray-600 flex items-center justify-center hover:bg-gray-200 transition">⚪</button>
+                            </div>
+                        </div>
+
+                        <!-- Expansion -->
+                        <div>
+                            <label class="text-xs font-bold text-gray-400 uppercase tracking-wider mb-3 block">系列</label>
+                            <select class="w-full bg-gray-50 border-none rounded-xl py-2 px-3 text-sm focus:ring-2 focus:ring-blue-100">
+                                <option>SV9 超能力劍客</option>
+                                <option>SV8 超電空間</option>
+                                <option>SV7 恆星衝擊</option>
+                            </select>
+                        </div>
+                        
+                        <button class="w-full py-3 rounded-xl bg-gray-900 text-white font-medium shadow-lg hover:bg-gray-800 transition">
+                            套用篩選
+                        </button>
+                    </div>
+                </div>
+            </aside>
+
+            <!-- Card Grid -->
+            <section class="col-span-12 lg:col-span-9">
+                <div class="flex justify-between items-center mb-6">
+                    <h2 class="text-xl font-bold text-gray-800">熱門卡片</h2>
+                    <div class="flex gap-2">
+                         <button class="px-4 py-2 rounded-full bg-white border border-gray-200 text-sm font-medium hover:bg-gray-50 flex items-center gap-1 shadow-sm">
+                            <span class="material-icons-round text-sm">sort</span> 排序
+                         </button>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <!-- Card 1 -->
+                    <div class="card-hoverable bg-white rounded-3xl p-4 shadow-sm border border-gray-100 group cursor-pointer">
+                        <div class="relative aspect-[3/4] rounded-2xl bg-gray-100 overflow-hidden mb-4">
+                            <div class="absolute inset-0 bg-gradient-to-br from-green-600 to-teal-800 opacity-90 group-hover:opacity-100 transition duration-500"></div>
+                             <div class="absolute inset-0 flex flex-col justify-center items-center text-white">
+                                <span class="text-6xl mb-2">🌿</span>
+                                <span class="font-bold">莉佳的霸王花ex</span>
+                            </div>
+                            <div class="absolute top-3 left-3 bg-white/20 backdrop-blur-md px-2 py-1 rounded-lg border border-white/30 text-white text-xs font-bold">
+                                Ultra Rare
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between items-start mb-2">
+                                <h3 class="font-bold text-gray-800 group-hover:text-blue-600 transition">莉佳的霸王花ex</h3>
+                                <span class="bg-blue-50 text-blue-600 text-xs px-2 py-1 rounded-lg font-bold">#014</span>
+                            </div>
+                            <div class="grid grid-cols-2 gap-2 mb-4">
+                                <div class="bg-gray-50 rounded-xl p-2 text-center">
+                                    <p class="text-[10px] text-gray-400 uppercase font-bold">使用率</p>
+                                    <p class="text-sm font-bold text-gray-800">87.3%</p>
+                                </div>
+                                <div class="bg-gray-50 rounded-xl p-2 text-center">
+                                    <p class="text-[10px] text-gray-400 uppercase font-bold">勝率</p>
+                                    <p class="text-sm font-bold text-blue-600">68.5%</p>
+                                </div>
+                            </div>
+                            <div class="flex justify-between items-center">
+                                <span class="text-lg font-bold text-purple-600">HK$850</span>
+                                <button class="w-8 h-8 rounded-full bg-gray-50 hover:bg-blue-50 hover:text-blue-600 flex items-center justify-center transition">
+                                    <span class="material-icons-round text-sm">arrow_forward</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Card 2 -->
+                    <div class="card-hoverable bg-white rounded-3xl p-4 shadow-sm border border-gray-100 group cursor-pointer">
+                        <div class="relative aspect-[3/4] rounded-2xl bg-gray-100 overflow-hidden mb-4">
+                            <div class="absolute inset-0 bg-gradient-to-br from-blue-600 to-indigo-800 opacity-90 group-hover:opacity-100 transition duration-500"></div>
+                             <div class="absolute inset-0 flex flex-col justify-center items-center text-white">
+                                <span class="text-6xl mb-2">💧</span>
+                                <span class="font-bold">基拉祈V</span>
+                            </div>
+                             <div class="absolute top-3 left-3 bg-white/20 backdrop-blur-md px-2 py-1 rounded-lg border border-white/30 text-white text-xs font-bold">
+                                Rare V
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between items-start mb-2">
+                                <h3 class="font-bold text-gray-800 group-hover:text-blue-600 transition">基拉祈V</h3>
+                                <span class="bg-blue-50 text-blue-600 text-xs px-2 py-1 rounded-lg font-bold">#022</span>
+                            </div>
+                            <div class="grid grid-cols-2 gap-2 mb-4">
+                                <div class="bg-gray-50 rounded-xl p-2 text-center">
+                                    <p class="text-[10px] text-gray-400 uppercase font-bold">使用率</p>
+                                    <p class="text-sm font-bold text-gray-800">52.1%</p>
+                                </div>
+                                <div class="bg-gray-50 rounded-xl p-2 text-center">
+                                    <p class="text-[10px] text-gray-400 uppercase font-bold">勝率</p>
+                                    <p class="text-sm font-bold text-blue-600">61.8%</p>
+                                </div>
+                            </div>
+                            <div class="flex justify-between items-center">
+                                <span class="text-lg font-bold text-gray-800">HK$420</span>
+                                <button class="w-8 h-8 rounded-full bg-gray-50 hover:bg-blue-50 hover:text-blue-600 flex items-center justify-center transition">
+                                    <span class="material-icons-round text-sm">arrow_forward</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Card 3 -->
+                    <div class="card-hoverable bg-white rounded-3xl p-4 shadow-sm border border-gray-100 group cursor-pointer">
+                        <div class="relative aspect-[3/4] rounded-2xl bg-gray-100 overflow-hidden mb-4">
+                            <div class="absolute inset-0 bg-gradient-to-br from-purple-600 to-pink-600 opacity-90 group-hover:opacity-100 transition duration-500"></div>
+                             <div class="absolute inset-0 flex flex-col justify-center items-center text-white">
+                                <span class="text-6xl mb-2">🔮</span>
+                                <span class="font-bold">夢幻ex</span>
+                            </div>
+                             <div class="absolute top-3 left-3 bg-white/20 backdrop-blur-md px-2 py-1 rounded-lg border border-white/30 text-white text-xs font-bold">
+                                Ultra Rare
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between items-start mb-2">
+                                <h3 class="font-bold text-gray-800 group-hover:text-blue-600 transition">夢幻ex</h3>
+                                <span class="bg-blue-50 text-blue-600 text-xs px-2 py-1 rounded-lg font-bold">#087</span>
+                            </div>
+                            <div class="grid grid-cols-2 gap-2 mb-4">
+                                <div class="bg-gray-50 rounded-xl p-2 text-center">
+                                    <p class="text-[10px] text-gray-400 uppercase font-bold">使用率</p>
+                                    <p class="text-sm font-bold text-gray-800">74.9%</p>
+                                </div>
+                                <div class="bg-gray-50 rounded-xl p-2 text-center">
+                                    <p class="text-[10px] text-gray-400 uppercase font-bold">勝率</p>
+                                    <p class="text-sm font-bold text-blue-600">71.2%</p>
+                                </div>
+                            </div>
+                            <div class="flex justify-between items-center">
+                                <span class="text-lg font-bold text-purple-600">HK$1,280</span>
+                                <button class="w-8 h-8 rounded-full bg-gray-50 hover:bg-blue-50 hover:text-blue-600 flex items-center justify-center transition">
+                                    <span class="material-icons-round text-sm">arrow_forward</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-white border-t border-gray-100 py-12">
+        <div class="max-w-7xl mx-auto px-6 text-center">
+            <div class="flex justify-center items-center gap-2 mb-4">
+                <span class="material-icons-round text-2xl text-gray-400">auto_awesome</span>
+                <h2 class="text-lg font-bold text-gray-700">PTCG CardDB</h2>
+            </div>
+            <p class="text-gray-400 text-sm mb-8">Gemini 3 Pro Edition • AI-Powered Insights</p>
+            <div class="flex justify-center gap-6 text-sm text-gray-500">
+                <a href="#" class="hover:text-blue-600 transition">關於我們</a>
+                <a href="#" class="hover:text-blue-600 transition">API ⽂檔</a>
+                <a href="#" class="hover:text-blue-600 transition">隱私權政策</a>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

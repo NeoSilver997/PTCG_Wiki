@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="zh-HK">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>套牌構築 - Gemini 3 Pro Edition</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Round" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Noto Sans TC', sans-serif;
+            background-color: #f0f4f8;
+            color: #1f2937;
+        }
+        .gemini-gradient-text {
+            background: linear-gradient(90deg, #4285F4, #9B72CB, #D96570);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .gemini-button {
+            background: linear-gradient(90deg, #4285F4, #8E24AA);
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.5);
+        }
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #c7c7c7;
+            border-radius: 10px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #a8a8a8;
+        }
+    </style>
+</head>
+<body class="h-screen flex flex-col overflow-hidden">
+    <!-- Compact Navbar -->
+    <nav class="bg-white border-b border-gray-200 h-16 flex-none z-50">
+        <div class="h-full px-6 flex justify-between items-center">
+            <div class="flex items-center gap-6">
+                <a href="index.html" class="flex items-center gap-2">
+                    <span class="material-icons-round text-3xl text-blue-500">auto_awesome</span>
+                    <span class="font-bold text-xl text-gray-800">DeckBuilder <span class="text-xs text-purple-600 bg-purple-100 px-2 py-0.5 rounded-full ml-1">AI PRO</span></span>
+                </a>
+                <div class="h-6 w-px bg-gray-300"></div>
+                <div class="flex items-center gap-2 bg-gray-100 px-3 py-1.5 rounded-lg">
+                    <span class="text-sm font-medium text-gray-600">莉佳霸王花控制流 v1.2</span>
+                    <span class="material-icons-round text-sm text-gray-400 cursor-pointer hover:text-gray-600">edit</span>
+                </div>
+            </div>
+
+            <div class="flex items-center gap-3">
+                <button class="flex items-center gap-2 px-4 py-2 rounded-lg text-gray-600 hover:bg-gray-100 font-medium text-sm transition">
+                    <span class="material-icons-round text-sm">save</span> 儲存
+                </button>
+                <button class="flex items-center gap-2 px-4 py-2 rounded-lg text-gray-600 hover:bg-gray-100 font-medium text-sm transition">
+                    <span class="material-icons-round text-sm">upload</span> 匯入
+                </button>
+                <button class="gemini-button text-white px-5 py-2 rounded-lg font-medium text-sm shadow-md flex items-center gap-2 hover:shadow-lg transition">
+                    <span class="material-icons-round text-sm">smart_toy</span> AI 分析
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Workspace -->
+    <div class="flex-1 flex overflow-hidden">
+        
+        <!-- Left: Card Browser -->
+        <aside class="w-96 bg-white border-r border-gray-200 flex flex-col">
+            <div class="p-4 border-b border-gray-100">
+                <div class="relative mb-4">
+                    <span class="material-icons-round absolute left-3 top-2.5 text-gray-400">search</span>
+                    <input type="text" placeholder="搜尋卡片..." class="w-full bg-gray-50 border-none rounded-xl py-2 pl-10 pr-4 text-sm focus:ring-2 focus:ring-blue-100">
+                </div>
+                <div class="flex gap-2 overflow-x-auto pb-2 scrollbar-hide">
+                    <button class="px-3 py-1 rounded-full bg-blue-50 text-blue-600 text-xs font-bold whitespace-nowrap">全部</button>
+                    <button class="px-3 py-1 rounded-full bg-gray-50 text-gray-600 text-xs font-medium hover:bg-gray-100 whitespace-nowrap">寶可夢</button>
+                    <button class="px-3 py-1 rounded-full bg-gray-50 text-gray-600 text-xs font-medium hover:bg-gray-100 whitespace-nowrap">訓練家</button>
+                    <button class="px-3 py-1 rounded-full bg-gray-50 text-gray-600 text-xs font-medium hover:bg-gray-100 whitespace-nowrap">能量</button>
+                </div>
+            </div>
+
+            <div class="flex-1 overflow-y-auto p-4 space-y-3">
+                <!-- Card Item -->
+                <div class="flex items-center gap-3 p-2 rounded-xl hover:bg-gray-50 cursor-grab active:cursor-grabbing group transition border border-transparent hover:border-gray-200">
+                    <div class="w-12 h-16 bg-gradient-to-br from-green-600 to-teal-800 rounded bg-gray-200 flex items-center justify-center text-white font-bold text-xs">IMG</div>
+                    <div class="flex-1">
+                        <div class="flex justify-between">
+                            <h4 class="font-bold text-sm text-gray-800">莉佳的霸王花ex</h4>
+                            <span class="text-xs font-bold text-green-600 bg-green-50 px-1.5 py-0.5 rounded">草</span>
+                        </div>
+                        <p class="text-xs text-gray-500">HP 310 • SV9 #014</p>
+                    </div>
+                    <button class="w-8 h-8 rounded-full bg-white border border-gray-200 text-blue-600 flex items-center justify-center opacity-0 group-hover:opacity-100 hover:bg-blue-50 transition shadow-sm">
+                        <span class="material-icons-round text-sm">add</span>
+                    </button>
+                </div>
+                <!-- More items... -->
+                <div class="flex items-center gap-3 p-2 rounded-xl hover:bg-gray-50 cursor-grab active:cursor-grabbing group transition border border-transparent hover:border-gray-200">
+                    <div class="w-12 h-16 bg-gradient-to-br from-blue-600 to-indigo-800 rounded bg-gray-200 flex items-center justify-center text-white font-bold text-xs">IMG</div>
+                    <div class="flex-1">
+                        <div class="flex justify-between">
+                            <h4 class="font-bold text-sm text-gray-800">基拉祈V</h4>
+                            <span class="text-xs font-bold text-blue-600 bg-blue-50 px-1.5 py-0.5 rounded">水</span>
+                        </div>
+                        <p class="text-xs text-gray-500">HP 190 • SV9 #022</p>
+                    </div>
+                    <button class="w-8 h-8 rounded-full bg-white border border-gray-200 text-blue-600 flex items-center justify-center opacity-0 group-hover:opacity-100 hover:bg-blue-50 transition shadow-sm">
+                        <span class="material-icons-round text-sm">add</span>
+                    </button>
+                </div>
+
+                <div class="flex items-center gap-3 p-2 rounded-xl hover:bg-gray-50 cursor-grab active:cursor-grabbing group transition border border-transparent hover:border-gray-200">
+                    <div class="w-12 h-16 bg-gradient-to-br from-gray-700 to-gray-900 rounded bg-gray-200 flex items-center justify-center text-white font-bold text-xs">IMG</div>
+                    <div class="flex-1">
+                        <div class="flex justify-between">
+                            <h4 class="font-bold text-sm text-gray-800">莉佳教練</h4>
+                            <span class="text-xs font-bold text-gray-600 bg-gray-100 px-1.5 py-0.5 rounded">SUP</span>
+                        </div>
+                        <p class="text-xs text-gray-500">支援者 • SV9 #098</p>
+                    </div>
+                    <button class="w-8 h-8 rounded-full bg-white border border-gray-200 text-blue-600 flex items-center justify-center opacity-0 group-hover:opacity-100 hover:bg-blue-50 transition shadow-sm">
+                        <span class="material-icons-round text-sm">add</span>
+                    </button>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Center: Deck View -->
+        <main class="flex-1 bg-gray-50/50 p-8 overflow-y-auto">
+            <div class="max-w-5xl mx-auto">
+                <!-- Stats Overview -->
+                <div class="grid grid-cols-4 gap-4 mb-8">
+                    <div class="bg-white p-4 rounded-2xl shadow-sm border border-gray-100 flex items-center gap-4">
+                        <div class="w-10 h-10 rounded-full bg-blue-100 text-blue-600 flex items-center justify-center font-bold">60</div>
+                        <div>
+                            <p class="text-xs text-gray-500 font-bold uppercase">卡片總數</p>
+                            <p class="text-sm font-medium text-gray-800">標準賽制 OK</p>
+                        </div>
+                    </div>
+                    <div class="bg-white p-4 rounded-2xl shadow-sm border border-gray-100">
+                         <p class="text-xs text-gray-500 font-bold uppercase mb-1">寶可夢</p>
+                         <div class="flex items-end gap-2">
+                             <span class="text-2xl font-bold text-gray-800">18</span>
+                             <span class="text-xs text-gray-400 mb-1">30%</span>
+                         </div>
+                    </div>
+                    <div class="bg-white p-4 rounded-2xl shadow-sm border border-gray-100">
+                        <p class="text-xs text-gray-500 font-bold uppercase mb-1">訓練家</p>
+                        <div class="flex items-end gap-2">
+                            <span class="text-2xl font-bold text-gray-800">28</span>
+                            <span class="text-xs text-gray-400 mb-1">46%</span>
+                        </div>
+                   </div>
+                   <div class="bg-white p-4 rounded-2xl shadow-sm border border-gray-100">
+                        <p class="text-xs text-gray-500 font-bold uppercase mb-1">能量</p>
+                        <div class="flex items-end gap-2">
+                            <span class="text-2xl font-bold text-gray-800">14</span>
+                            <span class="text-xs text-gray-400 mb-1">23%</span>
+                        </div>
+                   </div>
+                </div>
+
+                <!-- Deck Visual Grid -->
+                <!-- Pokemon Section -->
+                <div class="mb-8">
+                    <h3 class="text-sm font-bold text-gray-400 uppercase tracking-wider mb-4 flex items-center gap-2">
+                        <span class="w-2 h-2 rounded-full bg-green-500"></span> 寶可夢 (18)
+                    </h3>
+                    <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-4">
+                        <!-- Card Slot -->
+                        <div class="relative group aspect-[3/4] rounded-xl bg-white shadow-sm transition hover:shadow-md cursor-pointer border border-gray-200">
+                            <div class="absolute inset-0 bg-gradient-to-br from-green-600 to-teal-800 rounded-xl m-1 opacity-90"></div>
+                            <div class="absolute inset-0 flex items-center justify-center text-white font-bold text-2xl">4</div>
+                            <div class="absolute top-2 right-2 flex gap-1 opacity-0 group-hover:opacity-100 transition">
+                                <button class="w-6 h-6 rounded-full bg-black/50 text-white flex items-center justify-center hover:bg-black/70">-</button>
+                                <button class="w-6 h-6 rounded-full bg-black/50 text-white flex items-center justify-center hover:bg-black/70">+</button>
+                            </div>
+                            <div class="absolute bottom-2 left-2 right-2 text-center text-white/90 text-xs font-bold truncate px-1">莉佳的霸王花ex</div>
+                        </div>
+
+                        <div class="relative group aspect-[3/4] rounded-xl bg-white shadow-sm transition hover:shadow-md cursor-pointer border border-gray-200">
+                            <div class="absolute inset-0 bg-gradient-to-br from-green-700 to-green-900 rounded-xl m-1 opacity-90"></div>
+                            <div class="absolute inset-0 flex items-center justify-center text-white font-bold text-2xl">4</div>
+                            <div class="absolute bottom-2 left-2 right-2 text-center text-white/90 text-xs font-bold truncate px-1">臭臭花</div>
+                        </div>
+
+                         <div class="relative group aspect-[3/4] rounded-xl bg-white shadow-sm transition hover:shadow-md cursor-pointer border border-gray-200">
+                            <div class="absolute inset-0 bg-gradient-to-br from-green-500 to-green-700 rounded-xl m-1 opacity-90"></div>
+                            <div class="absolute inset-0 flex items-center justify-center text-white font-bold text-2xl">4</div>
+                            <div class="absolute bottom-2 left-2 right-2 text-center text-white/90 text-xs font-bold truncate px-1">走路草</div>
+                        </div>
+
+                         <div class="relative group aspect-[3/4] rounded-xl bg-white shadow-sm transition hover:shadow-md cursor-pointer border border-gray-200">
+                            <div class="absolute inset-0 bg-gradient-to-br from-blue-600 to-indigo-800 rounded-xl m-1 opacity-90"></div>
+                            <div class="absolute inset-0 flex items-center justify-center text-white font-bold text-2xl">2</div>
+                            <div class="absolute bottom-2 left-2 right-2 text-center text-white/90 text-xs font-bold truncate px-1">基拉祈V</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Trainers Section -->
+                <div class="mb-8">
+                     <h3 class="text-sm font-bold text-gray-400 uppercase tracking-wider mb-4 flex items-center gap-2">
+                        <span class="w-2 h-2 rounded-full bg-blue-500"></span> 訓練家 (28)
+                    </h3>
+                    <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-4">
+                        <div class="relative group aspect-[3/4] rounded-xl bg-white shadow-sm transition hover:shadow-md cursor-pointer border border-gray-200">
+                            <div class="absolute inset-0 bg-gradient-to-br from-gray-700 to-gray-900 rounded-xl m-1 opacity-90"></div>
+                            <div class="absolute inset-0 flex items-center justify-center text-white font-bold text-2xl">4</div>
+                            <div class="absolute bottom-2 left-2 right-2 text-center text-white/90 text-xs font-bold truncate px-1">莉佳教練</div>
+                        </div>
+                    </div>
+                </div>
+
+                 <!-- Energy Section -->
+                 <div class="mb-8">
+                    <h3 class="text-sm font-bold text-gray-400 uppercase tracking-wider mb-4 flex items-center gap-2">
+                       <span class="w-2 h-2 rounded-full bg-yellow-500"></span> 能量 (14)
+                   </h3>
+                   <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-4">
+                       <div class="relative group aspect-[3/4] rounded-xl bg-white shadow-sm transition hover:shadow-md cursor-pointer border border-gray-200">
+                           <div class="absolute inset-0 bg-gradient-to-br from-green-500 to-teal-400 rounded-xl m-1 opacity-90"></div>
+                           <div class="absolute inset-0 flex items-center justify-center text-white font-bold text-2xl">14</div>
+                           <div class="absolute bottom-2 left-2 right-2 text-center text-white/90 text-xs font-bold truncate px-1">基本草能量</div>
+                       </div>
+                   </div>
+               </div>
+
+            </div>
+        </main>
+
+        <!-- Right: AI Assistant Panel -->
+        <aside class="w-80 bg-white border-l border-gray-200 hidden xl:flex flex-col">
+            <div class="p-6 border-b border-gray-100">
+                <div class="flex items-center gap-2 mb-2">
+                    <span class="material-icons-round text-purple-500">auto_awesome</span>
+                    <h3 class="font-bold text-gray-800">Gemini AI 分析</h3>
+                </div>
+                <p class="text-xs text-gray-500">基於 2026 賽季 Top 100 套牌大數據</p>
+            </div>
+            
+            <div class="p-6 space-y-6 flex-1 overflow-y-auto">
+                <!-- Score -->
+                <div class="text-center">
+                    <div class="inline-flex items-center justify-center w-20 h-20 rounded-full bg-gradient-to-r from-blue-500 to-purple-500 text-white text-3xl font-bold shadow-lg mb-2">
+                        A+
+                    </div>
+                    <p class="text-sm font-bold text-gray-700">套牌強度評級</p>
+                    <p class="text-xs text-gray-500">預估勝率 72%</p>
+                </div>
+
+                <!-- Suggestions -->
+                <div class="space-y-4">
+                    <h4 class="text-xs font-bold text-gray-400 uppercase tracking-wider">優化建議</h4>
+                    
+                    <div class="bg-blue-50 rounded-xl p-4 border border-blue-100">
+                        <div class="flex gap-3">
+                            <span class="material-icons-round text-blue-600 text-sm mt-0.5">add_circle</span>
+                            <div>
+                                <p class="text-sm font-bold text-blue-900">增加抽牌手段</p>
+                                <p class="text-xs text-blue-700 mt-1">建議增加 +2 張「博士的研究」以提高開局穩定性。</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="bg-red-50 rounded-xl p-4 border border-red-100">
+                        <div class="flex gap-3">
+                            <span class="material-icons-round text-red-600 text-sm mt-0.5">warning</span>
+                            <div>
+                                <p class="text-sm font-bold text-red-900">能量過多</p>
+                                <p class="text-xs text-red-700 mt-1">目前 14 張能量略高於平均值 (12.4)，建議減少 1-2 張。</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Matchups -->
+                <div>
+                     <h4 class="text-xs font-bold text-gray-400 uppercase tracking-wider mb-3">對戰優劣勢</h4>
+                     <div class="space-y-2">
+                         <div class="flex items-center justify-between text-sm">
+                             <span class="text-gray-600">vs 皮卡丘VMAX</span>
+                             <span class="text-green-600 font-bold">65% 勝</span>
+                         </div>
+                         <div class="w-full bg-gray-100 rounded-full h-1.5">
+                             <div class="bg-green-500 h-1.5 rounded-full" style="width: 65%"></div>
+                         </div>
+                     </div>
+                     <div class="space-y-2 mt-3">
+                        <div class="flex items-center justify-between text-sm">
+                            <span class="text-gray-600">vs 噴火龍ex</span>
+                            <span class="text-red-500 font-bold">35% 負</span>
+                        </div>
+                        <div class="w-full bg-gray-100 rounded-full h-1.5">
+                            <div class="bg-red-500 h-1.5 rounded-full" style="width: 35%"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </aside>
+    </div>
+</body>
+</html>

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="zh-HK">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>市場價格追蹤 - PTCG CardDB</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>body { font-family: 'Noto Sans TC', sans-serif; }</style>
+</head>
+<body class="bg-gray-50">
+    <nav class="bg-white shadow-md sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-6 flex items-center h-16">
+            <span class="text-2xl font-bold text-blue-600">⚡ PTCG</span>
+            <span class="ml-2 text-gray-600">卡牌資料庫</span>
+        </div>
+    </nav>
+    <div class="max-w-5xl mx-auto px-6 py-8">
+        <h1 class="text-3xl font-bold text-gray-900 mb-6">市場價格追蹤</h1>
+        <div class="mb-8">
+            <input type="text" placeholder="搜尋卡片或編號..." class="border border-gray-300 rounded px-4 py-2 w-1/2">
+        </div>
+        <div class="bg-white rounded-lg shadow p-6 mb-8">
+            <h2 class="text-xl font-bold mb-4">價格比較</h2>
+            <table class="w-full text-sm">
+                <thead>
+                    <tr class="bg-gray-100">
+                        <th class="py-2">卡片</th>
+                        <th>香港</th>
+                        <th>日本</th>
+                        <th>英文</th>
+                        <th>漲跌</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>妙蛙花 ex</td>
+                        <td>$120</td>
+                        <td>¥1800</td>
+                        <td>$15</td>
+                        <td class="text-green-600">+5%</td>
+                    </tr>
+                    <tr>
+                        <td>噴火龍 ex</td>
+                        <td>$300</td>
+                        <td>¥4200</td>
+                        <td>$38</td>
+                        <td class="text-red-600">-2%</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="bg-white rounded-lg shadow p-6 mb-8">
+            <h2 class="text-xl font-bold mb-4">價格走勢圖</h2>
+            <img src="../images/prices/sample-market-chart.png" class="w-full h-40 object-cover rounded">
+        </div>
+        <div class="bg-white rounded-lg shadow p-6">
+            <h2 class="text-xl font-bold mb-4">熱門卡片</h2>
+            <div class="grid grid-cols-4 gap-4">
+                <div class="bg-gray-50 p-3 rounded shadow text-center">
+                    <img src="../images/cards/hk/sample-card.png" class="mx-auto w-20 h-28 mb-2">
+                    <div class="font-medium">妙蛙花 ex</div>
+                    <div class="text-green-600 text-xs">+5%</div>
+                </div>
+                <div class="bg-gray-50 p-3 rounded shadow text-center">
+                    <img src="../images/cards/hk/sample-card2.png" class="mx-auto w-20 h-28 mb-2">
+                    <div class="font-medium">噴火龍 ex</div>
+                    <div class="text-red-600 text-xs">-2%</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

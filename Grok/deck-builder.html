@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Deck Builder | PTCG CardDB (Grok)</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+  <style>
+    body { font-family: 'Noto Sans', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial; }
+  </style>
+</head>
+<body class="bg-gray-50">
+  <!-- Navigation -->
+  <nav class="bg-gradient-to-r from-purple-700 to-indigo-800 shadow-lg sticky top-0 z-50">
+    <div class="max-w-[1400px] mx-auto px-6">
+      <div class="flex items-center justify-between h-16">
+        <div class="flex items-center space-x-6">
+          <div class="flex items-center">
+            <span class="text-2xl font-bold text-white">🃏 PTCG</span>
+            <span class="ml-2 text-purple-200">CardDB</span>
+          </div>
+          <div class="text-purple-200 text-sm">
+            <a href="index.html" class="hover:text-white">Home</a>
+            <span class="mx-2">/</span>
+            <span class="text-white">Deck Builder</span>
+          </div>
+        </div>
+        <div class="flex items-center space-x-4">
+          <a href="collection.html" class="text-purple-200 hover:text-white px-3 py-2">Collection</a>
+          <a href="events.html" class="text-purple-200 hover:text-white px-3 py-2">Events</a>
+          <a href="login.html" class="text-purple-200 hover:text-white px-3 py-2">Login</a>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <div class="max-w-[1400px] mx-auto px-6 py-8">
+    <div class="grid grid-cols-12 gap-8">
+      <!-- Left: Card Search -->
+      <div class="col-span-8">
+        <div class="bg-white rounded-lg shadow-lg p-6 mb-6">
+          <h2 class="text-xl font-bold text-gray-900 mb-4">Card Search</h2>
+
+          <!-- Search Filters -->
+          <div class="grid grid-cols-4 gap-4 mb-6">
+            <div>
+              <label class="block text-sm font-medium text-gray-700 mb-2">Search</label>
+              <input type="text" placeholder="Card name..." class="w-full border border-gray-300 rounded-md px-4 py-2">
+            </div>
+            <div>
+              <label class="block text-sm font-medium text-gray-700 mb-2">Expansion</label>
+              <select class="w-full border border-gray-300 rounded-md px-4 py-2">
+                <option>All Expansions</option>
+                <option>MC Starter Set</option>
+                <option>SV08 Lightning Breakthrough</option>
+              </select>
+            </div>
+            <div>
+              <label class="block text-sm font-medium text-gray-700 mb-2">Type</label>
+              <select class="w-full border border-gray-300 rounded-md px-4 py-2">
+                <option>All Types</option>
+                <option>Grass</option>
+                <option>Fire</option>
+                <option>Water</option>
+                <option>Lightning</option>
+                <option>Psychic</option>
+                <option>Fighting</option>
+                <option>Darkness</option>
+                <option>Metal</option>
+                <option>Fairy</option>
+                <option>Colorless</option>
+              </select>
+            </div>
+            <div>
+              <label class="block text-sm font-medium text-gray-700 mb-2">Rarity</label>
+              <select class="w-full border border-gray-300 rounded-md px-4 py-2">
+                <option>All Rarities</option>
+                <option>C - Common</option>
+                <option>R - Rare</option>
+                <option>SAR - Special Art Rare</option>
+              </select>
+            </div>
+          </div>
+
+          <!-- Search Results -->
+          <div class="grid grid-cols-4 gap-4">
+            <div class="bg-white border rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-shadow cursor-pointer group">
+              <div class="w-full aspect-[245/342] bg-gray-100 flex items-center justify-center">
+                <img src="https://via.placeholder.com/245x342/4f46e5/ffffff?text=Card" alt="Card" class="w-full h-full object-contain">
+              </div>
+              <div class="p-3">
+                <div class="font-medium text-sm truncate mb-1">Erika's Vileplume ex</div>
+                <div class="text-xs text-gray-500 mb-2">MC J005/742</div>
+                <div class="flex items-center justify-between">
+                  <span class="text-xs text-gray-600">SAR</span>
+                  <button class="text-blue-600 text-xs hover:text-blue-800">+ Add</button>
+                </div>
+              </div>
+            </div>
+
+            <div class="bg-white border rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-shadow cursor-pointer group">
+              <div class="w-full aspect-[245/342] bg-gray-100 flex items-center justify-center">
+                <img src="https://via.placeholder.com/245x342/059669/ffffff?text=Card" alt="Card" class="w-full h-full object-contain">
+              </div>
+              <div class="p-3">
+                <div class="font-medium text-sm truncate mb-1">Charizard ex</div>
+                <div class="text-xs text-gray-500 mb-2">SV8 001/150</div>
+                <div class="flex items-center justify-between">
+                  <span class="text-xs text-gray-600">SAR</span>
+                  <button class="text-blue-600 text-xs hover:text-blue-800">+ Add</button>
+                </div>
+              </div>
+            </div>
+
+            <div class="bg-white border rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-shadow cursor-pointer group">
+              <div class="w-full aspect-[245/342] bg-gray-100 flex items-center justify-center">
+                <img src="https://via.placeholder.com/245x342/dc2626/ffffff?text=Card" alt="Card" class="w-full h-full object-contain">
+              </div>
+              <div class="p-3">
+                <div class="font-medium text-sm truncate mb-1">Pikachu</div>
+                <div class="text-xs text-gray-500 mb-2">MC J001/742</div>
+                <div class="flex items-center justify-between">
+                  <span class="text-xs text-gray-600">C</span>
+                  <button class="text-blue-600 text-xs hover:text-blue-800">+ Add</button>
+                </div>
+              </div>
+            </div>
+
+            <div class="bg-white border rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-shadow cursor-pointer group">
+              <div class="w-full aspect-[245/342] bg-gray-100 flex items-center justify-center">
+                <img src="https://via.placeholder.com/245x342/7c3aed/ffffff?text=Card" alt="Card" class="w-full h-full object-contain">
+              </div>
+              <div class="p-3">
+                <div class="font-medium text-sm truncate mb-1">Blastoise ex</div>
+                <div class="text-xs text-gray-500 mb-2">SV8 002/150</div>
+                <div class="flex items-center justify-between">
+                  <span class="text-xs text-gray-600">SAR</span>
+                  <button class="text-blue-600 text-xs hover:text-blue-800">+ Add</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right: Deck List -->
+      <div class="col-span-4">
+        <div class="bg-white rounded-lg shadow-lg p-6 sticky top-24">
+          <div class="flex items-center justify-between mb-6">
+            <h2 class="text-xl font-bold text-gray-900">My Deck</h2>
+            <div class="text-sm text-gray-600">47/60 cards</div>
+          </div>
+
+          <!-- Deck Stats -->
+          <div class="grid grid-cols-2 gap-4 mb-6">
+            <div class="bg-blue-50 rounded-lg p-3 text-center">
+              <div class="text-lg font-bold text-blue-600">13</div>
+              <div class="text-xs text-blue-800">Pokemon</div>
+            </div>
+            <div class="bg-green-50 rounded-lg p-3 text-center">
+              <div class="text-lg font-bold text-green-600">34</div>
+              <div class="text-xs text-green-800">Trainer</div>
+            </div>
+          </div>
+
+          <!-- Deck Cards -->
+          <div class="space-y-2 max-h-96 overflow-y-auto">
+            <div class="flex items-center justify-between py-2 border-b border-gray-100">
+              <div class="flex items-center space-x-3">
+                <div class="w-8 h-8 bg-gray-200 rounded flex items-center justify-center text-xs font-medium">3</div>
+                <div>
+                  <div class="text-sm font-medium">Erika's Vileplume ex</div>
+                  <div class="text-xs text-gray-500">MC J005/742</div>
+                </div>
+              </div>
+              <div class="flex items-center space-x-2">
+                <button class="text-green-600 text-sm">+</button>
+                <button class="text-red-600 text-sm">-</button>
+              </div>
+            </div>
+
+            <div class="flex items-center justify-between py-2 border-b border-gray-100">
+              <div class="flex items-center space-x-3">
+                <div class="w-8 h-8 bg-gray-200 rounded flex items-center justify-center text-xs font-medium">2</div>
+                <div>
+                  <div class="text-sm font-medium">Charizard ex</div>
+                  <div class="text-xs text-gray-500">SV8 001/150</div>
+                </div>
+              </div>
+              <div class="flex items-center space-x-2">
+                <button class="text-green-600 text-sm">+</button>
+                <button class="text-red-600 text-sm">-</button>
+              </div>
+            </div>
+
+            <div class="flex items-center justify-between py-2 border-b border-gray-100">
+              <div class="flex items-center space-x-3">
+                <div class="w-8 h-8 bg-gray-200 rounded flex items-center justify-center text-xs font-medium">4</div>
+                <div>
+                  <div class="text-sm font-medium">Pikachu</div>
+                  <div class="text-xs text-gray-500">MC J001/742</div>
+                </div>
+              </div>
+              <div class="flex items-center space-x-2">
+                <button class="text-green-600 text-sm">+</button>
+                <button class="text-red-600 text-sm">-</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Deck Actions -->
+          <div class="mt-6 space-y-3">
+            <button class="w-full px-4 py-2 bg-blue-600 text-white rounded-lg font-medium hover:bg-blue-700">
+              Save Deck
+            </button>
+            <button class="w-full px-4 py-2 bg-green-600 text-white rounded-lg font-medium hover:bg-green-700">
+              Export Deck
+            </button>
+            <button class="w-full px-4 py-2 bg-gray-600 text-white rounded-lg font-medium hover:bg-gray-700">
+              Clear Deck
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>卡牌詳情 | PTCG 卡牌資料庫 (Gemini)</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet">
+  <style>
+    body { font-family: 'Noto Sans TC', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial; }
+  </style>
+</head>
+<body class="bg-gray-50">
+  <!-- Navigation -->
+  <nav class="bg-gradient-to-r from-green-600 to-emerald-600 shadow-lg sticky top-0 z-50">
+    <div class="max-w-[1400px] mx-auto px-6">
+      <div class="flex items-center justify-between h-16">
+        <div class="flex items-center space-x-6">
+          <div class="flex items-center">
+            <span class="text-2xl font-bold text-white">🃏 PTCG</span>
+            <span class="ml-2 text-green-200">卡牌詳情</span>
+          </div>
+          <div class="text-green-200 text-sm">
+            <span class="text-white">皮卡丘 VMAX</span>
+          </div>
+        </div>
+        <div class="flex items-center space-x-4">
+          <a href="index.html" class="text-green-200 hover:text-white px-3 py-2">首頁</a>
+          <a href="collection.html" class="text-green-200 hover:text-white px-3 py-2">我的收藏</a>
+          <div class="flex items-center space-x-2 bg-white/10 px-4 py-2 rounded-lg">
+            <span class="text-white font-medium">訪客</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <div class="max-w-[1400px] mx-auto px-6 py-8">
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+      <!-- Card Image -->
+      <div class="lg:col-span-1">
+        <div class="bg-white rounded-lg shadow-lg p-6 sticky top-24">
+          <div class="aspect-[3/4] bg-gray-100 rounded-lg mb-4 flex items-center justify-center">
+            <img src="https://via.placeholder.com/300x400?text=皮卡丘+VMAX" alt="皮卡丘 VMAX" class="w-full h-full object-cover rounded-lg">
+          </div>
+          <div class="text-center">
+            <h2 class="text-xl font-bold text-gray-900 mb-2">皮卡丘 VMAX</h2>
+            <p class="text-gray-600 mb-4">Pikachu VMAX</p>
+            <div class="flex justify-center space-x-2 mb-4">
+              <span class="px-3 py-1 bg-yellow-100 text-yellow-800 rounded-full text-sm">雷電</span>
+              <span class="px-3 py-1 bg-red-100 text-red-800 rounded-full text-sm">VMAX</span>
+            </div>
+            <div class="text-2xl font-bold text-green-600 mb-2">HK$ 250</div>
+            <p class="text-sm text-gray-500">市場價格</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card Details -->
+      <div class="lg:col-span-2 space-y-6">
+        <!-- Basic Information -->
+        <div class="bg-white rounded-lg shadow-lg p-6">
+          <h3 class="text-xl font-bold text-gray-900 mb-4">基本資訊</h3>
+          <div class="grid grid-cols-2 gap-4">
+            <div>
+              <span class="text-sm text-gray-500">卡牌編號</span>
+              <p class="font-medium">SWSH12: 060/172</p>
+            </div>
+            <div>
+              <span class="text-sm text-gray-500">稀有度</span>
+              <p class="font-medium">超罕見</p>
+            </div>
+            <div>
+              <span class="text-sm text-gray-500">類型</span>
+              <p class="font-medium">雷電</p>
+            </div>
+            <div>
+              <span class="text-sm text-gray-500">HP</span>
+              <p class="font-medium">330</p>
+            </div>
+            <div>
+              <span class="text-sm text-gray-500">進化階段</span>
+              <p class="font-medium">VMAX</p>
+            </div>
+            <div>
+              <span class="text-sm text-gray-500">系列</span>
+              <p class="font-medium">劍盾 朱紫</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Abilities -->
+        <div class="bg-white rounded-lg shadow-lg p-6">
+          <h3 class="text-xl font-bold text-gray-900 mb-4">能力</h3>
+          <div class="border border-gray-200 rounded-lg p-4">
+            <h4 class="font-bold text-lg mb-2">皮卡丘 VMAX</h4>
+            <p class="text-gray-700">在自己的回合中，可使用1次。從自己的棄牌區選擇最多2張基本能量卡，附於自己的寶可夢身上。</p>
+          </div>
+        </div>
+
+        <!-- Attacks -->
+        <div class="bg-white rounded-lg shadow-lg p-6">
+          <h3 class="text-xl font-bold text-gray-900 mb-4">攻擊</h3>
+          <div class="border border-gray-200 rounded-lg p-4">
+            <div class="flex items-center justify-between mb-2">
+              <h4 class="font-bold text-lg">超極巨雷電風暴</h4>
+              <div class="flex items-center space-x-2">
+                <span class="text-yellow-600">⚡⚡⚡⚡</span>
+                <span class="font-bold text-xl">300</span>
+              </div>
+            </div>
+            <p class="text-gray-700">這個攻擊在造成傷害時，對手的戰鬥寶可夢【麻痺】。</p>
+          </div>
+        </div>
+
+        <!-- Attributes -->
+        <div class="bg-white rounded-lg shadow-lg p-6">
+          <h3 class="text-xl font-bold text-gray-900 mb-4">屬性</h3>
+          <div class="grid grid-cols-2 gap-4">
+            <div>
+              <span class="text-sm text-gray-500">弱點</span>
+              <p class="font-medium">格鬥 ×2</p>
+            </div>
+            <div>
+              <span class="text-sm text-gray-500">抵抗力</span>
+              <p class="font-medium">雷電 -30</p>
+            </div>
+            <div>
+              <span class="text-sm text-gray-500">撤退成本</span>
+              <p class="font-medium">3</p>
+            </div>
+            <div>
+              <span class="text-sm text-gray-500">所屬</span>
+              <p class="font-medium">無</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Price History -->
+        <div class="bg-white rounded-lg shadow-lg p-6">
+          <h3 class="text-xl font-bold text-gray-900 mb-4">價格歷史</h3>
+          <div class="space-y-3">
+            <div class="flex justify-between items-center py-2 border-b border-gray-100">
+              <span class="text-sm text-gray-600">今天</span>
+              <span class="font-medium">HK$ 250</span>
+            </div>
+            <div class="flex justify-between items-center py-2 border-b border-gray-100">
+              <span class="text-sm text-gray-600">昨天</span>
+              <span class="font-medium">HK$ 245</span>
+            </div>
+            <div class="flex justify-between items-center py-2 border-b border-gray-100">
+              <span class="text-sm text-gray-600">一週前</span>
+              <span class="font-medium">HK$ 235</span>
+            </div>
+            <div class="flex justify-between items-center py-2 border-b border-gray-100">
+              <span class="text-sm text-gray-600">一個月前</span>
+              <span class="font-medium">HK$ 220</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Actions -->
+        <div class="bg-white rounded-lg shadow-lg p-6">
+          <h3 class="text-xl font-bold text-gray-900 mb-4">操作</h3>
+          <div class="flex flex-wrap gap-3">
+            <button class="px-4 py-2 bg-green-600 text-white rounded-md hover:bg-green-700">加入收藏</button>
+            <button class="px-4 py-2 bg-emerald-600 text-white rounded-md hover:bg-emerald-700">加入牌組</button>
+            <button class="px-4 py-2 bg-teal-600 text-white rounded-md hover:bg-teal-700">分享</button>
+            <button class="px-4 py-2 border border-gray-300 text-gray-700 rounded-md hover:bg-gray-50">匯出</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

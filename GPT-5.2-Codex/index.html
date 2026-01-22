@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="zh-HK">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>PTCG CardDB - GPT-5.2 Codex Edition</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Round" rel="stylesheet" />
+    <style>
+        body {
+            font-family: 'Noto Sans TC', sans-serif;
+            background-color: #0b1020;
+            color: #e5e7eb;
+        }
+        .codex-gradient-text {
+            background: linear-gradient(90deg, #22d3ee, #38bdf8, #a78bfa);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .codex-surface {
+            background: linear-gradient(135deg, rgba(15, 23, 42, 0.9) 0%, rgba(30, 41, 59, 0.9) 100%);
+            border: 1px solid rgba(148, 163, 184, 0.15);
+            box-shadow: 0 20px 40px -30px rgba(15, 23, 42, 0.9);
+        }
+        .codex-glow {
+            box-shadow: 0 12px 40px -20px rgba(34, 211, 238, 0.6);
+        }
+        .codex-button {
+            background: linear-gradient(90deg, #22d3ee, #38bdf8, #a78bfa);
+            color: #0b1020;
+            font-weight: 700;
+        }
+        .card-float {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .card-float:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 20px 45px -30px rgba(34, 211, 238, 0.8);
+        }
+        .nav-link {
+            position: relative;
+        }
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(90deg, #22d3ee, #a78bfa);
+            transition: width 0.3s ease;
+        }
+        .nav-link:hover::after,
+        .nav-link.active::after {
+            width: 100%;
+        }
+    </style>
+</head>
+<body class="min-h-screen">
+    <nav class="sticky top-0 z-50 backdrop-blur-xl bg-slate-950/70 border-b border-slate-800">
+        <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+            <div class="flex items-center gap-3">
+                <span class="material-icons-round text-4xl text-cyan-300">auto_awesome</span>
+                <div>
+                    <h1 class="text-2xl font-bold codex-gradient-text">PTCG CardDB</h1>
+                    <p class="text-xs uppercase tracking-[0.3em] text-slate-400">GPT-5.2 Codex</p>
+                </div>
+            </div>
+            <div class="hidden md:flex items-center gap-8 text-sm">
+                <a href="index.html" class="nav-link active text-slate-100">首頁</a>
+                <a href="collection.html" class="nav-link text-slate-400 hover:text-slate-100">收藏</a>
+                <a href="deck-builder.html" class="nav-link text-slate-400 hover:text-slate-100">套牌</a>
+                <a href="events.html" class="nav-link text-slate-400 hover:text-slate-100">賽事</a>
+                <a href="#" class="nav-link text-slate-400 hover:text-slate-100">價格</a>
+            </div>
+            <div class="flex items-center gap-4">
+                <button class="px-4 py-2 rounded-full bg-slate-900 text-slate-300 border border-slate-800 text-xs font-semibold">繁體中文</button>
+                <a href="login.html" class="codex-button px-6 py-2.5 rounded-full shadow-lg">登入</a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="max-w-7xl mx-auto px-6 py-10">
+        <section class="codex-surface rounded-[2.5rem] p-10 mb-12 relative overflow-hidden">
+            <div class="absolute -top-24 -right-24 w-72 h-72 bg-cyan-500/20 rounded-full blur-3xl"></div>
+            <div class="absolute -bottom-24 -left-24 w-72 h-72 bg-purple-500/20 rounded-full blur-3xl"></div>
+
+            <div class="relative z-10 grid md:grid-cols-2 gap-10 items-center">
+                <div>
+                    <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-slate-900/70 border border-slate-800 text-xs text-cyan-200 mb-4">
+                        <span class="w-2 h-2 rounded-full bg-cyan-400"></span>
+                        Codex Meta Signal
+                    </div>
+                    <h2 class="text-4xl md:text-5xl font-bold leading-tight mb-4">
+                        莉佳的霸王花 <span class="codex-gradient-text">ex</span>
+                        <br /><span class="text-3xl md:text-4xl text-slate-300 font-light">AI 戰術矩陣</span>
+                    </h2>
+                    <p class="text-slate-300 text-lg mb-8 max-w-xl">
+                        GPT-5.2 Codex 透過多來源戰績與價格資料，推算最佳節奏點與換手時機，鎖定 2026 環境核心套牌。
+                    </p>
+
+                    <div class="flex items-center gap-8 mb-8">
+                        <div>
+                            <p class="text-xs text-slate-400 uppercase">使用率</p>
+                            <p class="text-3xl font-bold text-white">87.3%</p>
+                        </div>
+                        <div class="w-px h-10 bg-slate-700"></div>
+                        <div>
+                            <p class="text-xs text-slate-400 uppercase">勝率</p>
+                            <p class="text-3xl font-bold text-cyan-300">68.5%</p>
+                        </div>
+                        <div class="w-px h-10 bg-slate-700"></div>
+                        <div>
+                            <p class="text-xs text-slate-400 uppercase">市場熱度</p>
+                            <p class="text-3xl font-bold text-purple-300">#1</p>
+                        </div>
+                    </div>
+
+                    <div class="flex flex-wrap gap-4">
+                        <button class="codex-button px-8 py-3 rounded-2xl flex items-center gap-2 shadow-xl">
+                            查看詳情
+                            <span class="material-icons-round">visibility</span>
+                        </button>
+                        <button class="px-8 py-3 rounded-2xl bg-slate-900 text-slate-200 border border-slate-800 hover:border-cyan-400 transition">
+                            加入收藏
+                        </button>
+                    </div>
+                </div>
+
+                <div class="flex justify-center">
+                    <div class="relative card-float codex-glow">
+                        <div class="w-[300px] h-[420px] rounded-[2rem] bg-slate-900 border border-slate-800 overflow-hidden">
+                            <div class="absolute inset-0 bg-[url('https://placehold.co/300x420/0f172a/FFFFFF?text=Vileplume+ex')] bg-cover opacity-80"></div>
+                            <div class="absolute inset-0 bg-gradient-to-b from-transparent to-black/70"></div>
+                            <div class="absolute top-4 left-4 right-4 flex justify-between items-center text-white">
+                                <span class="font-bold">莉佳的霸王花ex</span>
+                                <span class="font-bold">HP310 <span class="text-cyan-300">🌿</span></span>
+                            </div>
+                            <div class="absolute bottom-6 left-4 right-4">
+                                <div class="bg-white/10 backdrop-blur-md rounded-xl p-3 border border-white/10">
+                                    <div class="flex justify-between items-center mb-1">
+                                        <span class="text-white font-bold text-sm">迷人花粉</span>
+                                        <span class="text-cyan-200 font-bold">120+</span>
+                                    </div>
+                                    <p class="text-[10px] text-slate-200 leading-tight">
+                                        若對手的戰鬥寶可夢處於中毒狀態，則增加120點傷害。
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div class="grid grid-cols-12 gap-8">
+            <aside class="col-span-12 lg:col-span-3 space-y-6">
+                <div class="codex-surface rounded-3xl p-6">
+                    <h3 class="text-lg font-bold text-white mb-6 flex items-center gap-2">
+                        <span class="material-icons-round text-cyan-300">tune</span> 智慧篩選
+                    </h3>
+                    <div class="space-y-6">
+                        <div class="relative">
+                            <span class="material-icons-round absolute left-3 top-3 text-slate-400">search</span>
+                            <input type="text" placeholder="搜尋卡片名稱..." class="w-full bg-slate-900 border border-slate-800 rounded-2xl py-3 pl-10 pr-4 text-sm focus:ring-2 focus:ring-cyan-400 outline-none" />
+                        </div>
+                        <div>
+                            <label class="text-xs font-bold text-slate-400 uppercase tracking-wider mb-3 block">屬性</label>
+                            <div class="flex flex-wrap gap-2">
+                                <button class="w-9 h-9 rounded-full bg-emerald-500/20 text-emerald-200">🌿</button>
+                                <button class="w-9 h-9 rounded-full bg-rose-500/20 text-rose-200">🔥</button>
+                                <button class="w-9 h-9 rounded-full bg-sky-500/20 text-sky-200">💧</button>
+                                <button class="w-9 h-9 rounded-full bg-yellow-500/20 text-yellow-200">⚡</button>
+                                <button class="w-9 h-9 rounded-full bg-purple-500/20 text-purple-200">🔮</button>
+                                <button class="w-9 h-9 rounded-full bg-slate-500/20 text-slate-200">⚪</button>
+                            </div>
+                        </div>
+                        <div>
+                            <label class="text-xs font-bold text-slate-400 uppercase tracking-wider mb-3 block">系列</label>
+                            <select class="w-full bg-slate-900 border border-slate-800 rounded-xl py-2 px-3 text-sm focus:ring-2 focus:ring-cyan-400 outline-none">
+                                <option>SV9 超能力劍客</option>
+                                <option>SV8 超電空間</option>
+                                <option>SV7 恆星衝擊</option>
+                            </select>
+                        </div>
+                        <button class="w-full py-3 rounded-xl bg-cyan-400 text-slate-900 font-bold shadow-lg">套用篩選</button>
+                    </div>
+                </div>
+            </aside>
+
+            <section class="col-span-12 lg:col-span-9">
+                <div class="flex justify-between items-center mb-6">
+                    <h2 class="text-xl font-bold text-white">熱門卡片</h2>
+                    <button class="px-4 py-2 rounded-full bg-slate-900 border border-slate-800 text-sm text-slate-200">排序</button>
+                </div>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <div class="card-float codex-surface rounded-3xl p-4">
+                        <div class="relative aspect-[3/4] rounded-2xl bg-slate-900 overflow-hidden mb-4">
+                            <div class="absolute inset-0 bg-gradient-to-br from-emerald-500/60 to-teal-700/80"></div>
+                            <div class="absolute inset-0 flex flex-col justify-center items-center text-white">
+                                <span class="text-5xl mb-2">🌿</span>
+                                <span class="font-bold">莉佳的霸王花ex</span>
+                            </div>
+                            <div class="absolute top-3 left-3 bg-white/10 text-white text-xs font-bold px-2 py-1 rounded-lg">Ultra Rare</div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between items-start mb-2">
+                                <h3 class="font-bold text-white">莉佳的霸王花ex</h3>
+                                <span class="bg-cyan-500/20 text-cyan-200 text-xs px-2 py-1 rounded-lg font-bold">#014</span>
+                            </div>
+                            <div class="grid grid-cols-2 gap-2 mb-4">
+                                <div class="bg-slate-900 rounded-xl p-2 text-center">
+                                    <p class="text-[10px] text-slate-400 uppercase font-bold">使用率</p>
+                                    <p class="text-sm font-bold text-white">87.3%</p>
+                                </div>
+                                <div class="bg-slate-900 rounded-xl p-2 text-center">
+                                    <p class="text-[10px] text-slate-400 uppercase font-bold">勝率</p>
+                                    <p class="text-sm font-bold text-cyan-300">68.5%</p>
+                                </div>
+                            </div>
+                            <div class="flex justify-between items-center">
+                                <span class="text-lg font-bold text-purple-300">HK$850</span>
+                                <button class="w-8 h-8 rounded-full bg-slate-900 border border-slate-800 text-cyan-200">→</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card-float codex-surface rounded-3xl p-4">
+                        <div class="relative aspect-[3/4] rounded-2xl bg-slate-900 overflow-hidden mb-4">
+                            <div class="absolute inset-0 bg-gradient-to-br from-sky-500/60 to-indigo-700/80"></div>
+                            <div class="absolute inset-0 flex flex-col justify-center items-center text-white">
+                                <span class="text-5xl mb-2">💧</span>
+                                <span class="font-bold">基拉祈V</span>
+                            </div>
+                            <div class="absolute top-3 left-3 bg-white/10 text-white text-xs font-bold px-2 py-1 rounded-lg">Rare V</div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between items-start mb-2">
+                                <h3 class="font-bold text-white">基拉祈V</h3>
+                                <span class="bg-cyan-500/20 text-cyan-200 text-xs px-2 py-1 rounded-lg font-bold">#022</span>
+                            </div>
+                            <div class="grid grid-cols-2 gap-2 mb-4">
+                                <div class="bg-slate-900 rounded-xl p-2 text-center">
+                                    <p class="text-[10px] text-slate-400 uppercase font-bold">使用率</p>
+                                    <p class="text-sm font-bold text-white">52.1%</p>
+                                </div>
+                                <div class="bg-slate-900 rounded-xl p-2 text-center">
+                                    <p class="text-[10px] text-slate-400 uppercase font-bold">勝率</p>
+                                    <p class="text-sm font-bold text-cyan-300">61.8%</p>
+                                </div>
+                            </div>
+                            <div class="flex justify-between items-center">
+                                <span class="text-lg font-bold text-white">HK$420</span>
+                                <button class="w-8 h-8 rounded-full bg-slate-900 border border-slate-800 text-cyan-200">→</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card-float codex-surface rounded-3xl p-4">
+                        <div class="relative aspect-[3/4] rounded-2xl bg-slate-900 overflow-hidden mb-4">
+                            <div class="absolute inset-0 bg-gradient-to-br from-purple-500/60 to-fuchsia-700/80"></div>
+                            <div class="absolute inset-0 flex flex-col justify-center items-center text-white">
+                                <span class="text-5xl mb-2">🔮</span>
+                                <span class="font-bold">夢幻ex</span>
+                            </div>
+                            <div class="absolute top-3 left-3 bg-white/10 text-white text-xs font-bold px-2 py-1 rounded-lg">Ultra Rare</div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between items-start mb-2">
+                                <h3 class="font-bold text-white">夢幻ex</h3>
+                                <span class="bg-cyan-500/20 text-cyan-200 text-xs px-2 py-1 rounded-lg font-bold">#087</span>
+                            </div>
+                            <div class="grid grid-cols-2 gap-2 mb-4">
+                                <div class="bg-slate-900 rounded-xl p-2 text-center">
+                                    <p class="text-[10px] text-slate-400 uppercase font-bold">使用率</p>
+                                    <p class="text-sm font-bold text-white">74.9%</p>
+                                </div>
+                                <div class="bg-slate-900 rounded-xl p-2 text-center">
+                                    <p class="text-[10px] text-slate-400 uppercase font-bold">勝率</p>
+                                    <p class="text-sm font-bold text-cyan-300">71.2%</p>
+                                </div>
+                            </div>
+                            <div class="flex justify-between items-center">
+                                <span class="text-lg font-bold text-purple-300">HK$1,280</span>
+                                <button class="w-8 h-8 rounded-full bg-slate-900 border border-slate-800 text-cyan-200">→</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <footer class="border-t border-slate-800 py-10 mt-10">
+        <div class="max-w-7xl mx-auto px-6 text-center">
+            <div class="flex justify-center items-center gap-2 mb-4">
+                <span class="material-icons-round text-2xl text-slate-500">auto_awesome</span>
+                <h2 class="text-lg font-bold text-slate-200">PTCG CardDB</h2>
+            </div>
+            <p class="text-slate-500 text-sm">GPT-5.2 Codex Edition • Tactical UI</p>
+        </div>
+    </footer>
+</body>
+</html>

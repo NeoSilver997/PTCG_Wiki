@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="zh-HK">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>賽事中心 - Gemini 3 Pro Edition</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Round" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Noto Sans TC', sans-serif;
+            background-color: #f0f4f8;
+            color: #1f2937;
+        }
+        .gemini-gradient-text {
+            background: linear-gradient(90deg, #4285F4, #9B72CB, #D96570);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.5);
+        }
+    </style>
+</head>
+<body class="min-h-screen">
+    <nav class="sticky top-0 z-50 glass-card border-b border-gray-100">
+        <div class="max-w-7xl mx-auto px-6 h-20 flex justify-between items-center">
+            <div class="flex items-center gap-2">
+                <span class="material-icons-round text-4xl text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-purple-600">auto_awesome</span>
+                <div>
+                    <h1 class="text-2xl font-bold gemini-gradient-text tracking-tight">PTCG CardDB</h1>
+                </div>
+            </div>
+            <div class="hidden md:flex items-center gap-8">
+                <a href="index.html" class="font-medium text-gray-600 hover:text-blue-600">首頁</a>
+                <a href="events.html" class="font-medium text-blue-600">賽事</a>
+                <a href="#" class="font-medium text-gray-600 hover:text-blue-600">登入</a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="max-w-7xl mx-auto px-6 py-10">
+        
+        <div class="mb-10">
+            <h2 class="text-3xl font-bold text-gray-800 mb-2">全球賽事追蹤</h2>
+            <p class="text-gray-500">即時更新的官方錦標賽數據與分析</p>
+        </div>
+
+        <!-- Dashboard Stats -->
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-6 mb-10">
+            <div class="bg-white rounded-3xl p-6 shadow-sm border border-gray-100">
+                <div class="w-12 h-12 rounded-2xl bg-blue-50 text-blue-600 flex items-center justify-center mb-4">
+                    <span class="material-icons-round">event_available</span>
+                </div>
+                <p class="text-3xl font-bold text-gray-800 mb-1">28</p>
+                <p class="text-sm text-gray-500">本月賽事 (↑15%)</p>
+            </div>
+            <div class="bg-white rounded-3xl p-6 shadow-sm border border-gray-100">
+                <div class="w-12 h-12 rounded-2xl bg-purple-50 text-purple-600 flex items-center justify-center mb-4">
+                    <span class="material-icons-round">groups</span>
+                </div>
+                <p class="text-3xl font-bold text-gray-800 mb-1">1,247</p>
+                <p class="text-sm text-gray-500">活躍選手</p>
+            </div>
+            <div class="bg-white rounded-3xl p-6 shadow-sm border border-gray-100">
+                <div class="w-12 h-12 rounded-2xl bg-green-50 text-green-600 flex items-center justify-center mb-4">
+                    <span class="material-icons-round">emoji_events</span>
+                </div>
+                <p class="text-3xl font-bold text-gray-800 mb-1">$520K</p>
+                <p class="text-sm text-gray-500">總獎金池</p>
+            </div>
+            <div class="bg-white rounded-3xl p-6 shadow-sm border border-gray-100">
+                 <div class="w-12 h-12 rounded-2xl bg-red-50 text-red-600 flex items-center justify-center mb-4">
+                    <span class="material-icons-round">trending_up</span>
+                </div>
+                <p class="text-3xl font-bold text-gray-800 mb-1">87.3%</p>
+                <p class="text-sm text-gray-500">霸王花使用率</p>
+            </div>
+        </div>
+
+        <!-- Filter Bar -->
+        <div class="bg-white rounded-2xl p-4 shadow-sm border border-gray-100 flex flex-wrap gap-4 items-center justify-between mb-8">
+            <div class="flex gap-4 items-center flex-1">
+                <div class="relative flex-1 max-w-md">
+                    <span class="material-icons-round absolute left-3 top-2.5 text-gray-400">search</span>
+                    <input type="text" placeholder="搜尋賽事名稱..." class="w-full bg-gray-50 border-none rounded-xl py-2 pl-10 pr-4 text-sm focus:ring-2 focus:ring-blue-100">
+                </div>
+                <div class="flex gap-2">
+                     <select class="bg-gray-50 border-none rounded-xl py-2 pl-3 pr-8 text-sm focus:ring-2 focus:ring-blue-100">
+                        <option>全部級別</option>
+                        <option>地區錦標賽</option>
+                        <option>城市聯賽</option>
+                    </select>
+                     <select class="bg-gray-50 border-none rounded-xl py-2 pl-3 pr-8 text-sm focus:ring-2 focus:ring-blue-100">
+                        <option>全部地區</option>
+                        <option>香港</option>
+                        <option>日本</option>
+                        <option>美國</option>
+                    </select>
+                </div>
+            </div>
+            <button class="bg-gray-900 text-white px-6 py-2 rounded-xl text-sm font-medium shadow-md hover:bg-gray-800 transition">
+                搜尋
+            </button>
+        </div>
+
+        <!-- Events List -->
+        <div class="bg-white rounded-3xl shadow-sm border border-gray-100 overflow-hidden">
+            <table class="w-full text-left border-collapse">
+                <thead>
+                    <tr class="bg-gray-50 border-b border-gray-100 text-xs text-gray-500 uppercase tracking-wider">
+                        <th class="p-6 font-bold">賽事名稱</th>
+                        <th class="p-6 font-bold">日期</th>
+                        <th class="p-6 font-bold">地點</th>
+                        <th class="p-6 font-bold text-center">人數</th>
+                        <th class="p-6 font-bold text-center">狀態</th>
+                        <th class="p-6 font-bold text-right"></th>
+                    </tr>
+                </thead>
+                <tbody class="divide-y divide-gray-50">
+                    <!-- Item 1 -->
+                    <tr class="hover:bg-blue-50/30 transition group">
+                        <td class="p-6">
+                            <div class="font-bold text-gray-800 group-hover:text-blue-600 transition">2026 香港地區錦標賽</div>
+                            <div class="text-xs text-gray-500">Regional Championship</div>
+                        </td>
+                        <td class="p-6 text-sm text-gray-600">
+                            2026-02-15
+                            <div class="text-xs text-gray-400">09:00 - 18:00</div>
+                        </td>
+                        <td class="p-6 text-sm text-gray-600">
+                            香港會議展覽中心
+                            <div class="text-xs text-gray-400">🇭🇰 香港</div>
+                        </td>
+                        <td class="p-6 text-center text-sm font-bold text-gray-800">247</td>
+                        <td class="p-6 text-center">
+                            <span class="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-bold bg-green-100 text-green-700">
+                                報名中
+                            </span>
+                        </td>
+                        <td class="p-6 text-right">
+                             <a href="event-detail.html" class="inline-flex items-center justify-center w-8 h-8 rounded-full bg-white border border-gray-200 text-gray-400 hover:text-blue-600 hover:border-blue-200 transition">
+                                <span class="material-icons-round text-sm">arrow_forward</span>
+                            </a>
+                        </td>
+                    </tr>
+
+                    <!-- Item 2 -->
+                    <tr class="hover:bg-blue-50/30 transition group">
+                        <td class="p-6">
+                            <div class="font-bold text-gray-800 group-hover:text-blue-600 transition">日本東京城市聯賽</div>
+                            <div class="text-xs text-gray-500">City League</div>
+                        </td>
+                        <td class="p-6 text-sm text-gray-600">
+                            2026-02-08
+                            <div class="text-xs text-gray-400">10:00 - 17:00</div>
+                        </td>
+                        <td class="p-6 text-sm text-gray-600">
+                            東京都品川區
+                            <div class="text-xs text-gray-400">🇯🇵 日本</div>
+                        </td>
+                        <td class="p-6 text-center text-sm font-bold text-gray-800">128</td>
+                        <td class="p-6 text-center">
+                            <span class="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-bold bg-amber-100 text-amber-700">
+                                進行中
+                            </span>
+                        </td>
+                        <td class="p-6 text-right">
+                             <a href="event-detail.html" class="inline-flex items-center justify-center w-8 h-8 rounded-full bg-white border border-gray-200 text-gray-400 hover:text-blue-600 hover:border-blue-200 transition">
+                                <span class="material-icons-round text-sm">arrow_forward</span>
+                            </a>
+                        </td>
+                    </tr>
+                    <!-- Item 3 -->
+                    <tr class="hover:bg-blue-50/30 transition group">
+                        <td class="p-6">
+                            <div class="font-bold text-gray-800 group-hover:text-blue-600 transition">2026 美國加州站</div>
+                            <div class="text-xs text-gray-500">Regional Championship</div>
+                        </td>
+                        <td class="p-6 text-sm text-gray-600">
+                            2026-01-28
+                            <div class="text-xs text-gray-400">已結束</div>
+                        </td>
+                        <td class="p-6 text-sm text-gray-600">
+                            洛杉磯會議中心
+                            <div class="text-xs text-gray-400">🇺🇸 美國</div>
+                        </td>
+                        <td class="p-6 text-center text-sm font-bold text-gray-800">312</td>
+                        <td class="p-6 text-center">
+                            <span class="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-bold bg-gray-100 text-gray-500">
+                                已結束
+                            </span>
+                        </td>
+                        <td class="p-6 text-right">
+                             <a href="event-detail.html" class="inline-flex items-center justify-center w-8 h-8 rounded-full bg-white border border-gray-200 text-gray-400 hover:text-blue-600 hover:border-blue-200 transition">
+                                <span class="material-icons-round text-sm">visibility</span>
+                            </a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <!-- Pagination -->
+            <div class="p-6 border-t border-gray-100 flex justify-center gap-2">
+                 <button class="w-8 h-8 rounded-lg bg-gray-50 text-gray-500 flex items-center justify-center text-sm hover:bg-gray-100">1</button>
+                 <button class="w-8 h-8 rounded-lg bg-blue-600 text-white flex items-center justify-center text-sm shadow-md">2</button>
+                 <button class="w-8 h-8 rounded-lg bg-gray-50 text-gray-500 flex items-center justify-center text-sm hover:bg-gray-100">3</button>
+                 <span class="w-8 h-8 flex items-center justify-center text-gray-300">...</span>
+                 <button class="w-8 h-8 rounded-lg bg-gray-50 text-gray-500 flex items-center justify-center text-sm hover:bg-gray-100">9</button>
+            </div>
+        </div>
+    </main>
+</body>
+</html>

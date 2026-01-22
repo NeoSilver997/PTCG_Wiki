@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>賽事 | PTCG 卡牌資料庫 (Bard)</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet">
+  <style>
+    body { font-family: 'Noto Sans TC', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial; }
+  </style>
+</head>
+<body class="bg-gray-50">
+  <!-- Navigation -->
+  <nav class="bg-gradient-to-r from-red-600 to-orange-600 shadow-lg sticky top-0 z-50">
+    <div class="max-w-[1400px] mx-auto px-6">
+      <div class="flex items-center justify-between h-16">
+        <div class="flex items-center space-x-6">
+          <div class="flex items-center">
+            <span class="text-2xl font-bold text-white">🏆 PTCG</span>
+            <span class="ml-2 text-red-200">賽事</span>
+          </div>
+          <div class="text-red-200 text-sm">
+            <span class="text-white">比賽和錦標賽</span>
+          </div>
+        </div>
+        <div class="flex items-center space-x-4">
+          <a href="index.html" class="text-red-200 hover:text-white px-3 py-2">首頁</a>
+          <a href="collection.html" class="text-red-200 hover:text-white px-3 py-2">我的收藏</a>
+          <div class="flex items-center space-x-2 bg-white/10 px-4 py-2 rounded-lg">
+            <span class="text-white font-medium">玩家</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <div class="max-w-[1400px] mx-auto px-6 py-8">
+    <div class="mb-8">
+      <h1 class="text-3xl font-bold text-gray-900 mb-2">賽事</h1>
+      <p class="text-gray-600">瀏覽即將到來的比賽、錦標賽結果和排名</p>
+    </div>
+
+    <!-- Event Stats -->
+    <div class="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
+      <div class="bg-white rounded-lg shadow-lg p-6 text-center">
+        <div class="text-3xl font-bold text-red-600 mb-2">247</div>
+        <div class="text-gray-600">本月賽事</div>
+      </div>
+      <div class="bg-white rounded-lg shadow-lg p-6 text-center">
+        <div class="text-3xl font-bold text-orange-600 mb-2">1,890</div>
+        <div class="text-gray-600">參賽選手</div>
+      </div>
+      <div class="bg-white rounded-lg shadow-lg p-6 text-center">
+        <div class="text-3xl font-bold text-amber-600 mb-2">89</div>
+        <div class="text-gray-600">活躍牌組</div>
+      </div>
+      <div class="bg-white rounded-lg shadow-lg p-6 text-center">
+        <div class="text-3xl font-bold text-yellow-600 mb-2">156</div>
+        <div class="text-gray-600">優勝者</div>
+      </div>
+    </div>
+
+    <!-- Filters -->
+    <div class="bg-white rounded-lg shadow-lg p-6 mb-6">
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
+        <div>
+          <label class="block text-sm font-medium text-gray-700 mb-2">賽事類型</label>
+          <select class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-red-500">
+            <option>全部</option>
+            <option>錦標賽</option>
+            <option>區域賽</option>
+            <option>社群賽</option>
+            <option>線上賽</option>
+          </select>
+        </div>
+        <div>
+          <label class="block text-sm font-medium text-gray-700 mb-2">賽事狀態</label>
+          <select class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-red-500">
+            <option>即將舉行</option>
+            <option>進行中</option>
+            <option>已結束</option>
+          </select>
+        </div>
+        <div>
+          <label class="block text-sm font-medium text-gray-700 mb-2">地區</label>
+          <select class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-red-500">
+            <option>全部地區</option>
+            <option>香港</option>
+            <option>台灣</option>
+            <option>日本</option>
+            <option>國際</option>
+          </select>
+        </div>
+        <div>
+          <label class="block text-sm font-medium text-gray-700 mb-2">搜尋</label>
+          <input type="text" placeholder="賽事名稱" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-red-500">
+        </div>
+      </div>
+    </div>
+
+    <!-- Events List -->
+    <div class="space-y-6">
+      <!-- Upcoming Event -->
+      <div class="bg-white rounded-lg shadow-lg p-6 border-l-4 border-red-500">
+        <div class="flex flex-col md:flex-row md:items-center justify-between">
+          <div class="flex-1">
+            <div class="flex items-center mb-2">
+              <span class="px-3 py-1 bg-red-100 text-red-800 rounded-full text-sm font-medium mr-3">即將舉行</span>
+              <span class="text-sm text-gray-600">2024-01-15 14:00</span>
+            </div>
+            <h3 class="text-xl font-bold text-gray-900 mb-2">香港 PTCG 冬季錦標賽</h3>
+            <p class="text-gray-600 mb-4">歡迎所有選手參加冬季錦標賽！獎金總額 HK$50,000</p>
+            <div class="flex flex-wrap gap-4 text-sm text-gray-600">
+              <span>🏆 錦標賽</span>
+              <span>📍 香港會議展覽中心</span>
+              <span>👥 128 個參賽名額</span>
+              <span>💰 HK$50,000 獎金</span>
+            </div>
+          </div>
+          <div class="mt-4 md:mt-0 md:ml-6">
+            <button class="w-full md:w-auto px-6 py-2 bg-red-600 text-white rounded-md hover:bg-red-700">報名參賽</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Ongoing Event -->
+      <div class="bg-white rounded-lg shadow-lg p-6 border-l-4 border-yellow-500">
+        <div class="flex flex-col md:flex-row md:items-center justify-between">
+          <div class="flex-1">
+            <div class="flex items-center mb-2">
+              <span class="px-3 py-1 bg-yellow-100 text-yellow-800 rounded-full text-sm font-medium mr-3">進行中</span>
+              <span class="text-sm text-gray-600">2024-01-10 ~ 2024-01-12</span>
+            </div>
+            <h3 class="text-xl font-bold text-gray-900 mb-2">亞洲 PTCG 線上盃</h3>
+            <p class="text-gray-600 mb-4">線上比賽，歡迎亞洲各地選手參加</p>
+            <div class="flex flex-wrap gap-4 text-sm text-gray-600">
+              <span>🌐 線上賽</span>
+              <span>👥 256 個參賽名額</span>
+              <span>🎮 PTCG Live</span>
+            </div>
+          </div>
+          <div class="mt-4 md:mt-0 md:ml-6">
+            <button class="w-full md:w-auto px-6 py-2 bg-yellow-600 text-white rounded-md hover:bg-yellow-700">查看直播</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Completed Event -->
+      <div class="bg-white rounded-lg shadow-lg p-6 border-l-4 border-gray-500">
+        <div class="flex flex-col md:flex-row md:items-center justify-between">
+          <div class="flex-1">
+            <div class="flex items-center mb-2">
+              <span class="px-3 py-1 bg-gray-100 text-gray-800 rounded-full text-sm font-medium mr-3">已結束</span>
+              <span class="text-sm text-gray-600">2024-01-08</span>
+            </div>
+            <h3 class="text-xl font-bold text-gray-900 mb-2">台灣 PTCG 區域賽 - 高雄站</h3>
+            <p class="text-gray-600 mb-4">高雄站區域賽圓滿結束，恭喜所有參賽選手！</p>
+            <div class="flex flex-wrap gap-4 text-sm text-gray-600">
+              <span>🏆 區域賽</span>
+              <span>📍 高雄巨蛋</span>
+              <span>👥 96 個參賽名額</span>
+              <span>🥇 冠軍：陳小明</span>
+            </div>
+          </div>
+          <div class="mt-4 md:mt-0 md:ml-6">
+            <button class="w-full md:w-auto px-6 py-2 border border-gray-300 text-gray-700 rounded-md hover:bg-gray-50">查看結果</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Another Completed Event -->
+      <div class="bg-white rounded-lg shadow-lg p-6 border-l-4 border-gray-500">
+        <div class="flex flex-col md:flex-row md:items-center justify-between">
+          <div class="flex-1">
+            <div class="flex items-center mb-2">
+              <span class="px-3 py-1 bg-gray-100 text-gray-800 rounded-full text-sm font-medium mr-3">已結束</span>
+              <span class="text-sm text-gray-600">2024-01-05</span>
+            </div>
+            <h3 class="text-xl font-bold text-gray-900 mb-2">日本 PTCG 冠軍賽 2024</h3>
+            <p class="text-gray-600 mb-4">日本年度冠軍賽，決定年度最佳選手</p>
+            <div class="flex flex-wrap gap-4 text-sm text-gray-600">
+              <span>👑 冠軍賽</span>
+              <span>📍 東京體育館</span>
+              <span>👥 64 個參賽名額</span>
+              <span>🥇 冠軍：山田太郎</span>
+            </div>
+          </div>
+          <div class="mt-4 md:mt-0 md:ml-6">
+            <button class="w-full md:w-auto px-6 py-2 border border-gray-300 text-gray-700 rounded-md hover:bg-gray-50">查看結果</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Community Event -->
+      <div class="bg-white rounded-lg shadow-lg p-6 border-l-4 border-blue-500">
+        <div class="flex flex-col md:flex-row md:items-center justify-between">
+          <div class="flex-1">
+            <div class="flex items-center mb-2">
+              <span class="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm font-medium mr-3">社群賽</span>
+              <span class="text-sm text-gray-600">每週六 10:00</span>
+            </div>
+            <h3 class="text-xl font-bold text-gray-900 mb-2">香港 PTCG 社群聚會</h3>
+            <p class="text-gray-600 mb-4">歡迎新手和老手一起交流，學習 PTCG 技巧</p>
+            <div class="flex flex-wrap gap-4 text-sm text-gray-600">
+              <span>👥 社群賽</span>
+              <span>📍 銅鑼灣卡牌店</span>
+              <span>🎯 適合新手</span>
+              <span>💡 免費參加</span>
+            </div>
+          </div>
+          <div class="mt-4 md:mt-0 md:ml-6">
+            <button class="w-full md:w-auto px-6 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700">加入社群</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Pagination -->
+    <div class="mt-8 flex justify-center">
+      <nav class="flex items-center space-x-2">
+        <button class="px-3 py-2 border border-gray-300 rounded-md text-gray-500 hover:bg-gray-50">上一頁</button>
+        <button class="px-3 py-2 bg-red-600 text-white rounded-md">1</button>
+        <button class="px-3 py-2 border border-gray-300 rounded-md text-gray-700 hover:bg-gray-50">2</button>
+        <button class="px-3 py-2 border border-gray-300 rounded-md text-gray-700 hover:bg-gray-50">3</button>
+        <span class="px-2 text-gray-500">...</span>
+        <button class="px-3 py-2 border border-gray-300 rounded-md text-gray-700 hover:bg-gray-50">12</button>
+        <button class="px-3 py-2 border border-gray-300 rounded-md text-gray-700 hover:bg-gray-50">下一頁</button>
+      </nav>
+    </div>
+  </div>
+</body>
+</html>

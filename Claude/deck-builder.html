@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>牌組建構 | PTCG 卡牌資料庫 (Claude)</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet">
+  <style>
+    body { font-family: 'Noto Sans TC', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial; }
+  </style>
+</head>
+<body class="bg-gray-50">
+  <!-- Navigation -->
+  <nav class="bg-gradient-to-r from-blue-600 to-teal-600 shadow-lg sticky top-0 z-50">
+    <div class="max-w-[1400px] mx-auto px-6">
+      <div class="flex items-center justify-between h-16">
+        <div class="flex items-center space-x-6">
+          <div class="flex items-center">
+            <span class="text-2xl font-bold text-white">🃏 PTCG</span>
+            <span class="ml-2 text-blue-200">卡牌資料庫</span>
+          </div>
+          <div class="text-blue-200 text-sm">
+            <a href="index.html" class="hover:text-white">首頁</a>
+            <span class="mx-2">/</span>
+            <span class="text-white">牌組建構</span>
+          </div>
+        </div>
+        <div class="flex items-center space-x-4">
+          <a href="collection.html" class="text-blue-200 hover:text-white px-3 py-2">收藏</a>
+          <a href="events.html" class="text-blue-200 hover:text-white px-3 py-2">賽事</a>
+          <a href="login.html" class="text-blue-200 hover:text-white px-3 py-2">登入</a>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <div class="max-w-[1400px] mx-auto px-6 py-8">
+    <div class="grid grid-cols-12 gap-8">
+      <!-- Left: Card Search -->
+      <div class="col-span-8">
+        <div class="bg-white rounded-lg shadow-lg p-6 mb-6">
+          <h2 class="text-xl font-bold text-gray-900 mb-4">卡牌搜尋</h2>
+
+          <!-- Search Filters -->
+          <div class="grid grid-cols-4 gap-4 mb-6">
+            <div>
+              <label class="block text-sm font-medium text-gray-700 mb-2">搜尋</label>
+              <input type="text" placeholder="卡牌名稱..." class="w-full border border-gray-300 rounded-md px-4 py-2">
+            </div>
+            <div>
+              <label class="block text-sm font-medium text-gray-700 mb-2">系列</label>
+              <select class="w-full border border-gray-300 rounded-md px-4 py-2">
+                <option>所有系列</option>
+                <option>MC 入門組合</option>
+                <option>SV08 閃電突破</option>
+              </select>
+            </div>
+            <div>
+              <label class="block text-sm font-medium text-gray-700 mb-2">類型</label>
+              <select class="w-full border border-gray-300 rounded-md px-4 py-2">
+                <option>所有類型</option>
+                <option>草</option>
+                <option>火</option>
+                <option>水</option>
+                <option>雷電</option>
+                <option>超能力</option>
+                <option>格鬥</option>
+                <option>黑暗</option>
+                <option>金屬</option>
+                <option>妖精</option>
+                <option>無色</option>
+              </select>
+            </div>
+            <div>
+              <label class="block text-sm font-medium text-gray-700 mb-2">稀有度</label>
+              <select class="w-full border border-gray-300 rounded-md px-4 py-2">
+                <option>所有稀有度</option>
+                <option>C - 一般</option>
+                <option>R - 稀有</option>
+                <option>SAR - 特殊藝術稀有</option>
+              </select>
+            </div>
+          </div>
+
+          <!-- Search Results -->
+          <div class="grid grid-cols-4 gap-4">
+            <div class="bg-white border rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-shadow cursor-pointer group">
+              <div class="w-full aspect-[245/342] bg-gray-100 flex items-center justify-center">
+                <img src="https://via.placeholder.com/245x342/2563eb/ffffff?text=卡牌" alt="卡牌" class="w-full h-full object-contain">
+              </div>
+              <div class="p-3">
+                <div class="font-medium text-sm truncate mb-1">艾莉卡的妙蛙花 ex</div>
+                <div class="text-xs text-gray-500 mb-2">MC J005/742</div>
+                <div class="flex items-center justify-between">
+                  <span class="text-xs text-gray-600">SAR</span>
+                  <button class="text-blue-600 text-xs hover:text-blue-800">+ 加入</button>
+                </div>
+              </div>
+            </div>
+
+            <div class="bg-white border rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-shadow cursor-pointer group">
+              <div class="w-full aspect-[245/342] bg-gray-100 flex items-center justify-center">
+                <img src="https://via.placeholder.com/245x342/059669/ffffff?text=卡牌" alt="卡牌" class="w-full h-full object-contain">
+              </div>
+              <div class="p-3">
+                <div class="font-medium text-sm truncate mb-1">噴火龍 ex</div>
+                <div class="text-xs text-gray-500 mb-2">SV8 001/150</div>
+                <div class="flex items-center justify-between">
+                  <span class="text-xs text-gray-600">SAR</span>
+                  <button class="text-blue-600 text-xs hover:text-blue-800">+ 加入</button>
+                </div>
+              </div>
+            </div>
+
+            <div class="bg-white border rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-shadow cursor-pointer group">
+              <div class="w-full aspect-[245/342] bg-gray-100 flex items-center justify-center">
+                <img src="https://via.placeholder.com/245x342/dc2626/ffffff?text=卡牌" alt="卡牌" class="w-full h-full object-contain">
+              </div>
+              <div class="p-3">
+                <div class="font-medium text-sm truncate mb-1">皮卡丘</div>
+                <div class="text-xs text-gray-500 mb-2">MC J001/742</div>
+                <div class="flex items-center justify-between">
+                  <span class="text-xs text-gray-600">C</span>
+                  <button class="text-blue-600 text-xs hover:text-blue-800">+ 加入</button>
+                </div>
+              </div>
+            </div>
+
+            <div class="bg-white border rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-shadow cursor-pointer group">
+              <div class="w-full aspect-[245/342] bg-gray-100 flex items-center justify-center">
+                <img src="https://via.placeholder.com/245x342/7c3aed/ffffff?text=卡牌" alt="卡牌" class="w-full h-full object-contain">
+              </div>
+              <div class="p-3">
+                <div class="font-medium text-sm truncate mb-1">水箭龜 ex</div>
+                <div class="text-xs text-gray-500 mb-2">SV8 002/150</div>
+                <div class="flex items-center justify-between">
+                  <span class="text-xs text-gray-600">SAR</span>
+                  <button class="text-blue-600 text-xs hover:text-blue-800">+ 加入</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right: Deck List -->
+      <div class="col-span-4">
+        <div class="bg-white rounded-lg shadow-lg p-6 sticky top-24">
+          <div class="flex items-center justify-between mb-6">
+            <h2 class="text-xl font-bold text-gray-900">我的牌組</h2>
+            <div class="text-sm text-gray-600">47/60 張卡牌</div>
+          </div>
+
+          <!-- Deck Stats -->
+          <div class="grid grid-cols-2 gap-4 mb-6">
+            <div class="bg-blue-50 rounded-lg p-3 text-center">
+              <div class="text-lg font-bold text-blue-600">13</div>
+              <div class="text-xs text-blue-800">寶可夢</div>
+            </div>
+            <div class="bg-teal-50 rounded-lg p-3 text-center">
+              <div class="text-lg font-bold text-teal-600">34</div>
+              <div class="text-xs text-teal-800">訓練家</div>
+            </div>
+          </div>
+
+          <!-- Deck Cards -->
+          <div class="space-y-2 max-h-96 overflow-y-auto">
+            <div class="flex items-center justify-between py-2 border-b border-gray-100">
+              <div class="flex items-center space-x-3">
+                <div class="w-8 h-8 bg-gray-200 rounded flex items-center justify-center text-xs font-medium">3</div>
+                <div>
+                  <div class="text-sm font-medium">艾莉卡的妙蛙花 ex</div>
+                  <div class="text-xs text-gray-500">MC J005/742</div>
+                </div>
+              </div>
+              <div class="flex items-center space-x-2">
+                <button class="text-green-600 text-sm">+</button>
+                <button class="text-red-600 text-sm">-</button>
+              </div>
+            </div>
+
+            <div class="flex items-center justify-between py-2 border-b border-gray-100">
+              <div class="flex items-center space-x-3">
+                <div class="w-8 h-8 bg-gray-200 rounded flex items-center justify-center text-xs font-medium">2</div>
+                <div>
+                  <div class="text-sm font-medium">噴火龍 ex</div>
+                  <div class="text-xs text-gray-500">SV8 001/150</div>
+                </div>
+              </div>
+              <div class="flex items-center space-x-2">
+                <button class="text-green-600 text-sm">+</button>
+                <button class="text-red-600 text-sm">-</button>
+              </div>
+            </div>
+
+            <div class="flex items-center justify-between py-2 border-b border-gray-100">
+              <div class="flex items-center space-x-3">
+                <div class="w-8 h-8 bg-gray-200 rounded flex items-center justify-center text-xs font-medium">4</div>
+                <div>
+                  <div class="text-sm font-medium">皮卡丘</div>
+                  <div class="text-xs text-gray-500">MC J001/742</div>
+                </div>
+              </div>
+              <div class="flex items-center space-x-2">
+                <button class="text-green-600 text-sm">+</button>
+                <button class="text-red-600 text-sm">-</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Deck Actions -->
+          <div class="mt-6 space-y-3">
+            <button class="w-full px-4 py-2 bg-blue-600 text-white rounded-lg font-medium hover:bg-blue-700">
+              儲存牌組
+            </button>
+            <button class="w-full px-4 py-2 bg-teal-600 text-white rounded-lg font-medium hover:bg-teal-700">
+              匯出牌組
+            </button>
+            <button class="w-full px-4 py-2 bg-gray-600 text-white rounded-lg font-medium hover:bg-gray-700">
+              清空牌組
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

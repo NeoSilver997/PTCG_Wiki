@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>賽事結果 · Mistral-1 | PTCG</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet">
+  <style>
+    body{font-family:'Noto Sans TC',sans-serif;background:linear-gradient(135deg,#f5fbff 0%,#eefaf3 100%)}
+    .soft{box-shadow:12px 12px 24px rgba(0,0,0,0.06),-8px -8px 20px rgba(255,255,255,0.6);border-radius:14px}
+  </style>
+</head>
+<body class="min-h-screen">
+  <nav class="max-w-6xl mx-auto px-4 py-5 flex items-center justify-between">
+    <div class="flex items-center gap-4">
+      <div class="w-10 h-10 rounded-lg bg-gradient-to-r from-rose-400 to-amber-400 flex items-center justify-center text-white font-bold">M1</div>
+      <h1 class="text-xl font-semibold">PTCG • Mistral-1</h1>
+    </div>
+    <div class="text-sm text-gray-600">範例牌組：莉佳的霸王花ex</div>
+  </nav>
+
+  <main class="max-w-6xl mx-auto p-4 grid grid-cols-1 lg:grid-cols-3 gap-6">
+    <section class="lg:col-span-2 p-6 bg-white soft">
+      <header class="flex items-center justify-between mb-4">
+        <div>
+          <h2 class="text-2xl font-bold text-gray-800">賽事結果總覽</h2>
+          <p class="text-gray-500 text-sm">聚焦「莉佳的霸王花ex」的近期賽事成績與排名。</p>
+        </div>
+        <div class="text-right text-sm text-gray-500">更新：2026/01/22</div>
+      </header>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
+        <div class="p-4 bg-gradient-to-br from-white to-rose-50 rounded-lg">
+          <div class="text-xs text-gray-500">總參賽</div>
+          <div class="text-2xl font-bold text-rose-600">1,247</div>
+          <div class="text-xs text-gray-500">總獎金：NT$ 2.3M</div>
+        </div>
+        <div class="p-4 bg-gradient-to-br from-white to-amber-50 rounded-lg">
+          <div class="text-xs text-gray-500">平均勝率</div>
+          <div class="text-2xl font-bold text-amber-600">68%</div>
+          <div class="text-xs text-gray-500">莉佳的霸王花ex 勝率：85.7%</div>
+        </div>
+      </div>
+
+      <div class="overflow-x-auto">
+        <table class="w-full text-left text-sm">
+          <thead class="text-xs text-gray-500 border-b">
+            <tr>
+              <th class="px-4 py-3">賽事</th>
+              <th class="px-4 py-3">日期</th>
+              <th class="px-4 py-3">冠軍</th>
+              <th class="px-4 py-3">牌組</th>
+              <th class="px-4 py-3">參賽</th>
+              <th class="px-4 py-3">獎金</th>
+            </tr>
+          </thead>
+          <tbody class="text-gray-700">
+            <tr class="border-b hover:bg-gray-50">
+              <td class="px-4 py-3">台北 冠軍賽</td>
+              <td class="px-4 py-3">2026/01/15</td>
+              <td class="px-4 py-3">選手 A</td>
+              <td class="px-4 py-3">莉佳的霸王花ex</td>
+              <td class="px-4 py-3">64</td>
+              <td class="px-4 py-3">NT$ 50,000</td>
+            </tr>
+            <tr class="border-b hover:bg-gray-50">
+              <td class="px-4 py-3">高雄 挑戰賽</td>
+              <td class="px-4 py-3">2026/01/12</td>
+              <td class="px-4 py-3">選手 B</td>
+              <td class="px-4 py-3">水箭龜ex</td>
+              <td class="px-4 py-3">48</td>
+              <td class="px-4 py-3">NT$ 30,000</td>
+            </tr>
+            <tr class="border-b hover:bg-gray-50">
+              <td class="px-4 py-3">線上 杯賽</td>
+              <td class="px-4 py-3">2026/01/05</td>
+              <td class="px-4 py-3">選手 D</td>
+              <td class="px-4 py-3">莉佳的霸王花ex</td>
+              <td class="px-4 py-3">96</td>
+              <td class="px-4 py-3">NT$ 15,000</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <aside class="p-6 bg-white soft">
+      <div>
+        <h3 class="text-lg font-bold text-gray-800 mb-2">牌組焦點</h3>
+        <div class="text-sm text-gray-500">莉佳的霸王花ex（樣本）</div>
+        <div class="mt-3">
+          <div class="text-sm">使用率：<span class="font-semibold">45%</span></div>
+          <div class="text-sm">勝率：<span class="font-semibold">85.7%</span></div>
+          <div class="text-sm">參賽次數：<span class="font-semibold">14</span></div>
+        </div>
+
+        <div class="mt-4">
+          <h4 class="text-sm font-semibold">最近表現</h4>
+          <ul class="mt-2 text-sm text-gray-700 space-y-1">
+            <li>台北 冠軍賽 — 冠軍</li>
+            <li>線上 杯賽 — 八強</li>
+            <li>花蓮 區域賽 — 冠軍</li>
+          </ul>
+        </div>
+
+        <div class="mt-4 space-y-2">
+          <a href="deck-builder.html" class="block text-center bg-rose-500 hover:bg-rose-600 text-white py-2 rounded">查看牌組</a>
+          <a href="#" class="block text-center border border-gray-200 py-2 rounded text-sm text-gray-600">下載報表</a>
+        </div>
+      </div>
+    </aside>
+  </main>
+</body>
+</html>
